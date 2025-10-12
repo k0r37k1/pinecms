@@ -8,7 +8,7 @@ deptrac:
   layers:
     - name: Controllers
       collectors:
-        - type: className
+        - type: classLike
           value: .*Controller.*
 
     - name: Services
@@ -112,8 +112,6 @@ deptrac:
 
   formatters:
     graphviz:
-      enabled: true
-      output: storage/deptrac/architecture.png
       groups:
         Controllers:
           - Controllers

@@ -15,7 +15,7 @@
         "summary": "storage/infection/summary.log",
         "json": "storage/infection/infection.json",
         "perMutator": "storage/infection/per-mutator.md",
-        "github": true
+        "github": false
     },
     "tmpDir": "storage/infection",
     "timeout": 10,
@@ -27,7 +27,7 @@
     "bootstrap": "vendor/autoload.php",
     "mutators": {
         "@default": true,
-        "@function_signature": false,
+        "@function_signature": true,
         "MethodCallRemoval": {
             "ignore": [
                 "Illuminate\\Support\\Facades\\Log::*"
@@ -37,7 +37,6 @@
     "minMsi": 80,
     "minCoveredMsi": 90,
     "threads": 4,
-    "ignoreMsiWithNoMutations": true,
     "ignoreSourceCodeByRegex": [
         ".*Test\\.php$"
     ]
