@@ -10,13 +10,17 @@ parameters:
         - config
         - routes
         - database
+        - tests
 
     excludePaths:
         - vendor
         - storage
         - bootstrap/cache
         - node_modules
+        # Uncomment if you encounter Blade-related errors:
+        # - *.blade.php
 
+    # PHPStan Strict Checks
     checkMissingIterableValueType: true
     checkGenericClassInNonGenericObjectType: true
     checkBenevolentUnionTypes: true
@@ -24,9 +28,32 @@ parameters:
     checkImplicitMixed: true
     checkTooWideReturnTypesInProtectedAndPublicMethods: true
 
+    # Larastan Laravel-specific Checks
+    checkOctaneCompatibility: true
+    noEnvCallsOutsideOfConfig: true
+    checkModelProperties: true
+    checkModelAppends: true
+
+    # Optional Larastan Checks (disabled by default)
+    checkMissingTranslations: false
+    checkUnusedViews: false
+
+    # Performance: Set to true if analysis is slow
+    disableMigrationScan: false
+    disableSchemaScan: false
+
+    # Custom Directories (uncomment and adjust if needed)
+    # databaseMigrationsPath:
+    #     - database/migrations
+    # squashedMigrationsPath:
+    #     - database/schema
+    # viewDirectories:
+    #     - resources/views
+
     ignoreErrors:
-        # Allow dynamic properties for now
-        # - '#Access to an undefined property#'
+        # Uncomment to ignore specific error patterns
+        # - '#Call to an undefined method .*badMethod()#'
+        # - '#Call to an undefined method Illuminate\\Support\\HigherOrder#'
 
     # Baseline for gradual adoption
     # Run: composer analyse:baseline
