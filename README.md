@@ -41,7 +41,8 @@ A modern, lightweight content management system built with Laravel 12 (Illuminat
 - **Commitlint** for conventional commits
 - **ESLint + Prettier** for JavaScript/TypeScript
 - **PHPStan + Rector** for PHP static analysis
-- **Vitest + Playwright** for comprehensive testing
+- **PHPUnit 12.4** with Xdebug for backend testing
+- **Vitest + Playwright** for frontend testing
 - **Infection** for mutation testing
 
 ## Requirements
