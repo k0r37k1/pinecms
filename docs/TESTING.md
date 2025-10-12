@@ -10,6 +10,7 @@ PineCMS uses PHPUnit for testing with comprehensive code coverage and CI/CD inte
 - [Test Structure](#test-structure)
 - [Running Tests](#running-tests)
 - [Code Coverage](#code-coverage)
+  - [Xdebug Configuration & Optimization](#xdebug-configuration--optimization)
 - [Writing Tests](#writing-tests)
 - [Database Testing](#database-testing)
 - [HTTP Testing](#http-testing)
@@ -259,6 +260,177 @@ open coverage/html/index.html
 
 # Linux
 xdg-open coverage/html/index.html
+```
+
+### Xdebug Configuration & Optimization
+
+PineCMS uses **Xdebug 3.4.5** for code coverage. Here's how to optimize your setup:
+
+#### Verify Xdebug Installation
+
+```bash
+# Check if Xdebug is installed
+php -v | grep Xdebug
+
+# Check Xdebug mode
+php -i | grep -i "xdebug.mode"
+
+# Verify Xdebug functions
+php -r "var_dump(function_exists('xdebug_info'));"
+```
+
+Expected output:
+```
+PHP 8.4.13 (cli) (built: Sep 26 2025 00:45:36) (NTS clang 15.0.0)
+    with Xdebug v3.4.5, Copyright (c) 2002-2025, by Derick Rethans
+
+xdebug.mode => coverage => coverage
+bool(true)
+```
+
+#### Xdebug 3 Modes
+
+Xdebug 3 uses modes to control functionality. For testing, use `coverage` mode:
+
+```ini
+# php.ini or .ini file for CLI
+xdebug.mode=coverage
+```
+
+Available modes:
+- `coverage` - Code coverage
+- `debug` - Step debugging (use with IDE)
+- `develop` - Development helpers
+- `gcstats` - Garbage collection stats
+- `profile` - Performance profiling
+- `trace` - Function trace
+
+**For testing only:** Use `coverage` mode for best performance.
+
+#### Performance Optimization
+
+Xdebug can slow down tests. Here are optimization strategies:
+
+**1. Use Coverage Mode Only**
+```ini
+# php.ini
+xdebug.mode=coverage
+```
+
+**2. Disable Xdebug When Not Needed**
+```bash
+# Run tests without coverage (Xdebug disabled via env)
+XDEBUG_MODE=off php artisan test
+
+# Run tests with coverage (Xdebug enabled)
+php artisan test --coverage
+```
+
+**3. Use PCOV for CI/CD**
+
+PCOV is significantly faster than Xdebug for coverage:
+
+```bash
+# Install PCOV
+pecl install pcov
+
+# Enable in php.ini
+echo "extension=pcov.so" >> /etc/php/8.4/cli/php.ini
+
+# Use PCOV instead of Xdebug in CI
+php artisan test --coverage
+```
+
+**Performance Comparison:**
+- Xdebug: ~50-100% test slowdown
+- PCOV: ~5-10% test slowdown
+
+**4. Selective Coverage**
+
+Only generate coverage when explicitly requested:
+
+```bash
+# Run tests without coverage (fast)
+php artisan test
+
+# Generate coverage only when needed
+php artisan test --coverage --min=80
+```
+
+#### Generate All Coverage Reports
+
+```bash
+# Generate all coverage formats at once
+vendor/bin/phpunit --coverage-text \
+                   --coverage-html coverage/html \
+                   --coverage-clover coverage/clover.xml \
+                   --coverage-cobertura coverage/cobertura.xml
+```
+
+Output:
+```
+Generating code coverage report in Clover XML format ... done
+Generating code coverage report in Cobertura XML format ... done
+Generating code coverage report in HTML format ... done
+
+Code Coverage Report Summary:
+  Classes: 85.00% (17/20)
+  Methods: 82.50% (66/80)
+  Lines:   87.20% (421/483)
+```
+
+#### Xdebug vs PCOV: When to Use Each
+
+| Feature | Xdebug | PCOV |
+|---------|--------|------|
+| **Speed** | Slower | Faster (5-10x) |
+| **Setup** | Complex | Simple |
+| **Coverage Accuracy** | Very accurate | Very accurate |
+| **Additional Features** | Debugging, profiling, trace | Coverage only |
+| **Best For** | Development | CI/CD pipelines |
+| **Laravel Herd** | Pre-installed | Need to install |
+
+**Recommendation:**
+- **Development:** Use Xdebug (already configured)
+- **CI/CD:** Use PCOV for faster builds
+
+#### Troubleshooting Xdebug
+
+**Problem: Coverage not generating**
+```bash
+# Check Xdebug mode
+php -i | grep "xdebug.mode"
+
+# Should show: xdebug.mode => coverage => coverage
+# If not, set mode:
+export XDEBUG_MODE=coverage
+php artisan test --coverage
+```
+
+**Problem: Tests running very slow**
+```bash
+# Disable Xdebug when not needed
+XDEBUG_MODE=off php artisan test
+
+# Or use PCOV instead
+pecl install pcov
+php artisan test --coverage
+```
+
+**Problem: Xdebug not loading**
+```bash
+# Check PHP extensions
+php -m | grep xdebug
+
+# If missing, install Xdebug:
+# macOS (Homebrew)
+brew install php@8.4-xdebug
+
+# Ubuntu/Debian
+sudo apt install php8.4-xdebug
+
+# Restart PHP-FPM if using it
+sudo service php8.4-fpm restart
 ```
 
 ---

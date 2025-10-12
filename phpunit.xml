@@ -12,7 +12,6 @@
          failOnIncomplete="false"
          failOnSkipped="false"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTodoAnnotatedTests="true"
          displayDetailsOnTestsThatTriggerWarnings="true"
          displayDetailsOnTestsThatTriggerDeprecations="true"
          displayDetailsOnTestsThatTriggerErrors="true"
@@ -20,97 +19,77 @@
          displayDetailsOnIncompleteTests="true"
          displayDetailsOnSkippedTests="true">
 
-    <!-- Test Suites -->
-    <testsuites>
-        <testsuite name="Unit">
-            <directory>tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory>tests/Feature</directory>
-        </testsuite>
-        <!-- Add more test suites as needed -->
-        <!-- <testsuite name="Integration">
+  <!-- Test Suites -->
+  <testsuites>
+    <testsuite name="Unit">
+      <directory>tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+      <directory>tests/Feature</directory>
+    </testsuite>
+    <!-- Add more test suites as needed -->
+    <!-- <testsuite name="Integration">
             <directory>tests/Integration</directory>
         </testsuite> -->
-    </testsuites>
-
-    <!-- Source Files for Coverage -->
-    <source>
-        <include>
-            <directory>app</directory>
-        </include>
-        <exclude>
-            <directory>app/Exceptions</directory>
-            <file>app/helpers.php</file>
-        </exclude>
-    </source>
-
-    <!-- Code Coverage Configuration -->
-    <coverage includeUncoveredFiles="true"
-              pathCoverage="false"
-              ignoreDeprecatedCodeUnits="true"
-              disableCodeCoverageIgnore="false">
-        <report>
-            <!-- Clover XML for CI/CD and Coverage Tools -->
-            <clover outputFile="coverage/clover.xml"/>
-
-            <!-- Cobertura XML for GitLab/Jenkins -->
-            <cobertura outputFile="coverage/cobertura.xml"/>
-
-            <!-- HTML Report for Human Review -->
-            <html outputDirectory="coverage/html" lowUpperBound="50" highLowerBound="80"/>
-
-            <!-- Text Output to Console -->
-            <text outputFile="php://stdout" showUncoveredFiles="false" showOnlySummary="true"/>
-        </report>
-    </coverage>
-
-    <!-- Logging Configuration -->
-    <logging>
-        <!-- JUnit XML for CI/CD Systems (Jenkins, GitLab CI, GitHub Actions) -->
-        <junit outputFile="coverage/junit.xml"/>
-
-        <!-- TestDox HTML Report -->
-        <testdoxHtml outputFile="coverage/testdox.html"/>
-
-        <!-- TestDox Text Report -->
-        <testdoxText outputFile="coverage/testdox.txt"/>
-    </logging>
-
-    <!-- Environment Variables for Testing -->
-    <php>
-        <!-- Application -->
-        <env name="APP_ENV" value="testing"/>
-        <env name="APP_DEBUG" value="true"/>
-        <env name="APP_KEY" value="base64:test1234567890test1234567890test12345678"/>
-        <env name="APP_URL" value="http://localhost"/>
-
-        <!-- Database -->
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
-
-        <!-- Cache & Session -->
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-
-        <!-- Mail -->
-        <env name="MAIL_MAILER" value="array"/>
-
-        <!-- Broadcasting -->
-        <env name="BROADCAST_DRIVER" value="log"/>
-
-        <!-- Filesystem -->
-        <env name="FILESYSTEM_DISK" value="local"/>
-
-        <!-- Telescope (Disable in Tests) -->
-        <env name="TELESCOPE_ENABLED" value="false"/>
-
-        <!-- Laravel Pennant -->
-        <env name="PENNANT_STORE" value="array"/>
-
-        <!-- Debugging -->
-        <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="TESTING" value="true"/>
-    </php>
+  </testsuites>
+  <!-- Source Files for Coverage -->
+  <source>
+    <include>
+      <directory>app</directory>
+    </include>
+    <exclude>
+      <directory>app/Exceptions</directory>
+      <file>app/helpers.php</file>
+    </exclude>
+  </source>
+  <!-- Code Coverage Configuration -->
+  <coverage includeUncoveredFiles="true" pathCoverage="false" ignoreDeprecatedCodeUnits="true" disableCodeCoverageIgnore="false">
+    <report>
+      <!-- Clover XML for CI/CD and Coverage Tools -->
+      <clover outputFile="coverage/clover.xml"/>
+      <!-- Cobertura XML for GitLab/Jenkins -->
+      <cobertura outputFile="coverage/cobertura.xml"/>
+      <!-- HTML Report for Human Review -->
+      <html outputDirectory="coverage/html" lowUpperBound="50" highLowerBound="80"/>
+      <!-- Text Output to Console -->
+      <text outputFile="php://stdout" showUncoveredFiles="false" showOnlySummary="true"/>
+    </report>
+  </coverage>
+  <!-- Logging Configuration -->
+  <logging>
+    <!-- JUnit XML for CI/CD Systems (Jenkins, GitLab CI, GitHub Actions) -->
+    <junit outputFile="coverage/junit.xml"/>
+    <!-- TestDox HTML Report -->
+    <testdoxHtml outputFile="coverage/testdox.html"/>
+    <!-- TestDox Text Report -->
+    <testdoxText outputFile="coverage/testdox.txt"/>
+  </logging>
+  <!-- Environment Variables for Testing -->
+  <php>
+    <!-- Application -->
+    <env name="APP_ENV" value="testing"/>
+    <env name="APP_DEBUG" value="true"/>
+    <env name="APP_KEY" value="base64:iQZNNHcp/HI3hERUNs7FP/utxGPxKh9GcUEt1mEyRgU="/>
+    <env name="APP_URL" value="http://localhost"/>
+    <!-- Database -->
+    <env name="DB_CONNECTION" value="sqlite"/>
+    <env name="DB_DATABASE" value=":memory:"/>
+    <!-- Cache & Session -->
+    <env name="CACHE_DRIVER" value="array"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <!-- Mail -->
+    <env name="MAIL_MAILER" value="array"/>
+    <!-- Broadcasting -->
+    <env name="BROADCAST_DRIVER" value="log"/>
+    <!-- Filesystem -->
+    <env name="FILESYSTEM_DISK" value="local"/>
+    <!-- Telescope (Disable in Tests) -->
+    <env name="TELESCOPE_ENABLED" value="false"/>
+    <!-- Laravel Pennant -->
+    <env name="PENNANT_STORE" value="array"/>
+    <!-- Debugging -->
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="TESTING" value="true"/>
+  </php>
 </phpunit>
