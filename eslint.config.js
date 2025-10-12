@@ -1,14 +1,19 @@
+// @ts-check
+import { defineConfig } from 'eslint/config';
 import js from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
-import prettierConfig from 'eslint-config-prettier';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
+import prettierConfig from 'eslint-config-prettier/flat';
+import tseslint from 'typescript-eslint';
 import globals from 'globals';
 
-export default [
+export default defineConfig([
+    // Base ESLint recommended rules
     js.configs.recommended,
+
+    // Vue 3 recommended rules
     ...pluginVue.configs['flat/recommended'],
-    prettierConfig,
+
+    // General configuration
     {
         languageOptions: {
             ecmaVersion: 'latest',
@@ -25,7 +30,7 @@ export default [
             },
         },
         rules: {
-            // JavaScript
+            // JavaScript Best Practices
             'no-console': ['warn', { allow: ['warn', 'error'] }],
             'no-debugger': 'warn',
             'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
@@ -33,8 +38,10 @@ export default [
             'no-var': 'error',
             'object-shorthand': 'error',
             'quote-props': ['error', 'as-needed'],
+            eqeqeq: ['error', 'always'],
+            curly: ['error', 'all'],
 
-            // Vue
+            // Vue Rules
             'vue/multi-word-component-names': 'off',
             'vue/no-v-html': 'warn',
             'vue/require-default-prop': 'error',
@@ -45,16 +52,10 @@ export default [
             'vue/no-unused-vars': 'error',
             'vue/no-mutating-props': 'error',
             'vue/prefer-import-from-vue': 'error',
-
-            // Best Practices
-            eqeqeq: ['error', 'always'],
-            curly: ['error', 'all'],
-            'brace-style': ['error', '1tbs'],
-            'comma-dangle': ['error', 'always-multiline'],
-            semi: ['error', 'always'],
-            quotes: ['error', 'single', { avoidEscape: true }],
         },
     },
+
+    // Vue-specific file configuration
     {
         files: ['**/*.vue'],
         rules: {
@@ -69,28 +70,35 @@ export default [
             ],
         },
     },
+
+    // TypeScript-specific configuration (applies TS rules ONLY to .ts/.tsx files)
+    ...tseslint.configs.recommended.map((config) => ({
+        ...config,
+        files: ['**/*.ts', '**/*.tsx'],
+    })),
     {
         files: ['**/*.ts', '**/*.tsx'],
         languageOptions: {
-            parser: tsparser,
+            parser: tseslint.parser,
             parserOptions: {
-                project: './tsconfig.json',
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
             },
         },
-        plugins: {
-            '@typescript-eslint': tseslint,
-        },
         rules: {
-            // TypeScript specific rules
+            // TypeScript-specific rules
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/no-non-null-assertion': 'warn',
+
             // Disable base rule as it can report incorrect errors
             'no-unused-vars': 'off',
         },
     },
+
+    // Ignores
     {
         ignores: [
             'vendor/**',
@@ -104,4 +112,7 @@ export default [
             '*.config.js',
         ],
     },
-];
+
+    // Prettier config - MUST be last to override other configs
+    prettierConfig,
+]);

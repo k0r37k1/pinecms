@@ -61,25 +61,81 @@ code. It catches bugs, enforces coding standards, and improves code quality.
 
 ### Configuration
 
-**File:** `eslint.config.js` (Flat Config - ESLint 9+)
+**File:** `eslint.config.js` (ESLint 9 Flat Config)
 
 **Features:**
 
-- ✅ Modern flat configuration
+- ✅ Modern flat configuration with `defineConfig`
 - ✅ Vue 3 support with `eslint-plugin-vue`
-- ✅ TypeScript support with `@typescript-eslint`
-- ✅ Prettier integration
+- ✅ TypeScript support with `typescript-eslint` package
+- ✅ Prettier integration with `eslint-config-prettier/flat`
 - ✅ Browser + Node globals
 - ✅ Strict rules for best practices
+- ✅ Type-aware linting with `projectService`
+
+### Best Practices Applied
+
+**1. Use `defineConfig` for TypeScript support:**
+```javascript
+import { defineConfig } from 'eslint/config';
+
+export default defineConfig([
+    // Configuration arrays
+]);
+```
+
+**2. Use `typescript-eslint` package (not individual plugins):**
+```javascript
+import tseslint from 'typescript-eslint';
+
+export default defineConfig([
+    ...tseslint.configs.recommended,
+]);
+```
+
+**3. Use `eslint-config-prettier/flat` for flat config:**
+```javascript
+import prettierConfig from 'eslint-config-prettier/flat';
+
+export default defineConfig([
+    // ... other configs
+    prettierConfig, // MUST be last!
+]);
+```
+
+**4. Use `projectService` for TypeScript (better than `project`):**
+```javascript
+{
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+        parser: tseslint.parser,
+        parserOptions: {
+            projectService: true,  // ✅ Modern approach
+            tsconfigRootDir: import.meta.dirname,
+        },
+    },
+}
+```
+
+**5. No styling rules in ESLint (handled by Prettier):**
+
+The following rules are **NOT** included because Prettier handles them:
+- `brace-style` - Prettier formats braces
+- `comma-dangle` - Prettier handles trailing commas
+- `semi` - Prettier adds/removes semicolons
+- `quotes` - Prettier handles quote style
+
+**This prevents conflicts and lets each tool do what it does best.**
 
 ### Plugins
 
 ```javascript
-// Installed plugins
+// Installed packages
 - @eslint/js              // Core ESLint rules
 - eslint-plugin-vue       // Vue 3 specific rules
-- @typescript-eslint/*    // TypeScript support
+- typescript-eslint       // TypeScript ESLint (unified package)
 - eslint-config-prettier  // Disable conflicting Prettier rules
+- globals                 // Global variable definitions
 ```
 
 ### Key Rules
@@ -277,7 +333,25 @@ Prettier automatically sorts Tailwind classes using
 ```vue
 <!-- Before -->
 <div class="mt-2 bg-blue-500 p-4 text-center"></div>
+
+<!-- After -->
+<div class="bg-blue-500 p-4 mt-2 text-center"></div>
 ```
+
+**Configuration:**
+```json
+{
+    "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
+The plugin automatically sorts classes in the recommended Tailwind order:
+1. Layout (display, position)
+2. Sizing (width, height)
+3. Spacing (margin, padding)
+4. Typography (font, text)
+5. Visual (background, border, color)
+6. Misc (transform, transition)
 
 ---
 
@@ -748,12 +822,21 @@ rm -rf node_modules/.cache
 npm run lint -- --cache=false
 ```
 
-**Problem: "Cannot find module"**
+**Problem: "Cannot find module 'typescript-eslint'"**
 
 ```bash
-# Solution: Reinstall dependencies
-rm -rf node_modules package-lock.json
-npm install
+# Solution: Install the unified typescript-eslint package
+npm install -D typescript-eslint
+
+# This replaces separate @typescript-eslint/parser and @typescript-eslint/eslint-plugin
+```
+
+**Problem: "Config (unnamed): Key 'parser': Invalid parser 'espree'"**
+
+```bash
+# Solution: Update to eslint-config-prettier/flat for flat config
+# In eslint.config.js:
+import prettierConfig from 'eslint-config-prettier/flat';  // Add /flat suffix
 ```
 
 **Problem: ESLint not running in VS Code**
@@ -762,6 +845,25 @@ npm install
 // Check ESLint output panel in VS Code
 // View → Output → Select "ESLint" from dropdown
 // Restart ESLint server: Cmd+Shift+P → "ESLint: Restart ESLint Server"
+```
+
+**Problem: TypeScript rules not working**
+
+```bash
+# Ensure projectService is enabled in eslint.config.js:
+{
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+        parser: tseslint.parser,
+        parserOptions: {
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
+        },
+    },
+}
+
+# Check if tsconfig.json exists in project root
+ls -la tsconfig.json
 ```
 
 ### Prettier Issues
@@ -820,6 +922,90 @@ composer require laravel/pint --dev
 ```bash
 # Check .gitattributes for line ending issues
 # Ensure lint-staged is configured correctly in package.json
+```
+
+---
+
+## ESLint 9 Flat Config Migration
+
+PineCMS uses the modern ESLint 9 flat configuration system. Here's what changed from legacy `.eslintrc.*` format:
+
+### Key Differences
+
+| Legacy (ESLintRC) | Modern (Flat Config) |
+|-------------------|----------------------|
+| `.eslintrc.js` or `.eslintrc.json` | `eslint.config.js` |
+| `extends: ['plugin']` | `import config from 'plugin'` |
+| `plugins: ['name']` | `plugins: { name: pluginObject }` |
+| `parser: '@typescript-eslint/parser'` | `languageOptions: { parser: tseslint.parser }` |
+| `project: './tsconfig.json'` | `projectService: true` |
+| `eslint-config-prettier` | `eslint-config-prettier/flat` |
+
+### Benefits of Flat Config
+
+1. **Better TypeScript support** with `defineConfig`
+2. **Simpler plugin system** - direct imports instead of string references
+3. **More flexible** - JavaScript configuration allows dynamic setups
+4. **Better IDE support** - IntelliSense and type checking
+5. **Cascading configs** - clearer override behavior
+
+### Migration Checklist
+
+- [x] Use `eslint.config.js` instead of `.eslintrc.*`
+- [x] Import `defineConfig` from `eslint/config`
+- [x] Use `typescript-eslint` package instead of separate plugins
+- [x] Import `eslint-config-prettier/flat` with `/flat` suffix
+- [x] Use `projectService: true` for TypeScript
+- [x] Remove styling rules (handled by Prettier)
+- [x] Place Prettier config last in array
+
+### Example Migration
+
+**Before (Legacy .eslintrc.js):**
+```javascript
+module.exports = {
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'prettier',
+    ],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint', 'vue'],
+    parserOptions: {
+        project: './tsconfig.json',
+    },
+    rules: {
+        semi: ['error', 'always'],
+        quotes: ['error', 'single'],
+    },
+};
+```
+
+**After (Modern eslint.config.js):**
+```javascript
+import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
+import pluginVue from 'eslint-plugin-vue';
+import tseslint from 'typescript-eslint';
+import prettierConfig from 'eslint-config-prettier/flat';
+
+export default defineConfig([
+    js.configs.recommended,
+    ...pluginVue.configs['flat/recommended'],
+    ...tseslint.configs.recommended,
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
+    },
+    prettierConfig, // MUST be last
+]);
 ```
 
 ---
