@@ -1,0 +1,45 @@
+{
+    "app": {
+        "name": "PineCMS",
+        "tagline": "Sicherheits- & Datenschutzorientiertes Flat-File Hybrid CMS"
+    },
+    "navigation": {
+        "home": "Startseite",
+        "blog": "Blog",
+        "pages": "Seiten",
+        "media": "Medien",
+        "settings": "Einstellungen",
+        "dashboard": "Dashboard"
+    },
+    "actions": {
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+        "create": "Erstellen",
+        "back": "Zurück",
+        "close": "Schließen",
+        "confirm": "Bestätigen",
+        "search": "Suchen",
+        "filter": "Filtern",
+        "export": "Exportieren",
+        "import": "Importieren"
+    },
+    "auth": {
+        "login": "Anmelden",
+        "logout": "Abmelden",
+        "register": "Registrieren",
+        "forgot_password": "Passwort vergessen?",
+        "reset_password": "Passwort zurücksetzen",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "remember_me": "Angemeldet bleiben"
+    },
+    "messages": {
+        "success": "Erfolgreich!",
+        "error": "Fehler!",
+        "saved": "Erfolgreich gespeichert",
+        "deleted": "Erfolgreich gelöscht",
+        "confirm_delete": "Möchten Sie dies wirklich löschen?"
+    }
+}
