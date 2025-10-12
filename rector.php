@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
-use Rector\CodingStyle\Rector\ClassMethod\MakeInheritedMethodVisibilitySameAsParentRector;
 use Rector\Config\RectorConfig;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -38,16 +33,7 @@ return RectorConfig::configure()
         strictBooleans: true
     )
     ->withSets([
-        SetList::TYPE_DECLARATION,
-        SetList::EARLY_RETURN,
-        SetList::CODE_QUALITY,
-        PHPUnitSetList::PHPUNIT_110,
-    ])
-    ->withRules([
-        AddVoidReturnTypeWhereNoReturnRector::class,
-        InlineConstructorDefaultToPropertyRector::class,
-        MakeInheritedMethodVisibilitySameAsParentRector::class,
-        RemoveUnusedPromotedPropertyRector::class,
+        PHPUnitSetList::PHPUNIT_120,
     ])
     ->withParallel()
     ->withCache(
