@@ -1,6 +1,8 @@
 import js from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
 import prettierConfig from 'eslint-config-prettier';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
 import globals from 'globals';
 
 export default [
@@ -45,12 +47,12 @@ export default [
             'vue/prefer-import-from-vue': 'error',
 
             // Best Practices
-            'eqeqeq': ['error', 'always'],
-            'curly': ['error', 'all'],
+            eqeqeq: ['error', 'always'],
+            curly: ['error', 'all'],
             'brace-style': ['error', '1tbs'],
             'comma-dangle': ['error', 'always-multiline'],
-            'semi': ['error', 'always'],
-            'quotes': ['error', 'single', { avoidEscape: true }],
+            semi: ['error', 'always'],
+            quotes: ['error', 'single', { avoidEscape: true }],
         },
     },
     {
@@ -58,10 +60,35 @@ export default [
         rules: {
             'vue/html-indent': ['error', 4],
             'vue/script-indent': ['error', 4, { baseIndent: 0 }],
-            'vue/max-attributes-per-line': ['error', {
-                singleline: 3,
-                multiline: 1,
-            }],
+            'vue/max-attributes-per-line': [
+                'error',
+                {
+                    singleline: 3,
+                    multiline: 1,
+                },
+            ],
+        },
+    },
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        languageOptions: {
+            parser: tsparser,
+            parserOptions: {
+                project: './tsconfig.json',
+            },
+        },
+        plugins: {
+            '@typescript-eslint': tseslint,
+        },
+        rules: {
+            // TypeScript specific rules
+            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            '@typescript-eslint/explicit-module-boundary-types': 'off',
+            '@typescript-eslint/no-non-null-assertion': 'warn',
+            // Disable base rule as it can report incorrect errors
+            'no-unused-vars': 'off',
         },
     },
     {

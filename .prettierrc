@@ -15,6 +15,7 @@
     "htmlWhitespaceSensitivity": "css",
     "embeddedLanguageFormatting": "auto",
     "proseWrap": "preserve",
+    "plugins": ["prettier-plugin-tailwindcss"],
     "overrides": [
         {
             "files": "*.vue",
