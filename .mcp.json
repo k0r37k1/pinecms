@@ -1,0 +1,12 @@
+{
+	"mcpServers": {
+		"eslint": {
+			"command": "npx",
+			"args": ["@eslint/mcp@latest"]
+		},
+		"chrome-devtools": {
+			"command": "npx",
+			"args": ["chrome-devtools-mcp@latest"]
+		}
+	}
+}

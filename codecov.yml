@@ -1,0 +1,67 @@
+codecov:
+  require_ci_to_pass: yes
+  notify:
+    wait_for_ci: yes
+
+coverage:
+  precision: 2
+  round: down
+  range: 50..80
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 5%
+        base: auto
+        if_ci_failed: error
+        informational: false
+        only_pulls: false
+    patch:
+      default:
+        target: 80%
+        threshold: 5%
+        base: auto
+        if_ci_failed: error
+        informational: false
+        only_pulls: false
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      macro: no
+      method: no
+
+comment:
+  layout: "reach,diff,flags,tree,footer"
+  behavior: default
+  require_changes: false
+  require_base: no
+  require_head: yes
+
+ignore:
+  - "tests/**/*"
+  - "app/Exceptions/**/*"
+  - "app/helpers.php"
+  - "bootstrap/**/*"
+  - "config/**/*"
+  - "public/**/*"
+  - "resources/**/*"
+  - "routes/**/*"
+  - "storage/**/*"
+  - "vendor/**/*"
+  - "node_modules/**/*"
+
+flags:
+  unit:
+    paths:
+      - app/
+    carryforward: true
+  feature:
+    paths:
+      - app/
+    carryforward: true
+
+github_checks:
+  annotations: true

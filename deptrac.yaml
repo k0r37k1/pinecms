@@ -1,0 +1,130 @@
+deptrac:
+  paths:
+    - ./app
+
+  exclude_files:
+    - '#.*test.*#'
+
+  layers:
+    - name: Controllers
+      collectors:
+        - type: className
+          value: .*Controller.*
+
+    - name: Services
+      collectors:
+        - type: directory
+          value: app/Services/.*
+
+    - name: Repositories
+      collectors:
+        - type: directory
+          value: app/Repositories/.*
+
+    - name: Models
+      collectors:
+        - type: directory
+          value: app/Models/.*
+
+    - name: DTOs
+      collectors:
+        - type: directory
+          value: app/DTOs/.*
+
+    - name: Events
+      collectors:
+        - type: directory
+          value: app/Events/.*
+
+    - name: Listeners
+      collectors:
+        - type: directory
+          value: app/Listeners/.*
+
+    - name: Middleware
+      collectors:
+        - type: directory
+          value: app/Http/Middleware/.*
+
+    - name: Requests
+      collectors:
+        - type: directory
+          value: app/Http/Requests/.*
+
+    - name: Exceptions
+      collectors:
+        - type: directory
+          value: app/Exceptions/.*
+
+  ruleset:
+    Controllers:
+      - Services
+      - Requests
+      - DTOs
+      - Middleware
+      - Exceptions
+
+    Services:
+      - Repositories
+      - Models
+      - DTOs
+      - Events
+      - Exceptions
+
+    Repositories:
+      - Models
+      - DTOs
+      - Exceptions
+
+    Models:
+      - DTOs
+
+    DTOs: []
+
+    Events:
+      - DTOs
+
+    Listeners:
+      - Services
+      - Events
+      - DTOs
+
+    Middleware:
+      - Services
+      - Exceptions
+
+    Requests:
+      - DTOs
+
+    Exceptions: []
+
+  skip_violations:
+    # Add specific violations to skip here if needed
+    # - App\Http\Controllers\SomeController
+
+  analyser:
+    types:
+      - class
+      - class_superglobal
+      - file
+      - function
+      - function_superglobal
+
+  formatters:
+    graphviz:
+      enabled: true
+      output: storage/deptrac/architecture.png
+      groups:
+        Controllers:
+          - Controllers
+        Business:
+          - Services
+          - Repositories
+        Data:
+          - Models
+          - DTOs
+        Infrastructure:
+          - Middleware
+          - Events
+          - Listeners
+          - Exceptions

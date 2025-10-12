@@ -1,0 +1,48 @@
+{
+    "common": {
+        "welcome": "Welcome to PineCMS",
+        "loading": "Loading...",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "create": "Create",
+        "search": "Search",
+        "filter": "Filter",
+        "export": "Export",
+        "import": "Import",
+        "close": "Close",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "submit": "Submit",
+        "reset": "Reset"
+    },
+    "auth": {
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "resetPassword": "Reset Password",
+        "newPassword": "New Password",
+        "currentPassword": "Current Password"
+    },
+    "validation": {
+        "required": "{field} is required",
+        "email": "Must be a valid email",
+        "min": "{field} must be at least {min} characters",
+        "max": "{field} must not exceed {max} characters",
+        "confirmed": "Passwords do not match"
+    },
+    "errors": {
+        "generic": "Something went wrong",
+        "notFound": "Page not found",
+        "unauthorized": "Unauthorized access",
+        "forbidden": "Access forbidden",
+        "serverError": "Server error"
+    }
+}

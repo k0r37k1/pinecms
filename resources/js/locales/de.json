@@ -1,0 +1,48 @@
+{
+    "common": {
+        "welcome": "Willkommen bei PineCMS",
+        "loading": "Laden...",
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+        "create": "Erstellen",
+        "search": "Suchen",
+        "filter": "Filtern",
+        "export": "Exportieren",
+        "import": "Importieren",
+        "close": "Schließen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "submit": "Absenden",
+        "reset": "Zurücksetzen"
+    },
+    "auth": {
+        "login": "Anmelden",
+        "logout": "Abmelden",
+        "register": "Registrieren",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "rememberMe": "Angemeldet bleiben",
+        "forgotPassword": "Passwort vergessen?",
+        "resetPassword": "Passwort zurücksetzen",
+        "newPassword": "Neues Passwort",
+        "currentPassword": "Aktuelles Passwort"
+    },
+    "validation": {
+        "required": "{field} ist erforderlich",
+        "email": "Muss eine gültige E-Mail sein",
+        "min": "{field} muss mindestens {min} Zeichen lang sein",
+        "max": "{field} darf maximal {max} Zeichen lang sein",
+        "confirmed": "Passwörter stimmen nicht überein"
+    },
+    "errors": {
+        "generic": "Etwas ist schief gelaufen",
+        "notFound": "Seite nicht gefunden",
+        "unauthorized": "Nicht autorisiert",
+        "forbidden": "Zugriff verweigert",
+        "serverError": "Serverfehler"
+    }
+}

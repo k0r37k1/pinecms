@@ -1,0 +1,154 @@
+###############################################################################
+# PineCMS .gitignore
+# Based on Laravel 11+, Node.js, Vite, and Best Practices
+###############################################################################
+
+###############################################################################
+# Dependencies
+###############################################################################
+/node_modules
+/vendor
+
+###############################################################################
+# Environment & Secrets
+###############################################################################
+.env
+.env.*
+!.env.example
+/auth.json
+
+###############################################################################
+# Laravel Storage & Cache
+###############################################################################
+/storage/*.key
+/storage/pail
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/testing/*
+/storage/logs/*
+/bootstrap/cache/*.php
+!storage/framework/.gitkeep
+!storage/framework/cache/.gitkeep
+!storage/framework/sessions/.gitkeep
+!storage/framework/views/.gitkeep
+!storage/logs/.gitkeep
+
+# Content files are tracked (Flat-File CMS)
+# /storage/content/* is NOT ignored - content is part of the project
+
+###############################################################################
+# Vite Build Output
+###############################################################################
+/public/build
+/public/hot
+/public/storage
+/public/assets
+/dist
+.vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+###############################################################################
+# Testing & Coverage
+###############################################################################
+/.phpunit.cache
+.phpunit.result.cache
+/coverage
+/.nyc_output
+*.lcov
+/storage/phpunit
+
+###############################################################################
+# Static Analysis & Quality
+###############################################################################
+/storage/phpstan
+/storage/rector
+/storage/infection
+/storage/deptrac
+phpstan-baseline.neon
+.phpstan-baseline.php
+.deptrac.cache
+/.rector_cache
+
+###############################################################################
+# Node.js Logs & Debug
+###############################################################################
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+*.log
+
+###############################################################################
+# Caches
+###############################################################################
+.eslintcache
+.stylelintcache
+.npm
+.cache
+.parcel-cache
+*.tsbuildinfo
+.temp
+
+###############################################################################
+# IDE & Editors
+###############################################################################
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+.phpactor.json
+*.swp
+*.swo
+*~
+
+###############################################################################
+# Database (SQLite for development)
+###############################################################################
+*.sqlite
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
+*.db
+database/*.sqlite
+database/*.sqlite-journal
+
+###############################################################################
+# Laravel Specific
+###############################################################################
+Homestead.json
+Homestead.yaml
+/bootstrap/ssr
+
+###############################################################################
+# OS & System Files
+###############################################################################
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+###############################################################################
+# Temporary Files
+###############################################################################
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.old
+*.orig
+
+###############################################################################
+# IMPORTANT: Lock Files MUST BE COMMITTED
+# composer.lock and package-lock.json are TRACKED for version consistency
+###############################################################################

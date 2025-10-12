@@ -1,0 +1,84 @@
+* text=auto eol=lf
+
+# Source Code
+*.php text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.vue text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+
+# Config Files
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.conf text eol=lf
+*.config text eol=lf
+.env* text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+*.rst text eol=lf
+LICENSE text eol=lf
+README text eol=lf
+
+# Shell Scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Batch Scripts (Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary Files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+
+# Archives
+*.7z binary
+*.gz binary
+*.jar binary
+*.rar binary
+*.tar binary
+*.zip binary
+
+# Exclude from exports
+.gitattributes export-ignore
+.gitignore export-ignore
+.github export-ignore
+tests/ export-ignore
+.editorconfig export-ignore
+.php-cs-fixer.php export-ignore
+phpunit.xml export-ignore
+phpstan.neon export-ignore
+rector.php export-ignore
+
+# Linguist
+*.php linguist-language=PHP
+*.vue linguist-language=Vue
+resources/* linguist-vendored
+public/* linguist-vendored

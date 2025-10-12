@@ -1,0 +1,38 @@
+# Dependencies
+vendor/
+node_modules/
+
+# Build & Distribution
+public/build/
+public/hot
+dist/
+build/
+
+# Storage & Cache
+storage/
+bootstrap/cache/
+
+# Coverage & Reports
+coverage/
+.phpunit.cache
+
+# Compiled Assets
+*.min.js
+*.min.css
+
+# Lock Files
+composer.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/

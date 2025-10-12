@@ -1,0 +1,43 @@
+includes:
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-mockery/extension.neon
+
+parameters:
+    level: max
+
+    paths:
+        - app
+        - config
+        - routes
+        - database
+
+    excludePaths:
+        - vendor
+        - storage
+        - bootstrap/cache
+        - node_modules
+
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+    checkBenevolentUnionTypes: true
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+
+    ignoreErrors:
+        # Allow dynamic properties for now
+        # - '#Access to an undefined property#'
+
+    # Baseline for gradual adoption
+    # Run: composer analyse:baseline
+    # includes:
+    #     - phpstan-baseline.neon
+
+    tmpDir: storage/phpstan
+
+    parallel:
+        jobSize: 20
+        maximumNumberOfProcesses: 4
+        minimumNumberOfJobsPerProcess: 2
