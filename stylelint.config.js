@@ -4,13 +4,12 @@ export default {
         'stylelint-config-recommended-vue',
         'stylelint-config-tailwindcss',
     ],
-    plugins: ['stylelint-order'],
+    plugins: ['@stylistic/stylelint-plugin', 'stylelint-order'],
     rules: {
-        // Base Rules
-        'indentation': 4,
-        'string-quotes': 'single',
-        'color-hex-length': 'long',
-        'color-hex-case': 'lower',
+        // Base Rules (using @stylistic plugin)
+        '@stylistic/indentation': 4,
+        '@stylistic/string-quotes': 'single',
+        '@stylistic/color-hex-case': 'lower',
         'selector-pseudo-class-no-unknown': [
             true,
             {
