@@ -21,7 +21,7 @@
         "format:check": "prettier --check \"resources/**/*.{js,ts,css}\"",
         "type-check": "tsc --noEmit",
         "quality": "npm run format && npm run lint:fix && npm run lint:css:fix && npm run type-check && npm run test:coverage",
-        "prepare": "husky install"
+        "prepare": "husky"
     },
     "dependencies": {
         "@alpinejs/collapse": "^3.15.0",
