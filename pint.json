@@ -96,7 +96,6 @@
         "phpdoc_types": true,
         "phpdoc_var_without_name": true,
         "return_type_declaration": true,
-        "single_blank_line_before_namespace": true,
         "single_class_element_per_statement": {
             "elements": ["property"]
         },
