@@ -2,6 +2,7 @@ codecov:
   require_ci_to_pass: yes
   notify:
     wait_for_ci: yes
+    after_n_builds: 2  # Wait for both PHP and JS coverage
 
 coverage:
   precision: 2
@@ -54,13 +55,19 @@ ignore:
   - "node_modules/**/*"
 
 flags:
-  unit:
+  # PHP Coverage Flags
+  php-unit:
     paths:
       - app/
     carryforward: true
-  feature:
+  php-feature:
     paths:
       - app/
+    carryforward: true
+  # JavaScript/TypeScript Coverage Flags
+  javascript:
+    paths:
+      - resources/js/
     carryforward: true
 
 github_checks:

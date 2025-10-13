@@ -7,18 +7,33 @@
         "resolveJsonModule": true,
         "allowJs": true,
         "checkJs": false,
+
+        /* Strict Type-Checking Options */
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+
+        /* JSX/Vue Options */
         "jsx": "preserve",
         "jsxImportSource": "vue",
+
+        /* Module Interop */
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
+
+        /* Emit Options */
         "skipLibCheck": true,
         "isolatedModules": true,
         "verbatimModuleSyntax": true,
+        "useDefineForClassFields": true,
+
+        /* Path Mapping */
         "baseUrl": ".",
         "paths": {
             "@/*": ["resources/js/*"],
@@ -29,17 +44,21 @@
             "@composables/*": ["resources/js/Composables/*"],
             "@utils/*": ["resources/js/Utils/*"]
         },
-        "types": ["vite/client", "node"]
+
+        /* Type Declarations */
+        "types": ["vite/client", "node", "vitest/globals", "@testing-library/jest-dom"]
     },
     "include": [
         "resources/js/**/*",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.vue",
+        "vitest.config.ts"
     ],
     "exclude": [
         "node_modules",
         "vendor",
         "storage",
         "public",
-        "dist"
+        "dist",
+        "coverage"
     ]
 }

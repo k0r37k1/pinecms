@@ -23,21 +23,25 @@ export default {
             },
         ],
 
-        // At-rule
+        // At-rule (TailwindCSS v4.1 + legacy v3 support)
         'at-rule-no-unknown': [
             true,
             {
                 ignoreAtRules: [
+                    // TailwindCSS v4 at-rules
+                    'plugin',
+                    'theme',
+                    'utility',
+                    'config',
+                    'reference',
+                    'custom-variant',
+                    // TailwindCSS v3 legacy at-rules (still supported)
                     'tailwind',
                     'apply',
                     'variants',
                     'responsive',
                     'screen',
                     'layer',
-                    'config',
-                    'plugin',
-                    'theme',
-                    'utility',
                 ],
             },
         ],
