@@ -1,10 +1,15 @@
 import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
 
 export default defineConfig({
     plugins: [
+        laravel({
+            input: ['resources/js/app.js'],
+            refresh: true,
+        }),
         vue({
             template: {
                 transformAssetUrls: {
@@ -33,14 +38,11 @@ export default defineConfig({
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {
-            input: {
-                app: resolve(__dirname, 'resources/js/app.js'),
-            },
             output: {
                 manualChunks: {
-                    'vue-vendor': ['vue', 'pinia'],
-                    'inertia': ['@inertiajs/vue3'],
-                    'vueuse': ['@vueuse/core'],
+                    'vue-vendor': ['vue'],
+                    inertia: ['@inertiajs/vue3'],
+                    vueuse: ['@vueuse/core'],
                 },
             },
         },
@@ -66,13 +68,7 @@ export default defineConfig({
     },
 
     optimizeDeps: {
-        include: [
-            'vue',
-            '@inertiajs/vue3',
-            'pinia',
-            '@vueuse/core',
-            'axios',
-        ],
+        include: ['vue', '@inertiajs/vue3', '@vueuse/core', 'axios'],
     },
 
     css: {
