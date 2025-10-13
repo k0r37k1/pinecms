@@ -68,7 +68,7 @@ export default defineConfig({
     },
 
     optimizeDeps: {
-        include: ['vue', '@inertiajs/vue3', '@vueuse/core', 'axios'],
+        include: ['vue', '@inertiajs/vue3', '@vueuse/core'],
     },
 
     css: {
