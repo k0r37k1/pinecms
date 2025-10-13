@@ -28,6 +28,7 @@
         "forceConsistentCasingInFileNames": true,
 
         /* Emit Options */
+        "noEmit": true,
         "skipLibCheck": true,
         "isolatedModules": true,
         "verbatimModuleSyntax": true,
