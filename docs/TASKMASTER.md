@@ -27,12 +27,32 @@ npm install -g task-master-ai
 npx -y task-master-ai
 ```
 
-### 2. Configure MCP Server
+### 2. Create MCP Configuration
 
-Copy the MCP configuration template:
+Create `.mcp.json` in your project root:
 
 ```bash
-cp .mcp.json.example .mcp.json
+cat > .mcp.json <<'EOF'
+{
+	"mcpServers": {
+		"chrome-devtools": {
+			"command": "npx",
+			"args": ["chrome-devtools-mcp@latest"]
+		},
+		"laravel-mcp-companion": {
+			"command": "docker",
+			"args": ["run", "--rm", "-i", "ghcr.io/brianirish/laravel-mcp-companion:latest"]
+		},
+		"task-master-ai": {
+			"command": "npx",
+			"args": ["-y", "task-master-ai"],
+			"env": {
+				"OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}"
+			}
+		}
+	}
+}
+EOF
 ```
 
 ### 3. Configure OpenRouter API Key
@@ -66,7 +86,7 @@ task-master init --name="PineCMS" --yes
 Enables TaskMaster AI in Claude Code, Cursor, Windsurf, etc.
 
 **IMPORTANT**: This file is NOT tracked in git (listed in `.gitignore`).
-Copy from template: `cp .mcp.json.example .mcp.json`
+Each developer must create it locally.
 
 ```json
 {
