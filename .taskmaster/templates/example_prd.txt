@@ -1,0 +1,81 @@
+# Product Requirements Document (PRD) Template
+
+## Project: [Feature Name]
+
+### Overview
+Brief description of the feature or project.
+
+### Goals
+- Primary goal
+- Secondary goals
+- Success metrics
+
+### User Stories
+As a [type of user], I want [goal] so that [reason].
+
+### Requirements
+
+#### Functional Requirements
+1. Requirement 1
+2. Requirement 2
+3. Requirement 3
+
+#### Non-Functional Requirements
+- Performance: [e.g., page load < 2s]
+- Security: [e.g., input validation, CSP]
+- Accessibility: [e.g., WCAG 2.1 AA]
+- SEO: [e.g., semantic HTML, meta tags]
+
+### Technical Specifications
+
+#### Backend (Laravel)
+- Controllers: [list]
+- Services: [list]
+- Repositories: [list]
+- Events: [list]
+- Listeners: [list]
+- Migrations: [list]
+
+#### Frontend (Vue/Inertia)
+- Components: [list]
+- Pages: [list]
+- Stores (Pinia): [list]
+- Composables: [list]
+
+#### Dependencies
+- PHP packages: [list]
+- NPM packages: [list]
+
+### Testing Requirements
+- Unit tests: [coverage target]
+- Feature tests: [scenarios]
+- E2E tests (Playwright): [user flows]
+- Mutation tests (Infection): [MSI target]
+
+### Security Considerations
+- Input validation rules
+- Authorization/Permission checks
+- CSP rules
+- XSS prevention
+- CSRF protection
+
+### Documentation
+- API documentation: [location]
+- User documentation: [location]
+- Code comments: [standards]
+
+### Timeline
+- Phase 1: [description] - [date]
+- Phase 2: [description] - [date]
+- Phase 3: [description] - [date]
+
+### Dependencies & Blockers
+- Depends on: [features/tasks]
+- Blocked by: [issues]
+
+### Open Questions
+- Question 1?
+- Question 2?
+
+### Notes
+Additional context or considerations.

@@ -53,7 +53,10 @@ npm run quality              # Run all quality checks
 ## MCP Server Usage
 
 ### ALWAYS Use Before Coding
-**YOU MUST use context7 to fetch library/framework documentation BEFORE implementing any feature.**
+**YOU MUST fetch documentation BEFORE implementing any feature.**
+- **Laravel-specific content**: Use `laravel-mcp-companion` FIRST (official Laravel docs, packages)
+- **Other libraries**: Use `context7` (Vue, Inertia, TipTap, Alpine, etc.)
+
 This prevents hallucinated APIs and ensures version-correct implementations.
 
 ### Available MCP Servers
@@ -63,32 +66,34 @@ This prevents hallucinated APIs and ensures version-correct implementations.
 - **chrome-devtools**: Browser automation, performance analysis, debugging
 
 #### Global MCP Servers (Use as needed)
-- **context7**: Get library docs (Laravel, Vue, Inertia, TipTap, Alpine, Spatie packages)
+- **laravel-mcp-companion**: **PRIORITY** for Laravel docs, packages, and ecosystem (use FIRST for Laravel)
+- **context7**: Get library docs (Vue, Inertia, TipTap, Alpine, other non-Laravel libraries)
 - **gitmcp**: Research GitHub repos, study implementations
 - **firecrawl-mcp**: Deep web scraping, documentation extraction
 - **brave-search**: Quick web searches for latest info
 - **playwright**: Cross-browser E2E testing
-- **fetch**: Fetch web content with images
-- **brightdata-mcp**: Bypass bot detection, SERP scraping
 - **coderabbitai**: AI-powered code reviews
 
 ### Task-Based MCP Selection
 
 **Writing New Feature:**
-1. `context7` - Fetch library/framework docs first
-2. Write code following documentation
-3. `eslint` - Lint JS/TS code
-4. `chrome-devtools` - Test in browser (if frontend)
+1. `laravel-mcp-companion` - Fetch Laravel docs/packages FIRST (if Laravel-related)
+2. `context7` - Fetch other library/framework docs (Vue, Inertia, etc.)
+3. Write code following documentation
+4. `eslint` - Lint JS/TS code
+5. `chrome-devtools` - Test in browser (if frontend)
 
 **Debugging:**
 1. `chrome-devtools` - Inspect browser state, console
 2. `eslint` - Check code quality
-3. `context7` - Verify API usage
+3. `laravel-mcp-companion` - Verify Laravel API usage
+4. `context7` - Verify other library API usage
 
 **Research:**
-1. `brave-search` / `firecrawl-mcp` - Web research
-2. `gitmcp` - Study similar implementations
-3. `context7` - Official documentation
+1. `laravel-mcp-companion` - Laravel-specific research (docs, packages, features)
+2. `brave-search` / `firecrawl-mcp` - Web research
+3. `gitmcp` - Study similar implementations
+4. `context7` - Official documentation (non-Laravel)
 
 ---
 
@@ -161,7 +166,7 @@ Controllers (HTTP) → Services (Business Logic) → Repositories (Data Access)
 
 ### Development Workflow
 1. **Plan First**: Ask me to "think hard" and create a plan before coding
-2. **Research**: Use `context7` to fetch documentation before implementation
+2. **Research**: Use `laravel-mcp-companion` (Laravel) or `context7` (other libs) to fetch documentation before implementation
 3. **Test-Driven**: Write tests first when possible
 4. **Implement**: Write clean, documented code
 5. **Quality Check**: Run linters, formatters, static analysis
@@ -388,7 +393,7 @@ MARKDOWN_PARSER=commonmark
 
 ## IMPORTANT Reminders
 
-1. **YOU MUST use context7 MCP server BEFORE writing any code with external libraries**
+1. **YOU MUST use `laravel-mcp-companion` for Laravel OR `context7` for other libraries BEFORE writing any code**
 2. **ALWAYS use Events, NEVER use Hooks**
 3. **Run tests BEFORE committing**
 4. **Security first: validate inputs, escape outputs**
