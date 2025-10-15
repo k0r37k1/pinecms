@@ -38,14 +38,13 @@ jobs:
         run: composer test:coverage
 
       - name: Upload PHP Coverage to Codecov
-        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/clover.xml
           flags: php-unit,php-feature
           name: php-coverage
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   javascript-tests:
     name: JavaScript Tests (Node ${{ matrix.node }})
@@ -72,14 +71,13 @@ jobs:
         run: npm run test:coverage
 
       - name: Upload JavaScript Coverage to Codecov
-        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/coverage-final.json
+          files: ./coverage/lcov.info
           flags: javascript
           name: javascript-coverage
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   quality-checks:
     name: Quality Checks
