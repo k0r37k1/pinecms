@@ -59,22 +59,43 @@ export default defineConfig({
         navigationTimeout: 30 * 1000,
     },
 
-    // Configure projects for Chromium only
-    projects: [
-        {
-            name: 'chromium',
-            use: {
-                ...devices['Desktop Chrome'],
-                // Additional Chromium-specific settings
-                launchOptions: {
-                    args: [
-                        '--disable-dev-shm-usage',
-                        '--disable-blink-features=AutomationControlled',
-                    ],
-                },
-            },
-        },
-    ],
+    // Configure projects - All browsers locally, Chromium only in CI
+    projects: process.env.CI
+        ? [
+              // CI: Chromium only for faster execution
+              {
+                  name: 'chromium',
+                  use: {
+                      ...devices['Desktop Chrome'],
+                      launchOptions: {
+                          args: [
+                              '--disable-dev-shm-usage',
+                              '--disable-blink-features=AutomationControlled',
+                          ],
+                      },
+                  },
+              },
+          ]
+        : [
+              // Local: All browsers for comprehensive testing
+              {
+                  name: 'chromium',
+                  use: {
+                      ...devices['Desktop Chrome'],
+                      launchOptions: {
+                          args: ['--disable-blink-features=AutomationControlled'],
+                      },
+                  },
+              },
+              {
+                  name: 'firefox',
+                  use: { ...devices['Desktop Firefox'] },
+              },
+              {
+                  name: 'webkit',
+                  use: { ...devices['Desktop Safari'] },
+              },
+          ],
 
     // Run your local dev server before starting the tests
     webServer: {
