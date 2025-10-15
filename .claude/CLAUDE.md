@@ -8,7 +8,7 @@
 - **Build:** Vite
 - **Database:** SQLite (primary)
 - **Testing:** PHPUnit | Vitest | Playwright
-- **Quality:** PHPStan (max level) | ESLint | Prettier | Pint
+- **Quality:** PHPStan (level 8) | ESLint | Prettier | Pint
 
 ---
 
@@ -531,7 +531,7 @@ npm run test:ui             # Open Vitest UI
 ### Quality Gates
 
 **PHP:**
-- PHPStan: Level max, strict rules
+- PHPStan: Level 8, strict rules
 - Coverage: ≥90%
 - Mutation Score: ≥80% MSI, ≥90% covered MSI
 
