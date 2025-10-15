@@ -62,6 +62,10 @@ vite.config.ts.timestamp-*
 /.nyc_output
 *.lcov
 /storage/phpunit
+/storage/playwright
+/test-results
+/playwright-report
+/playwright/.cache
 
 ###############################################################################
 # Static Analysis & Quality
