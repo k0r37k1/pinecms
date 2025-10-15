@@ -19,6 +19,7 @@
 
 # MCP Server Configuration (per developer)
 .mcp.json
+.mcp.json.example
 
 ###############################################################################
 # Laravel Storage & Cache
