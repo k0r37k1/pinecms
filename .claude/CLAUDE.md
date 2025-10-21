@@ -19,7 +19,7 @@
 ### Priority Order
 
 1. **Laravel code?** → `laravel-mcp-companion` FIRST
-2. **Vue/Inertia/TipTap/Alpine?** → `context7`
+2. **Vue/Inertia/TipTap/Alpine/PrimeVue?** → `context7`
 3. **Browser debugging?** → `chrome-devtools`
 
 ### Available MCP Servers
@@ -30,7 +30,7 @@
 
 **Global (use as needed):**
 - `laravel-mcp-companion` - **PRIORITY** for Laravel (docs, packages, ecosystem)
-- `context7` - Library docs (Vue, Inertia, TipTap, Alpine, etc.)
+- `context7` - Library docs (Vue, Inertia, TipTap, Alpine, PrimeVue, etc.)
 - `gitmcp` - Research GitHub repos
 - `firecrawl-mcp` - Web scraping, documentation
 - `brave-search` - Quick web searches
@@ -39,7 +39,7 @@
 
 **Writing New Feature:**
 1. `laravel-mcp-companion` - Fetch Laravel docs FIRST (if Laravel-related)
-2. `context7` - Fetch other library docs (Vue, Inertia, etc.)
+2. `context7` - Fetch other library docs (Vue, Inertia, PrimeVue, etc.)
 3. Write code following documentation
 4. `eslint` - Lint JS/TS code
 5. `chrome-devtools` - Test in browser (if frontend)
@@ -54,7 +54,7 @@
 1. `laravel-mcp-companion` - Laravel-specific research
 2. `brave-search` / `firecrawl-mcp` - Web research
 3. `gitmcp` - Study similar implementations
-4. `context7` - Official documentation (non-Laravel)
+4. `context7` - Official documentation (Vue, PrimeVue, Inertia, etc.)
 
 ---
 
@@ -65,7 +65,6 @@
 - ❌ **NEVER use Hooks** - This project uses Events only (Laravel event system)
 - ❌ **NEVER skip `declare(strict_types=1);`** in PHP files
 - ❌ **NEVER use CommonJS `require`** - Use ES modules
-- ❌ **NEVER use Pinia** - Not installed (use Inertia props for state)
 - ❌ **NEVER use Firebase JWT** - Not installed (use Laravel Sanctum)
 - ❌ **NEVER create inline styles** - Use TailwindCSS utility classes
 - ❌ **NEVER commit code with `console.log`** - Remove debug statements
@@ -370,7 +369,7 @@ foreach ($contents as $content) {
 2. **Research: Fetch Documentation**
    - ⚠️ **CRITICAL**: Never skip this step!
    - Laravel feature? → `laravel-mcp-companion`
-   - Vue/Inertia/TipTap? → `context7`
+   - Vue/Inertia/TipTap/PrimeVue? → `context7`
 
 3. **Test-Driven Development (When Applicable)**
 
@@ -696,7 +695,9 @@ QUEUE_CONNECTION=sync
 - Vue 3.5, Vue i18n
 - Inertia.js Vue3
 - Alpine.js (with plugins)
+- PrimeVue (UI Component Library)
 - TipTap Editor
+- Pinia (State Management)
 - VueUse, Axios
 
 ### Development Tools

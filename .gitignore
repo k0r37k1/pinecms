@@ -164,19 +164,6 @@ temp/
 *.orig
 
 ###############################################################################
-# TaskMaster AI
-###############################################################################
-# Runtime state and generated reports should be ignored
-.taskmaster/state.json
-.taskmaster/reports/*
-!.taskmaster/reports/.gitkeep
-
-# Tasks and config should be committed for team collaboration
-# .taskmaster/tasks/*.json - TRACKED
-# .taskmaster/config.json - TRACKED
-# .taskmaster/docs/*.txt - TRACKED (optional, depends on workflow)
-
-###############################################################################
 # IMPORTANT: Lock Files MUST BE COMMITTED
 # composer.lock and package-lock.json are TRACKED for version consistency
 ###############################################################################
