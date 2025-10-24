@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateInvitationUserTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('user_invitations', function (Blueprint $table) {
+            $table->BigIncrements('id');
+            $table->string('code')->index();
+            $table->string('email');
+            $table->BigInteger('user_id')->unsigned();
+            $table->enum('status', ['pending', 'successful', 'canceled', 'expired'])->default('pending');
+            $table->datetime('valid_till');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('user_invitations');
+    }
+}
