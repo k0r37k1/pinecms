@@ -1,0 +1,156 @@
+# Qodo Merge Configuration for PineCMS
+# Documentation: https://qodo-merge-docs.qodo.ai/
+
+[config]
+# Model Selection - Using FREE Qodo Model (no API key needed!)
+# Qodo provides GPT-4o-mini for free (75 PRs/month)
+model = "gpt-4o-mini"  # FREE tier model
+
+# Temperature (0.0 = deterministic, 1.0 = creative)
+temperature = 0.2
+
+# Max tokens for review
+max_tokens = 4000
+
+[pr_reviewer]
+# Enable automatic PR review
+enabled = true
+
+# Number of code suggestions
+num_code_suggestions = 5
+
+# Inline file summary
+inline_file_summary = true
+
+# Enable extra instructions from user
+enable_help_text = true
+
+# Enable ticket compliance check (Jira/Linear)
+enable_ticket_compliance_check = false
+
+# Require focused review (user tags @qodo-merge)
+require_focused_review = false
+
+# Require estimate review time
+require_estimate_review_time = true
+
+# Require test plan
+require_test_plan = true
+
+# Require security review
+require_security_review = true
+
+[pr_description]
+# Auto-generate PR description
+enabled = true
+
+# Add labels automatically
+enable_semantic_files_types = true
+
+# Generate collapsible file list
+use_bullet_points = true
+
+# Add walking through changes
+generate_ai_title = true
+
+[pr_questions]
+# Enable PR questions feature
+enabled = true
+
+# Number of questions to generate
+num_questions = 3
+
+[pr_code_suggestions]
+# Enable code suggestions
+enabled = true
+
+# Number of suggestions
+num_code_suggestions = 5
+
+# Commit suggestions directly
+commitable_code_suggestions = false
+
+# Rank suggestions by importance
+rank_suggestions = true
+
+[pr_test]
+# Enable test generation
+enabled = true
+
+# Testing framework (pytest, jest, phpunit)
+testing_framework = "phpunit"
+
+# Test file location pattern
+test_file_pattern = "tests/{Feature,Unit}/**/*Test.php"
+
+# Number of tests to generate
+num_tests = 3
+
+[pr_improve]
+# Enable code improvement suggestions
+enabled = true
+
+# Number of improvements
+num_code_suggestions = 4
+
+# Summarize changes
+summarize = true
+
+[pr_add_docs]
+# Enable documentation suggestions
+enabled = true
+
+# File types to document
+file_types = [".php", ".vue", ".ts"]
+
+[pr_update_changelog]
+# Auto-update changelog
+enabled = false
+
+# Changelog file
+changelog_file = "CHANGELOG.md"
+
+[custom_labels]
+# Custom labels for PR categorization
+bug = ["bug", "fix", "bugfix"]
+enhancement = ["feature", "feat", "enhancement"]
+documentation = ["docs", "documentation"]
+refactor = ["refactor", "refactoring"]
+test = ["test", "tests", "testing"]
+
+[ignore]
+# Files/Directories to ignore
+paths = [
+    "vendor/**",
+    "node_modules/**",
+    "storage/**",
+    "bootstrap/cache/**",
+    "public/build/**",
+    "coverage/**",
+    "*.min.js",
+    "*.min.css",
+    "package-lock.json",
+    "composer.lock"
+]
+
+[laravel_specific]
+# Laravel-specific checks (custom)
+check_form_requests = true
+check_route_model_binding = true
+check_eager_loading = true
+check_mass_assignment = true
+check_env_usage = true
+
+[vue_specific]
+# Vue-specific checks (custom)
+check_composition_api = true
+check_typescript_usage = true
+check_component_naming = true
+
+[security]
+# Security checks
+enable_security_review = true
+check_sql_injection = true
+check_xss = true
+check_csrf = true
+check_secrets = true

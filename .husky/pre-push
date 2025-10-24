@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🤖 Running Claude Code quality checks..."
+
+# Run quality checks
+npm run quality || exit 1
+composer quality || exit 1
+
+echo "✅ All checks passed! Ready to push."
+echo ""
+echo "💡 TIP: Before creating PR, ask Claude Code:"
+echo "   'Review my changes for security, performance, and best practices'"
+echo ""
