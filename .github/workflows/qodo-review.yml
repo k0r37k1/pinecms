@@ -1,0 +1,49 @@
+name: Qodo Merge AI Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+  # Manual trigger for re-review
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to review'
+        required: true
+        type: number
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  qodo-review:
+    name: Qodo Merge Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+        with:
+          fetch-depth: 0  # Full history for better context
+
+      - name: Qodo Merge PR Review (FREE Tier)
+        uses: qodo-ai/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Using Qodo's free GPT-4o-mini - no API key needed!
+
+      - name: Comment on PR
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Qodo Merge review completed! Check the comments above for AI-generated insights.'
+            })

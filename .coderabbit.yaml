@@ -1,0 +1,132 @@
+# CodeRabbit Configuration for PineCMS
+# Documentation: https://docs.coderabbit.ai/
+
+# Language & Tone
+language: "en"
+tone_instructions: |
+  Be concise and professional. Focus on Laravel, Vue, and Inertia.js best practices.
+  Prioritize security and performance issues.
+
+# Review Settings
+reviews:
+  # Review aggressiveness: "chill" | "assertive"
+  profile: "assertive"
+
+  # Request changes workflow (blocks merge if critical issues)
+  request_changes_workflow: false
+
+  # Generate high-level summary
+  high_level_summary: true
+
+  # Add poem (fun, but not needed for serious projects)
+  poem: false
+
+  # Show review status
+  review_status: true
+
+  # Auto-review on every commit
+  auto_review:
+    enabled: true
+    # Only review changed files (not entire PR)
+    drafts: false
+
+  # Tools Integration
+  tools:
+    # PHP Static Analysis
+    phpstan:
+      enabled: true
+      level: "8"  # Match your PHPStan config
+
+    # PHP Code Style
+    phpcs:
+      enabled: true
+
+    # JavaScript/TypeScript
+    eslint:
+      enabled: true
+
+    # Security Scanning
+    semgrep:
+      enabled: true
+
+  # Path Filters (exclude generated/vendor files)
+  path_filters:
+    - "!vendor/**"
+    - "!node_modules/**"
+    - "!storage/**"
+    - "!bootstrap/cache/**"
+    - "!public/build/**"
+    - "!coverage/**"
+    - "!*.min.js"
+    - "!*.min.css"
+
+  # Review Scope
+  path_instructions:
+    - path: "app/Models/**"
+      instructions: |
+        Focus on:
+        - Eloquent relationships with proper return types
+        - N+1 query prevention (eager loading)
+        - Mass assignment protection ($fillable/$guarded)
+        - Database indexes for foreign keys
+
+    - path: "app/Http/Controllers/**"
+      instructions: |
+        Focus on:
+        - FormRequest validation classes (not inline validation)
+        - Proper authorization (gates/policies)
+        - Service layer usage (no business logic in controllers)
+        - Type hints for all methods
+
+    - path: "app/Services/**"
+      instructions: |
+        Focus on:
+        - Single Responsibility Principle
+        - Event dispatching for side effects
+        - DTO usage for data transfer
+        - Exception handling
+
+    - path: "resources/js/**"
+      instructions: |
+        Focus on:
+        - Vue 3 Composition API best practices
+        - Inertia.js form handling
+        - TypeScript type safety
+        - Component reusability
+
+    - path: "tests/**"
+      instructions: |
+        Focus on:
+        - Test coverage for happy paths and edge cases
+        - Factory usage for model creation
+        - Proper assertions
+        - Database transaction rollbacks
+
+    - path: "database/migrations/**"
+      instructions: |
+        Focus on:
+        - Down method implementation
+        - Foreign key constraints
+        - Indexes for query optimization
+        - Data type appropriateness
+
+# Chat Settings
+chat:
+  # Auto-reply to comments
+  auto_reply: true
+
+  # Commands available:
+  # @coderabbitai help - Show available commands
+  # @coderabbitai review - Re-review current PR
+  # @coderabbitai ask <question> - Ask specific question about code
+
+# Knowledge Base (learns from your codebase)
+knowledge_base:
+  # Enable learning from past reviews
+  learnings:
+    scope: "auto"  # Learn from this repo
+# Early Access Features (experimental)
+early_access: false
+
+# Free Tier Settings (after trial)
+enable_free_tier: false
