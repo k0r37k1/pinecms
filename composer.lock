@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af10ac632bff30ff211b6bc4e971022a",
+    "content-hash": "3f6429748469143ea0ccffaf1535de58",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -59,73 +59,6 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/v3.0.1"
             },
             "time": "2024-10-01T13:55:55+00:00"
-        },
-        {
-            "name": "beberlei/assert",
-            "version": "v3.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beberlei/assert.git",
-                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/b5fd8eacd8915a1b627b8bfc027803f1939734dd",
-                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-simplexml": "*",
-                "php": "^7.1 || ^8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "*",
-                "phpstan/phpstan": "*",
-                "phpunit/phpunit": ">=6.0.0",
-                "yoast/phpunit-polyfills": "^0.1.0"
-            },
-            "suggest": {
-                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/Assert/functions.php"
-                ],
-                "psr-4": {
-                    "Assert\\": "lib/Assert"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Collaborator"
-                }
-            ],
-            "description": "Thin assertion library for input validation in business models.",
-            "keywords": [
-                "assert",
-                "assertion",
-                "validation"
-            ],
-            "support": {
-                "issues": "https://github.com/beberlei/assert/issues",
-                "source": "https://github.com/beberlei/assert/tree/v3.3.3"
-            },
-            "time": "2024-07-15T13:18:35+00:00"
         },
         {
             "name": "bepsvpt/secure-headers",
@@ -204,66 +137,6 @@
                 }
             ],
             "time": "2024-03-14T01:20:05+00:00"
-        },
-        {
-            "name": "beyondcode/laravel-comments",
-            "version": "1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beyondcode/laravel-comments.git",
-                "reference": "4635f98118c611e55ada82bc9d8044ee3fc66e33"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-comments/zipball/4635f98118c611e55ada82bc9d8044ee3fc66e33",
-                "reference": "4635f98118c611e55ada82bc9d8044ee3fc66e33",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^10.0|^11.0|^12.0",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.6|^5.0|^6.0|^7.0|^8.0",
-                "phpunit/phpunit": "^9.5.8|^10.0.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "BeyondCode\\Comments\\CommentsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "BeyondCode\\Comments\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marcel Pociot",
-                    "email": "marcel@beyondco.de",
-                    "homepage": "https://beyondcode.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Add comments to your Laravel application",
-            "homepage": "https://github.com/beyondcode/laravel-comments",
-            "keywords": [
-                "beyondcode",
-                "comments",
-                "laravel-comments"
-            ],
-            "support": {
-                "issues": "https://github.com/beyondcode/laravel-comments/issues",
-                "source": "https://github.com/beyondcode/laravel-comments/tree/1.8.0"
-            },
-            "time": "2025-03-02T18:47:27+00:00"
         },
         {
             "name": "brick/math",
@@ -1847,68 +1720,6 @@
                 }
             ],
             "time": "2025-07-30T13:13:19+00:00"
-        },
-        {
-            "name": "junaidnasir/larainvite",
-            "version": "v12.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/junaidnasir/larainvite.git",
-                "reference": "b39adf46b6c0202c2da038400acb8fe8989e7592"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/junaidnasir/larainvite/zipball/b39adf46b6c0202c2da038400acb8fe8989e7592",
-                "reference": "b39adf46b6c0202c2da038400acb8fe8989e7592",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^5.8|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/events": "^5.8|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/support": "^5.8|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.2|^7.0|^8.0|^9.0|^10.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "Invite": "Junaidnasir\\Larainvite\\Facades\\Invite"
-                    },
-                    "providers": [
-                        "Junaidnasir\\Larainvite\\LaraInviteServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Junaidnasir\\Larainvite\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Junaid Nasir",
-                    "email": "contact@junaidnasir.com"
-                }
-            ],
-            "description": "Laravel Invitation package, existing users can invite others by email",
-            "homepage": "https://github.com/junaidnasir/larainvite",
-            "keywords": [
-                "Invite",
-                "invitations",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/junaidnasir/larainvite/issues",
-                "source": "https://github.com/junaidnasir/larainvite/tree/v12.0.0"
-            },
-            "time": "2025-03-12T23:26:59+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -3656,6 +3467,68 @@
             "time": "2025-10-18T11:10:27+00:00"
         },
         {
+            "name": "paragonie/ciphersweet",
+            "version": "v4.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/ciphersweet.git",
+                "reference": "18f98fefa0ae9a999982c53d55e5b8b58ea7ce0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/ciphersweet/zipball/18f98fefa0ae9a999982c53d55e5b8b58ea7ce0d",
+                "reference": "18f98fefa0ae9a999982c53d55e5b8b58ea7ce0d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-openssl": "*",
+                "paragonie/constant_time_encoding": "^2|^3",
+                "paragonie/sodium_compat": "^1|^2",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\CipherSweet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                }
+            ],
+            "description": "Searchable field-level encryption library for relational databases",
+            "keywords": [
+                "FIPS 140-3",
+                "NIST cryptography",
+                "SQL encryption",
+                "crm",
+                "cryptography",
+                "database encryption",
+                "encrypt",
+                "encryption",
+                "field-level encryption",
+                "libsodium",
+                "queryable encryption",
+                "searchable encryption"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/ciphersweet/issues",
+                "source": "https://github.com/paragonie/ciphersweet/tree/v4.8.0"
+            },
+            "time": "2025-06-17T09:54:09+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v3.1.3",
             "source": {
@@ -3723,6 +3596,102 @@
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
             "time": "2025-09-24T15:06:41+00:00"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "547e2dc4d45107440e76c17ab5a46e4252460158"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/547e2dc4d45107440e76c17ab5a46e4252460158",
+                "reference": "547e2dc4d45107440e76c17ab5a46e4252460158",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "php-64bit": "*"
+            },
+            "require-dev": {
+                "infection/infection": "^0",
+                "nikic/php-fuzzer": "^0",
+                "phpunit/phpunit": "^7|^8|^9|^10|^11",
+                "vimeo/psalm": "^4|^5|^6"
+            },
+            "suggest": {
+                "ext-sodium": "Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "ParagonIE\\Sodium\\": "namespaced/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/sodium_compat/issues",
+                "source": "https://github.com/paragonie/sodium_compat/tree/v2.4.0"
+            },
+            "time": "2025-10-06T08:47:40+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
