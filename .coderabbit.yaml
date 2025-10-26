@@ -1,5 +1,6 @@
 # CodeRabbit Configuration for PineCMS
 # Documentation: https://docs.coderabbit.ai/
+# Last Updated: 2025-01-26 (Based on 2024/2025 Official Docs)
 
 # Language & Tone
 language: "en"
@@ -24,11 +25,43 @@ reviews:
   # Show review status
   review_status: true
 
+  # Changed files summary (NEW 2024)
+  changed_files_summary: true
+
+  # Sequence diagrams for complex changes (NEW 2024)
+  sequence_diagrams: true
+
+  # Estimate code review effort (NEW 2024)
+  estimate_code_review_effort: true
+
+  # Assess linked issues (NEW 2024)
+  assess_linked_issues: true
+
   # Auto-review on every commit
   auto_review:
     enabled: true
     # Only review changed files (not entire PR)
     drafts: false
+
+  # Finishing Touches (NEW 2024/2025)
+  finishing_touches:
+    enabled: true
+    # Auto-generate missing docstrings
+    docstrings: true
+    # Auto-generate missing unit tests
+    unit_tests: false  # Disabled (manual test writing preferred)
+
+  # Pre-Merge Checks (NEW 2024/2025)
+  pre_merge_checks:
+    enabled: true
+    # Check PR title format
+    pr_title: true
+    # Check PR description completeness
+    pr_description: true
+    # Check docstring coverage
+    docstring_coverage: true
+    # Coverage threshold (80%)
+    coverage_threshold: 80
 
   # Tools Integration
   tools:
@@ -47,6 +80,14 @@ reviews:
 
     # Security Scanning
     semgrep:
+      enabled: true
+
+    # Markdown Linting (NEW 2024)
+    markdownlint:
+      enabled: true
+
+    # GitHub Checks (NEW 2024)
+    github-checks:
       enabled: true
 
   # Path Filters (exclude generated/vendor files)
@@ -120,11 +161,20 @@ chat:
   # @coderabbitai review - Re-review current PR
   # @coderabbitai ask <question> - Ask specific question about code
 
-# Knowledge Base (learns from your codebase)
+# Knowledge Base (NEW 2024/2025)
 knowledge_base:
   # Enable learning from past reviews
   learnings:
     scope: "auto"  # Learn from this repo
+
+  # Code Guidelines Integration (CRITICAL for PineCMS!)
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "**/CLAUDE.md"  # Main AI guidelines
+      - "**/.cursorrules"  # Alternative AI guidelines
+      - "**/docs/CONTRIBUTING.md"  # Contribution guidelines
+
 # Early Access Features (experimental)
 early_access: false
 

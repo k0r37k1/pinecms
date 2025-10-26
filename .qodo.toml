@@ -1,5 +1,6 @@
 # Qodo Merge Configuration for PineCMS
 # Documentation: https://qodo-merge-docs.qodo.ai/
+# Last Updated: 2025-01-26 (Based on Official Qodo Spec)
 
 [config]
 # Model Selection - Using FREE Qodo Model (no API key needed!)
@@ -22,6 +23,9 @@ num_code_suggestions = 5
 # Inline file summary
 inline_file_summary = true
 
+# Inline feedback mode (improved readability)
+inline_feedback = true
+
 # Enable extra instructions from user
 enable_help_text = true
 
@@ -39,6 +43,37 @@ require_test_plan = true
 
 # Require security review
 require_security_review = true
+
+# Custom instructions for Laravel, Vue, and Security checks
+# (Replaces invalid custom sections that were being ignored)
+extra_instructions = """
+Laravel-Specific Checks:
+- Ensure FormRequest validation classes are used (not inline validation in controllers)
+- Verify proper route model binding usage
+- Check for eager loading to prevent N+1 queries (use `->with()`)
+- Verify mass assignment protection ($fillable or $guarded)
+- Ensure `env()` is never used directly (only in config files, use `config()` everywhere else)
+- Check for `declare(strict_types=1);` at the top of all PHP files
+- Verify explicit return type declarations for all methods
+- Ensure Events are used for side effects (no hooks/observers pattern)
+
+Vue-Specific Checks:
+- Ensure Composition API is used (`<script setup>`)
+- Verify TypeScript type safety (proper type definitions)
+- Check component naming conventions (PascalCase for components)
+- Ensure Inertia.js `<Form>` component is used (preferred over useForm)
+- Verify single root element per Vue component
+- Check for TailwindCSS classes (no inline styles)
+
+Security Checks:
+- Enable comprehensive security review
+- Check for SQL injection vulnerabilities (use Eloquent/query builder, never raw SQL with user input)
+- Check for XSS vulnerabilities (proper output escaping in Blade and Vue)
+- Verify CSRF protection is enabled (Laravel default)
+- Check for exposed secrets/API keys (never commit .env values)
+- Verify proper authentication/authorization (gates/policies)
+- Check for field-level encryption usage (CipherSweet for PII data)
+"""
 
 [pr_description]
 # Auto-generate PR description
@@ -105,7 +140,7 @@ file_types = [".php", ".vue", ".ts"]
 
 [pr_update_changelog]
 # Auto-update changelog
-enabled = false
+enabled = true
 
 # Changelog file
 changelog_file = "CHANGELOG.md"
@@ -132,25 +167,3 @@ paths = [
     "package-lock.json",
     "composer.lock"
 ]
-
-[laravel_specific]
-# Laravel-specific checks (custom)
-check_form_requests = true
-check_route_model_binding = true
-check_eager_loading = true
-check_mass_assignment = true
-check_env_usage = true
-
-[vue_specific]
-# Vue-specific checks (custom)
-check_composition_api = true
-check_typescript_usage = true
-check_component_naming = true
-
-[security]
-# Security checks
-enable_security_review = true
-check_sql_injection = true
-check_xss = true
-check_csrf = true
-check_secrets = true
