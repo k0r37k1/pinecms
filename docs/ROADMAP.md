@@ -59,6 +59,7 @@
 ### Week 5-6: User Management
 - [ ] User CRUD
 - [ ] Role-Based Access Control (RBAC)
+- [ ] Default Roles (Administrator, Author, User, Guest)
 - [ ] Custom Permissions System
 - [ ] User Profiles (Avatar, Bio)
 - [ ] Registration Mode (Invite-Only by default, switchable to Public)
@@ -86,7 +87,7 @@
 - [ ] User can create/edit/delete Posts & Pages
 - [ ] TipTap Editor works with Markdown export
 - [ ] Media Library functional
-- [ ] RBAC system works
+- [ ] RBAC system works (4 roles: Administrator, Author, User, Guest)
 - [ ] Admin Panel fully functional
 - [ ] Themes switchable
 - [ ] One-Click Backup works

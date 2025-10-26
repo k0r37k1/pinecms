@@ -79,7 +79,30 @@
 - [ ] Create, Read, Update, Delete Users
 - [ ] User Profiles (Avatar, Bio, Social Links)
 - [ ] Role-Based Access Control (RBAC)
-- [ ] Custom Roles & Permissions
+- [ ] Default Roles (4 Built-in Roles):
+  - **Administrator** - Full system access, user management, settings, plugins
+  - **Author** - Create/edit/delete own posts, upload media, manage own comments
+  - **User** - View content, comment, manage own profile
+  - **Guest** - Read-only access to published content (no login required)
+- [ ] Permissions Matrix:
+  ```
+  | Feature              | Administrator | Author | User | Guest |
+  |----------------------|---------------|--------|------|-------|
+  | System Settings      | ✅            | ❌     | ❌   | ❌    |
+  | User Management      | ✅            | ❌     | ❌   | ❌    |
+  | Plugin Management    | ✅            | ❌     | ❌   | ❌    |
+  | Create/Edit Posts    | ✅            | ✅*    | ❌   | ❌    |
+  | Delete Posts         | ✅            | ✅*    | ❌   | ❌    |
+  | Create/Edit Pages    | ✅            | ❌     | ❌   | ❌    |
+  | Upload Media         | ✅            | ✅     | ❌   | ❌    |
+  | Moderate Comments    | ✅            | ✅*    | ❌   | ❌    |
+  | Post Comments        | ✅            | ✅     | ✅   | ❌    |
+  | View Published       | ✅            | ✅     | ✅   | ✅    |
+  | View Drafts          | ✅            | ✅*    | ❌   | ❌    |
+
+  * Author = Own content only
+  ```
+- [ ] Custom Roles & Permissions (extend default roles)
 - [ ] User Status (Active, Banned, Pending)
 
 ### Authentication
@@ -425,7 +448,7 @@
 - [ ] 2FA Setup (Google Authenticator, Authy)
 - [ ] QR Code Generation
 - [ ] Backup Codes
-- [ ] 2FA Enforcement (Per Role)
+- [ ] 2FA Enforcement (Per Role - e.g., mandatory for Administrator, optional for Author/User)
 - [ ] Recovery Options
 
 ---
