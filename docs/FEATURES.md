@@ -86,21 +86,22 @@
   - **Guest** - Read-only access to published content (no login required)
 - [ ] Permissions Matrix:
   ```
-  | Feature              | Administrator | Author | User | Guest |
-  |----------------------|---------------|--------|------|-------|
-  | System Settings      | ✅            | ❌     | ❌   | ❌    |
-  | User Management      | ✅            | ❌     | ❌   | ❌    |
-  | Plugin Management    | ✅            | ❌     | ❌   | ❌    |
-  | Create/Edit Posts    | ✅            | ✅*    | ❌   | ❌    |
-  | Delete Posts         | ✅            | ✅*    | ❌   | ❌    |
-  | Create/Edit Pages    | ✅            | ❌     | ❌   | ❌    |
-  | Upload Media         | ✅            | ✅     | ❌   | ❌    |
-  | Moderate Comments    | ✅            | ✅*    | ❌   | ❌    |
-  | Post Comments        | ✅            | ✅     | ✅   | ❌    |
-  | View Published       | ✅            | ✅     | ✅   | ✅    |
-  | View Drafts          | ✅            | ✅*    | ❌   | ❌    |
+  | Feature              | Administrator | Author | User | Guest   |
+  |----------------------|---------------|--------|------|---------|
+  | System Settings      | ✅            | ❌     | ❌   | ❌      |
+  | User Management      | ✅            | ❌     | ❌   | ❌      |
+  | Plugin Management    | ✅            | ❌     | ❌   | ❌      |
+  | Create/Edit Posts    | ✅            | ✅*    | ❌   | ❌      |
+  | Delete Posts         | ✅            | ✅*    | ❌   | ❌      |
+  | Create/Edit Pages    | ✅            | ❌     | ❌   | ❌      |
+  | Upload Media         | ✅            | ✅     | ❌   | ❌      |
+  | Moderate Comments    | ✅            | ✅*    | ❌   | ❌      |
+  | Post Comments        | ✅            | ✅     | ✅   | ⚙️ **   |
+  | View Published       | ✅            | ✅     | ✅   | ✅      |
+  | View Drafts          | ✅            | ✅*    | ❌   | ❌      |
 
   * Author = Own content only
+  ** Guest comments can be enabled/disabled in Settings (disabled by default)
   ```
 - [ ] Custom Roles & Permissions (extend default roles)
 - [ ] User Status (Active, Banned, Pending)
@@ -170,6 +171,7 @@
 
 #### Privacy Tab
 - [ ] Cookie Consent Banner (Enable/Disable, Text Customization)
+- [ ] Guest Comments (Enable/Disable, disabled by default for privacy)
 - [ ] Analytics Opt-Out
 - [ ] GDPR Compliance Settings
 - [ ] Field-Level Encryption (Enable/Disable)
@@ -275,6 +277,7 @@
 ### Comments
 - [ ] Comment CRUD
 - [ ] Moderation Queue (Approve/Reject/Spam)
+- [ ] Guest Comments Toggle (Enable/Disable in Settings, disabled by default)
 - [ ] Upvote/Downvote Comments
 - [ ] Nested Comments (Replies, Max Depth: 3)
 - [ ] Comment Sorting (Newest, Oldest, Most Upvoted)
