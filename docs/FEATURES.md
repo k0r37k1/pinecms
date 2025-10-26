@@ -31,7 +31,20 @@
 - [ ] CRUD (Create, Read, Update, Delete)
 - [ ] Status: Published / Unpublished
 - [ ] Auto-Save (30 Sekunden)
-- [ ] TipTap Markdown Editor (WYSIWYG ↔ Markdown Toggle)
+- [ ] TipTap Markdown Editor (WYSIWYG ↔ Markdown Toggle):
+  - [ ] Basic Formatting (Bold, Italic, Strike, Underline)
+  - [ ] Headings (H1-H6)
+  - [ ] Lists (Bullet, Numbered, Task Lists)
+  - [ ] Blockquote
+  - [ ] Code Block (Syntax Highlighting)
+  - [ ] Inline Code
+  - [ ] Links (with preview)
+  - [ ] Images (Upload, URL, Drag & Drop)
+  - [ ] Tables (Create, Edit, Delete rows/columns)
+  - [ ] Horizontal Rule
+  - [ ] Embed (YouTube, Vimeo, Twitter, etc.)
+  - [ ] Markdown Shortcuts
+  - [ ] Slash Commands (/ menu)
 - [ ] Live Preview (Side-by-Side)
 - [ ] Slug Management (Auto-Generate, Custom)
 - [ ] SEO Meta (Title, Description, OpenGraph, Twitter Cards)
@@ -42,7 +55,20 @@
 - [ ] CRUD (Create, Read, Update, Delete)
 - [ ] Status: Draft / Published
 - [ ] Auto-Save (30 Sekunden)
-- [ ] TipTap Markdown Editor (WYSIWYG ↔ Markdown)
+- [ ] TipTap Markdown Editor (WYSIWYG ↔ Markdown):
+  - [ ] Basic Formatting (Bold, Italic, Strike, Underline)
+  - [ ] Headings (H1-H6)
+  - [ ] Lists (Bullet, Numbered, Task Lists)
+  - [ ] Blockquote
+  - [ ] Code Block (Syntax Highlighting)
+  - [ ] Inline Code
+  - [ ] Links (with preview)
+  - [ ] Images (Upload, URL, Drag & Drop)
+  - [ ] Tables (Create, Edit, Delete rows/columns)
+  - [ ] Horizontal Rule
+  - [ ] Embed (YouTube, Vimeo, Twitter, etc.)
+  - [ ] Markdown Shortcuts
+  - [ ] Slash Commands (/ menu)
 - [ ] Live Preview
 - [ ] Pin/Unpin Posts
 - [ ] Featured Posts (Randomized Pool, Cached)
@@ -54,22 +80,59 @@
 - [ ] Flat-File Revisions System
 
 ### Revisions System (Flat-File)
-- [ ] Auto-Create Revision on Save
+- [ ] Auto-Create Revision on Save (Every 30 seconds)
+- [ ] Manual Revision Checkpoints
 - [ ] Revisions List (Date, User, Preview)
-- [ ] Compare Revisions (Diff-View)
+- [ ] Compare Revisions (Side-by-side Diff-View)
 - [ ] Restore to Any Revision
-- [ ] Revision Cleanup (Keep Last N)
+- [ ] Revision Author & Timestamp
+- [ ] Revision Cleanup Policy (Keep Last N, or by age)
+
+### Custom Field Types (Phase 1 MVP)
+- [ ] Text (Short Text, Long Text, Rich Text)
+- [ ] Number (Integer, Decimal)
+- [ ] Boolean (Toggle, Checkbox)
+- [ ] Date/Time (Date, Time, DateTime)
+- [ ] Select (Dropdown, Multi-select, Radio)
+- [ ] Relationship (Posts, Pages, Users, Categories, Tags)
+- [ ] Media (Image, Video, File, Gallery)
+- [ ] URL
+- [ ] Email
+- [ ] Color Picker
+- [ ] JSON (for advanced users)
+- [ ] Repeater (Nested fields)
 
 ### Media Management
 - [ ] Media Library UI
 - [ ] Drag & Drop Upload
 - [ ] Multi-File Upload
-- [ ] Image Optimization (Auto-Resize, Thumbnails, WebP Conversion)
+- [ ] Supported File Types:
+  - [ ] Images (JPEG, PNG, GIF, WebP, SVG)
+  - [ ] Videos (MP4, WebM, OGG)
+  - [ ] Audio (MP3, WAV, OGG)
+  - [ ] Documents (PDF, DOC, DOCX, XLS, XLSX)
+  - [ ] Archives (ZIP, TAR, GZ)
+- [ ] Image Processing:
+  - [ ] Auto-Resize (Max width/height)
+  - [ ] Thumbnail Generation (Multiple sizes)
+  - [ ] WebP Conversion (with fallback)
+  - [ ] Image Compression (Quality settings)
+  - [ ] Crop & Focal Point
+  - [ ] Image Filters (Grayscale, Blur, Brightness)
+  - [ ] Responsive Images (srcset generation)
+  - [ ] Retina/HiDPI Support (2x, 3x)
+  - [ ] EXIF Data Stripping (Privacy)
+  - [ ] Image CDN Support (optional)
 - [ ] File Organization (Folders)
-- [ ] Media Search & Filter
+- [ ] Bulk Upload (Multiple files at once)
+- [ ] Bulk Actions (Delete, Move, Download)
+- [ ] Media Search & Filters (by type, date, name)
+- [ ] Image Preview & Lightbox
+- [ ] File Metadata (Dimensions, Size, Type, Upload Date)
+- [ ] Direct Link Copy
+- [ ] Storage Quota Display
 - [ ] Media Insertion in TipTap
-- [ ] File Size Limits (Configurable)
-- [ ] Allowed File Types (Configurable)
+- [ ] File Size Limits (Configurable per Type)
 
 ---
 
@@ -148,6 +211,15 @@
 - [ ] Quick Actions (New Post, New Page)
 - [ ] System Health (Storage, Cache Status)
 
+### Bulk Actions (Content Management)
+- [ ] Bulk Select (Checkboxes)
+- [ ] Bulk Publish/Unpublish
+- [ ] Bulk Delete
+- [ ] Bulk Move to Category/Tag
+- [ ] Bulk Assign Author
+- [ ] Bulk Export (CSV, JSON)
+- [ ] Inline Editing (Title, Status, Date)
+
 ### Site Settings (Tabbed UI)
 
 #### General Tab
@@ -198,6 +270,16 @@
 - [ ] Maintenance Mode
 - [ ] Debug Mode Toggle
 - [ ] Custom Code (Head/Footer Injection)
+- [ ] Asset Pipeline Settings:
+  - [ ] CSS/JS Minification (Enable/Disable)
+  - [ ] Asset Concatenation (Combine files)
+  - [ ] Cache Busting (Versioned filenames)
+  - [ ] CDN URL Configuration
+- [ ] Environment Configuration:
+  - [ ] .env.local Support (Git-ignored local overrides)
+  - [ ] Config per Environment (development, staging, production)
+  - [ ] Environment Detection
+  - [ ] Debug Mode per Environment
 
 ---
 
@@ -293,11 +375,19 @@
 ## 🔎 **Phase 2: Search & Navigation**
 
 ### Search
-- [ ] Full-Text Search (Laravel Scout + TNTSearch)
-- [ ] Search Posts by Title, Content, Tags
-- [ ] Search Pages by Title, Content
-- [ ] Search Users (Admin Only)
-- [ ] Search Highlighting
+- [ ] Full-Text Search Engine (TNTSearch default)
+- [ ] Search Filters:
+  - [ ] By Content Type (Posts, Pages, Users)
+  - [ ] By Date Range
+  - [ ] By Author
+  - [ ] By Tags/Categories
+- [ ] Search Highlighting (Match preview)
+- [ ] Search Suggestions (Did you mean...)
+- [ ] Search Analytics (Popular queries)
+- [ ] Alternative Search Drivers:
+  - [ ] Algolia (Cloud-based)
+  - [ ] Meilisearch (Self-hosted)
+  - [ ] Elasticsearch (Enterprise)
 
 ### Command Palette (CMD+K / CTRL+K)
 - [ ] Quick Search (Posts, Pages, Tags, Categories)
@@ -336,6 +426,18 @@
 - [ ] Dashboard Widget (Pageviews, Visitors, Top Posts)
 - [ ] Detailed Reports (Admin Panel)
 - [ ] Analytics Opt-Out (User Preference)
+
+### Newsletter System
+- [ ] Newsletter Editor (separate from Posts)
+- [ ] Subscriber Management (separate from Users)
+- [ ] Email Campaign Scheduling
+- [ ] Newsletter Templates
+- [ ] Open/Click Tracking (Privacy-friendly, optional)
+- [ ] Unsubscribe Management
+- [ ] Double Opt-In (GDPR-compliant)
+- [ ] Subscriber Segmentation (by tags, categories)
+- [ ] A/B Testing (Subject lines, content)
+- [ ] Newsletter Archive (Public access to past newsletters)
 
 ### Social Features
 - [ ] Social Sharing Buttons (Configurable):
@@ -424,6 +526,23 @@
   - Comment Posted (Before/After)
   - Page Render (Before/After)
 
+### Webhook System
+- [ ] Webhook Management UI (Create, Edit, Delete)
+- [ ] Event Types:
+  - [ ] post.published
+  - [ ] post.updated
+  - [ ] post.deleted
+  - [ ] user.created
+  - [ ] user.updated
+  - [ ] comment.created
+  - [ ] comment.approved
+  - [ ] page.published
+- [ ] Custom Headers & Payloads
+- [ ] Webhook Testing & Logs
+- [ ] Retry Logic (on failure)
+- [ ] Webhook Signing (for security)
+- [ ] Rate Limiting (per webhook)
+
 ---
 
 ## 🔧 **Phase 3: Advanced Features**
@@ -453,6 +572,13 @@
 - [ ] Backup Codes
 - [ ] 2FA Enforcement (Per Role - e.g., mandatory for Administrator, optional for Author/User)
 - [ ] Recovery Options
+
+### Custom Routing & URL Structures (Phase 3)
+- [ ] Multi-Language URL Prefixes (/en/, /de/)
+- [ ] Hierarchical URLs (/blog/category/subcategory/post)
+- [ ] Custom Post Type URLs
+- [ ] Route Wildcards
+- [ ] Route Conditions (by locale, date, etc.)
 
 ---
 
@@ -499,15 +625,59 @@
 
 ---
 
+## 🚀 **Post-MVP Features (v1.1+)**
+
+### API Features (v1.1)
+- [ ] REST API (JSON):
+  - [ ] Authentication (Sanctum Token-based)
+  - [ ] Rate Limiting (Configurable per endpoint)
+  - [ ] API Documentation (Swagger/OpenAPI)
+  - [ ] Filtering & Sorting
+  - [ ] Pagination
+  - [ ] Partial Responses (field selection)
+  - [ ] API Versioning (v1, v2, etc.)
+- [ ] GraphQL API (Optional - v1.2+):
+  - [ ] Schema Explorer
+  - [ ] Query Builder UI
+  - [ ] Mutations (Create, Update, Delete)
+  - [ ] Subscriptions (Real-time updates)
+
+### Import/Export System (v1.1)
+- [ ] Import from WordPress (XML)
+- [ ] Import from Ghost (JSON)
+- [ ] Import from Markdown Files
+- [ ] Export to JSON
+- [ ] Export to Markdown (ZIP)
+- [ ] Export to Static HTML
+- [ ] Migration Tool (CLI-based)
+- [ ] Content Mapping UI (field matching)
+
+### Advanced SEO (v1.1)
+- [ ] Schema.org Structured Data (Article, Blog, Organization)
+- [ ] AMP Support (Accelerated Mobile Pages)
+- [ ] Custom Meta Tags per Post/Page
+- [ ] Social Media Preview Generator
+
+### Advanced Features (v1.2+)
+- [ ] Multi-Site Support (Network)
+- [ ] E-Commerce Integration (Stripe, PayPal)
+- [ ] Newsletter Integration (MailChimp, Sendinblue)
+- [ ] Advanced Analytics (Heatmaps, A/B Testing)
+- [ ] Form Builder (Drag & Drop)
+
+---
+
 ## 📊 **Feature Count Summary**
 
 | Phase | Features | Timeline | Status |
 |-------|----------|----------|--------|
 | Phase 0 | 8 | 1 Week | Planned |
-| Phase 1 | ~80 | 6-8 Weeks | Planned |
-| Phase 2 | ~40 | 3-4 Weeks | Planned |
-| Phase 3 | ~35 | 4-6 Weeks | Planned |
-| **Total** | **~163** | **14-19 Weeks** | - |
+| Phase 1 | ~120 | 6-8 Weeks | Planned |
+| Phase 2 | ~60 | 3-4 Weeks | Planned |
+| Phase 3 | ~55 | 4-6 Weeks | Planned |
+| Post-MVP (v1.1+) | ~45 | Future | Planned |
+| **MVP Total** | **~243** | **14-19 Weeks** | - |
+| **Complete Total** | **~288** | - | - |
 
 ---
 
@@ -530,6 +700,7 @@
 ### Milestone 3: Social Features (Weeks 10-13)
 - Comment System
 - Search
+- Newsletter System
 - Analytics
 - i18n
 - Notifications
@@ -538,11 +709,13 @@
 - Content Workflow
 - Update Manager
 - Plugin System
+- Webhook System
 - Menu Builder
 - 2FA
+- Custom Routing
 
 ---
 
-**Last Updated:** 2025-01-25
+**Last Updated:** 2025-01-26 (Major update: +125 features from CMS analysis)
 **Maintained By:** PineCMS Team
 **License:** MIT
