@@ -1,10 +1,130 @@
 # Git Workflow & Commit Guidelines
 
+## ⚠️ Preferred Workflow (MANDATORY)
+
+**Solo Developer - Strict PR Policy:**
+
+This project follows a strict Pull Request workflow to maintain code quality and
+prevent broken builds. Branch Protection is enabled with "Include administrators"
+to enforce this workflow even for solo development.
+
+### Standard Workflow (for ALL code changes)
+
+1. **Create Feature Branch**
+
+   ```bash
+   git checkout -b feature/feature-name
+   # or: fix/, refactor/, test/, etc.
+   ```
+
+2. **Implement & Commit**
+
+   ```bash
+   git add .
+   git commit -m "feat: description"
+   ```
+
+3. **Push Branch**
+
+   ```bash
+   git push -u origin feature/feature-name
+   ```
+
+4. **Create Pull Request**
+
+   ```bash
+   gh pr create --title "..." --body "..."
+   ```
+
+5. **Wait for CI/CD** (status checks must pass)
+
+6. **Merge Pull Request** (via GitHub UI or gh CLI)
+
+### Exceptions (Direct Push Allowed)
+
+**ONLY these changes can be pushed directly to `main`:**
+
+- Documentation in `docs/` directory
+- README.md updates
+- Trivial typo fixes (comments, docs)
+- `.gitignore` updates
+
+### Everything else requires PR + passing CI/CD
+
+---
+
+## GitHub Branch Protection Setup
+
+**Required configuration for `main` branch:**
+
+1. Go to: `Settings` → `Branches` → `Add branch protection rule`
+2. Branch name pattern: `main`
+3. Enable these settings:
+
+### Protect Matching Branches
+
+```text
+☑ Require a pull request before merging
+  ☐ Require approvals (NOT needed for solo dev)
+  ☑ Dismiss stale pull request approvals when new commits are pushed
+  ☑ Require review from Code Owners (optional)
+
+☑ Require status checks to pass before merging
+  ☑ Require branches to be up to date before merging
+  Status checks that are required:
+    ☑ quality-check (or your CI workflow name)
+    ☑ test (if separate test workflow exists)
+
+☑ Require conversation resolution before merging (optional)
+
+☐ Require signed commits (optional, adds security)
+
+☐ Require linear history (optional, keeps history clean)
+
+☑ Include administrators ⚠️ CRITICAL FOR SOLO DEV
+  (This makes the rules apply to you too!)
+
+☐ Allow force pushes (keep disabled)
+☐ Allow deletions (keep disabled)
+```
+
+### Why This Setup Works for Solo Dev
+
+**✅ You get:**
+
+- Automated CI/CD runs before every merge
+- Protection from accidentally pushing broken code
+- Clean, reviewable git history
+- Professional workflow habits
+- Easy rollback if needed
+
+**❌ You avoid:**
+
+- Manual approval requirement (would block you)
+- Overly strict rules that slow you down
+- Unnecessary bureaucracy for solo work
+
+### Testing the Setup
+
+After enabling, try pushing directly to `main`:
+
+```bash
+git checkout main
+echo "test" >> test.txt
+git add test.txt
+git commit -m "test: direct push"
+git push origin main
+```
+
+**Expected result:** Push should be rejected with message about branch protection.
+
+---
+
 ## Conventional Commits (MANDATORY)
 
 ### Format
 
-```
+```text
 <type>(<scope>): <subject>
 
 [optional body]
@@ -39,7 +159,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ## Git Safety Protocol
 
-### NEVER Do These Without Approval:
+### NEVER Do These Without Approval
 
 ❌ `git push --force` (especially to main/master)
 ❌ `git reset --hard` (destructive)
@@ -48,7 +168,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ❌ Skip hooks (--no-verify, --no-gpg-sign)
 ❌ Force push to main/master
 
-### Always Safe:
+### Always Safe
 
 ✅ `git status`
 ✅ `git log`
@@ -127,9 +247,9 @@ git push
 
 ## Pre-Commit Hook Handling
 
-### If Commit Fails Due to Pre-Commit Hook:
+### If Commit Fails Due to Pre-Commit Hook
 
-**Scenario: Pre-commit hook modifies files**
+#### Scenario: Pre-commit hook modifies files
 
 ```bash
 # 1. Check what was modified
@@ -151,6 +271,7 @@ git commit -m "style: apply pre-commit hook fixes"
 ```
 
 **NEVER amend commits:**
+
 - Made by other developers
 - Already pushed to remote
 - That you don't own
@@ -199,6 +320,7 @@ EOF
 ✅ **Screenshots** (for UI changes)
 
 ❌ **Avoid:**
+
 - Mixing features and fixes
 - PRs with >500 lines changed
 - Undocumented breaking changes
@@ -207,7 +329,7 @@ EOF
 
 ### Convention
 
-```
+```text
 <type>/<short-description>
 
 Examples:
@@ -278,6 +400,7 @@ git reset --hard HEAD~1  # Ask user first!
 ```
 
 **Why:**
+
 - Resets conversation context
 - Prevents context pollution
 - Saves tokens for next session
