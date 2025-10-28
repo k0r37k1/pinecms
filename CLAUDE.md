@@ -1,3 +1,82 @@
+# PineCMS Development Guide
+
+## ⚠️ Modification Policy
+
+**CRITICAL: Before ANY modification to this CLAUDE.md file:**
+
+```bash
+cp CLAUDE.md "CLAUDE.$(date +%Y%m%d_%H%M%S).md.backup"
+```
+
+**Backup location:** Keep backups in project root for easy access
+**Backup retention:** Keep last 5 backups, delete older ones
+
+**This rule applies to:**
+- Content updates
+- Structural changes
+- Optimization iterations
+- Adding/removing sections
+
+**Why:** CLAUDE.md is auto-read on every session. Breaking it breaks the entire AI workflow.
+
+---
+
+## 🚀 Quick Reference
+
+**Before ANY coding:**
+1. `/clear` - Clear context for new task
+2. Use `search-docs` tool - Fetch Laravel/Inertia/Vue docs (Laravel Boost MCP)
+3. Use `context7` - For PrimeVue/TipTap/Alpine docs
+4. Plan first (`Shift+Tab` for complex tasks)
+
+**Common Commands:**
+```bash
+# PHP Quality Check
+composer quality              # Format, analyze, test (all-in-one)
+
+# JavaScript Quality Check
+npm run quality               # Format, lint, type-check, test (all-in-one)
+```
+
+**After commit:** Always run `/clear` to reset context
+
+**📚 Detailed Instructions:** See `.claude/instructions/` for comprehensive guidelines
+
+---
+
+## 🚨 CRITICAL Rules
+
+### Forbidden Patterns
+- ❌ **NEVER use Hooks** - This project uses Events only (Laravel event system)
+- ❌ **NEVER skip `declare(strict_types=1);`** in PHP files
+- ❌ **NEVER use `env()` directly** - ALWAYS use `config()` (after config:cache, env() returns null)
+- ❌ **NEVER use CommonJS `require`** - Use ES modules
+- ❌ **NEVER create inline styles** - Use TailwindCSS utility classes
+- ❌ **NEVER commit `console.log`** - Remove debug statements
+- ❌ **NEVER delete files/code without asking** - Always request user approval first
+- ❌ **NEVER create .md files outside `docs/`** - Exception: README.md in project root
+
+### Protected Areas (Ask Before Modifying)
+- Database Migrations (schema changes need review)
+- Security Code (authentication, authorization, encryption)
+- Test Files (changes affect test validity)
+- API Contracts (breaking changes affect consumers)
+- Configuration (.env, config files with secrets)
+
+---
+
+## 🛠️ Tech Stack
+
+**Backend:** PHP 8.3 | Laravel 12
+**Storage:** SQLite (relational) + Flat-File (content/markdown) - **Hybrid Approach**
+**Frontend (Public):** Blade Templates | PHP | TailwindCSS 4.1 | Alpine.js
+**Admin Panel:** Vue 3.5 Composition API | Inertia.js 2.x | PrimeVue | Pinia | TailwindCSS 4.1
+**Build:** Vite
+**Testing:** PHPUnit | Vitest | Playwright
+**Quality:** PHPStan (level 8) | ESLint | Prettier | Pint
+
+---
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
@@ -373,237 +452,28 @@ Route::get('/users', function () {
 
 ---
 
-# PineCMS Development Guide
-
-## ⚠️ Modification Policy
-
-**CRITICAL: Before ANY modification to this CLAUDE.md file:**
-
-```bash
-cp CLAUDE.md "CLAUDE.$(date +%Y%m%d_%H%M%S).md.backup"
-```
-
-**Backup location:** Keep backups in project root for easy access
-
-**Backup retention:** Keep last 5 backups, delete older ones
-
-**This rule applies to:**
-- Content updates
-- Structural changes
-- Optimization iterations
-- Adding/removing sections
-
-**Why:** CLAUDE.md is auto-read on every session. Breaking it breaks the entire AI workflow.
-
----
-
-## 🚀 Quick Reference
-
-**Before ANY coding:**
-1. `/clear` - Clear context for new task
-2. Use `search-docs` tool - Fetch Laravel/Inertia/Vue docs (Laravel Boost MCP)
-3. Use `context7` - For PrimeVue/TipTap/Alpine docs
-4. Plan first (`Shift+Tab` for complex tasks)
-
-**Common Commands:**
-```bash
-# PHP Quality Check
-composer quality              # Format, analyze, test (all-in-one)
-composer format               # Laravel Pint
-composer analyse              # PHPStan level 8
-composer test                 # PHPUnit
-
-# JavaScript Quality Check
-npm run quality               # Format, lint, type-check, test (all-in-one)
-npm run format                # Prettier
-npm run lint:fix              # ESLint auto-fix
-npm run type-check            # TypeScript
-npm test                      # Vitest
-
-# Laravel Boost
-php artisan boost:update      # Update AI guidelines
-```
-
-**After commit:** Always run `/clear` to reset context
-
----
-
-## 🚨 CRITICAL Rules
-
-### Forbidden Patterns
-- ❌ **NEVER use Hooks** - This project uses Events only (Laravel event system)
-- ❌ **NEVER skip `declare(strict_types=1);`** in PHP files
-- ❌ **NEVER use `env()` directly** - ALWAYS use `config()` (after config:cache, env() returns null)
-- ❌ **NEVER use CommonJS `require`** - Use ES modules
-- ❌ **NEVER create inline styles** - Use TailwindCSS utility classes
-- ❌ **NEVER commit `console.log`** - Remove debug statements
-- ❌ **NEVER delete files/code without asking** - Always request user approval first
-- ❌ **NEVER create .md files outside `docs/`** - Exception: README.md in project root
-
-### Protected Areas (Ask Before Modifying)
-- Database Migrations (schema changes need review)
-- Security Code (authentication, authorization, encryption)
-- Test Files (changes affect test validity)
-- API Contracts (breaking changes affect consumers)
-- Configuration (.env, config files with secrets)
-
----
-
-## 🛠️ Tech Stack
-
-**Backend:** PHP 8.3 | Laravel 12
-**Storage:** SQLite (relational) + Flat-File (content/markdown) - **Hybrid Approach**
-**Frontend (Public):** Blade Templates | PHP | TailwindCSS 4.1 | Alpine.js
-**Admin Panel:** Vue 3.5 Composition API | Inertia.js 2.x | PrimeVue | Pinia | TailwindCSS 4.1
-**Build:** Vite
-**Testing:** PHPUnit | Vitest | Playwright
-**Quality:** PHPStan (level 8) | ESLint | Prettier | Pint
-
----
-
 ## 🎯 Software Engineering Principles
 
 Apply these principles when designing and implementing features:
 
-### KISS (Keep It Simple, Stupid)
-- Prefer simple solutions over complex ones
-- Avoid over-engineering
-- Write code that is easy to understand and maintain
-- Question if complexity is truly necessary
+**KISS (Keep It Simple)** - Prefer simple solutions, avoid over-engineering
+**DRY (Don't Repeat Yourself)** - Extract repeated code, use Laravel's built-in features
+**YAGNI (You Aren't Gonna Need It)** - Implement only what's currently needed
+**SOLID Principles:**
+- **S** - Single Responsibility (one reason to change)
+- **O** - Open/Closed (extend, don't modify)
+- **L** - Liskov Substitution (subtypes substitutable)
+- **I** - Interface Segregation (focused interfaces)
+- **D** - Dependency Inversion (depend on abstractions)
 
-### DRY (Don't Repeat Yourself)
-- Extract repeated code into reusable functions/components
-- Use Laravel's built-in features before creating custom solutions
-- Create shared utilities for common operations
-- Consider: Is this logic duplicated elsewhere?
-
-### YAGNI (You Aren't Gonna Need It)
-- Implement only what is currently needed
-- Don't build features for hypothetical future requirements
-- Avoid premature optimization
-- Focus on MVP functionality first
-
-### SOLID Principles
-
-**S - Single Responsibility**
-- Each class/function should have one reason to change
-- Controllers handle HTTP, Services handle business logic, Models handle data
-- Keep methods focused on a single task
-
-**O - Open/Closed**
-- Open for extension, closed for modification
-- Use interfaces and abstract classes for extensibility
-- Extend behavior through inheritance/composition, not modification
-
-**L - Liskov Substitution**
-- Subtypes must be substitutable for their base types
-- Child classes should not break parent class contracts
-- Maintain expected behavior when extending classes
-
-**I - Interface Segregation**
-- Many specific interfaces are better than one general interface
-- Clients should not depend on methods they don't use
-- Keep interfaces focused and minimal
-
-**D - Dependency Inversion**
-- Depend on abstractions, not concretions
-- Use dependency injection (Laravel's container)
-- High-level modules should not depend on low-level modules
-
-### Separation of Concerns
+**Separation of Concerns:**
 - Business logic in Services
 - Data access in Repositories/Models
 - HTTP handling in Controllers
 - Presentation in Views/Components
 - Side effects in Event Listeners
 
----
-
-## 🤖 Specialized Agents & MCP Mapping
-
-**14 agents available** via `Task` tool - Critical for planning complex tasks and subtasks
-
-**See `.claude/agents/` for full descriptions of each agent**
-
-### Development Team
-- **frontend-developer** (Sonnet)
-  - **Focus:** Vue 3.5, Inertia.js, Alpine, TailwindCSS, PrimeVue
-  - **MCP:** context7, chrome-devtools, eslint, playwright
-  - **Use for:** UI components, frontend features, responsive design
-
-- **backend-architect** (Sonnet)
-  - **Focus:** Laravel, APIs, Database Design, Caching, Performance
-  - **MCP:** laravel-boost, laravel-mcp-companion, filesystem
-  - **Use for:** Backend architecture, business logic, API design
-
-- **fullstack-developer** (Opus)
-  - **Focus:** End-to-end features, Laravel + Vue + Inertia integration
-  - **MCP:** laravel-boost, context7, chrome-devtools, filesystem
-  - **Use for:** Complete feature implementation, API integration
-
-- **ui-ux-designer** (Sonnet)
-  - **Focus:** User interface, UX patterns, accessibility
-  - **MCP:** chrome-devtools
-  - **Use for:** Design decisions, user flow, accessibility improvements
-
-### Development Tools
-- **code-reviewer** (Sonnet)
-  - **Focus:** Code quality, security, maintainability, best practices
-  - **MCP:** eslint, laravel-boost, context7, filesystem
-  - **Use for:** Pre-commit review, refactoring validation, code standards
-
-- **test-engineer** (Sonnet)
-  - **Focus:** Test strategy (PHPUnit, Vitest, Playwright)
-  - **MCP:** playwright, laravel-boost
-  - **Use for:** Writing tests, improving coverage, test automation
-
-- **debugger** (Sonnet)
-  - **Focus:** Root cause analysis, error tracking, stack traces
-  - **MCP:** chrome-devtools, laravel-boost (browser-logs, tinker)
-  - **Use for:** Complex bugs, performance issues, runtime errors
-
-- **error-detective** (Sonnet)
-  - **Focus:** Stack trace analysis, log patterns, exception handling
-  - **MCP:** laravel-boost (browser-logs, last-error)
-  - **Use for:** Runtime errors, exception handling, log analysis
-
-- **context-manager** (Opus)
-  - **Focus:** Codebase exploration, dependency analysis, refactoring planning
-  - **MCP:** gitmcp, filesystem
-  - **Use for:** Understanding codebases, large-scale refactoring
-
-### Specialists
-- **task-decomposition-expert** (Sonnet)
-  - **Focus:** Complex task breakdown, roadmaps, subtask creation
-  - **MCP:** All available MCPs
-  - **Use for:** Large features, multi-step implementations, planning
-  - **CRITICAL:** Use this agent for planning complex projects and creating structured tasks/subtasks
-
-- **database-architect** (Opus)
-  - **Focus:** Database design, scalability, migrations, query optimization
-  - **MCP:** laravel-boost (database-query, database-schema), filesystem
-  - **Use for:** Database design, schema planning, query optimization
-
-- **architect-review** (Sonnet)
-  - **Focus:** SOLID principles, design patterns, architecture consistency
-  - **MCP:** gitmcp, filesystem
-  - **Use for:** Architecture decisions, major refactoring, pattern validation
-
-- **deployment-engineer** (Sonnet)
-  - **Focus:** CI/CD, Docker, deployment automation, infrastructure
-  - **MCP:** playwright, chrome-devtools
-  - **Use for:** Deployment issues, pipeline improvements, automation
-
-- **security-auditor** (Opus)
-  - **Focus:** OWASP compliance, auth, encryption, vulnerability scanning
-  - **MCP:** laravel-boost, eslint, filesystem
-  - **Use for:** Security audits, sensitive features, vulnerability fixes
-
-### Usage Guidelines
-- **Simple tasks** → Implement directly
-- **Complex tasks** → Use specialized agents via Task tool
-- **Multi-step features** → Start with **task-decomposition-expert** for planning
-- **Planning phase** → Use agents to create structured tasks, subtasks, and implementation roadmap
+**📚 Details:** `.claude/instructions/architecture.md`
 
 ---
 
@@ -611,463 +481,95 @@ Apply these principles when designing and implementing features:
 
 Use MCP servers in this order for optimal results:
 
-1. **Laravel Boost** - Laravel/PHP ecosystem
-   - `search-docs` - Version-specific Laravel/Inertia/Vue docs
-   - `tinker` - Execute PHP code in Laravel context
-   - `database-query` - Query database directly
-   - `browser-logs` - Read browser errors/exceptions
-   - `database-schema` - Inspect database structure
-   - `list-routes` - See all available routes
-   - `list-artisan-commands` - Available Artisan commands
-
-2. **filesystem** - Flat-file operations (Critical for PineCMS)
-   - Read/write markdown content files
-   - Manage flat-file storage
-   - Handle content directory operations
-
-3. **Laravel MCP Companion** - Alternative Laravel docs
-   - `search_laravel_docs_with_context` - Alternative doc search
-   - `read_laravel_doc_content` - Read specific doc files
-   - `get_laravel_package_recommendations` - Package suggestions
-
-4. **context7** - Modern framework documentation
-   - PrimeVue component docs
-   - TipTap editor documentation
-   - Alpine.js patterns and examples
-
+1. **Laravel Boost** - Laravel/PHP ecosystem (`search-docs`, `tinker`, `database-query`, `browser-logs`)
+2. **filesystem** - Flat-file operations (Critical for PineCMS content management)
+3. **Laravel MCP Companion** - Alternative Laravel docs (`search_laravel_docs_with_context`)
+4. **context7** - Modern framework documentation (PrimeVue, TipTap, Alpine.js)
 5. **chrome-devtools** - Browser automation and debugging
-   - Browser automation for testing
-   - Live debugging and inspection
-   - Performance profiling
-
 6. **eslint** - JavaScript/TypeScript linting
-   - Lint JS/TS files after code changes
-   - Enforce code style standards
-
 7. **playwright** - End-to-end testing
-   - E2E test automation
-   - Cross-browser testing
-   - UI interaction testing
-
 8. **gitmcp** - Git/GitHub operations
-   - Repository operations
-   - GitHub API interactions
-   - Version control automation
 
 ---
 
-## 🏗️ Architecture
+## 🤖 Specialized Agents
 
-### Event-Driven (NEVER Hooks)
-```
-User Action → Controller → Service → Repository → Database
-                            ↓
-                          Event
-                            ↓
-                        Listeners (logging, notifications, caching, etc.)
-```
+**14 agents available** via `Task` tool - See `.claude/agents/` for full descriptions
 
-**Events Location:** `app/Events/`
-**Listeners Location:** `app/Listeners/`
-**Registration:** `app/Providers/EventServiceProvider.php`
+**Development:** frontend-developer, backend-architect, fullstack-developer, ui-ux-designer
+**Tools:** code-reviewer, test-engineer, debugger, error-detective, context-manager
+**Specialists:** task-decomposition-expert, database-architect, architect-reviewer, deployment-engineer, security-auditor
 
-### Layer Architecture
-```
-Controllers (HTTP Layer)
-    ↓
-Services (Business Logic Layer)
-    ↓
-Models (Eloquent ORM with Query Scopes)
-
-DTOs (Data Transfer Objects)
-    ↔ Between layers for data transfer
-
-Events (Side Effects)
-    ↔ Triggered by Services for cross-cutting concerns
-```
-
-### Flat-File Hybrid Storage Architecture
-- **SQLite:** Relational data (users, metadata, configurations, relationships)
-- **Flat-File:** Content storage (pages, posts, documentation in markdown format)
-- **Use `filesystem` MCP** for all flat-file operations
-- **Benefits:** Simple backups, version control friendly, no complex database migrations for content
-
-### N+1 Prevention
-Always use eager loading to prevent N+1 query problems:
-```php
-// Bad - N+1 queries
-$posts = Post::all();
-foreach ($posts as $post) {
-    echo $post->author->name; // N queries
-}
-
-// Good - Eager loading
-$posts = Post::with('author')->get();
-foreach ($posts as $post) {
-    echo $post->author->name; // 2 queries total
-}
-```
+**Usage:**
+- Simple tasks → Implement directly
+- Complex tasks → Use specialized agents
+- **Multi-step features → Start with task-decomposition-expert for planning**
 
 ---
 
-## 🔥 Development Workflow
+## 🆕 New Best Practices (2025)
 
-### Standard Workflow
-1. **Clear Context** - Run `/clear` when starting new feature (prevents token waste)
-2. **Research** - Use `search-docs` (Laravel Boost) or `context7` (PrimeVue/TipTap/Alpine)
-3. **Plan** - Use Plan Mode (`Shift+Tab`) for complex tasks
-4. **Implement** - Follow code conventions, use strict types, add type hints
-5. **Test** - Write/run tests for happy paths, failures, edge cases
-6. **Quality Check** - `composer quality && npm run quality`
-7. **Commit** - Conventional commits: `feat/fix/refactor/test/docs/style/chore`
-8. **Clear Again** - Run `/clear` after commit to reset context
+### Inline Instructions
+Press `#` to give Claude instructions that auto-incorporate into CLAUDE.md
+Useful for documenting commands, files, style guidelines while coding
 
-### Test-Driven Development (When Applicable)
+### Subagent Limitations
+- ❌ NO thinking mode (can't monitor progress)
+- ❌ NO stepwise plans (single-shot execution only)
+- ⚠️ Requires explicit MCP tool permissions
+
+### Test-Driven Development (MANDATORY)
+**Be explicit about TDD to prevent mock implementations:**
+```
+"I'm doing TDD. Write failing test first, don't create mock implementation."
+```
+
+**RED → GREEN → REFACTOR cycle:**
+1. Write failing test
+2. Minimal implementation to pass
+3. Refactor with confidence
+
+**📚 Details:** `.claude/workflows/tdd.md`
+
+### Plan Mode (`Shift+Tab`)
+**Use for:**
+- Complex multi-step implementations
+- Large-scale refactoring
+- Architecture decisions
+- Features requiring multiple agents
+
+**📚 Details:** `.claude/workflows/plan-mode.md`
+
+### MCP Debugging
 ```bash
-# 1. Write test first
-composer test:unit  # Should fail (RED)
-
-# 2. Implement feature
-composer test:unit  # Should pass (GREEN)
-
-# 3. Refactor
-composer test:unit  # Still passes
+claude --mcp-debug  # Troubleshoot MCP configuration issues
 ```
 
 ---
 
-## 🧠 Plan Mode (think, think harder, ultrathink)
+## 📚 Detailed Instructions
 
-### When to Use Plan Mode
+**This CLAUDE.md contains ONLY core rules. For comprehensive guidelines:**
 
-**ALWAYS use Plan Mode (`Shift+Tab`) for:**
-1. Complex multi-step implementations
-2. Large-scale refactoring
-3. Database migrations with data transformations
-4. Architecture & design decisions
-5. Features requiring multiple agents/subtasks
+### Instructions
+- `.claude/instructions/backend.md` - Laravel, Services, Eloquent, API, Queues
+- `.claude/instructions/frontend.md` - Vue, Inertia, TailwindCSS, Alpine
+- `.claude/instructions/testing.md` - PHPUnit, Vitest, Playwright
+- `.claude/instructions/security.md` - OWASP, Auth, Security Principles
+- `.claude/instructions/quality-gates.md` - QPLAN, QCHECK, QCODE
+- `.claude/instructions/architecture.md` - Event-Driven, Layers, N+1
 
-**When NOT to Use:**
-- Simple bug fixes (single file, obvious solution)
-- Minor text/formatting changes
-- Running tests or linters
+### Commands
+- `.claude/commands/quality.md` - composer quality, npm run quality
+- `.claude/commands/development.md` - Common Artisan/Git commands
 
-### Plan Mode Workflow with think/ultrathink
-
-1. **Start in Plan Mode** (`Shift+Tab`)
-
-2. **Ask Claude to think deeply:**
-   - "think about this problem"
-   - "think harder about the best approach"
-   - "ultrathink this architecture decision"
-
-3. **Research & Analyze** (Use MCP tools)
-   - `search-docs` for documentation
-   - `database-schema` for data structure
-   - `list-routes` for existing endpoints
-   - `context7` for frontend patterns
-
-4. **Create Detailed Plan**
-   - Break down into tasks and subtasks
-   - Identify dependencies
-   - Consider edge cases
-   - Plan testing strategy
-
-5. **Review Plan** (Discuss approach with user)
-   - Present plan for approval
-   - Discuss trade-offs
-   - Adjust based on feedback
-
-6. **Exit Plan Mode** (`Shift+Tab`)
-
-7. **Implement** (Execute with confidence)
-   - Use specialized agents for complex subtasks
-   - Follow the approved plan
-   - Test incrementally
-
-### Examples of Plan Mode Usage
-
-**Simple task (NO Plan Mode):**
-- "Fix typo in UserController.php line 45"
-
-**Complex task (USE Plan Mode):**
-- "Implement multi-tenant architecture with separate databases per tenant"
-- "Add real-time collaboration feature with WebSockets"
-- "Refactor authentication system to support OAuth2 providers"
+### Workflows
+- `.claude/workflows/tdd.md` - Test-Driven Development
+- `.claude/workflows/plan-mode.md` - When/how to use Plan Mode
+- `.claude/workflows/git-workflow.md` - Conventional commits, PRs
 
 ---
 
-## 🧪 Testing
-
-### PHPUnit
-```bash
-# Run specific test (recommended after making changes)
-php artisan test --filter=testMethodName
-
-# Run specific file
-php artisan test tests/Feature/ExampleTest.php
-
-# Run all tests
-php artisan test
-
-# Run with coverage
-php artisan test --coverage
-```
-
-### Vitest
-```bash
-# Run all tests
-npm test
-
-# Run with coverage
-npm run test:coverage
-
-# Run in UI mode
-npm run test:ui
-
-# Run in watch mode
-npm test -- --watch
-```
-
-### Playwright
-```bash
-# Run E2E tests
-npm run test:e2e
-
-# Run in UI mode
-npm run test:e2e:ui
-
-# Run specific test
-npm run test:e2e tests/e2e/login.spec.ts
-```
-
-### Testing Rules
-- Test happy paths, failure paths, and edge cases
-- Use factories for model creation in tests
-- Check if factory has custom states before manual setup
-- Run minimal tests with filters before finalizing changes
-- **NEVER remove tests without approval** - They're not temporary files!
-- Every feature requires tests (unit or feature tests)
-- Ask user if they want full test suite run after feature tests pass
-
----
-
-## 📝 Code Standards
-
-### PHP Standards
-- `declare(strict_types=1);` in ALL PHP files
-- Explicit return type declarations for all methods/functions
-- Constructor property promotion for dependencies
-- PHPDoc blocks for complex array shapes
-- Use `config()` NEVER `env()` directly outside config files
-- Curly braces for all control structures (even single line)
-
-### TypeScript/Vue Standards
-- Use Composition API (`<script setup>`)
-- Proper type definitions for all functions/props
-- ES modules (import/export) - NO CommonJS
-- TailwindCSS classes (NO inline styles)
-- Single root element per Vue component
-
-### Laravel Specifics
-- **Events ONLY** (no hooks in this project)
-- FormRequest classes for validation (not inline validation)
-- Eloquent relationships with return type hints
-- Eager loading to prevent N+1 queries
-- Named routes with `route()` function for URL generation
-- Use `php artisan make:` commands for file creation
-
-### Inertia.js Patterns
-- Use `<Form>` component (preferred over useForm helper)
-- Add empty states for deferred props (skeleton loaders)
-- Use `resetOnSuccess`, `setDefaultsOnSuccess` for form handling
-- Use `search-docs` with query 'form component' for guidance
-
-### PrimeVue Patterns
-- Check for existing components before creating new ones
-- Follow dark mode conventions (`dark:` classes)
-- Use PrimeIcons package for icons
-- Leverage PrimeVue's built-in features before custom solutions
-
-### TailwindCSS Patterns
-- Use `gap` utilities for spacing (NOT margins)
-- Follow existing conventions in project
-- Extract repeated patterns into components
-- Support dark mode if other pages do (`dark:` classes)
-
----
-
-## 🔒 Security Principles
-
-### Input Validation
-- **Validate ALL inputs** using Laravel FormRequest classes
-- Never trust user data - always validate, sanitize, and escape
-- Use Laravel's built-in validation rules
-- Create custom validation rules for complex scenarios
-
-### Output Escaping
-- Blade templates auto-escape by default
-- Manual escaping required in Vue templates when using v-html
-- Use `{{ }}` syntax in Blade (auto-escaped)
-- Avoid `{!! !!}` unless absolutely necessary (unescaped)
-
-### Authentication & Authorization
-- Use Laravel Sanctum for API authentication
-- Use Laravel Fortify for authentication scaffolding
-- Implement gates and policies for authorization
-- Never expose sensitive data in API responses
-
-### CSRF Protection
-- Enabled by default for all POST/PUT/PATCH/DELETE requests
-- Ensure CSRF tokens are included in forms
-- Inertia.js handles CSRF tokens automatically
-
-### Database Security
-- Use parameterized queries (Eloquent does this automatically)
-- Never use raw SQL with user input without bindings
-- Implement proper database permissions
-- Regular backups for both SQLite and flat-files
-
-### Content Security
-- Use spatie/laravel-csp for Content Security Policy headers
-- Implement proper CORS configuration
-- Track user actions with spatie/laravel-activitylog
-- Audit sensitive operations
-
-### File Upload Security
-- Validate file types and sizes
-- Store uploads outside public directory when possible
-- Scan uploads for malware when applicable
-- Use signed URLs for temporary access
-
----
-
-## 🎯 Performance & Token Optimization
-
-### Context Window Management
-- **This CLAUDE.md is READ on EVERY session** - Keep it lean
-- Use Laravel Boost MCP tools instead of reading files manually
-- Leverage specialized agents for complex tasks
-
-### Token-Saving Best Practices
-
-1. **Use `/clear` frequently**
-   - Start fresh for new features
-   - After every commit
-   - When switching contexts
-   - Prevents Claude from running expensive compaction summaries
-
-2. **Be specific in requests**
-   - ✅ "Fix N+1 query in PostsController:45"
-   - ❌ "Optimize database queries"
-   - ✅ "Add validation to UserStoreRequest for email field"
-   - ❌ "Add validation to the user form"
-
-3. **Use MCP tools for context**
-   - `search-docs` - Laravel/Inertia/Vue documentation
-   - `database-query` - Query database directly
-   - `tinker` - Execute PHP code
-   - `browser-logs` - Read browser errors
-   - `list-routes` - See all routes
-   - `database-schema` - Inspect database structure
-
-4. **Reference files instead of pasting**
-   - ✅ "Check the validation in app/Http/Requests/UserStoreRequest.php"
-   - ❌ *pastes entire 200-line file content*
-
-5. **Use agents for research**
-   - Let specialized agents gather context
-   - Agents return focused summaries
-   - Reduces main conversation token usage
-
-### Optimal Workflow Pattern
-```bash
-/clear                              # Clear context
-"Implement X feature"               # State goal
-[Claude uses MCP tools]             # Auto-fetches context via Laravel Boost
-[Claude implements]                 # Writes code
-composer quality && npm run quality # Validate
-git commit -m "feat: X"             # Commit
-/clear                              # Clear for next task
-```
-
-### Caching Strategies
-- Use Laravel's cache for expensive operations
-- Implement query caching for frequently accessed data
-- Use Redis for session storage in production
-- Cache API responses when appropriate
-
-### Database Optimization
-- Use database indexes for frequently queried columns
-- Implement database query caching
-- Use eager loading to prevent N+1 queries
-- Consider read replicas for scaling
-
----
-
-## 🎯 Common Pitfalls
-
-1. **N+1 Queries**
-   - Problem: Not using eager loading
-   - Solution: Use `->with('relation')` for eager loading
-
-2. **Skipping search-docs**
-   - Problem: Writing outdated code patterns
-   - Solution: Always use `search-docs` before implementing Laravel features
-
-3. **Forgetting /clear**
-   - Problem: Wastes tokens on old conversations
-   - Solution: Run `/clear` after commits and before new features
-
-4. **Missing type declarations**
-   - Problem: PHP/TypeScript without explicit types
-   - Solution: Always add return types and parameter types
-
-5. **Using env() directly**
-   - Problem: Returns null after config:cache
-   - Solution: Always use `config('key')` instead
-
-6. **Creating hooks instead of events**
-   - Problem: This project uses event-driven architecture
-   - Solution: Create Events and Listeners, NEVER hooks
-
-7. **Inline styles instead of TailwindCSS**
-   - Problem: Inconsistent styling, maintenance issues
-   - Solution: Use TailwindCSS utility classes
-
-8. **Deleting without asking**
-   - Problem: Permanently loses code/files
-   - Solution: Always request user approval before deletions
-
-9. **Docs outside docs/ directory**
-   - Problem: Disorganized documentation
-   - Solution: Keep all .md files in `docs/` (except README.md)
-
-10. **Not running quality checks**
-    - Problem: Commits broken/unformatted code
-    - Solution: Always run `composer quality && npm run quality` before commit
-
----
-
-## 🎓 Post-MVP (Future Enhancements)
-
-After MVP launch, consider implementing:
-
-### Subdirectory-Specific CLAUDE.md Files
-- `resources/js/CLAUDE.md` - Frontend-specific guidelines (Vue, Inertia, PrimeVue patterns)
-- `app/Models/CLAUDE.md` - Model conventions (casts, relationships, factories)
-- `tests/CLAUDE.md` - Testing patterns (PHPUnit, factories, coverage expectations)
-- `app/Services/CLAUDE.md` - Service layer patterns (business logic, DTOs)
-
-### Advanced Features to Consider
-- Hierarchical CLAUDE.md files for better context-specific guidance
-- Custom slash commands for common operations
-- MCP integration enhancements
-- Automated documentation generation
-- Performance monitoring and optimization
-
----
-
-**Last updated:** 2025-10-23
-**Version:** 1.3 - Clarified Frontend (Blade) vs Admin Panel (Vue/Inertia) tech stacks
+**Last updated:** 2025-10-27
+**Version:** 2.0 - Modularized Architecture (40% Token Reduction)
 **Project:** PineCMS - Security & Privacy-First Flat-File Hybrid CMS

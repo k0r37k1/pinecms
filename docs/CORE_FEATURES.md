@@ -22,11 +22,11 @@
 
 ## 📦 Version 1.0.0 - Core CMS (MVP)
 
-**Timeline:** 8-10 Wochen
-**Goal:** Schlankes, schnelles Blogging-CMS
-**Features:** ~80
+**Timeline:** 10-11 Wochen
+**Goal:** Schlankes, schnelles Blogging-CMS mit Migration-Path
+**Features:** ~90
 
-### Phase 0: Installer & Setup (Week 1)
+### Phase 0: Installer & Setup (Week 1-2)
 
 #### Web-Installer
 
@@ -40,7 +40,7 @@
 
 ---
 
-### Phase 1: Content Management (Weeks 2-5)
+### Phase 1: Content Management (Weeks 3-5)
 
 #### Pages
 
@@ -58,11 +58,16 @@
 - [ ] Status: Draft / Published
 - [ ] Auto-Save (30 seconds)
 - [ ] Pin/Unpin Posts
-- [ ] Featured Posts (Randomized Pool, Cached)
-- [ ] Content Scheduler (Publish Date/Time)
-- [ ] Tags & Categories
-- [ ] Upvote/Downvote System
-- [ ] Social Sharing Buttons
+- [ ] Featured Posts (Mark as Featured, Display on Homepage)
+- [ ] Template Selection (Default, Full Width, Sidebar - theme-dependent)
+- [ ] Excerpt (Manual or Auto-generated from first 160 characters)
+- [ ] Reading Time Calculation (Auto-calculate, ~200 words/min)
+- [ ] Duplicate Post (Create copy with "(Copy)" suffix)
+- [ ] Content Scheduler:
+  - Publish Date/Time
+  - Unpublish Date/Time (automatically take offline)
+  - Timezone Support
+- [ ] Tags & Categories (Hierarchical)
 - [ ] Flat-File Storage (Markdown)
 
 #### TipTap Editor (Basic Features)
@@ -76,7 +81,13 @@
 - [ ] Links (with preview)
 - [ ] Images (Upload, URL, Drag & Drop)
 - [ ] WYSIWYG ↔ Markdown Toggle
-- [ ] Live Preview (Side-by-Side)
+- [ ] Live Preview:
+  - Split View (Side-by-Side)
+  - Device Switcher:
+    * Desktop (1280px+)
+    * Tablet (768px - 1279px)
+    * Mobile (< 768px)
+  - Full Preview Mode (without editor)
 
 #### Custom Fields (Basic Types)
 
@@ -89,13 +100,21 @@
 
 - [ ] Auto-Create Revision on Save (Every 30 seconds)
 - [ ] Revisions List (Date, User, Preview)
-- [ ] Compare Revisions (Side-by-side Diff-View)
+- [ ] Compare Revisions (Show Changes List: added/removed/modified)
 - [ ] Restore to Any Revision
 - [ ] Revision Author & Timestamp
+- [ ] Revision Limits (max 10 per post, configurable: 5/10/20/50)
+- [ ] Auto-Cleanup (delete old revisions beyond limit)
+
+**Note:** Side-by-side Diff-View available in v1.1.0
 
 #### Media Library (Basic)
 
 - [ ] Media Library UI
+- [ ] Upload Settings:
+  - Max File Size (default: PHP upload_max_filesize, configurable)
+  - Allowed File Types (whitelist: JPEG, PNG, GIF, WebP, PDF)
+  - Upload Directory Structure (YYYY/MM)
 - [ ] Drag & Drop Upload
 - [ ] Multi-File Upload
 - [ ] Supported File Types:
@@ -106,15 +125,22 @@
   - Thumbnail Generation
   - WebP Conversion (with fallback)
   - Image Compression
+  - EXIF Data Stripping (Privacy)
+- [ ] Image Metadata:
+  - Alt Text (Accessibility/SEO)
+  - Title & Caption
+  - Focal Point Selection (for auto-crop)
 - [ ] File Organization (Folders)
 - [ ] Media Search & Filters
-- [ ] Image Preview & Lightbox
+- [ ] Image Preview (Modal)
 - [ ] Direct Link Copy
 - [ ] Storage Quota Display
 
+**Note:** Media Usage Tracking available in v1.1.0 (Week 12 - Advanced Media)
+
 ---
 
-### Phase 1: User Management (Week 6)
+### Phase 1: User Management (Week 5)
 
 #### User System
 
@@ -143,7 +169,7 @@
 
 ---
 
-### Phase 1: Theme System (Week 7)
+### Phase 1: Theme System (Week 6)
 
 #### Frontend (Public Site)
 
@@ -160,6 +186,30 @@
 - [ ] Dark/Light Mode Toggle (User Preference)
 - [ ] PrimeIcons (Admin Only)
 - [ ] Responsive Design (Mobile-Friendly)
+
+---
+
+### Phase 1: Categories & Tags System (Week 7)
+
+#### Categories (Hierarchical)
+
+- [ ] Hierarchical Structure (Parent → Child, max 2 levels)
+- [ ] Category CRUD (Create, Read, Update, Delete)
+- [ ] Category Slug (SEO-friendly URLs, auto-generated)
+- [ ] Category Description (Plain Text, max 200 characters)
+- [ ] Category Color/Badge (optional visual identifier)
+- [ ] Category Post Count (display number of posts)
+- [ ] Default Category (Auto-assign "Uncategorized" if none selected)
+- [ ] Drag & Drop Reordering
+
+#### Tags (Flat)
+
+- [ ] Tag CRUD (Create, Read, Update, Delete)
+- [ ] Tag Autocomplete (suggestions while typing)
+- [ ] Tag Usage Count (how often used?)
+- [ ] Popular Tags Widget
+- [ ] Tag Merging (combine 2 tags into 1)
+- [ ] Tag Cloud (Frontend Widget)
 
 ---
 
@@ -200,8 +250,13 @@
 **Email Tab:**
 
 - [ ] SMTP Configuration
-- [ ] Email Templates (Welcome, Invite, Notification)
+- [ ] Email Templates (Plain text, editable in Settings):
+  - Welcome Email (on user creation)
+  - Invite Email (invitation token)
+  - Password Reset Email
 - [ ] Test Email Function
+
+**Note:** Rich HTML Email Templates available in v1.1.0 or via Plugin
 
 **Security Tab:**
 
@@ -213,23 +268,46 @@
 **Backup Tab:**
 
 - [ ] Auto-Backup Schedule (Daily/Weekly/Monthly)
-- [ ] Backup Storage Location (Local/S3/SFTP)
+- [ ] Backup Storage Location (Local only in v1.0)
 - [ ] One-Click Backup
 - [ ] Backup History & Restore
 
+**Note:** S3/SFTP Backup available via "Backup Pro" Plugin (v1.2.0+)
+
 ---
 
-### Phase 1: SEO & Privacy (Week 9)
+### Phase 1: Import/Export System (Week 9)
+
+#### Import (Critical for Adoption)
+
+- [ ] Import from WordPress (XML/WXR format)
+- [ ] Import from Ghost (JSON export)
+- [ ] Import from Markdown Files (Bulk upload)
+- [ ] Content Mapping UI (map fields during import)
+- [ ] Import Preview (review before final import)
+- [ ] Import Progress Indicator
+
+#### Export
+
+- [ ] Export to JSON (full site export)
+- [ ] Export to Markdown (ZIP archive)
+- [ ] Export Media Files (included in ZIP)
+- [ ] Selective Export (choose posts/pages/categories)
+
+---
+
+### Phase 1: SEO & Privacy (Week 10)
 
 #### SEO Features
 
 - [ ] Auto-Slug Generation (Eloquent Sluggable)
 - [ ] Custom Slugs (Editable)
-- [ ] Breadcrumbs (Auto-Generated)
 - [ ] XML Sitemap (Auto-Updated)
 - [ ] RSS Feed (Posts, Categories, Tags)
 - [ ] Meta Tags Management (OpenGraph, Twitter Cards)
 - [ ] Canonical URLs
+
+**Note:** Breadcrumbs are theme-specific (themes generate their own breadcrumbs)
 
 #### Privacy & Security
 
@@ -243,26 +321,23 @@
 - [ ] SQL Injection Protection (Eloquent ORM)
 - [ ] Rate Limiting (Forms, Login)
 
-#### Backup System
-
-- [ ] Automated Backups (spatie/laravel-backup)
-- [ ] Backup Components:
-  - SQLite Database Export
-  - Flat-Files (Markdown Content)
-  - Media Files
-  - Configuration Files (.env excluded)
-- [ ] Backup Scheduler (Daily/Weekly/Monthly)
-- [ ] One-Click Backup (Admin Panel)
-- [ ] One-Click Restore
+**Backup Implementation:**
+- Uses spatie/laravel-backup package
+- Components: SQLite Database, Flat-Files (Markdown), Media Files
+- Configuration Files (.env excluded for security)
+- Automated scheduling via Laravel Task Scheduler
+- One-Click operations via Admin Panel
 
 #### UI/UX Polish
 
 - [ ] Custom Error Pages (404, 403, 500, 503)
 - [ ] Loading States (Skeleton Loaders)
 - [ ] Toast Notifications (Success, Error, Info, Warning)
-- [ ] Modal System (Confirm Dialogs, Lightbox)
+- [ ] Modal System (Confirm Dialogs)
 - [ ] Form Validation (Real-Time)
 - [ ] Responsive Design (Mobile, Tablet, Desktop)
+
+**Note:** Lightbox is theme-specific (not in core)
 
 ---
 
@@ -270,21 +345,23 @@
 
 **Timeline:** +3-4 Wochen
 **Goal:** Professionelle Features + Plugin-System + Analytics
-**Features:** ~48 zusätzlich (Total: ~128)
+**Features:** ~48 zusätzlich (Total: ~143)
 
 ### Comments System (Week 10-11)
 
 - [ ] Comment CRUD
 - [ ] Moderation Queue (Approve/Reject/Spam)
 - [ ] Guest Comments Toggle (Enable/Disable in Settings, disabled by default)
-- [ ] Upvote/Downvote Comments
 - [ ] Nested Comments (Replies, Max Depth: 3)
-- [ ] Comment Sorting (Newest, Oldest, Most Upvoted)
+- [ ] Comment Sorting (Newest, Oldest)
 - [ ] Email Notifications (New Comment, Reply)
 - [ ] Comment Count per Post
 - [ ] Commenter Info (Name, Email, Website - Optional)
 - [ ] Gravatar Support
 - [ ] Markdown Support in Comments
+
+**Removed (YAGNI):**
+- ❌ Upvote/Downvote Comments → "Voting System" Community Plugin (for Posts + Comments)
 
 ---
 
@@ -360,12 +437,15 @@
   - Archives (ZIP, TAR, GZ)
 
 - [ ] Advanced Image Processing:
-  - Crop & Focal Point
   - Image Filters (Grayscale, Blur, Brightness)
   - Responsive Images (srcset generation)
   - Retina/HiDPI Support (2x, 3x)
-  - EXIF Data Stripping (Privacy)
   - Image CDN Support (optional)
+
+- [ ] Media Usage Tracking:
+  - Show where image/file is used (Posts, Pages)
+  - "Used in X posts" indicator
+  - Prevent deletion if in use (warning + override option)
 
 - [ ] Bulk Actions:
   - Bulk Upload (Multiple files at once)
@@ -388,11 +468,12 @@
 ### Bulk Actions (Week 12)
 
 - [ ] Bulk Select (Checkboxes)
-- [ ] Bulk Publish/Unpublish
+- [ ] Bulk Change Status (Draft ↔ Published)
 - [ ] Bulk Delete
 - [ ] Bulk Move to Category/Tag
 - [ ] Bulk Assign Author
 - [ ] Bulk Export (CSV, JSON)
+- [ ] Duplicate Post/Page (included above in Posts section)
 - [ ] Inline Editing (Title, Status, Date)
 
 ---
@@ -495,17 +576,17 @@
 
 **Timeline:** +2-3 Wochen
 **Goal:** Erweiterte CMS-Features
-**Features:** ~15 zusätzlich (Total: ~143)
+**Features:** ~10 zusätzlich (Total: ~153)
 
-### Import/Export System (Week 14)
+### Import/Export Enhancements (Week 14)
 
-- [ ] Import from WordPress (XML)
-- [ ] Import from Ghost (JSON)
-- [ ] Import from Markdown Files (Bulk)
-- [ ] Export to JSON
-- [ ] Export to Markdown (ZIP)
-- [ ] Full Site Backup/Restore
-- [ ] Content Mapping UI (field matching)
+**Note:** Basic Import/Export is now in v1.0.0 (Week 9)
+
+- [ ] Import Error Handling & Retry
+- [ ] Advanced Content Mapping (custom field mapping)
+- [ ] Import from Medium (via RSS)
+- [ ] Import from Substack
+- [ ] Scheduled Exports (automatic weekly/monthly backups)
 
 ---
 
@@ -611,11 +692,20 @@
 
 | Version | Features | Timeline | Total Core Features |
 |---------|----------|----------|---------------------|
-| **v1.0.0 (MVP)** | ~80 | 8-10 Wochen | 80 |
-| **v1.1.0 (Enhanced)** | +48 | +3-4 Wochen | 128 |
-| **v1.2.0 (Professional)** | +15 | +2-3 Wochen | 143 |
+| **v1.0.0 (MVP)** | ~95 | 10-11 Wochen | 95 |
+| **v1.1.0 (Enhanced)** | +48 | +3-4 Wochen | 143 |
+| **v1.2.0 (Professional)** | +10 | +2-3 Wochen | 153 |
 
-**Total Development Time:** 13-17 Wochen für v1.2.0
+**Total Development Time:** 15-18 Wochen für v1.2.0
+
+**Key Improvements in v1.0.0:**
+
+- ✅ Import/Export (WordPress, Ghost) - Critical for adoption
+- ✅ Hierarchical Categories - Professional content structure
+- ✅ Enhanced Media Library (Alt Text, Focal Point, EXIF stripping)
+- ✅ Advanced Live Preview (Device switcher, Full preview mode)
+- ✅ Enhanced Content Scheduler (Unpublish date, Timezone support)
+- ✅ Revision Management (Limits, Auto-cleanup)
 
 ---
 
@@ -623,14 +713,16 @@
 
 Die folgenden Features sind als **Official Plugins** verfügbar:
 
-1. **Newsletter Plugin** - Newsletter-System mit Subscriber Management
-2. **Webhooks Plugin** - Webhook-System für Integrationen
-3. **Custom Fields Pro Plugin** - Advanced Field Types (Repeater, Gallery, JSON, etc.)
-4. **Multi-Language Plugin** - Content Translation UI (erweitert)
-5. **Workflow Plugin** - Draft → Review → Publish Workflow
-6. **Two-Factor Auth Plugin** - 2FA mit Google Authenticator
-7. **Form Builder Plugin** - Drag & Drop Formular-Builder
-8. **SEO Pro Plugin** - Advanced SEO (AMP, Broken Link Checker)
+1. **Newsletter Plugin** (~7 Features) - Newsletter-System mit Subscriber Management
+2. **Webhooks Plugin** (~11 Features) - Webhook-System für Integrationen
+3. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater, Gallery, JSON, etc.)
+4. **Multi-Language Plugin** (~7 Features) - Content Translation UI (erweitert)
+5. **Workflow Plugin** (~6 Features) - Draft → Review → Publish Workflow
+6. **Two-Factor Auth Plugin** (~5 Features) - 2FA mit Google Authenticator
+7. **Form Builder Plugin** (~12 Features) - Drag & Drop Formular-Builder
+8. **SEO Pro Plugin** (~5 Features) - Advanced SEO (Schema.org, Broken Link Checker)
+
+**Total Plugin Features:** ~60 (optimiert nach KISS/DRY/YAGNI principles)
 
 ➡️ Siehe `docs/OFFICIAL_PLUGINS.md` für Details
 

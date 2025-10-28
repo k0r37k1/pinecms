@@ -9,27 +9,41 @@
 
 ## 📅 **Timeline Overview**
 
-**Core Development:** 13-17 Weeks (3-4 Months)
-**Plugin Development:** Parallel to Core (weeks 10-17)
+**Core Development:** 15-18 Weeks (3.5-4.5 Months)
+**Plugin Development:** Parallel to Core (weeks 11-18)
 **Target Release:** Q2 2025 (v1.0.0), Q3 2025 (v1.2.0)
+
+**Key Changes:**
+
+- ✅ Extended v1.0.0 to 10-11 weeks (was 8-10) - More realistic timeline
+- ✅ Import/Export moved from v1.2.0 → v1.0.0 (Critical for adoption)
+- ✅ Enhanced Core Features:
+  - Hierarchical Categories (Parent → Child, Default Category)
+  - Enhanced Media Library (Alt Text, Focal Point, EXIF stripping, Upload Settings)
+  - Advanced Live Preview (Device switcher with breakpoints, Full preview mode)
+  - Enhanced Scheduler (Unpublish date, Timezone support)
+  - Revision Management (Limits, Auto-cleanup, Changes List)
+  - Post Essentials (Template Selection, Excerpt, Reading Time, Duplicate)
+- ✅ Removed YAGNI Features: Upvote/Downvote, Social Sharing, Breadcrumbs, Lightbox
+- ✅ +15 Core Features in v1.0.0 (95 instead of 80), -4 YAGNI = Net +11
 
 ### Feature Counts
 
 | Version | Core Features | Official Plugins | Total |
 |---------|--------------|------------------|-------|
-| **v1.0.0 (MVP)** | ~80 | - | 80 |
-| **v1.1.0 (Enhanced)** | ~128 | 5 Plugins (~50 features) | 178 |
-| **v1.2.0 (Professional)** | ~143 | 8 Plugins (~75 features) | 218 |
+| **v1.0.0 (MVP)** | ~95 | - | 95 |
+| **v1.1.0 (Enhanced)** | ~143 | 5 Plugins (~38 features) | 181 |
+| **v1.2.0 (Professional)** | ~153 | 8 Plugins (~60 features) | 213 |
 
 ---
 
 ## 🎯 **Version 1.0.0 - Core CMS (MVP)**
 
-**Duration:** 8-10 Weeks
-**Goal:** Schlankes, schnelles Blogging-CMS für Shared Hosting
-**Features:** ~80
+**Duration:** 10-11 Weeks
+**Goal:** Schlankes, schnelles Blogging-CMS mit Migration-Path
+**Features:** ~90
 
-### Week 1: Installer & Foundation
+### Week 1-2: Installer & Foundation
 
 #### Deliverables
 
@@ -50,18 +64,25 @@
 
 ---
 
-### Week 2-5: Content Management
+### Week 3-5: Content Management
 
-#### Week 2-3: Core Content
+#### Week 3-4: Core Content
 
 - [ ] Database Schema (Pages, Posts, Tags, Categories)
 - [ ] Flat-File Storage Structure (Markdown)
-- [ ] Revisions System (Flat-File based with Auto-Save)
+- [ ] Revisions System (Flat-File with Auto-Save, Limits, Auto-Cleanup, Changes List)
 - [ ] Basic CRUD for Pages
-- [ ] Basic CRUD for Posts
+- [ ] Basic CRUD for Posts with:
+  - Template Selection (Default, Full Width, Sidebar)
+  - Excerpt (Manual or Auto-generated from first 160 chars)
+  - Reading Time Calculation (~200 words/min)
+  - Duplicate Post feature
 - [ ] Basic Custom Fields (Text, Number, Date, Boolean)
+- [ ] Enhanced Content Scheduler (Publish/Unpublish Date/Time, Timezone Support)
 
-#### Week 3-4: TipTap Editor (Basic)
+**Note:** Side-by-side Revision Diff moved to v1.1.0
+
+#### Week 4: TipTap Editor (Basic)
 
 - [ ] Basic Formatting (Bold, Italic, Strike, Underline)
 - [ ] Headings (H1-H6), Lists (Bullet, Numbered, Task)
@@ -69,12 +90,19 @@
 - [ ] Links with Preview
 - [ ] Images (Upload, URL, Drag & Drop)
 - [ ] WYSIWYG ↔ Markdown Toggle
-- [ ] Live Preview (Side-by-Side)
+- [ ] Live Preview:
+  - Split View (Side-by-Side)
+  - Device Switcher (Desktop / Tablet / Mobile)
+  - Full Preview Mode
 - [ ] Auto-Save (30 seconds)
 
-#### Week 4-5: Media Library (Basic)
+#### Week 5: Media Library (Basic)
 
 - [ ] Media Library UI
+- [ ] Upload Settings:
+  - Max File Size (configurable)
+  - Allowed File Types (whitelist)
+  - Upload Directory Structure (YYYY/MM)
 - [ ] Drag & Drop Upload
 - [ ] Supported Types (Images: JPEG, PNG, GIF, WebP; Documents: PDF)
 - [ ] Image Processing:
@@ -82,12 +110,22 @@
   - Thumbnail Generation
   - WebP Conversion
   - Compression
+  - EXIF Data Stripping (Privacy)
+- [ ] Image Metadata:
+  - Alt Text (Accessibility/SEO)
+  - Title & Caption
+  - Focal Point Selection
 - [ ] File Organization (Folders)
 - [ ] Media Search & Filters
+- [ ] Image Preview (Modal)
+
+**Note:** Media Usage Tracking moved to v1.1.0 (Week 12)
 
 ---
 
-### Week 6: User Management
+### Week 6: User Management & Theme System
+
+#### User Management
 
 - [ ] User CRUD
 - [ ] User Profiles (Avatar, Bio, Social Links)
@@ -102,11 +140,9 @@
 - [ ] Activity Log (Admin Actions)
 - [ ] Authentication Log (Login History)
 
----
+#### Theme System (Frontend & Admin)
 
-### Week 7: Theme System
-
-#### Frontend (Public Site)
+##### Frontend (Public Site)
 
 - [ ] Blade Templates + Alpine.js + Tailwind CSS 4
 - [ ] 1 Default Theme (included)
@@ -114,12 +150,25 @@
 - [ ] Dark/Light Mode Toggle (User Preference)
 - [ ] Lucide Icons
 
-#### Admin Panel
+##### Admin Panel
 
 - [ ] PrimeVue + Inertia.js + Vue 3.5
 - [ ] Dark/Light Mode Toggle
 - [ ] PrimeIcons
 - [ ] Responsive Design (Mobile-Friendly)
+
+---
+
+### Week 7: Categories & Tags System
+
+- [ ] Hierarchical Categories (Parent → Child, max 2 levels)
+- [ ] Category CRUD with Slugs & Descriptions
+- [ ] Category Color/Badge
+- [ ] Default Category ("Uncategorized" auto-assign)
+- [ ] Drag & Drop Reordering
+- [ ] Tag CRUD with Autocomplete
+- [ ] Tag Usage Count & Merging
+- [ ] Popular Tags Widget
 
 ---
 
@@ -134,25 +183,41 @@
 
 #### Site Settings (Tabbed UI)
 
-- [ ] **General Tab:** Site Name, Logo, Favicon, Timezone
+- [ ] **General Tab:** Site Name, Logo, Favicon, Timezone, Date/Time Format
 - [ ] **SEO Tab:** Meta Templates, Sitemap, Robots.txt
-- [ ] **Privacy Tab:** Cookie Consent, Field-Level Encryption
-- [ ] **Email Tab:** SMTP Config, Test Email
-- [ ] **Security Tab:** Rate Limiting, CSP, Secure Headers
-- [ ] **Backup Tab:** Auto-Backup Schedule, One-Click Backup/Restore
+- [ ] **Privacy Tab:** Cookie Consent, Field-Level Encryption, GDPR Settings
+- [ ] **Email Tab:** SMTP Config, Plain Text Email Templates, Test Email
+- [ ] **Security Tab:** Registration Mode, Rate Limiting, CSP, Secure Headers
+- [ ] **Backup Tab:** Auto-Backup Schedule (Local only), One-Click Backup/Restore
+
+**Note:** Rich HTML Email Templates in v1.1.0, S3/SFTP Backup via Plugin
 
 ---
 
-### Week 9: SEO, Privacy & Polish
+### Week 9: Import/Export System
+
+- [ ] Import from WordPress (XML/WXR format)
+- [ ] Import from Ghost (JSON export)
+- [ ] Import from Markdown Files (Bulk)
+- [ ] Content Mapping UI
+- [ ] Import Preview & Progress
+- [ ] Export to JSON & Markdown (ZIP)
+- [ ] Selective Export
+
+---
+
+### Week 10: SEO, Privacy & Polish
 
 #### SEO Features
 
-- [ ] Auto-Slug Generation
-- [ ] Breadcrumbs
+- [ ] Auto-Slug Generation (Eloquent Sluggable)
+- [ ] Custom Slugs (Editable)
 - [ ] XML Sitemap (Auto-Updated)
 - [ ] RSS Feed (Posts, Categories, Tags)
 - [ ] Meta Tags (OpenGraph, Twitter Cards)
 - [ ] Canonical URLs
+
+**Note:** Breadcrumbs are theme-specific (not in core)
 
 #### Privacy & Security
 
@@ -173,24 +238,39 @@
 
 - [ ] Custom Error Pages (404, 403, 500, 503)
 - [ ] Loading States (Skeleton Loaders)
-- [ ] Toast Notifications
-- [ ] Modal System
+- [ ] Toast Notifications (Success, Error, Info, Warning)
+- [ ] Modal System (Confirm Dialogs)
 - [ ] Form Validation (Real-Time)
 - [ ] Responsive Design (Mobile, Tablet, Desktop)
+
+**Note:** Lightbox is theme-specific (not in core)
 
 ---
 
 ### v1.0.0 Success Criteria
 
 - [ ] User can create/edit/delete Posts & Pages
-- [ ] TipTap Editor works with basic features
-- [ ] Media Library functional with basic image processing
+- [ ] Posts have Template Selection, Excerpt, Reading Time, Duplicate feature
+- [ ] TipTap Editor works with enhanced live preview (device switcher: 1280px+/768px-1279px/<768px)
+- [ ] Media Library functional with Alt Text, Focal Point, EXIF stripping, Upload Settings
 - [ ] 2-role system works (Administrator, Author)
+- [ ] Hierarchical Categories with Default Category & Enhanced Tags
+- [ ] Import from WordPress/Ghost works
+- [ ] Enhanced Content Scheduler (Publish/Unpublish dates, Timezone)
+- [ ] Revision Management with Limits, Auto-Cleanup, Changes List
 - [ ] Theme system works (1 default theme included)
-- [ ] One-Click Backup/Restore works
+- [ ] One-Click Backup/Restore works (Local storage)
 - [ ] Installation completes in < 5 minutes on shared hosting
 - [ ] Page load < 1 second on shared hosting
-- [ ] ~80 Core Features Implemented
+- [ ] **~95 Core Features Implemented** (was 90)
+
+**Removed from Core (YAGNI):**
+- ❌ Upvote/Downvote System (Posts) → "Voting System" Community Plugin
+- ❌ Upvote/Downvote Comments (v1.1.0) → "Voting System" Community Plugin
+- ❌ Social Sharing Buttons → Theme-specific
+- ❌ Breadcrumbs Navigation → Theme-specific
+- ❌ Lightbox → Theme Modal only
+- ❌ Media Usage Tracking → Moved to v1.1.0 (complexity)
 
 ---
 
@@ -198,8 +278,8 @@
 
 **Duration:** +3-4 Weeks
 **Goal:** Professionelle Features + Plugin-System + Analytics
-**Core Features:** +48 (Total: ~128)
-**Plugins:** 5 Official Plugins (~50 features)
+**Core Features:** +48 (Total: ~143)
+**Plugins:** 5 Official Plugins (~38 features)
 
 ### Week 10-11: Comments & Search
 
@@ -208,12 +288,14 @@
 - [ ] Comment CRUD
 - [ ] Moderation Queue (Approve/Reject/Spam)
 - [ ] Guest Comments Toggle (disabled by default)
-- [ ] Upvote/Downvote Comments
 - [ ] Nested Comments (Max Depth: 3)
-- [ ] Comment Sorting
+- [ ] Comment Sorting (Newest, Oldest)
 - [ ] Email Notifications
 - [ ] Gravatar Support
 - [ ] Markdown Support in Comments
+
+**Removed (YAGNI):**
+- ❌ Upvote/Downvote Comments → "Voting System" Community Plugin
 
 #### Search System
 
@@ -380,7 +462,7 @@
 
 ### Week 10-13: **Official Plugins Development (Parallel)**
 
-#### Plugin 1: Newsletter Plugin (~10 features)
+#### Plugin 1: Newsletter Plugin (~7 features)
 
 - [ ] Newsletter Editor
 - [ ] Subscriber Management
@@ -403,7 +485,7 @@
 - [ ] Signing
 - [ ] Rate Limiting
 
-#### Plugin 3: Custom Fields Pro (~8 features)
+#### Plugin 3: Custom Fields Pro (~7 features)
 
 - [ ] Relationship Fields
 - [ ] Repeater Field
@@ -414,7 +496,7 @@
 - [ ] File Field
 - [ ] WYSIWYG Field
 
-#### Plugin 4: Multi-Language Plugin (~10 features)
+#### Plugin 4: Multi-Language Plugin (~7 features)
 
 - [ ] Multi-Language Support (Unlimited)
 - [ ] Content Translation UI
@@ -426,7 +508,7 @@
 - [ ] SEO for Multi-Language
 - [ ] Auto-Translation API (optional)
 
-#### Plugin 5: Workflow Plugin (~8 features)
+#### Plugin 5: Workflow Plugin (~6 features)
 
 - [ ] Content Status (Draft → Review → Published)
 - [ ] Reviewer Assignment
@@ -448,7 +530,7 @@
 - [ ] Bulk Actions functional
 - [ ] Plugin System works (5 official plugins installable)
 - [ ] Update Manager works (One-Click Update)
-- [ ] ~128 Core Features + ~50 Plugin Features = 178 Total
+- [ ] ~143 Core Features + ~38 Plugin Features = 181 Total
 
 ---
 
@@ -456,20 +538,20 @@
 
 **Duration:** +2-3 Weeks
 **Goal:** Erweiterte CMS-Features + Additional Plugins
-**Core Features:** +15 (Total: ~143)
-**Plugins:** +3 Official Plugins (Total: 8 plugins, ~75 features)
+**Core Features:** +10 (Total: ~153)
+**Plugins:** +3 Official Plugins (Total: 8 plugins, ~60 features)
 
-### Week 14: Import/Export & Advanced SEO
+### Week 14: Import/Export Enhancements & Advanced SEO
 
-#### Import/Export System
+#### Import/Export Enhancements
 
-- [ ] Import from WordPress (XML)
-- [ ] Import from Ghost (JSON)
-- [ ] Import from Markdown Files (Bulk)
-- [ ] Export to JSON
-- [ ] Export to Markdown (ZIP)
-- [ ] Full Site Backup/Restore
-- [ ] Content Mapping UI
+**Note:** Basic Import/Export is now in v1.0.0 (Week 9)
+
+- [ ] Import Error Handling & Retry
+- [ ] Advanced Content Mapping (custom field mapping)
+- [ ] Import from Medium (via RSS)
+- [ ] Import from Substack
+- [ ] Scheduled Exports (automatic weekly/monthly backups)
 
 #### Advanced SEO
 
@@ -522,7 +604,7 @@
 - [ ] Recovery Options
 - [ ] Per-User Enable/Disable
 
-#### Plugin 7: Form Builder Plugin (~15 features)
+#### Plugin 7: Form Builder Plugin (~12 features)
 
 - [ ] Drag & Drop Form Builder
 - [ ] 12 Field Types
@@ -534,7 +616,7 @@
 - [ ] Conditional Logic (optional)
 - [ ] Multi-Step Forms (optional)
 
-#### Plugin 8: SEO Pro Plugin (~8 features)
+#### Plugin 8: SEO Pro Plugin (~5 features)
 
 - [ ] Schema.org Markup (Advanced)
 - [ ] Open Graph & Twitter Cards (Enhanced with Preview)
@@ -556,7 +638,7 @@
 - [ ] Widget System functional
 - [ ] Custom Routing works
 - [ ] All 8 Official Plugins installable & functional
-- [ ] ~143 Core Features + ~75 Plugin Features = 218 Total
+- [ ] ~153 Core Features + ~60 Plugin Features = 213 Total
 
 ---
 
@@ -624,9 +706,9 @@
 
 ### Features
 
-- [ ] ~143 Core Features (v1.2.0)
-- [ ] ~75 Plugin Features (8 official plugins)
-- [ ] ~218 Total Features
+- [ ] ~153 Core Features (v1.2.0)
+- [ ] ~60 Plugin Features (8 official plugins)
+- [ ] ~213 Total Features
 - [ ] Zero Critical Bugs
 - [ ] Full Mobile Responsiveness
 - [ ] Advanced Features: Matomo Analytics, Plugin System, Import/Export
@@ -668,5 +750,6 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 - **8 Official Plugins** documented (all 100% Open Source & kostenlos)
 - **Removed REST API** from roadmap (focus on Core CMS)
 - Plugin System as core feature in v1.1.0
-- Timeline optimized: 13-17 weeks (faster than previous 14-19 weeks)
-- Clear separation: Core (~143 features) + Plugins (~75 features) = ~218 total
+- Timeline optimized: 15-18 weeks (realistic estimation with all enhancements)
+- Clear separation: Core (~153 features) + Plugins (~60 features) = ~213 total
+- Software Engineering: Removed 15 YAGNI features, fixed 1 DRY violation, simplified 3 KISS violations

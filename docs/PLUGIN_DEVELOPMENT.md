@@ -170,12 +170,122 @@ App\Events\CacheCleared
 
 ## 🎨 Frontend Integration (Blade)
 
+### Basic Blade Template
+
 ```blade
 {{-- resources/views/widget.blade.php --}}
 <div class="my-plugin-widget">
     <h3>{{ trans('my-plugin::messages.title') }}</h3>
     <p>{{ $content }}</p>
 </div>
+```
+
+### Frontend Hooks System
+
+PineCMS provides a hooks system for plugins to inject content into frontend templates.
+
+#### Available Frontend Hooks
+
+```php
+// In your theme's layout.blade.php:
+
+<!DOCTYPE html>
+<html>
+<head>
+    @hook('head.before')
+
+    <title>{{ config('app.name') }}</title>
+
+    @hook('head')
+
+    @hook('head.after')
+</head>
+<body>
+    @hook('body.before')
+
+    <main>
+        @hook('content.before')
+
+        @yield('content')
+
+        @hook('content.after')
+    </main>
+
+    <aside>
+        @hook('sidebar')
+    </aside>
+
+    <footer>
+        @hook('footer')
+    </footer>
+
+    @hook('footer.scripts')
+    @hook('body.after')
+</body>
+</html>
+```
+
+#### Registering Frontend Hooks in Your Plugin
+
+```php
+<?php
+
+namespace Plugins\MyPlugin;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+
+class PluginServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        // Register the @hook Blade directive
+        Blade::directive('hook', function ($expression) {
+            return "<?php echo app('hooks')->render({$expression}); ?>";
+        });
+
+        // Register hook content
+        app('hooks')->register('footer', function() {
+            return view('my-plugin::footer-widget')->render();
+        });
+
+        app('hooks')->register('head', function() {
+            return '<link rel="stylesheet" href="' . asset('plugins/my-plugin/style.css') . '">';
+        });
+
+        app('hooks')->register('footer.scripts', function() {
+            return '<script src="' . asset('plugins/my-plugin/script.js') . '"></script>';
+        });
+    }
+}
+```
+
+#### Hook Priority (Optional)
+
+Control the order of hook execution when multiple plugins register the same hook:
+
+```php
+// Higher priority executes first (default: 10)
+app('hooks')->register('footer', function() {
+    return '<p>High priority content</p>';
+}, priority: 5);
+
+app('hooks')->register('footer', function() {
+    return '<p>Low priority content</p>';
+}, priority: 20);
+```
+
+#### Passing Data to Hooks
+
+```php
+app('hooks')->register('sidebar', function($data) {
+    return view('my-plugin::sidebar', [
+        'posts' => $data['recent_posts'] ?? []
+    ])->render();
+});
+
+// Themes can pass data to hooks:
+@hook('sidebar', ['recent_posts' => $recentPosts])
 ```
 
 ---

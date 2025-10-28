@@ -167,3 +167,4 @@ temp/
 # IMPORTANT: Lock Files MUST BE COMMITTED
 # composer.lock and package-lock.json are TRACKED for version consistency
 ###############################################################################
+CLAUDE.*.md.backup

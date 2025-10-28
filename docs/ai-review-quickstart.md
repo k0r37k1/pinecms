@@ -7,6 +7,7 @@
 ## ✅ Setup Checklist
 
 ### 1. Qodo Merge (Already Done! ✅)
+
 - [x] Workflow erstellt: `.github/workflows/qodo-review.yml`
 - [x] Config erstellt: `.qodo.toml`
 - [x] Läuft automatisch bei jedem PR
@@ -18,20 +19,24 @@
 ### 2. CodeRabbit (5 Min Setup)
 
 #### Step 1: Install GitHub App
+
 ```bash
 open https://app.coderabbit.ai/login
 ```
 
 #### Step 2: Login & Authorize
+
 1. Click "Login with GitHub"
 2. Authorize CodeRabbit
 
 #### Step 3: Select Repository
+
 1. Choose your organization/account
 2. Select "pinecms" repository
 3. Click "Install & Authorize"
 
 #### Step 4: Verify Installation
+
 - Check `.coderabbit.yaml` exists (✅ already created)
 - CodeRabbit will comment on your next PR
 
@@ -41,7 +46,8 @@ open https://app.coderabbit.ai/login
 
 ## 🧪 Test Both Tools (Create Test PR)
 
-### Create Test PR:
+### Create Test PR
+
 ```bash
 # 1. Create test branch
 git checkout -b test/ai-code-review
@@ -86,7 +92,8 @@ gh pr create --title "Test: AI Code Review" --body "Testing Qodo Merge + CodeRab
 
 ## 📝 Expected Results
 
-### Qodo Merge Will Comment:
+### Qodo Merge Will Comment
+
 ```
 ✨ PR Review Summary
 
@@ -111,7 +118,8 @@ Issues Found: 4
 
 ---
 
-### CodeRabbit Will Comment:
+### CodeRabbit Will Comment
+
 ```
 🤖 CodeRabbit Review
 
@@ -141,7 +149,7 @@ Suggestions: 3/3 can be auto-applied
 
 ## 🎯 Commands to Try
 
-### In the Test PR:
+### In the Test PR
 
 ```bash
 # Qodo Commands
@@ -173,14 +181,16 @@ rm app/Http/Controllers/TestController.php
 
 ## 🚀 Daily Usage
 
-### Every PR You Create:
+### Every PR You Create
+
 1. **Push code** → Both tools review automatically (~5 min)
 2. **Read reviews** → Check comments from both tools
 3. **Fix issues** → Address critical/high priority items
 4. **Ask questions** → Use `@qodo-merge` or `@coderabbitai`
 5. **Merge** → Once reviews are satisfied
 
-### Pro Tips:
+### Pro Tips
+
 - **Read both reviews** - They complement each other
 - **Fix batches** - Don't fix one issue at a time
 - **Learn patterns** - Notice recurring suggestions
@@ -190,9 +200,10 @@ rm app/Http/Controllers/TestController.php
 
 ## 📊 Monitoring
 
-### Check Review Stats:
+### Check Review Stats
 
 **Qodo Merge:**
+
 ```bash
 # Check workflow runs
 gh run list --workflow=qodo-review.yml
@@ -202,6 +213,7 @@ gh run view <run-id>
 ```
 
 **CodeRabbit:**
+
 ```bash
 # Open dashboard
 open https://app.coderabbit.ai/dashboard
@@ -211,9 +223,10 @@ open https://app.coderabbit.ai/dashboard
 
 ## ⚙️ Customization
 
-### Adjust Review Strictness:
+### Adjust Review Strictness
 
 **Make Qodo Less Strict:**
+
 ```toml
 # Edit .qodo.toml
 [pr_reviewer]
@@ -221,6 +234,7 @@ num_code_suggestions = 3  # Default: 5
 ```
 
 **Make CodeRabbit Less Strict:**
+
 ```yaml
 # Edit .coderabbit.yaml
 reviews:
@@ -232,6 +246,7 @@ reviews:
 ## 🆘 Troubleshooting
 
 ### Qodo Not Working?
+
 ```bash
 # Check workflow status
 gh run list --workflow=qodo-review.yml --status=failure
@@ -241,6 +256,7 @@ gh run list --workflow=qodo-review.yml --status=failure
 ```
 
 ### CodeRabbit Not Working?
+
 ```bash
 # Check GitHub App installation
 open https://github.com/settings/installations

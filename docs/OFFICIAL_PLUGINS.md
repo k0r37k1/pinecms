@@ -27,7 +27,7 @@
 **Requires:** PineCMS >= 1.1.0
 **Status:** Geplant für v1.1.0 Release
 
-#### Features (~10 Features)
+#### Features (~7 Features)
 
 - [ ] Newsletter Editor (separate von Posts, eigenes Content-Type)
 - [ ] Subscriber Management (separate von Users):
@@ -37,9 +37,8 @@
 - [ ] Email Campaign Scheduling:
   - Send Now
   - Schedule for Later
-  - Recurring Newsletters (Weekly, Monthly)
 - [ ] Newsletter Templates:
-  - Drag & Drop Template Builder
+  - Template Selection (5 vordefinierte Templates)
   - HTML/Text Preview
   - Responsive Email Templates (Mobile-First)
 - [ ] Privacy-Friendly Tracking (optional):
@@ -57,15 +56,13 @@
 - [ ] Subscriber Segmentation:
   - Filter by Tags
   - Filter by Categories
-  - Custom Segments
-- [ ] A/B Testing:
-  - Subject Line Testing
-  - Content Variants
-  - Winner Selection (Auto/Manual)
-- [ ] Newsletter Archive:
-  - Public Archive Page (all past newsletters)
-  - Private Archive (for subscribers only)
-  - RSS Feed for Newsletter Archive
+
+**Removed (YAGNI):**
+- ❌ A/B Testing → Enterprise Feature, Community Plugin or v2.0
+- ❌ Recurring Newsletters → v2.0
+- ❌ Newsletter Archive RSS Feed → Nobody needs RSS for archives
+- ❌ Custom Segments → Filter by Tags/Categories is sufficient
+- ❌ Drag & Drop Template Builder → Simplified to Template Selection
 
 #### Use Cases
 
@@ -145,7 +142,7 @@ Webhooks sind ein fortgeschrittenes Feature für Automation & Integrations. Nich
 **Requires:** PineCMS >= 1.0.0
 **Status:** Geplant für v1.1.0 Release
 
-#### Features (~8 Advanced Field Types)
+#### Features (~7 Advanced Field Types)
 
 - [ ] **Relationship Fields:**
   - Link to Posts
@@ -164,38 +161,42 @@ Webhooks sind ein fortgeschrittenes Feature für Automation & Integrations. Nich
   - Image Captions & Alt Text
   - Thumbnail Preview
 - [ ] **JSON Field:**
-  - JSON Editor (Monaco Editor)
-  - Syntax Highlighting
+  - JSON Textarea with Syntax Highlighting
   - Validation
-  - Schema Validation (optional)
 - [ ] **Color Picker:**
   - Hex, RGB, HSL
   - Opacity/Alpha Support
   - Preset Colors
   - Recent Colors
 - [ ] **Rich Text Field:**
-  - Full TipTap Editor instance
+  - TipTap Editor instance
+  - Size Option (Full/Mini)
   - Independent formatting
-  - Media Embedding
+  - Media Embedding (Full mode only)
 - [ ] **File Field:**
   - Upload any file type
   - File Preview
   - File Metadata
-- [ ] **WYSIWYG Field:**
-  - Mini TipTap instance
-  - Basic formatting only
-  - Lightweight
+
+**Simplified (KISS):**
+- JSON Field: Removed Monaco Editor → Simple Textarea with Syntax Highlighting
+- JSON Field: Schema Validation → Removed (optional in v2.0)
+
+**Merged (DRY):**
+- ❌ "Rich Text Field" + "WYSIWYG Field" → **ONE** "Rich Text Field" with Size Option (Full/Mini)
 
 #### Use Cases
 
 - 📁 Portfolio Websites (Project Fields: Screenshots, Tech Stack, Live URL)
-- 🏨 Verzeichnisse (Hotels, Restaurants: Address, Phone, Hours)
-- 🎬 Event-Sites (Event Fields: Date, Location, Tickets)
+- 🏨 Directories (Hotels, Restaurants: Custom repeater fields)
+- 🎬 Event-Sites (Event Fields: Date, Location, Registration forms)
 - 📚 Documentation (Code Examples, API References)
 
 #### Why Plugin?
 
 Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind für spezielle Use Cases (Portfolios, Verzeichnisse, komplexe Content-Strukturen).
+
+**Note:** Specialized field types like Address Fields (Street, City, ZIP, Country) and Google Maps Integration are available as separate community plugins to keep this plugin focused.
 
 ---
 
@@ -205,7 +206,7 @@ Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind f
 **Requires:** PineCMS >= 1.1.0
 **Status:** Geplant für v1.1.0 Release
 
-#### Features (~10 Features)
+#### Features (~7 Features)
 
 - [ ] Multi-Language Support:
   - Unlimited Languages
@@ -229,25 +230,20 @@ Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind f
   - Auto-Detect Browser Language
 - [ ] Language-Specific URLs:
   - URL Prefix (/en/, /de/)
-  - Domain-Based (en.example.com, de.example.com)
   - Subdirectory (/en/, /de/)
 - [ ] Fallback Language:
   - Default Language Selection
   - Fallback if translation missing
-- [ ] Translation Memory:
-  - Reuse previous translations
-  - Translation Suggestions
-- [ ] Language Switcher Widget:
-  - Frontend Widget
-  - Admin Panel Language Switcher
 - [ ] SEO for Multi-Language:
   - hreflang Tags (automatic)
   - Language-Specific Sitemap
   - Language-Specific RSS
-- [ ] Auto-Translation API (optional):
-  - DeepL Integration (API Key required)
-  - Google Translate Integration
-  - Manual Review after auto-translation
+
+**Removed (YAGNI):**
+- ❌ Domain-Based URLs (en.example.com) → Nobody uses this for blogs, URL Prefix is sufficient
+- ❌ Translation Memory → Enterprise Translation Tool feature, v2.0 or remove
+- ❌ Auto-Translation API → Should be separate Community Plugin
+- ❌ Language Switcher Widget → Merged into "Locale Switcher (Frontend)"
 
 #### Use Cases
 
@@ -268,7 +264,7 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
 **Requires:** PineCMS >= 1.1.0
 **Status:** Geplant für v1.1.0 Release
 
-#### Features (~8 Features)
+#### Features (~6 Features)
 
 - [ ] Content Status Workflow:
   - **Draft** - Work in progress
@@ -283,7 +279,6 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
   - Reject Button (send back to draft)
   - Request Changes (with feedback)
 - [ ] Review Comments:
-  - Inline Comments (per paragraph)
   - General Feedback
   - Comment Thread (Discussion)
 - [ ] Workflow History:
@@ -296,13 +291,11 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
   - Approval Notification (to Author)
   - Rejection Notification (to Author)
   - Changes Requested (to Author)
-- [ ] Workflow Dashboard:
-  - Pending Reviews (Reviewer's view)
-  - My Submissions (Author's view)
-  - Review Statistics
-- [ ] Custom Workflow States (optional):
-  - Add custom states (e.g., "Final Review", "Legal Check")
-  - Custom workflow rules
+
+**Removed (YAGNI/KISS):**
+- ❌ Inline Comments (per paragraph) → Too complex for MVP, General Feedback is sufficient, v2.0
+- ❌ Workflow Dashboard → Removed, use Admin Panel filters instead
+- ❌ Custom Workflow States → 3 states (Draft, Review, Published) are sufficient, v2.0
 
 #### Use Cases
 
@@ -366,7 +359,7 @@ Solo-Blogger brauchen keinen Workflow. Nur Teams mit mehreren Autoren und Review
 **Requires:** PineCMS >= 1.1.0
 **Status:** Geplant für v1.2.0 Release
 
-#### Features (~15 Features)
+#### Features (~12 Features)
 
 - [ ] Drag & Drop Form Builder:
   - Visual Form Editor
@@ -407,13 +400,10 @@ Solo-Blogger brauchen keinen Workflow. Nur Teams mit mehreren Autoren und Review
   - reCAPTCHA v2 Integration (optional)
   - hCaptcha Integration (optional)
   - Rate Limiting (submissions per IP)
-- [ ] Conditional Logic (optional):
-  - Show/Hide fields based on other fields
-  - Required if...
-- [ ] Multi-Step Forms (optional):
-  - Step-by-Step wizard
-  - Progress Indicator
-  - Save & Continue Later
+
+**Removed (YAGNI/Enterprise):**
+- ❌ Conditional Logic → Enterprise Feature, too complex for v1.0, v2.0
+- ❌ Multi-Step Forms (Step-by-Step wizard, Save & Continue Later) → Enterprise Feature, v2.0
 
 #### Use Cases
 
@@ -435,7 +425,7 @@ Nicht jede Website braucht Formulare. Core hat keine Formular-Funktionalität, d
 **Requires:** PineCMS >= 1.2.0
 **Status:** Geplant für v1.2.0 Release
 
-#### Features (~8 Features)
+#### Features (~5 Features)
 
 - [ ] Schema.org Markup (Advanced):
   - Article Schema (automatic)
@@ -449,35 +439,29 @@ Nicht jede Website braucht Formulare. Core hat keine Formular-Funktionalität, d
   - Custom OG Image per Post/Page
   - Custom Twitter Card Type
   - Preview Generator (see how it looks on social media)
-- [ ] AMP Support (Accelerated Mobile Pages):
-  - Auto-Generate AMP Pages
-  - AMP Validator
-  - AMP Analytics Support
 - [ ] Advanced Sitemap:
   - Sitemap Priority per Post/Page
   - Image Sitemap
   - Video Sitemap
   - News Sitemap (for Google News)
-- [ ] Redirect Management (Enhanced):
-  - Import Redirects (CSV)
-  - Redirect Chains Detection
-  - Redirect Performance Tracking
 - [ ] Broken Link Checker:
   - Scan all Posts/Pages for broken links
   - External Link Checking
   - Internal Link Checking
   - Email Alerts (when broken link found)
   - Fix Suggestions
-- [ ] Canonical URL Management:
-  - Auto-Canonical (default)
-  - Custom Canonical per Post/Page
-  - Cross-Domain Canonical
 - [ ] SEO Analysis (per Post/Page):
   - Keyword Density
   - Readability Score
   - Meta Length Check (Title, Description)
   - Image Alt Text Check
   - Internal/External Link Count
+
+**Removed (Deprecated/DRY):**
+- ❌ AMP Support → Google deprecated AMP in 2021, nobody uses it anymore
+- ❌ Redirect Management (Enhanced) → DRY violation, Core v1.2.0 already has Redirect Management
+  - Note: Import Redirects (CSV) merged into Core Redirect Management feature
+- ❌ Canonical URL Management → Should be Core feature, not plugin
 
 #### Use Cases
 
@@ -552,6 +536,18 @@ Die Community kann eigene Plugins entwickeln und teilen:
 - 🎥 Video Hosting (YouTube, Vimeo playlists)
 - 📈 Google Analytics 4 Integration
 
+**Potential Community Plugins:**
+
+- 👍 Voting System Plugin (Upvote/Downvote for Posts & Comments, Reddit/HackerNews-style)
+- 📍 Address & Location Plugin (Address Fields, Google Maps, Geocoding)
+- 🌐 Advanced Multi-Language (DeepL Translation, Language Detection)
+- 🎨 Advanced Page Builder (Visual Drag & Drop Layouts)
+- 📊 Advanced Analytics (Heatmaps, Session Recording, A/B Testing)
+- 🛡️ Advanced Security (IP Whitelist/Blacklist, Login Attempts Limit, Security Headers)
+- 🎨 Social Sharing Plugin (Share Buttons for Twitter, Facebook, LinkedIn, etc.)
+- 🔄 Newsletter A/B Testing Plugin (Subject Line & Content Testing)
+- 📅 Recurring Newsletters Plugin (Weekly/Monthly Automation)
+
 **Plugin Directory:** [plugins.pinecms.org](https://plugins.pinecms.org) (geplant für v2.0)
 
 ---
@@ -560,15 +556,21 @@ Die Community kann eigene Plugins entwickeln und teilen:
 
 | Plugin | Features | Requires | Status |
 |--------|----------|----------|--------|
-| **Newsletter** | ~10 | v1.1.0+ | Geplant |
+| **Newsletter** | ~7 | v1.1.0+ | Geplant |
 | **Webhooks** | ~11 | v1.1.0+ | Geplant |
-| **Custom Fields Pro** | ~8 | v1.0.0+ | Geplant |
-| **Multi-Language** | ~10 | v1.1.0+ | Geplant |
-| **Workflow** | ~8 | v1.1.0+ | Geplant |
+| **Custom Fields Pro** | ~7 | v1.0.0+ | Geplant |
+| **Multi-Language** | ~7 | v1.1.0+ | Geplant |
+| **Workflow** | ~6 | v1.1.0+ | Geplant |
 | **Two-Factor Auth** | ~5 | v1.1.0+ | Geplant |
-| **Form Builder** | ~15 | v1.1.0+ | Geplant |
-| **SEO Pro** | ~8 | v1.2.0+ | Geplant |
-| **Total** | **~75** | - | - |
+| **Form Builder** | ~12 | v1.1.0+ | Geplant |
+| **SEO Pro** | ~5 | v1.2.0+ | Geplant |
+| **Total** | **~60** | - | - |
+
+**Software Engineering Improvements:**
+- Removed 15 YAGNI features (Enterprise/overengineered features → v2.0 or Community Plugins)
+- Fixed 1 DRY violation (merged Rich Text + WYSIWYG fields)
+- Simplified 3 KISS violations (JSON Editor, Template Builder, Workflow)
+- Eliminated deprecated features (AMP Support)
 
 ---
 

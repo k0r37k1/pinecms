@@ -24,6 +24,7 @@ Already configured via `.github/workflows/qodo-review.yml`
 **Customization:** Edit `.qodo.toml` for project-specific rules.
 
 **Commands in PR:**
+
 ```bash
 # Request review
 @qodo-merge review
@@ -48,6 +49,7 @@ Already configured via `.github/workflows/qodo-review.yml`
 **One-time Setup:**
 
 1. **Install GitHub App:**
+
    ```
    https://app.coderabbit.ai/login
    ```
@@ -59,6 +61,7 @@ Already configured via `.github/workflows/qodo-review.yml`
 3. **Configuration:** `.coderabbit.yaml` (already created)
 
 **Commands in PR:**
+
 ```bash
 # Request review
 @coderabbitai review
@@ -77,7 +80,7 @@ Already configured via `.github/workflows/qodo-review.yml`
 
 ## 📋 Review Workflow
 
-### When You Create a PR:
+### When You Create a PR
 
 ```mermaid
 graph LR
@@ -96,6 +99,7 @@ graph LR
 ```
 
 **Timeline:**
+
 - **Qodo Merge:** ~2-3 minutes
 - **CodeRabbit:** ~1-2 minutes
 - **Total:** ~5 minutes per PR
@@ -104,51 +108,59 @@ graph LR
 
 ## 🎯 What Each Tool Checks
 
-### Qodo Merge Focus:
+### Qodo Merge Focus
 
 ✅ **Codebase Context**
+
 - Cross-file dependencies
 - Architecture consistency
 - Pattern matching across repo
 
 ✅ **Test Generation**
+
 - PHPUnit tests for new features
 - Edge case coverage
 - Happy path tests
 
 ✅ **Documentation**
+
 - PHPDoc blocks
 - Missing type hints
 - Unclear variable names
 
 ✅ **Code Improvements**
+
 - Refactoring suggestions
 - Performance optimizations
 - Code smell detection
 
 ---
 
-### CodeRabbit Focus:
+### CodeRabbit Focus
 
 ✅ **Laravel Best Practices**
+
 - PHPStan Level 8 checks
 - Laravel Pint compliance
 - FormRequest validation
 - Eloquent N+1 queries
 
 ✅ **Security**
+
 - SQL injection
 - XSS vulnerabilities
 - CSRF protection
 - Mass assignment
 
 ✅ **Vue/Inertia**
+
 - Composition API usage
 - TypeScript errors
 - ESLint violations
 - Component structure
 
 ✅ **Critical Issues**
+
 - Breaking changes
 - Performance bottlenecks
 - Security vulnerabilities
@@ -159,7 +171,8 @@ graph LR
 
 Both tools enforce these project rules:
 
-### PHP Rules:
+### PHP Rules
+
 ```yaml
 ✅ Must have: declare(strict_types=1);
 ✅ Must use: config() not env()
@@ -168,7 +181,8 @@ Both tools enforce these project rules:
 ✅ Must use: FormRequest for validation
 ```
 
-### Vue Rules:
+### Vue Rules
+
 ```yaml
 ✅ Must use: Composition API
 ✅ Must use: TailwindCSS (no inline styles)
@@ -182,11 +196,13 @@ Both tools enforce these project rules:
 ## 💡 Best Practices
 
 ### 1. Read Both Reviews
+
 - **Qodo** may catch architectural issues
 - **CodeRabbit** may catch Laravel-specific bugs
 - Both are valuable!
 
 ### 2. Ask Questions
+
 ```bash
 # In PR comments:
 @qodo-merge ask "Why is this a problem?"
@@ -194,16 +210,19 @@ Both tools enforce these project rules:
 ```
 
 ### 3. Batch Fix Issues
+
 - Don't fix one issue at a time
 - Group related fixes in one commit
 - Push once → Both tools re-review
 
 ### 4. Use Suggested Code
+
 - Both tools suggest code fixes
 - CodeRabbit: Click "Apply Suggestion"
 - Qodo: Copy suggested code from comment
 
 ### 5. Learn From Reviews
+
 - Reviews help you improve
 - Notice patterns in suggestions
 - Apply learnings to future code
@@ -212,12 +231,14 @@ Both tools enforce these project rules:
 
 ## 🎓 Learning Resources
 
-### Qodo Merge:
+### Qodo Merge
+
 - [Docs](https://qodo-merge-docs.qodo.ai/)
 - [Commands](https://qodo-merge-docs.qodo.ai/usage-guide/commands/)
 - [GitHub](https://github.com/qodo-ai/pr-agent)
 
-### CodeRabbit:
+### CodeRabbit
+
 - [Docs](https://docs.coderabbit.ai/)
 - [Laravel Guide](https://docs.coderabbit.ai/guides/laravel)
 - [Trust Center](https://trust.coderabbit.ai/)
@@ -226,7 +247,8 @@ Both tools enforce these project rules:
 
 ## 📊 Metrics & Insights
 
-### Track Improvement:
+### Track Improvement
+
 ```bash
 # Check review stats
 # Qodo: See PR comments count
@@ -238,7 +260,8 @@ Both tools enforce these project rules:
 - Code quality improvements
 ```
 
-### Expected Benefits:
+### Expected Benefits
+
 - **50% faster reviews** (vs. manual)
 - **95% bug detection** rate
 - **25% time savings** (overall development)
@@ -247,13 +270,15 @@ Both tools enforce these project rules:
 
 ## 🔐 Privacy & Security
 
-### Qodo Merge:
+### Qodo Merge
+
 - ✅ Self-hosted option available
 - ✅ Code analyzed in ephemeral containers
 - ✅ No code retention after review
 - ✅ Open source (transparency)
 
-### CodeRabbit:
+### CodeRabbit
+
 - ✅ SOC2 Type II certified
 - ✅ SSL encrypted
 - ✅ No code stored after review
@@ -265,12 +290,14 @@ Both tools enforce these project rules:
 
 ## 💰 Cost Tracking
 
-### Current Setup (Solo Developer):
+### Current Setup (Solo Developer)
+
 - **Qodo Merge:** FREE (75 PRs/month)
 - **CodeRabbit:** $12/month (after 14-day trial)
 - **Total:** ~$12/month
 
-### Future (Team of 5):
+### Future (Team of 5)
+
 - **Qodo Merge:** $150/month
 - **CodeRabbit:** $60/month
 - **Recommendation:** Use CodeRabbit for teams
@@ -279,7 +306,8 @@ Both tools enforce these project rules:
 
 ## 🆘 Troubleshooting
 
-### Qodo Merge Not Running:
+### Qodo Merge Not Running
+
 ```bash
 # Check workflow logs
 gh run list --workflow=qodo-review.yml
@@ -288,7 +316,8 @@ gh run list --workflow=qodo-review.yml
 @qodo-merge review
 ```
 
-### CodeRabbit Not Commenting:
+### CodeRabbit Not Commenting
+
 ```bash
 # Check GitHub App permissions
 # Settings → Integrations → CodeRabbit
@@ -297,7 +326,8 @@ gh run list --workflow=qodo-review.yml
 @coderabbitai review
 ```
 
-### Too Many Comments:
+### Too Many Comments
+
 ```yaml
 # Edit .coderabbit.yaml
 reviews:
@@ -312,7 +342,8 @@ num_code_suggestions = 3  # Reduce from 5
 
 ## 🎯 Quick Reference
 
-### Qodo Commands:
+### Qodo Commands
+
 | Command | Action |
 |---------|--------|
 | `@qodo-merge review` | Full PR review |
@@ -321,7 +352,8 @@ num_code_suggestions = 3  # Reduce from 5
 | `@qodo-merge improve` | Code improvements |
 | `@qodo-merge docs` | Add documentation |
 
-### CodeRabbit Commands:
+### CodeRabbit Commands
+
 | Command | Action |
 |---------|--------|
 | `@coderabbitai review` | Full PR review |

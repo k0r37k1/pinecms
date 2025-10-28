@@ -51,7 +51,6 @@ export default defineConfig({
                 '**/*.test.{js,ts}',
                 '**/tests/**',
             ],
-            all: true,
             lines: 80,
             functions: 80,
             branches: 80,
