@@ -5,8 +5,8 @@
 **Solo Developer - Strict PR Policy:**
 
 This project follows a strict Pull Request workflow to maintain code quality and
-prevent broken builds. Branch Protection is enabled with "Include administrators"
-to enforce this workflow even for solo development.
+prevent broken builds. Branch Protection is enabled with "Do not allow bypassing
+the above settings" to enforce this workflow even for solo development.
 
 ### Standard Workflow (for ALL code changes)
 
@@ -55,11 +55,14 @@ to enforce this workflow even for solo development.
 
 ## GitHub Branch Protection Setup
 
-**Required configuration for `main` branch:**
+**📋 Full documentation:** See `.github/BRANCH_PROTECTION.md` for complete setup guide
 
-1. Go to: `Settings` → `Branches` → `Add branch protection rule`
-2. Branch name pattern: `main`
-3. Enable these settings:
+**Quick Setup for `main` branch:**
+
+1. Go to: https://github.com/k0r37k1/pinecms/settings/branches
+2. Click: `Add branch protection rule`
+3. Branch name pattern: `main`
+4. Enable these settings:
 
 ### Protect Matching Branches
 
@@ -81,11 +84,13 @@ to enforce this workflow even for solo development.
 
 ☐ Require linear history (optional, keeps history clean)
 
-☑ Include administrators ⚠️ CRITICAL FOR SOLO DEV
-  (This makes the rules apply to you too!)
+Rules applied to everyone including administrators:
+  ☐ Allow force pushes (keep disabled)
+  ☐ Allow deletions (keep disabled)
 
-☐ Allow force pushes (keep disabled)
-☐ Allow deletions (keep disabled)
+☑ Do not allow bypassing the above settings ⚠️ CRITICAL FOR SOLO DEV
+  (This makes the rules apply to you too!)
+  (Renamed from "Include administrators" in 2023)
 ```
 
 ### Why This Setup Works for Solo Dev
