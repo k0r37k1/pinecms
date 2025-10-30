@@ -7,4 +7,5 @@ return [
     App\Providers\TelescopeServiceProvider::class,
     Laravel\Boost\BoostServiceProvider::class,
     Laravel\Mcp\McpServiceProvider::class,
+    Sentry\Laravel\ServiceProvider::class,
 ];

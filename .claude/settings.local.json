@@ -1,0 +1,154 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git reset:*)",
+      "mcp__context7__resolve-library-id",
+      "Bash(composer require:*)",
+      "Bash(composer remove:*)",
+      "Bash(npm info:*)",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "mcp__brave-search__brave_web_search",
+      "WebFetch(domain:openrouter.ai)",
+      "WebFetch(domain:help.chibi.ai)",
+      "mcp__firecrawl-mcp__firecrawl_scrape",
+      "Bash(git check-ignore:*)",
+      "Bash(php artisan:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "mcp__laravel-mcp-companion__search_laravel_docs_with_context",
+      "mcp__laravel-mcp-companion__read_laravel_doc_content",
+      "mcp__laravel-mcp-companion__get_laravel_package_recommendations",
+      "mcp__context7__get-library-docs",
+      "Bash(npx markdownlint-cli2:*)",
+      "Bash(npx markdownlint-cli2-fix:*)",
+      "Bash(echo $OPENROUTER_API_KEY:+API_KEY_IS_SET $OPENROUTER_API_KEY:-API_KEY_NOT_SET)",
+      "mcp__laravel-mcp-companion__list_laravel_docs",
+      "mcp__gitmcp__fetch_generic_documentation",
+      "mcp__gitmcp__search_generic_code",
+      "Bash(composer why monolog/monolog)",
+      "Bash(composer show laravel/framework --all)",
+      "Bash(composer show --tree)",
+      "Bash(composer show)",
+      "Bash(composer why vlucas/phpdotenv)",
+      "Bash(cat:*)",
+      "Bash(npm run test:coverage:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(CI=true npx playwright test:*)",
+      "WebFetch(domain:sebastiandedeyne.com)",
+      "WebFetch(domain:softwareengineering.stackexchange.com)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:www.dwightwatson.com)",
+      "Bash(npm install:*)",
+      "Bash(npx claude-code-templates@latest:*)",
+      "mcp__firecrawl-mcp__firecrawl_search",
+      "Bash(xargs:*)",
+      "WebFetch(domain:blog.laravel.com)",
+      "mcp__gitmcp__search_generic_documentation",
+      "Bash(composer show:*)",
+      "Bash(composer dump-autoload:*)",
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(npx:*)",
+      "Bash(timeout 5 php artisan:*)",
+      "Bash(timeout 2 php artisan:*)",
+      "Bash(php -r:*)",
+      "Bash(vendor/bin/pint:*)",
+      "mcp__gitmcp__match_common_libs_owner_repo_mapping",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:www.gradually.ai)",
+      "Bash(timeout 5 npx:*)",
+      "Bash(node --version:*)",
+      "Bash(echo:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "mcp__laravel-boost__search-docs",
+      "Bash(npm update:*)",
+      "Bash(composer update:*)",
+      "Bash(git checkout:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(git branch:*)",
+      "Bash(git pull:*)",
+      "Bash(gh pr:*)",
+      "mcp__laravel-boost__application-info",
+      "Bash(rm:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(composer quality:*)",
+      "Bash(npm run quality:*)",
+      "Bash(composer analyse:baseline:*)",
+      "Bash(composer analyse:*)",
+      "Bash(npm run build:*)",
+      "Bash(composer test:*)",
+      "Bash(git log:*)",
+      "mcp__filesystem__write_file",
+      "Read(//Users/k0r37k1/**)",
+      "Bash(timeout 2 npx:*)",
+      "Bash(npm cache clean:*)",
+      "WebFetch(domain:vitest.dev)",
+      "Bash(npm test:*)",
+      "WebFetch(domain:www.sabrina.dev)",
+      "Bash(awk:*)",
+      "Bash(mkdir:*)",
+      "Bash(gh:*)",
+      "Bash(gh auth:*)",
+      "Bash(repos/k0r37k1/pinecms/branches/main/protection )",
+      "Bash(open:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.reddit.com)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "eslint",
+    "chrome-devtools"
+  ],
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "php .claude/hooks/user-prompt-submit.php"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "php .claude/hooks/post-tool-use.php"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "php .claude/hooks/post-tool-use.php"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "php .claude/hooks/stop.php"
+          }
+        ]
+      }
+    ]
+  }
+}
