@@ -44,7 +44,8 @@
 ###############################################################################
 # Vite Build Output
 ###############################################################################
-/public/build
+# IMPORTANT: /public/build is TRACKED for pre-built releases (Shared Hosting)
+# Only ignore development artifacts
 /public/hot
 /public/storage
 /public/assets
