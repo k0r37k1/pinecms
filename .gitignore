@@ -164,6 +164,9 @@ temp/
 *.old
 *.orig
 
+# Claude Code Hook Logs
+.claude/.edit-log.json
+
 ###############################################################################
 # IMPORTANT: Lock Files MUST BE COMMITTED
 # composer.lock and package-lock.json are TRACKED for version consistency
