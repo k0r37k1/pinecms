@@ -485,10 +485,11 @@ Use MCP servers in this order for optimal results:
 2. **filesystem** - Flat-file operations (Critical for PineCMS content management)
 3. **Laravel MCP Companion** - Alternative Laravel docs (`search_laravel_docs_with_context`)
 4. **context7** - Modern framework documentation (PrimeVue, TipTap, Alpine.js)
-5. **chrome-devtools** - Browser automation and debugging
-6. **eslint** - JavaScript/TypeScript linting
-7. **playwright** - End-to-end testing
-8. **gitmcp** - Git/GitHub operations
+5. **vibe-check** - Metacognitive questioning, pattern learning, tunnel vision prevention
+6. **chrome-devtools** - Browser automation and debugging
+7. **eslint** - JavaScript/TypeScript linting
+8. **playwright** - End-to-end testing
+9. **gitmcp** - Git/GitHub operations
 
 ---
 
