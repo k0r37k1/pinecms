@@ -44,10 +44,14 @@ the above settings" to enforce this workflow even for solo development.
 
 **ONLY these changes can be pushed directly to `main`:**
 
-- Documentation in `docs/` directory
+- Documentation in `docs/` directory (*.md files)
 - README.md updates
 - Trivial typo fixes (comments, docs)
 - `.gitignore` updates
+
+**Why:** These changes don't affect code execution and don't need CI/CD verification.
+
+**How:** Admin bypass is enabled (enforce_admins: false) to allow direct pushes.
 
 ### Everything else requires PR + passing CI/CD
 
@@ -88,9 +92,9 @@ Rules applied to everyone including administrators:
   ☐ Allow force pushes (keep disabled)
   ☐ Allow deletions (keep disabled)
 
-☑ Do not allow bypassing the above settings ⚠️ CRITICAL FOR SOLO DEV
-  (This makes the rules apply to you too!)
-  (Renamed from "Include administrators" in 2023)
+☐ Do not allow bypassing the above settings
+  (DISABLED to allow direct docs/ pushes as admin)
+  (Previously called "Include administrators")
 ```
 
 ### Why This Setup Works for Solo Dev
