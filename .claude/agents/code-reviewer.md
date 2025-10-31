@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
-description: Expert code review specialist for quality, security, and maintainability. Use PROACTIVELY after writing or modifying code to ensure high development standards.
-tools: Read, Write, Edit, Bash, Grep
+description: Expert code review specialist for Laravel + Vue applications. Use PROACTIVELY after writing or modifying code to ensure quality, security, Spatie Laravel Guidelines compliance, and maintainability standards.
+tools: Read, Write, Edit, Bash, Grep, mcp__laravel-boost__search-docs, mcp__eslint__lint-files, mcp__vibe-check-mcp-server__vibe_learn
 model: sonnet
 ---
 

@@ -1,3 +1,14 @@
+---
+title: Plan Mode Usage Guide
+version: 1.0
+last_updated: 2025-10-31
+author: PineCMS Team
+status: active
+related:
+  - .claude/commands/dev-docs.md
+  - .claude/agents/task-decomposition-expert.md
+---
+
 # Plan Mode Usage Guide
 
 ## What is Plan Mode?
@@ -67,6 +78,7 @@ Press `Shift+Tab` to enter Plan Mode.
 - database-schema (current database structure)
 - list-routes (existing route patterns)
 - context7 (package documentation if needed)
+- vibe_check (validate approach, identify assumptions)
 ```
 
 ### Step 3: Create Detailed Plan

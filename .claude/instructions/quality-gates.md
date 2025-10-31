@@ -1,3 +1,14 @@
+---
+title: Quality Gates & Self-Review (Metacognitive Oversight)
+version: 1.0
+last_updated: 2025-10-31
+author: PineCMS Team
+status: active
+related:
+  - .claude/commands/quality.md
+  - .claude/commands/code-review.md
+---
+
 # Quality Gates & Self-Review (Metacognitive Oversight)
 
 **Purpose:** Prevent overengineering, tunnel vision, and misalignment through structured self-review checkpoints.
@@ -14,7 +25,7 @@
 - Does this follow **Laravel conventions**?
 - Do I need **new dependencies**? (Get user approval!)
 
-**Use MCP tools:** `search-docs`, `database-schema`, `list-routes`
+**Use MCP tools:** `search-docs`, `database-schema`, `list-routes`, `vibe_check` (for complex features)
 
 ### 2. Alignment Verification
 
@@ -147,6 +158,8 @@ After each major step, ask:
 ## Pattern Learning (Self-Improving Feedback Loop)
 
 ### Common Mistakes Log
+
+Use `vibe_learn` MCP tool to log mistakes and prevent recurrence.
 
 #### Mistake #1: Skipping search-docs
 - ❌ Problem: Wrote outdated Inertia v1 pattern
