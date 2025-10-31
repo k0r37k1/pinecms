@@ -7,6 +7,7 @@ This directory contains modularized instructions for Claude Code to reduce token
 ```
 .claude/
 ├── README.md (this file)
+├── PERFORMANCE.md          - Session management, token efficiency, model selection
 ├── instructions/
 │   ├── backend.md         - Laravel, Services, Eloquent, API, Queues
 │   ├── frontend.md        - Vue, Inertia, TailwindCSS, Alpine
@@ -16,7 +17,10 @@ This directory contains modularized instructions for Claude Code to reduce token
 │   └── architecture.md    - Event-Driven, Layers, N+1
 ├── commands/
 │   ├── quality.md         - composer quality, npm run quality
-│   └── development.md     - Common Artisan/Git commands
+│   ├── development.md     - Common Artisan/Git commands
+│   ├── dev-docs.md        - Dev docs workflow (3-file system)
+│   ├── code-review.md     - Code review commands
+│   └── vibe-check.md      - Metacognitive questioning (vibe-check MCP)
 └── workflows/
     ├── tdd.md             - Test-Driven Development
     ├── plan-mode.md       - When/how to use Plan Mode
@@ -70,12 +74,16 @@ When you need detailed information, Claude will reference the appropriate `.md` 
 
 ## References
 
+### Official Documentation
 - [Anthropic Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
 - [Laravel Boost MCP Server](https://github.com/laravel/boost)
+
+### Community Resources
 - [laraben/laravel-claude-code-setup](https://github.com/laraben/laravel-claude-code-setup)
+- [Claude Code Cheat Sheet](https://github.com/Njengah/claude-code-cheat-sheet) - Comprehensive CLI reference
 
 ---
 
-**Last updated:** 2025-10-27
+**Last updated:** 2025-10-31
 **Version:** 1.0
 **Purpose:** Modularized architecture for optimal token usage
