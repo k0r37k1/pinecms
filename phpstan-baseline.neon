@@ -1,0 +1,181 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Http\\Middleware\\SetLocale\:\:handle\(\) should return Symfony\\Component\\HttpFoundation\\Response but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Http/Middleware/SetLocale.php
+
+		-
+			message: '#^Class App\\Models\\User uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: '#^The @use tag of class App\\Models\\User describes Illuminate\\Database\\Eloquent\\Factories\\HasFactory but the class uses Laravel\\Sanctum\\HasApiTokens\.$#'
+			identifier: generics.wrongParent
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: app/Providers/TelescopeServiceProvider.php
+
+		-
+			message: '#^Cannot access property \$email on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Providers/TelescopeServiceProvider.php
+
+		-
+			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
+			identifier: arrayFilter.strict
+			count: 1
+			path: config/app.php
+
+		-
+			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
+			identifier: arrayFilter.strict
+			count: 2
+			path: config/database.php
+
+		-
+			message: '#^Short ternary operator is not allowed\. Use null coalesce operator if applicable or consider using long ternary\.$#'
+			identifier: ternary.shortNotAllowed
+			count: 1
+			path: config/debugbar.php
+
+		-
+			message: '#^Only booleans are allowed in a ternary operator condition, bool\|string\|null given\.$#'
+			identifier: ternary.condNotBoolean
+			count: 1
+			path: config/sanctum.php
+
+		-
+			message: '#^Parameter \#1 \$url of function parse_url expects string, string\|true given\.$#'
+			identifier: argument.type
+			count: 1
+			path: config/sanctum.php
+
+		-
+			message: '#^Parameter \#2 \$string of function explode expects string, bool\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: config/sanctum.php
+
+		-
+			message: '#^Class Spatie\\LaravelData\\Data not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: config/settings.php
+
+		-
+			message: '#^Return type \(array\<string, mixed\>\) of method Database\\Factories\\UserFactory\:\:definition\(\) should be compatible with return type \(array\<model property of App\\Models\\User, mixed\>\) of method Illuminate\\Database\\Eloquent\\Factories\\Factory\<App\\Models\\User\>\:\:definition\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: database/factories/UserFactory.php
+
+		-
+			message: '#^Call to method Illuminate\\Database\\Schema\\Blueprint\:\:bigIncrements\(\) with incorrect case\: BigIncrements$#'
+			identifier: method.nameCase
+			count: 1
+			path: database/migrations/2016_03_29_140408_create_invitation_user_table.php
+
+		-
+			message: '#^Call to method Illuminate\\Database\\Schema\\Blueprint\:\:bigInteger\(\) with incorrect case\: BigInteger$#'
+			identifier: method.nameCase
+			count: 1
+			path: database/migrations/2016_03_29_140408_create_invitation_user_table.php
+
+		-
+			message: '#^Call to method Illuminate\\Database\\Schema\\Blueprint\:\:dateTime\(\) with incorrect case\: datetime$#'
+			identifier: method.nameCase
+			count: 1
+			path: database/migrations/2016_03_29_140408_create_invitation_user_table.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 3
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
+			identifier: notEqual.notAllowed
+			count: 1
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Only booleans are allowed in &&, mixed given on the left side\.$#'
+			identifier: booleanAnd.leftNotBoolean
+			count: 1
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, mixed given\.$#'
+			identifier: if.condNotBoolean
+			count: 2
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Only booleans are allowed in \|\|, mixed given on the left side\.$#'
+			identifier: booleanOr.leftNotBoolean
+			count: 2
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Only booleans are allowed in \|\|, mixed given on the right side\.$#'
+			identifier: booleanOr.rightNotBoolean
+			count: 2
+			path: database/migrations/2025_10_12_195011_create_permission_tables.php
+
+		-
+			message: '#^Method CreateActivityLogTable\:\:down\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195012_create_activity_log_table.php
+
+		-
+			message: '#^Method CreateActivityLogTable\:\:up\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195012_create_activity_log_table.php
+
+		-
+			message: '#^Method AddEventColumnToActivityLogTable\:\:down\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195013_add_event_column_to_activity_log_table.php
+
+		-
+			message: '#^Method AddEventColumnToActivityLogTable\:\:up\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195013_add_event_column_to_activity_log_table.php
+
+		-
+			message: '#^Method AddBatchUuidColumnToActivityLogTable\:\:down\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195014_add_batch_uuid_column_to_activity_log_table.php
+
+		-
+			message: '#^Method AddBatchUuidColumnToActivityLogTable\:\:up\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: database/migrations/2025_10_12_195014_add_batch_uuid_column_to_activity_log_table.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/ExampleTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertTrue\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Unit/ExampleTest.php

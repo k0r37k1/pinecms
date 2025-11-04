@@ -75,7 +75,7 @@ vite.config.ts.timestamp-*
 /storage/rector
 /storage/infection
 /storage/deptrac
-phpstan-baseline.neon
+# phpstan-baseline.neon  # Baseline should be committed for CI/CD
 .phpstan-baseline.php
 .deptrac.cache
 /.rector_cache
