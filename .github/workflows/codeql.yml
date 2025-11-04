@@ -67,14 +67,8 @@ jobs:
           # Upload SARIF results to GitHub Security tab
           upload: true
 
-      # Optional: Upload SARIF as artifact for manual review
-      - name: Upload SARIF as artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: codeql-results-${{ matrix.language }}
-          path: ../results/*.sarif
-          retention-days: 30
+      # Note: SARIF results are automatically uploaded to Security tab
+      # Manual artifact upload is optional and can be commented out
 
 # Best Practices Applied:
 # ✓ Weekly scheduled scans (Monday 6 AM UTC)
