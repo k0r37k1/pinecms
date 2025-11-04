@@ -166,6 +166,7 @@ temp/
 
 # Claude Code Hook Logs
 .claude/.edit-log.json
+.claude/settings.local.json
 
 ###############################################################################
 # IMPORTANT: Lock Files MUST BE COMMITTED
