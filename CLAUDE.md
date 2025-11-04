@@ -67,7 +67,7 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 
 ## 🛠️ Tech Stack
 
-**Backend:** PHP 8.4 | Laravel 12
+**Backend:** PHP 8.3 | Laravel 12
 **Storage:** SQLite (relational) + Flat-File (content/markdown) - **Hybrid Approach**
 **Frontend (Public):** Blade Templates | PHP | TailwindCSS 4.1 | Alpine.js
 **Admin Panel:** Vue 3.5 Composition API | Inertia.js 2.x | PrimeVue | Pinia | TailwindCSS 4.1

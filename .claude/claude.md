@@ -78,7 +78,7 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 
 ## 🛠️ Tech Stack
 
-**Backend:** PHP 8.4 | Laravel 12
+**Backend:** PHP 8.3 | Laravel 12
 
 **Storage:** SQLite (relational) + Flat-File (content/markdown) - **Hybrid Approach**
 
