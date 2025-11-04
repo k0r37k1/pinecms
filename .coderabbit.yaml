@@ -1,12 +1,13 @@
 # CodeRabbit Configuration for PineCMS
 # Documentation: https://docs.coderabbit.ai/
-# Last Updated: 2025-01-26 (Based on 2024/2025 Official Docs)
+# Plan: Lite ($12/mo)
+# Last Updated: 2025-11-04
 
 # Language & Tone
 language: "en"
 tone_instructions: |
   Be concise and professional. Focus on Laravel, Vue, and Inertia.js best practices.
-  Prioritize security and performance issues.
+  Prioritize security and performance. Follow Spatie Laravel Guidelines (.claude/spatie-laravel-guidelines.md).
 
 # Review Settings
 reviews:
@@ -40,55 +41,11 @@ reviews:
   # Auto-review on every commit
   auto_review:
     enabled: true
-    # Only review changed files (not entire PR)
-    drafts: false
+    # Review draft PRs for early feedback
+    drafts: true
 
-  # Finishing Touches (NEW 2024/2025)
-  finishing_touches:
-    enabled: true
-    # Auto-generate missing docstrings
-    docstrings: true
-    # Auto-generate missing unit tests
-    unit_tests: false  # Disabled (manual test writing preferred)
-
-  # Pre-Merge Checks (NEW 2024/2025)
-  pre_merge_checks:
-    enabled: true
-    # Check PR title format
-    pr_title: true
-    # Check PR description completeness
-    pr_description: true
-    # Check docstring coverage
-    docstring_coverage: true
-    # Coverage threshold (80%)
-    coverage_threshold: 80
-
-  # Tools Integration
-  tools:
-    # PHP Static Analysis
-    phpstan:
-      enabled: true
-      level: "8"  # Match your PHPStan config
-
-    # PHP Code Style
-    phpcs:
-      enabled: true
-
-    # JavaScript/TypeScript
-    eslint:
-      enabled: true
-
-    # Security Scanning
-    semgrep:
-      enabled: true
-
-    # Markdown Linting (NEW 2024)
-    markdownlint:
-      enabled: true
-
-    # GitHub Checks (NEW 2024)
-    github-checks:
-      enabled: true
+  # Note: SAST tools (PHPStan, ESLint, Semgrep) require Pro plan
+  # Lite plan relies on CodeRabbit's built-in AI analysis
 
   # Path Filters (exclude generated/vendor files)
   path_filters:
@@ -151,6 +108,22 @@ reviews:
         - Indexes for query optimization
         - Data type appropriateness
 
+    - path: ".claude/**"
+      instructions: |
+        Focus on:
+        - Documentation clarity and accuracy
+        - Consistency with other guidelines
+        - Markdown formatting
+        - No duplication with root CLAUDE.md
+
+    - path: "docs/**"
+      instructions: |
+        Focus on:
+        - Technical accuracy
+        - Code examples validity
+        - Markdown best practices
+        - Links to official documentation
+
 # Chat Settings
 chat:
   # Auto-reply to comments
@@ -171,12 +144,23 @@ knowledge_base:
   code_guidelines:
     enabled: true
     filePatterns:
-      - "**/CLAUDE.md"  # Main AI guidelines
+      - "**/CLAUDE.md"  # Main AI guidelines (root)
+      - "**/.claude/CLAUDE.md"  # PineCMS-specific guidelines
+      - "**/.claude/spatie-laravel-guidelines.md"  # Industry standard Laravel conventions
       - "**/.cursorrules"  # Alternative AI guidelines
       - "**/docs/CONTRIBUTING.md"  # Contribution guidelines
 
-# Early Access Features (experimental)
-early_access: false
-
-# Free Tier Settings (after trial)
-enable_free_tier: false
+# Plan Configuration
+# Lite plan features enabled:
+# ✓ Unlimited PR reviews
+# ✓ Customizable Learnings (knowledge_base)
+# ✓ Real-time Web Query
+# ✓ Code Graph Analysis
+# ✓ Reviews in IDE
+#
+# Pro-only features (disabled):
+# ✗ SAST tools integration (PHPStan, ESLint, Semgrep)
+# ✗ Jira & Linear integration
+# ✗ Agentic Chat
+# ✗ Analytics dashboards
+# ✗ Docstrings generation

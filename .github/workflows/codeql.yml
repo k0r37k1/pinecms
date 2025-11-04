@@ -1,0 +1,92 @@
+name: CodeQL Security Analysis
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run at 6:00 AM UTC every Monday (weekly security scan)
+    - cron: '0 6 * * 1'
+
+# Cancel in-progress runs for the same workflow and ref
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Minimum required permissions for CodeQL
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  analyze:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # CodeQL supported languages: https://aka.ms/codeql-docs/language-support
+        # Note: PHP is NOT supported by CodeQL
+        # PHP security is handled by PHPStan + Enlightn in tests.yml
+        language: ['javascript']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # Use default CodeQL query suite (security-extended)
+          # Options: security-extended (recommended), security-and-quality
+          queries: security-extended
+
+          # Custom configuration for advanced queries (optional)
+          # config-file: .github/codeql/codeql-config.yml
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # CodeQL will auto-detect JavaScript/TypeScript
+      # For compiled languages (Java, C++, etc.), add build steps here
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
+          # Upload SARIF results to GitHub Security tab
+          upload: true
+
+      # Optional: Upload SARIF as artifact for manual review
+      - name: Upload SARIF as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codeql-results-${{ matrix.language }}
+          path: ../results/*.sarif
+          retention-days: 30
+
+# Best Practices Applied:
+# ✓ Weekly scheduled scans (Monday 6 AM UTC)
+# ✓ Scan on push to main/develop
+# ✓ Scan on pull requests
+# ✓ Concurrency control (cancel outdated runs)
+# ✓ Minimal permissions (security best practice)
+# ✓ security-extended query suite (comprehensive)
+# ✓ SARIF artifact upload (audit trail)
+#
+# Language Coverage:
+# ✓ JavaScript/TypeScript (CodeQL) - Frontend security
+# ✓ PHP (PHPStan + Enlightn) - Backend security (in tests.yml)
+#
+# Free for Public Repos: Yes (GitHub Advanced Security included)
