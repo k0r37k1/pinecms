@@ -26,15 +26,18 @@
 ## 🔧 Integration Points
 
 ### 1. PHP Hooks (Existing)
+
 - `user-prompt-submit.php` → Skills auto-activation
 - `post-tool-use.php` → File tracking
 - `stop.php` → Session end checks
 
 ### 2. Bash Hooks (NEW - from richardhowes)
+
 - `pinecms-lint.sh` → Quality gates
 - `common-helpers.sh` → Utilities
 
 ### 3. Commands (NEW)
+
 - `/check` → Comprehensive quality verification
 - `/next` → Research → Plan → Implement workflow
 

@@ -1,0 +1,151 @@
+# PineCMS Project Custom Dictionary
+# One word per line, case-sensitive
+# Comments start with #
+
+# Project name
+pinecms
+PineCMS
+
+# Testing
+playwright
+jsdom
+pytest
+lcov
+
+# Build tools
+esbuild
+postcss
+autoprefixer
+cssnano
+terser
+tailwindcss
+stylelint
+eslint
+prettier
+
+# Web servers
+nginx
+apache
+
+# Database systems
+sqlite
+SQLite
+postgresql
+postgres
+Postgre
+mysql
+mariadb
+mongodb
+redis
+
+# Common technical terms
+composables
+usecase
+composable
+frontmatter
+middleware
+seeder
+seeders
+tinker
+nullable
+fillable
+guarded
+timestamps
+softdeletes
+casts
+theming
+asyncio
+ite
+earch
+ath
+Uncategorized
+Upvote
+Anonymization
+RESTful
+
+# SOLID Principles
+Liskov
+
+# PHP Extensions
+Mbstring
+Ctype
+openssl
+fileinfo
+
+# Third-party services & CMS
+Matomo
+Statamic
+Authy
+Enlightn
+Deptrac
+Soketi
+soketi
+otplib
+
+# Business terms
+sku
+
+# File extensions
+cjs
+mjs
+tsx
+jsx
+env
+idx
+wal
+
+# Common abbreviations
+CRUD
+API
+HTTP
+HTTPS
+URL
+JSON
+HTML
+CSS
+SQL
+PHP
+ORM
+XSS
+CSRF
+JWT
+OAuth
+UUID
+YAML
+
+# Command/shell related
+blks
+isready
+gitmcp
+claude
+tsc
+gpg
+wip
+mfs
+testid
+signup
+tdd
+
+# German technical terms
+Benutzer
+Benutzerverwaltung
+Verwaltung
+Einstellungen
+Datenbank
+Authentifizierung
+Autorisierung
+Sicherheit
+dateitypspezifische
+Integrationen
+Reviewern
+Entpackung
+gehooked
+gehookt
+
+# User/contributor names
+k0r37k1
+romeovs
+Njengah
+
+# British English variants
+organisation

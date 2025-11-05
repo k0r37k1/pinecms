@@ -24,6 +24,7 @@
 ### What CodeQL Detects
 
 #### XSS (Cross-Site Scripting)
+
 ```javascript
 // BAD: CodeQL will flag this
 element.innerHTML = userInput  // Unsanitized user input
@@ -33,6 +34,7 @@ element.textContent = userInput  // Safe
 ```
 
 #### SQL Injection (Client-Side)
+
 ```javascript
 // BAD: String concatenation in queries
 const query = "SELECT * FROM users WHERE id = " + userId
@@ -42,6 +44,7 @@ const query = { id: userId }
 ```
 
 #### Prototype Pollution
+
 ```javascript
 // BAD: Unsafe object merging
 function merge(target, source) {
@@ -55,6 +58,7 @@ const merged = { ...target, ...source }
 ```
 
 #### Path Traversal
+
 ```javascript
 // BAD: Unsanitized file paths
 const filePath = basePath + userInput
@@ -65,6 +69,7 @@ const filePath = join(basePath, normalize(userInput))
 ```
 
 #### Regular Expression DoS
+
 ```javascript
 // BAD: Catastrophic backtracking
 const regex = /^(a+)+$/  // Can hang on "aaaaaaaaaaaaaaaaaaaX"
@@ -88,6 +93,7 @@ const regex = /^a+$/
 ### What Enlightn Detects
 
 #### Security Vulnerabilities
+
 - Mass assignment vulnerabilities
 - Unvalidated redirects
 - Debug mode in production
@@ -97,6 +103,7 @@ const regex = /^a+$/
 - File upload vulnerabilities
 
 #### Configuration Issues
+
 - Weak encryption keys
 - Insecure headers
 - Cache configuration
@@ -110,12 +117,14 @@ const regex = /^a+$/
 ### Continuous (On Every PR/Push)
 
 **Tests Workflow** (`.github/workflows/tests.yml`)
+
 - ✅ PHPStan Level 8 (PHP static analysis)
 - ✅ ESLint (JavaScript linting)
 - ✅ Enlightn (PHP security)
 - ✅ PHPUnit + Vitest (Tests)
 
 **CodeQL Workflow** (`.github/workflows/codeql.yml`)
+
 - ✅ JavaScript/TypeScript security scan
 - ✅ Runs on push to main/develop
 - ✅ Runs on all pull requests
@@ -123,11 +132,13 @@ const regex = /^a+$/
 ### Weekly Scheduled
 
 **CodeQL** (Every Monday 6 AM UTC)
+
 - ✅ Deep security scan
 - ✅ Catches new vulnerabilities (query updates)
 - ✅ SARIF results uploaded to Security tab
 
 **GitHub Dependabot** (Automatic)
+
 - ✅ Dependency vulnerability alerts
 - ✅ Automated PR for security updates
 - ✅ npm + Composer packages
@@ -141,12 +152,14 @@ const regex = /^a+$/
 **Location:** GitHub Security Tab → Code Scanning Alerts
 
 **Alert Levels:**
+
 - 🔴 **Critical** - Immediate action required
 - 🟠 **High** - Fix within 24-48 hours
 - 🟡 **Medium** - Fix in next sprint
 - 🔵 **Low** - Fix when convenient
 
 **Workflow:**
+
 1. Alert appears in Security tab
 2. Review SARIF details + affected code
 3. Create issue (auto-linked to alert)
@@ -154,6 +167,7 @@ const regex = /^a+$/
 5. Push fix → CodeQL re-scans → Alert closes
 
 **Copilot Autofix:**
+
 - ✅ AI-powered fix suggestions (free for public repos)
 - Click "Generate fix" in alert details
 - Review → Commit suggested fix
@@ -167,6 +181,7 @@ const regex = /^a+$/
 **Auto-PR:** Dependabot creates PR for security updates
 
 **Workflow:**
+
 1. Dependency vulnerability discovered
 2. Dependabot opens PR with update
 3. CI/CD runs tests
@@ -179,6 +194,7 @@ const regex = /^a+$/
 ### For Frontend (JavaScript/Vue)
 
 ✅ **Always sanitize user input**
+
 ```vue
 <!-- BAD -->
 <div v-html="userInput"></div>
@@ -190,6 +206,7 @@ const regex = /^a+$/
 ✅ **Use CSP headers** (already configured in `config/secure-headers.php`)
 
 ✅ **Validate data from Inertia props**
+
 ```typescript
 // Add runtime validation
 const props = defineProps<{
@@ -203,6 +220,7 @@ if (!props.user?.id) {
 ```
 
 ✅ **Use parameterized queries (Inertia forms)**
+
 ```typescript
 // Form data is automatically validated server-side
 form.post('/users', {
@@ -215,6 +233,7 @@ form.post('/users', {
 ### For Backend (PHP/Laravel)
 
 ✅ **Always use FormRequest validation**
+
 ```php
 // app/Http/Requests/StoreUserRequest.php
 public function rules(): array
@@ -227,6 +246,7 @@ public function rules(): array
 ```
 
 ✅ **Use mass assignment protection**
+
 ```php
 // Model
 protected $fillable = ['name', 'email'];
@@ -235,6 +255,7 @@ protected $guarded = ['id', 'password'];
 ```
 
 ✅ **Use Eloquent query builder (prevents SQL injection)**
+
 ```php
 // GOOD
 User::where('email', $email)->first();
@@ -244,6 +265,7 @@ DB::select("SELECT * FROM users WHERE email = '$email'");
 ```
 
 ✅ **Use authorization policies**
+
 ```php
 // Controller
 $this->authorize('update', $user);
@@ -256,6 +278,7 @@ public function update(User $authUser, User $user): bool
 ```
 
 ✅ **Never use env() outside config files**
+
 ```php
 // BAD
 $key = env('APP_KEY');
@@ -317,12 +340,14 @@ npm run quality        # ESLint + Tests
 ### After PR Merge
 
 **Automatic:**
+
 - ✅ CodeQL scans JavaScript
 - ✅ PHPStan validates PHP
 - ✅ Enlightn checks security
 - ✅ All tests pass
 
 **Manual:**
+
 - Monitor Security tab for new alerts
 
 ---
@@ -330,18 +355,22 @@ npm run quality        # ESLint + Tests
 ## 🎓 Security Training Resources
 
 ### CodeQL Documentation
-- https://codeql.github.com/docs/
-- https://github.com/github/codeql
+
+- <https://codeql.github.com/docs/>
+- <https://github.com/github/codeql>
 
 ### Laravel Security
-- https://laravel.com/docs/12.x/security
-- Enlightn Docs: https://www.laravel-enlightn.com/docs/
+
+- <https://laravel.com/docs/12.x/security>
+- Enlightn Docs: <https://www.laravel-enlightn.com/docs/>
 
 ### OWASP Top 10
-- https://owasp.org/www-project-top-ten/
+
+- <https://owasp.org/www-project-top-ten/>
 
 ### JavaScript Security
-- https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html
+
+- <https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html>
 
 ---
 
@@ -366,10 +395,12 @@ npm run quality        # ESLint + Tests
 ## 📈 Expected Results
 
 ### CodeQL First Run
+
 - **Expected:** 0-5 findings (project follows best practices)
 - **Common findings:** Prototype pollution, regex DoS, missing validation
 
 ### After Implementation
+
 - ✅ Weekly security scans (Monday)
 - ✅ Automatic vulnerability detection
 - ✅ Reduced false positives over time (CodeQL learns)

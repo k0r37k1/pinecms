@@ -13,6 +13,7 @@
 **When:** Automatically on every PR
 
 **Lite Plan Features:**
+
 - ✅ Unlimited PR reviews
 - ✅ AI-powered code analysis (patterns, best practices)
 - ✅ Multi-file context awareness
@@ -22,6 +23,7 @@
 - ✅ Code Graph Analysis
 
 **Lite Plan Limitations:**
+
 - ❌ No SAST tools integration (PHPStan, ESLint, Semgrep)
 - ❌ No docstrings auto-generation
 - ❌ No Jira/Linear integration
@@ -29,6 +31,7 @@
 **Workaround:** GitHub Actions runs PHPStan/ESLint separately
 
 **Focus Areas:**
+
 - Code quality & architecture patterns
 - Laravel/Vue best practices
 - Logic errors & code smells
@@ -44,6 +47,7 @@
 
 **When:** On-demand via @mention or workflow
 **Strengths:**
+
 - ✅ Complex architectural decisions
 - ✅ Interactive problem solving
 - ✅ Code generation with context
@@ -51,6 +55,7 @@
 - ✅ Workflow automation
 
 **Focus Areas:**
+
 - Implementation guidance
 - Debugging support
 - Feature planning
@@ -59,6 +64,7 @@
 
 **Trigger:** `@claude` in PR/Issue comments
 **Workflows:**
+
 - `.github/workflows/claude.yml` (on-demand)
 - `.github/workflows/claude-code-review.yml` (automated PR reviews)
 
@@ -68,12 +74,14 @@
 
 **When:** On push/PR to main/develop
 **Strengths:**
+
 - ✅ Deterministic quality gates
 - ✅ Fast feedback loops
 - ✅ Parallel execution
 - ✅ Artifact generation
 
 **Focus Areas:**
+
 - Tests (PHPUnit, Vitest, Playwright)
 - Static analysis (PHPStan Level 8, ESLint)
 - Code formatting (Pint, Prettier)
@@ -84,12 +92,14 @@
 
 **Critical Role with Lite Plan:**
 Since CodeRabbit Lite doesn't integrate SAST tools, GitHub Actions is the **primary quality gate** for:
+
 - PHPStan (static analysis)
 - ESLint (JS linting)
 - Security scanning (Enlightn + CodeQL)
 
 **Trigger:** Automatic on push/PR
 **Workflows:**
+
 - `.github/workflows/tests.yml` (Quality + Tests)
 - `.github/workflows/codeql.yml` (Security)
 
@@ -101,6 +111,7 @@ Since CodeRabbit Lite doesn't integrate SAST tools, GitHub Actions is the **prim
 **When:** On push/PR + Weekly schedule (Monday 6 AM UTC)
 
 **Capabilities:**
+
 - ✅ JavaScript/TypeScript vulnerability scanning
 - ✅ XSS detection (DOM-based, reflected, stored)
 - ✅ SQL injection detection
@@ -111,12 +122,14 @@ Since CodeRabbit Lite doesn't integrate SAST tools, GitHub Actions is the **prim
 - ✅ Regular expression DoS
 
 **Language Coverage:**
+
 - ✅ **JavaScript/TypeScript** (Vue, Inertia, TipTap)
 - ❌ **PHP** (Not supported - use PHPStan + Enlightn)
 
 **Query Suite:** security-extended (comprehensive)
 
 **Benefits for Public Repos:**
+
 - ✅ GitHub Advanced Security (free)
 - ✅ Weekly scheduled scans
 - ✅ SARIF results in Security tab
@@ -124,6 +137,7 @@ Since CodeRabbit Lite doesn't integrate SAST tools, GitHub Actions is the **prim
 - ✅ Copilot Autofix (AI-powered fixes)
 
 **Trigger:**
+
 - Push to main/develop
 - Pull requests
 - Weekly cron (Monday 6 AM UTC)
@@ -154,6 +168,7 @@ gh pr create --title "feat: add new feature" --body "Description"
 ```
 
 **Triggered:**
+
 1. **GitHub Actions (tests.yml)** - Quality + Tests (2-5 min)
 2. **GitHub Actions (codeql.yml)** - Security scan (3-5 min)
 3. **CodeRabbit** - Automated code review (1-2 min)
@@ -164,12 +179,14 @@ gh pr create --title "feat: add new feature" --body "Description"
 ### Step 3: Review Phase
 
 **CodeRabbit Review (Automatic):**
+
 - ✅ Posts inline comments on issues
 - ✅ Suggests fixes with code snippets
 - ✅ Categorizes issues (security, performance, style)
 - ✅ Estimates review effort
 
 **Developer Actions:**
+
 - Review CodeRabbit comments
 - Address critical issues immediately
 - Use `@coderabbitai` commands for clarification
@@ -178,6 +195,7 @@ gh pr create --title "feat: add new feature" --body "Description"
   - `@coderabbitai ask <question>` - Specific questions
 
 **Claude Code Review (On-Demand):**
+
 - Use for: Complex architecture questions, design patterns
 - Trigger: Comment `@claude please review the architecture`
 - Response: Detailed analysis referencing CLAUDE.md guidelines
@@ -187,6 +205,7 @@ gh pr create --title "feat: add new feature" --body "Description"
 ### Step 4: CI/CD Validation
 
 **GitHub Actions Status:**
+
 - ✅ All checks must pass before merge
 - ✅ Coverage reports uploaded to Codecov
 - ❌ Failed checks block merge (branch protection)
@@ -196,6 +215,7 @@ gh pr create --title "feat: add new feature" --body "Description"
 ### Step 5: Merge
 
 **Requirements:**
+
 - ✅ CodeRabbit review addressed
 - ✅ GitHub Actions passed
 - ✅ (Optional) Claude review approved
@@ -212,6 +232,7 @@ gh pr merge --squash
 ### Use Case 1: Simple Bug Fix
 
 **Steps:**
+
 1. Fix locally → `composer quality`
 2. Create PR → CodeRabbit reviews automatically
 3. Address comments → Merge
@@ -223,6 +244,7 @@ gh pr merge --squash
 ### Use Case 2: New Feature (Complex)
 
 **Steps:**
+
 1. Planning: `@claude` for architecture discussion
 2. Implementation: Local development + quality checks
 3. PR Creation: All tools triggered
@@ -236,6 +258,7 @@ gh pr merge --squash
 ### Use Case 3: Refactoring (Large)
 
 **Steps:**
+
 1. Planning: Claude for refactoring strategy
 2. Implementation in small PRs (easier reviews)
 3. Each PR: CodeRabbit reviews patterns
@@ -247,7 +270,7 @@ gh pr merge --squash
 
 ## ⚙️ Configuration Integration
 
-### CodeRabbit Knows About:
+### CodeRabbit Knows About
 
 ```yaml
 # .coderabbit.yaml → knowledge_base.code_guidelines
@@ -258,7 +281,7 @@ gh pr merge --squash
 
 **Result:** CodeRabbit enforces your project conventions automatically!
 
-### Claude Knows About:
+### Claude Knows About
 
 ```
 # Automatic context loading
@@ -340,6 +363,7 @@ git push
 | **Best For** | Architecture review | Problem solving | Quality gates | Vulnerability detection |
 
 **Key Insight:** With CodeQL added, you have **complete security coverage**:
+
 - **PHP Security:** PHPStan (static) + Enlightn (runtime)
 - **JavaScript Security:** CodeQL (advanced) + ESLint (style)
 - **Architecture Review:** CodeRabbit (patterns) + Claude (deep)
@@ -351,6 +375,7 @@ git push
 ### Maximizing Value with CodeRabbit Lite
 
 **What Lite Does Well:**
+
 1. ✅ **Architecture Review** - Multi-file context, pattern detection
 2. ✅ **Convention Enforcement** - Uses knowledge_base + guidelines
 3. ✅ **Logic Analysis** - Catches bugs AI can spot (N+1, race conditions)
@@ -369,6 +394,7 @@ git push
 ### Recommended Workflow with Lite
 
 **Phase 1: Local Development**
+
 ```bash
 # Run ALL quality checks locally (compensates for no SAST in CodeRabbit)
 composer quality  # Pint + PHPStan + Tests
@@ -376,6 +402,7 @@ npm run quality   # ESLint + Prettier + TypeScript + Tests
 ```
 
 **Phase 2: PR Creation**
+
 ```bash
 gh pr create --draft --title "feat: feature name"
 ```
@@ -383,12 +410,14 @@ gh pr create --draft --title "feat: feature name"
 **Phase 3: Review Coordination**
 
 **CodeRabbit (Lite) reviews:**
+
 - ✅ Architecture patterns (SOLID, DRY, separation of concerns)
 - ✅ Laravel/Vue conventions (Spatie Guidelines)
 - ✅ Logic errors (N+1, missing validations, edge cases)
 - ✅ Multi-file consistency
 
 **GitHub Actions validates:**
+
 - ✅ PHPStan Level 8 (type safety, static analysis)
 - ✅ ESLint (code style, best practices)
 - ✅ Tests (unit, feature, E2E)
@@ -403,7 +432,7 @@ gh pr create --draft --title "feat: feature name"
 ### Monthly Review
 
 1. **Check CodeRabbit learnings:**
-   - Visit: https://app.coderabbit.ai/repos/k0r37k1/pinecms
+   - Visit: <https://app.coderabbit.ai/repos/k0r37k1/pinecms>
    - Review: Recurring suggestions → Update guidelines
 
 2. **Update GitHub Actions:**
@@ -418,9 +447,9 @@ gh pr create --draft --title "feat: feature name"
 
 ## 📚 Resources
 
-- **CodeRabbit Docs:** https://docs.coderabbit.ai/
-- **Claude Code Docs:** https://docs.claude.com/en/docs/claude-code
-- **GitHub Actions Docs:** https://docs.github.com/actions
+- **CodeRabbit Docs:** <https://docs.coderabbit.ai/>
+- **Claude Code Docs:** <https://docs.claude.com/en/docs/claude-code>
+- **GitHub Actions Docs:** <https://docs.github.com/actions>
 
 ---
 

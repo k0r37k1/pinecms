@@ -406,6 +406,7 @@ Result: Zero errors left behind
 **Follow Spatie Laravel Guidelines:** `.claude/spatie-laravel-guidelines.md`
 
 This is the **industry standard** for Laravel development, maintained by Spatie. Follow these conventions for all PHP/Laravel code:
+
 - PSR-1, PSR-2, PSR-12 compliance
 - Laravel naming conventions (routes, controllers, commands)
 - Type declarations and docblock standards

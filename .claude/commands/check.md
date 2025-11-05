@@ -15,6 +15,7 @@ When you run `/check`, you MUST:
 4. **DO NOT STOP** until ALL checks show ✅ GREEN
 
 **FORBIDDEN BEHAVIORS:**
+
 - ❌ "Here are the issues" → NO! FIX THEM!
 - ❌ "Tests are failing because..." → NO! MAKE THEM PASS!
 - ❌ Stopping after listing → NO! KEEP WORKING!
@@ -32,24 +33,28 @@ When you run `/check`, you MUST:
 ## Step 1: PineCMS Quality Pipeline
 
 ### PHP Quality Checks
+
 ```bash
 composer quality
 # Runs: Pint + PHPStan + Deptrac + PHPUnit
 ```
 
 **What gets checked:**
+
 - ✅ Code formatting (Laravel Pint)
 - ✅ Static analysis (PHPStan level 8)
 - ✅ Architecture (Deptrac)
 - ✅ All tests pass (PHPUnit)
 
 ### JavaScript Quality Checks
+
 ```bash
 npm run quality
 # Runs: Prettier + ESLint + Stylelint + TypeCheck + Vitest
 ```
 
 **What gets checked:**
+
 - ✅ Code formatting (Prettier)
 - ✅ Linting (ESLint)
 - ✅ CSS linting (Stylelint)
@@ -61,6 +66,7 @@ npm run quality
 ## Step 2: PineCMS Specific Checks
 
 ### 🔒 Security Validation
+
 - [ ] No `env()` direct usage - use `config()` instead
 - [ ] CSRF protection on all forms
 - [ ] Input validation using Form Requests
@@ -69,6 +75,7 @@ npm run quality
 - [ ] CipherSweet encryption working
 
 ### 📁 Flat-File Content Integrity
+
 - [ ] YAML front matter valid in all content files
 - [ ] Markdown syntax correct
 - [ ] No orphaned content files
@@ -76,6 +83,7 @@ npm run quality
 - [ ] File permissions appropriate
 
 ### 🎨 Frontend Standards
+
 - [ ] Vue 3 Composition API only (NO Options API)
 - [ ] TypeScript for all components
 - [ ] PrimeVue components properly imported
@@ -83,6 +91,7 @@ npm run quality
 - [ ] Inertia forms use `useForm` composable
 
 ### ⚡ Performance
+
 - [ ] No N+1 queries (eager loading used)
 - [ ] No database queries in computed properties
 - [ ] Appropriate caching configured
@@ -94,6 +103,7 @@ npm run quality
 ## Step 3: Laravel Best Practices
 
 ### Code Quality Checklist
+
 - [ ] No raw SQL - use Eloquent/Query Builder
 - [ ] No direct `$_GET`/`$_POST` - use Request validation
 - [ ] Type hints on ALL methods
@@ -106,6 +116,7 @@ npm run quality
 - [ ] Proper separation of concerns
 
 ### Testing Requirements
+
 - [ ] Feature tests for all endpoints
 - [ ] Unit tests for complex business logic
 - [ ] E2E tests with Playwright for critical flows
@@ -118,18 +129,21 @@ npm run quality
 ## Step 4: Architecture Validation
 
 ### Event-Driven Architecture
+
 - [ ] Use Events for side effects (NO Hooks!)
 - [ ] Listeners properly registered
 - [ ] Events dispatched correctly
 - [ ] Queued where appropriate
 
 ### Hybrid Storage (SQLite + Flat-File)
+
 - [ ] Relational data in SQLite
 - [ ] Content in flat files (Markdown + YAML)
 - [ ] Sync mechanisms working
 - [ ] No data duplication
 
 ### Dependencies
+
 - [ ] All packages up-to-date
 - [ ] No unused dependencies
 - [ ] Security vulnerabilities checked
@@ -142,6 +156,7 @@ npm run quality
 When issues are found:
 
 1. **SPAWN MULTIPLE AGENTS** immediately:
+
 ```
 "Found 15 PHP linting issues and 3 test failures. Spawning agents:
 - Agent 1: Fix PHP linting in Services
@@ -178,12 +193,14 @@ Code is ready ONLY when:
 ## Final Commitment
 
 I will now:
+
 - ✅ Run ALL checks to identify issues
 - ✅ SPAWN AGENTS to fix issues in parallel
 - ✅ Keep working until EVERYTHING passes
 - ✅ Not stop until all checks show ✅ GREEN
 
 I will NOT:
+
 - ❌ Just report issues without fixing
 - ❌ Skip any checks
 - ❌ Declare "good enough"

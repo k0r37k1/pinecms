@@ -3,6 +3,7 @@
 ## Why TDD with AI?
 
 TDD becomes **even more powerful** with Claude Code:
+
 - Prevents AI from creating mock implementations
 - Ensures functionality is verifiable
 - Catches issues earlier in development
@@ -21,6 +22,7 @@ but DON'T create mock implementations."
 ```
 
 **Example:**
+
 ```php
 // tests/Feature/PostServiceTest.php
 public function test_can_create_post_with_valid_data(): void
@@ -40,6 +42,7 @@ public function test_can_create_post_with_valid_data(): void
 ```
 
 **Run test - Should FAIL:**
+
 ```bash
 php artisan test --filter=test_can_create_post_with_valid_data
 ```
@@ -57,6 +60,7 @@ public function create(array $data): Post
 ```
 
 **Run test - Should PASS:**
+
 ```bash
 php artisan test --filter=test_can_create_post_with_valid_data
 ```
@@ -80,6 +84,7 @@ public function create(array $data): Post
 ```
 
 **Run test again - Should still PASS:**
+
 ```bash
 php artisan test --filter=test_can_create_post_with_valid_data
 ```
@@ -89,6 +94,7 @@ php artisan test --filter=test_can_create_post_with_valid_data
 ### 1. Start with Expected Input/Output
 
 **Good Prompt:**
+
 ```
 Create a test for UserService::register() that:
 - Input: ['name' => 'John', 'email' => 'john@example.com', 'password' => 'secret']
@@ -135,6 +141,7 @@ $admin = User::factory()->admin()->create();
 ## When to Use TDD
 
 ✅ **Use TDD for:**
+
 - New features with clear requirements
 - Bug fixes (write test that reproduces bug first)
 - Refactoring existing code (tests = safety net)
@@ -142,6 +149,7 @@ $admin = User::factory()->admin()->create();
 - API endpoints
 
 ❌ **Skip TDD for:**
+
 - UI/styling changes
 - Simple CRUD without business logic
 - Prototyping/exploration
@@ -196,17 +204,21 @@ describe('PostForm', () => {
 ## Common TDD Mistakes
 
 ### Mistake #1: Not Running Tests
+
 ❌ Write test, implement, commit
 ✅ Write test, RUN test (fails), implement, RUN test (passes), commit
 
 ### Mistake #2: Testing Implementation
+
 ❌ `expect($service->method())->toHaveBeenCalled()`
 ✅ `expect($result)->toBe($expected)`
 
 ### Mistake #3: Over-Mocking
+
 ❌ Mock everything
 ✅ Only mock external dependencies (APIs, filesystems)
 
 ### Mistake #4: Not Being Explicit
+
 ❌ "Implement feature X"
 ✅ "I'm doing TDD. First write a failing test for X, don't create mock implementation."

@@ -265,6 +265,7 @@
 - [ ] **~95 Core Features Implemented** (was 90)
 
 **Removed from Core (YAGNI):**
+
 - ❌ Upvote/Downvote System (Posts) → "Voting System" Community Plugin
 - ❌ Upvote/Downvote Comments (v1.1.0) → "Voting System" Community Plugin
 - ❌ Social Sharing Buttons → Theme-specific
@@ -295,6 +296,7 @@
 - [ ] Markdown Support in Comments
 
 **Removed (YAGNI):**
+
 - ❌ Upvote/Downvote Comments → "Voting System" Community Plugin
 
 #### Search System

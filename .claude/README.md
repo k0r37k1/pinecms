@@ -35,6 +35,7 @@ This directory contains modularized instructions for Claude Code to reduce token
 ## Token Savings
 
 At 10 sessions/day:
+
 - **Before:** ~10,110 lines loaded per day
 - **After:** ~5,750 lines loaded per day
 - **Savings:** ~43% fewer tokens per session
@@ -42,6 +43,7 @@ At 10 sessions/day:
 ## Usage
 
 Claude Code automatically reads `CLAUDE.md` on every session. This file contains:
+
 - Modification Policy (backup rule)
 - Quick Reference (common commands)
 - Critical Rules (forbidden patterns)
@@ -55,11 +57,13 @@ When you need detailed information, Claude will reference the appropriate `.md` 
 ## Maintenance
 
 **Adding New Guidelines:**
+
 1. Determine if it's core (CLAUDE.md) or detailed (`.claude/instructions/`)
 2. Core rules = Frequently needed, critical to every session
 3. Detailed = Comprehensive guides, reference material
 
 **Updating Guidelines:**
+
 1. Always create backup before modifying CLAUDE.md
 2. Edit modular files directly (no backup needed)
 3. Keep CLAUDE.md lean (100-200 lines recommended by Anthropic)
@@ -75,10 +79,12 @@ When you need detailed information, Claude will reference the appropriate `.md` 
 ## References
 
 ### Official Documentation
+
 - [Anthropic Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
 - [Laravel Boost MCP Server](https://github.com/laravel/boost)
 
 ### Community Resources
+
 - [laraben/laravel-claude-code-setup](https://github.com/laraben/laravel-claude-code-setup)
 - [Claude Code Cheat Sheet](https://github.com/Njengah/claude-code-cheat-sheet) - Comprehensive CLI reference
 

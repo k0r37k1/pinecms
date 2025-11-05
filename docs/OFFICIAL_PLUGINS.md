@@ -58,6 +58,7 @@
   - Filter by Categories
 
 **Removed (YAGNI):**
+
 - ❌ A/B Testing → Enterprise Feature, Community Plugin or v2.0
 - ❌ Recurring Newsletters → v2.0
 - ❌ Newsletter Archive RSS Feed → Nobody needs RSS for archives
@@ -179,10 +180,12 @@ Webhooks sind ein fortgeschrittenes Feature für Automation & Integrations. Nich
   - File Metadata
 
 **Simplified (KISS):**
+
 - JSON Field: Removed Monaco Editor → Simple Textarea with Syntax Highlighting
 - JSON Field: Schema Validation → Removed (optional in v2.0)
 
 **Merged (DRY):**
+
 - ❌ "Rich Text Field" + "WYSIWYG Field" → **ONE** "Rich Text Field" with Size Option (Full/Mini)
 
 #### Use Cases
@@ -240,6 +243,7 @@ Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind f
   - Language-Specific RSS
 
 **Removed (YAGNI):**
+
 - ❌ Domain-Based URLs (en.example.com) → Nobody uses this for blogs, URL Prefix is sufficient
 - ❌ Translation Memory → Enterprise Translation Tool feature, v2.0 or remove
 - ❌ Auto-Translation API → Should be separate Community Plugin
@@ -293,6 +297,7 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
   - Changes Requested (to Author)
 
 **Removed (YAGNI/KISS):**
+
 - ❌ Inline Comments (per paragraph) → Too complex for MVP, General Feedback is sufficient, v2.0
 - ❌ Workflow Dashboard → Removed, use Admin Panel filters instead
 - ❌ Custom Workflow States → 3 states (Draft, Review, Published) are sufficient, v2.0
@@ -402,6 +407,7 @@ Solo-Blogger brauchen keinen Workflow. Nur Teams mit mehreren Autoren und Review
   - Rate Limiting (submissions per IP)
 
 **Removed (YAGNI/Enterprise):**
+
 - ❌ Conditional Logic → Enterprise Feature, too complex for v1.0, v2.0
 - ❌ Multi-Step Forms (Step-by-Step wizard, Save & Continue Later) → Enterprise Feature, v2.0
 
@@ -458,6 +464,7 @@ Nicht jede Website braucht Formulare. Core hat keine Formular-Funktionalität, d
   - Internal/External Link Count
 
 **Removed (Deprecated/DRY):**
+
 - ❌ AMP Support → Google deprecated AMP in 2021, nobody uses it anymore
 - ❌ Redirect Management (Enhanced) → DRY violation, Core v1.2.0 already has Redirect Management
   - Note: Import Redirects (CSV) merged into Core Redirect Management feature
@@ -567,6 +574,7 @@ Die Community kann eigene Plugins entwickeln und teilen:
 | **Total** | **~60** | - | - |
 
 **Software Engineering Improvements:**
+
 - Removed 15 YAGNI features (Enterprise/overengineered features → v2.0 or Community Plugins)
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG fields)
 - Simplified 3 KISS violations (JSON Editor, Template Builder, Workflow)

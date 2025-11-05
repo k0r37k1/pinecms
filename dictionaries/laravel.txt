@@ -1,0 +1,53 @@
+# Laravel-specific terms
+# Add custom Laravel/PHP terms here that aren't in the main dictionary
+
+# Core Laravel packages
+richardhowes
+laraben
+laravel
+artisan
+eloquent
+sanctum
+fortify
+inertia
+inertiajs
+vite
+vitest
+phpunit
+phpstan
+larastan
+pint
+rector
+sail
+telescope
+prompts
+mcp
+
+# Controllers
+livewire
+filament
+nova
+
+# Eloquent
+morph
+morphs
+belongsto
+hasmany
+manytomany
+polymorphic
+
+# Blade
+csrf
+xsrf
+isset
+unset
+
+# Queue
+queueable
+dispatchable
+
+# Validation
+unvalidated
+
+# Laravel specific terms
+invokable

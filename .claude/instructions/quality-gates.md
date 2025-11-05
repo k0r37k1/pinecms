@@ -30,6 +30,7 @@ related:
 ### 2. Alignment Verification
 
 Present to user BEFORE coding:
+
 - **Understanding:** What I think you want
 - **In Scope:** What I will implement
 - **Out of Scope:** What I won't implement
@@ -40,6 +41,7 @@ Present to user BEFORE coding:
 ### 3. Hypothesis Testing (For Complex Tasks)
 
 Present multiple approaches with:
+
 - Confidence levels (Low/Medium/High)
 - Pros/Cons for each approach
 - Recommended option with reasoning
@@ -51,6 +53,7 @@ Present multiple approaches with:
 ### 1. Test-Driven Development (When Applicable)
 
 **RED → GREEN → REFACTOR:**
+
 1. Write failing test
 2. Minimal implementation to pass
 3. Optimize with safety net
@@ -58,6 +61,7 @@ Present multiple approaches with:
 ### 2. Complexity Checks
 
 **Trigger user consultation if:**
+
 - Creating **>3 new files** → "This adds X files. Is this complexity justified?"
 - Adding **new package** → "I need package X for Y. Approved?"
 - **Deviating from conventions** → "Existing code uses pattern A, but I'm using B because [reason]. OK?"
@@ -65,6 +69,7 @@ Present multiple approaches with:
 ### 3. Feature Creep Detection
 
 If adding features **not in original request:**
+
 - **Flag them explicitly:** "I'm adding feature X (not requested) because Y"
 - **Explain necessity:** Technical requirement vs. nice-to-have
 - **Get approval** before implementing
@@ -76,6 +81,7 @@ If adding features **not in original request:**
 **Review every MAJOR code change:**
 
 #### A. Writing Functions Best Practices
+
 - ✅ Single Responsibility: Each function does ONE thing?
 - ✅ Naming: Descriptive? (`isRegisteredForDiscounts` not `discount()`)
 - ✅ Parameters: < 4 parameters?
@@ -84,6 +90,7 @@ If adding features **not in original request:**
 - ✅ `declare(strict_types=1);` in PHP files?
 
 #### B. Writing Tests Best Practices
+
 - ✅ Coverage: Happy path + failure path + edge cases?
 - ✅ Isolation: Tests don't depend on each other?
 - ✅ Factories: Using model factories, not manual setup?
@@ -91,6 +98,7 @@ If adding features **not in original request:**
 - ✅ Naming: Test names describe what they verify?
 
 #### C. Implementation Best Practices
+
 - ✅ KISS: Simplest solution that works?
 - ✅ DRY: No repeated code patterns?
 - ✅ YAGNI: Building only what's needed NOW?
@@ -102,6 +110,7 @@ If adding features **not in original request:**
 ### 2. QCODE - Pre-Commit Verification
 
 **ALWAYS run before finalizing:**
+
 ```bash
 composer quality  # Laravel: Pint + PHPStan + PHPUnit
 npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
@@ -112,6 +121,7 @@ npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
 ### 3. QUX - User Experience Testing
 
 **Test these scenarios:**
+
 - Primary user flows
 - Error scenarios (validation failures, network errors)
 - Edge cases (empty states, loading states, permission denied)
@@ -122,6 +132,7 @@ npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
 ### 1. Context Hygiene
 
 **Use `/clear` frequently:**
+
 - After every commit
 - Before starting new feature
 - When conversation >50 messages
@@ -132,6 +143,7 @@ npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
 ### 2. Interrupt Mechanism
 
 **Press ESC to interrupt if:**
+
 - Plan is drifting from user intent
 - Complexity is escalating unexpectedly
 - Solution feels wrong
@@ -150,6 +162,7 @@ npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
 ### 4. Regular Self-Critique
 
 After each major step, ask:
+
 - Is this still the best approach?
 - Have I discovered new information that changes the plan?
 - Am I experiencing tunnel vision?
@@ -162,18 +175,21 @@ After each major step, ask:
 Use `vibe_learn` MCP tool to log mistakes and prevent recurrence.
 
 #### Mistake #1: Skipping search-docs
+
 - ❌ Problem: Wrote outdated Inertia v1 pattern
 - ✅ Solution: ALWAYS use `search-docs` before implementing
 - 🛠️ Tool: Laravel Boost MCP `search-docs`
 - 📚 Reference: Laravel Boost rules "Searching Documentation"
 
 #### Mistake #2: Not using factories in tests
+
 - ❌ Problem: Manually creating models in tests
 - ✅ Solution: Check for factory states, use factories
 - 🛠️ Tool: Read factory files before testing
 - 📚 Reference: Testing Instructions "Use Factories"
 
 #### Mistake #3: N+1 queries
+
 - ❌ Problem: Forgot eager loading
 - ✅ Solution: Use `->with('relation')` for eager loading
 - 🛠️ Tool: `database-query` to check actual queries

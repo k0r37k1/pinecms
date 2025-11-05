@@ -85,6 +85,7 @@ PostToolUse hooks run automatically after Edit/Write:
 ### What Gets Checked
 
 #### PHP Files
+
 - ✅ Laravel Pint (formatting)
 - ✅ PHPStan (static analysis level 8)
 - ✅ Deptrac (architecture)
@@ -92,6 +93,7 @@ PostToolUse hooks run automatically after Edit/Write:
 - ✅ No direct `env()` usage
 
 #### JavaScript/TypeScript/Vue Files
+
 - ✅ Prettier (formatting)
 - ✅ ESLint (linting)
 - ✅ TypeScript (type checking)
@@ -99,6 +101,7 @@ PostToolUse hooks run automatically after Edit/Write:
 - ✅ No Options API
 
 #### PineCMS Specific
+
 - ✅ Flat-file YAML integrity
 - ✅ Security patterns
 - ✅ Inertia best practices
@@ -136,6 +139,7 @@ echo "Debug: $CLAUDE_HOOKS_DEBUG"
 ### `/check` Command
 
 Runs comprehensive quality verification:
+
 - `composer quality` (PHP)
 - `npm run quality` (JS)
 - PineCMS specific validation
@@ -144,6 +148,7 @@ Runs comprehensive quality verification:
 ### `/next` Command
 
 Structured workflow:
+
 1. Research codebase
 2. Create plan
 3. Implement with hooks validating
@@ -161,6 +166,7 @@ export CLAUDE_HOOKS_DEBUG=1
 ```
 
 Debug output shows:
+
 - Detected stack
 - Files being checked
 - Commands being run
@@ -182,12 +188,14 @@ tail -f .claude/hooks/.hook-output 2>/dev/null
 ### Common Issues
 
 **Hook not running:**
+
 ```bash
 # Check executable permissions
 chmod +x .claude/hooks/*.sh
 ```
 
 **Command not found:**
+
 ```bash
 # Check if tools are installed
 composer --version
@@ -196,6 +204,7 @@ php --version
 ```
 
 **False positives:**
+
 ```bash
 # Add to .claude/hooks/.claude-hooks-ignore
 vendor/**
@@ -242,6 +251,7 @@ chmod +x .claude/hooks/common-helpers.sh
 ### Hooks blocking unexpectedly
 
 Check what's failing:
+
 ```bash
 bash .claude/hooks/pinecms-lint.sh
 ```
@@ -249,6 +259,7 @@ bash .claude/hooks/pinecms-lint.sh
 ### Performance issues
 
 Enable timing:
+
 ```bash
 CLAUDE_HOOKS_DEBUG=1 bash .claude/hooks/pinecms-lint.sh
 ```

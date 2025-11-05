@@ -38,6 +38,7 @@ php artisan tinker
 ### Important Flags
 
 **Always use `--no-interaction` for Artisan commands:**
+
 ```bash
 php artisan migrate --no-interaction
 php artisan make:model Post --no-interaction

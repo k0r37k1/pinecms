@@ -18,6 +18,7 @@
 ### Test Coverage Requirements
 
 **Test ALL paths:**
+
 - ✅ Happy paths (expected success scenarios)
 - ✅ Failure paths (validation errors, exceptions)
 - ✅ Edge cases (empty data, boundary conditions)
@@ -25,6 +26,7 @@
 ### Running Tests
 
 **Run minimal tests using filters:**
+
 ```bash
 # Run all tests
 php artisan test
@@ -37,12 +39,14 @@ php artisan test --filter=testName
 ```
 
 **Best Practice:**
+
 1. Run specific test after changes
 2. After feature tests pass, ask user if they want full suite run
 
 ### Test Structure
 
 **Use Factories:**
+
 ```php
 // ✅ Good - Use factories
 $user = User::factory()->create();
@@ -55,6 +59,7 @@ $user->save();
 
 **Check for Factory States:**
 Before manually setting up models, check if factory has custom states:
+
 ```php
 // Example: User factory might have ->admin() state
 $admin = User::factory()->admin()->create();
@@ -63,6 +68,7 @@ $admin = User::factory()->admin()->create();
 ### Faker Usage
 
 Follow existing conventions:
+
 ```php
 // Option 1: $this->faker
 $name = $this->faker->word();
@@ -76,6 +82,7 @@ Check sibling tests to see which pattern the project uses.
 ## Vitest Testing (Frontend)
 
 ### Structure
+
 ```typescript
 import { describe, it, expect } from 'vitest'
 
@@ -103,6 +110,7 @@ describe('ComponentName', () => {
 ## Playwright E2E Testing
 
 ### Usage
+
 ```bash
 # Run all E2E tests
 npm run test:e2e
@@ -124,6 +132,7 @@ npx playwright test tests/e2e/login.spec.ts
 ## Quality Check Before Commit
 
 **ALWAYS run before finalizing:**
+
 ```bash
 composer quality  # Laravel: Pint + PHPStan + PHPUnit
 npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest

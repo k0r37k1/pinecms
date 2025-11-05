@@ -63,7 +63,7 @@ the above settings" to enforce this workflow even for solo development.
 
 **Quick Setup for `main` branch:**
 
-1. Go to: https://github.com/k0r37k1/pinecms/settings/branches
+1. Go to: <https://github.com/k0r37k1/pinecms/settings/branches>
 2. Click: `Add branch protection rule`
 3. Branch name pattern: `main`
 4. Enable these settings:

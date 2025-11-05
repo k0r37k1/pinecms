@@ -38,6 +38,7 @@ git commit -m "feat: user authentication"
 ```
 
 **Benefits:**
+
 - ✅ Faster responses (less context to process)
 - ✅ Better accuracy (no conflicting information)
 - ✅ Lower token costs
@@ -64,12 +65,14 @@ git commit -m "feat: user authentication"
 ```
 
 **Syntax:**
+
 ```bash
 /compact                          # Auto-summarize entire conversation
 /compact "keep X, remove Y"       # With custom instructions
 ```
 
 **Use Case:**
+
 - Long debugging sessions with multiple attempts
 - Multi-day feature development
 - Complex refactoring with many iterations
@@ -85,6 +88,7 @@ git commit -m "feat: user authentication"
 ```
 
 **Use `/cos`:**
+
 - Before `/compact` (decide if needed)
 - After large operations (check token usage)
 - For budget tracking
@@ -96,6 +100,7 @@ git commit -m "feat: user authentication"
 ### Sonnet (Default) - 90% of Tasks
 
 **Use Sonnet for:**
+
 - ✅ Feature implementation (CRUD, API endpoints)
 - ✅ Bug fixes and debugging
 - ✅ Test writing (PHPUnit, Vitest, Playwright)
@@ -104,12 +109,14 @@ git commit -m "feat: user authentication"
 - ✅ Frontend work (Vue, Inertia, TailwindCSS)
 
 **Why Sonnet:**
+
 - Fast responses (better DX)
 - Cost-efficient (10x cheaper than Opus)
 - Excellent for Laravel/Vue patterns
 - Sufficient for 90% of development tasks
 
 **Current PineCMS Agent Config:**
+
 - All 14 agents use **Sonnet** (PR #6)
 - `fullstack-developer` switched from Opus → Sonnet for efficiency
 
@@ -118,17 +125,20 @@ git commit -m "feat: user authentication"
 ### Opus - Complex Architecture Only
 
 **Use Opus for:**
+
 - 🔴 Critical architecture decisions (security, scalability)
 - 🔴 Complex algorithm design (performance-critical code)
 - 🔴 Multi-system integration planning
 - 🔴 Database schema migrations with data transformations
 
 **Why Opus:**
+
 - Deeper reasoning capability
 - Better for novel problems (not seen in training)
 - More thorough edge case analysis
 
 **How to Switch:**
+
 ```bash
 claude --model opus  # Start session with Opus
 
@@ -137,6 +147,7 @@ model: opus  # Change from sonnet
 ```
 
 **PineCMS Policy:**
+
 - Default to Sonnet
 - Only use Opus when explicitly needed
 - Document reason in commit message
@@ -214,10 +225,12 @@ deployment-engineer → Production deploy
 ### Issue #1: Slow Responses
 
 **Symptoms:**
+
 - Responses take >30 seconds
 - Long "thinking" pauses
 
 **Solutions:**
+
 ```bash
 /clear             # Reset context
 /compact           # Summarize if needed
@@ -229,17 +242,20 @@ Break into chunks  # Smaller, focused requests
 ### Issue #2: Context Pollution
 
 **Symptoms:**
+
 - Claude forgets earlier decisions
 - Contradictory suggestions
 - Degraded code quality
 
 **Solutions:**
+
 ```bash
 /clear                    # Fresh start
 /compact "keep X only"    # Selective summarization
 ```
 
 **Prevention:**
+
 - `/clear` after every commit
 - Keep sessions under 50 messages
 - Use agents for complex multi-step work
@@ -249,10 +265,12 @@ Break into chunks  # Smaller, focused requests
 ### Issue #3: Token Overflow
 
 **Symptoms:**
+
 - "Context length exceeded" errors
 - Truncated responses
 
 **Solutions:**
+
 ```bash
 /clear                    # Immediate fix
 /compact                  # If need to preserve context
@@ -260,6 +278,7 @@ Break into chunks  # Smaller, focused requests
 ```
 
 **Prevention:**
+
 - Monitor with `/cos`
 - Use Plan Mode for complex tasks
 - Delegate to specialized agents
@@ -269,10 +288,12 @@ Break into chunks  # Smaller, focused requests
 ### Issue #4: Repetitive Mistakes
 
 **Symptoms:**
+
 - Claude repeats same error
 - Forgets project conventions
 
 **Solutions:**
+
 ```bash
 /clear                              # Reset mental model
 Use vibe_learn to log patterns      # Pattern learning
@@ -280,6 +301,7 @@ Update .claude/instructions/*.md    # Document conventions
 ```
 
 **Prevention:**
+
 - Document patterns in `.claude/instructions/`
 - Use `vibe_learn` MCP tool for mistake tracking
 - Update skill-rules.json for auto-activation
@@ -311,16 +333,19 @@ Update .claude/instructions/*.md    # Document conventions
 ### Performance Checklist
 
 **Before Starting:**
+
 - [ ] `/clear` from previous session
 - [ ] Plan complex tasks (Shift+Tab)
 - [ ] Check which agent to use
 
 **During Work:**
+
 - [ ] Keep sessions focused (1 feature/task)
 - [ ] Monitor with `/cos` if session gets long
 - [ ] `/compact` if >50 messages
 
 **After Completion:**
+
 - [ ] Test implementation
 - [ ] Commit changes
 - [ ] `/clear` for next task

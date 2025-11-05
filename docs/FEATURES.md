@@ -52,6 +52,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - Backup System (One-Click Backup/Restore)
 
 **Removed from Core (moved to themes/plugins):**
+
 - ❌ Upvote/Downvote System (Posts & Comments) → "Voting System" Community Plugin
 - ❌ Social Sharing Buttons → Theme-specific or Community Plugin
 - ❌ Breadcrumbs (Auto-Generated) → Theme-specific
@@ -226,6 +227,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 **Grand Total:** ~213 Features
 
 **Software Engineering Improvements:**
+
 - Removed 15 YAGNI features (Enterprise/overengineered → v2.0)
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG fields)
 - Simplified 3 KISS violations (JSON Editor, Template Builder, Workflow)

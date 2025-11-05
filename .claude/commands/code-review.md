@@ -8,6 +8,7 @@ Based on: "Claude Code is a Beast - Tips from 6 Months" Reddit post.
 ## /code-review - Architectural Code Review
 
 Launch the `code-reviewer` agent to review recently changed code for:
+
 - Best practices adherence
 - Architecture consistency
 - Security flaws
@@ -15,12 +16,14 @@ Launch the `code-reviewer` agent to review recently changed code for:
 - Code quality issues
 
 **When to use:**
+
 - After implementing a feature or significant changes
 - Before creating a PR
 - Periodically during long implementation sessions
 - When you want a "second pair of eyes"
 
 **Process:**
+
 1. Identify files changed in current session (use git status/diff)
 2. Launch `code-reviewer` agent with context about what was implemented
 3. Agent reviews code against:
@@ -35,6 +38,7 @@ Launch the `code-reviewer` agent to review recently changed code for:
    - Positive feedback (what's done well)
 
 **Agent prompt:**
+
 ```
 Please review the following files that were recently modified:
 
@@ -63,18 +67,22 @@ Provide specific feedback with file:line references.
 Systematically run all build checks and fix errors until clean.
 
 **When to use:**
+
 - Before committing code
 - After completing a feature
 - When you suspect there might be errors
 - Before creating a PR
 
 **Process:**
+
 1. **TypeScript Check** (if frontend modified):
+
    ```bash
    npx tsc --noEmit
    ```
 
 2. **PHPStan Check** (if backend modified):
+
    ```bash
    composer analyse
    ```
@@ -90,6 +98,7 @@ Systematically run all build checks and fix errors until clean.
    - Work through errors systematically
 
 5. **Final verification:**
+
    ```bash
    composer quality  # PHP: format + analyze + test
    npm run quality   # JS: format + lint + type-check + test
@@ -102,6 +111,7 @@ Systematically run all build checks and fix errors until clean.
 Fast quality check without full test suite (useful during development).
 
 **Process:**
+
 ```bash
 # Backend
 vendor/bin/pint --dirty  # Format changed files only
@@ -114,6 +124,7 @@ npx tsc --noEmit
 ```
 
 **Output:**
+
 - ✅ All checks passed → Ready to commit
 - ❌ Errors found → Fix and re-run
 
@@ -124,6 +135,7 @@ npx tsc --noEmit
 Complete checklist before creating a Pull Request.
 
 **Checklist:**
+
 ```markdown
 ## Code Quality
 - [ ] `composer quality` passes
@@ -162,6 +174,7 @@ Complete checklist before creating a Pull Request.
 ```
 
 **Process:**
+
 1. Run through checklist
 2. Fix any issues
 3. Run `/build-and-fix` to verify
@@ -172,6 +185,7 @@ Complete checklist before creating a Pull Request.
 ## Workflow Example
 
 ### During Feature Development
+
 ```
 [Implementing user authentication for 2 hours...]
 
@@ -202,6 +216,7 @@ Claude: Shall I fix the critical and warning issues?
 ```
 
 ### Before Committing
+
 ```
 You: /build-and-fix
 
@@ -225,6 +240,7 @@ All checks passed! ✅
 ```
 
 ### Before PR
+
 ```
 You: /pr-ready
 
@@ -274,12 +290,14 @@ The Stop hook automatically runs build checks after you finish responding.
 You'll see errors immediately without having to manually run checks.
 
 **Hook benefits:**
+
 - ✅ Automatic error detection
 - ✅ No errors slip through
 - ✅ Gentle reminders for error handling
 - ✅ Zero manual checking needed
 
 **Manual commands still useful for:**
+
 - Full quality check with tests (`/pr-ready`)
 - Systematic error fixing (`/build-and-fix`)
 - Architecture review (`/code-review`)

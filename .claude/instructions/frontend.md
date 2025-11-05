@@ -9,12 +9,14 @@
 ### Inertia.js 2.x Integration
 
 **Navigation Example:**
+
 ```vue
 import { Link } from '@inertiajs/vue3'
 <Link href="/">Home</Link>
 ```
 
 **Forms with `<Form>` Component:**
+
 ```vue
 <Form
     action="/users"
@@ -52,6 +54,7 @@ import { Link } from '@inertiajs/vue3'
 ### Inertia v2 Features
 
 **Use these modern features:**
+
 - Polling
 - Prefetching
 - Deferred props
@@ -64,6 +67,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 ### Alpine.js Integration
 
 **Public Pages:**
+
 - Use Alpine.js for interactive components on public-facing pages
 - Keep Alpine components simple and focused
 - Prefer Blade + Alpine for public pages over Vue
@@ -79,6 +83,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 ### Tailwind v4 Specific Rules
 
 **Import Statement:**
+
 ```css
 /* ✅ Correct - Tailwind v4 */
 @import "tailwindcss";
@@ -90,6 +95,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 ```
 
 **Replaced Utilities:**
+
 | Deprecated | Replacement |
 |------------|-------------|
 | bg-opacity-* | bg-black/* |
@@ -109,6 +115,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 ### Spacing Best Practices
 
 **Use gap utilities for spacing, NOT margins:**
+
 ```html
 <!-- ✅ Good - Flex Gap Spacing -->
 <div class="flex gap-8">
@@ -141,6 +148,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 ## PrimeVue Components
 
 **Admin Panel Only:**
+
 - Use PrimeVue components for admin panel UI
 - Use `context7` MCP tool for PrimeVue documentation
 - Follow PrimeVue theming and customization guidelines

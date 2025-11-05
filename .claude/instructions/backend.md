@@ -46,6 +46,7 @@ php artisan make:resource PostCollection
 ```
 
 **IMPORTANT:** Always pass `--no-interaction` flag for AI execution:
+
 ```bash
 php artisan make:model Post -mfs --no-interaction
 ```
@@ -55,6 +56,7 @@ php artisan make:model Post -mfs --no-interaction
 ### Controller Best Practices
 
 **Keep controllers thin:**
+
 ```php
 // ❌ Bad - Fat controller with business logic
 class PostController extends Controller
@@ -183,6 +185,7 @@ class PostService
 ### Service Registration
 
 **Register in AppServiceProvider:**
+
 ```php
 // app/Providers/AppServiceProvider.php
 public function register(): void
@@ -387,6 +390,7 @@ class StorePostRequest extends FormRequest
 ```
 
 **Check sibling FormRequests for array vs string validation rules:**
+
 ```php
 // Some projects use array syntax
 'title' => ['required', 'string', 'max:255']

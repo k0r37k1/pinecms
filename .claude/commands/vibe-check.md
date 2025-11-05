@@ -72,6 +72,7 @@ vibe_learn({
 ```
 
 **Categories:**
+
 - Complex Solution Bias
 - Feature Creep
 - Premature Implementation
@@ -114,24 +115,28 @@ check_constitution({
 
 ## When to Use
 
-### ✅ Use vibe_check for:
+### ✅ Use vibe_check for
+
 - Complex features (3+ files or >1 hour work)
 - Before major refactoring
 - When uncertain about approach
 - To verify alignment with user intent
 
-### ✅ Use vibe_learn for:
+### ✅ Use vibe_learn for
+
 - After fixing mistakes
 - After discovering better approaches
 - When user corrects misunderstanding
 - To log project preferences
 
-### ✅ Use constitution for:
+### ✅ Use constitution for
+
 - Enforcing TDD or other methodologies
 - Project-specific constraints
 - Session-specific rules
 
-### ❌ Don't use for:
+### ❌ Don't use for
+
 - Trivial changes (typos, formatting)
 - Well-understood routine tasks
 - After already implementing (too late!)
@@ -182,4 +187,4 @@ Claude: Noted! I'll remember this preference.
 
 ---
 
-**Documentation:** https://github.com/PV-Bhat/vibe-check-mcp-server
+**Documentation:** <https://github.com/PV-Bhat/vibe-check-mcp-server>

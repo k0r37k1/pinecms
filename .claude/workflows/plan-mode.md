@@ -14,13 +14,14 @@ related:
 ## What is Plan Mode?
 
 Plan Mode (`Shift+Tab`) allows Claude to **think deeply** before coding:
+
 - **think** - Standard planning
 - **think harder** - More thorough analysis
 - **ultrathink** - Maximum depth for complex problems
 
 ## When to Use Plan Mode
 
-### ✅ ALWAYS Use Plan Mode For:
+### ✅ ALWAYS Use Plan Mode For
 
 1. **Complex multi-step implementations**
    - Features requiring >3 files
@@ -47,7 +48,7 @@ Plan Mode (`Shift+Tab`) allows Claude to **think deeply** before coding:
    - Multi-step workflows
    - Integration of multiple packages
 
-### ❌ When NOT to Use Plan Mode:
+### ❌ When NOT to Use Plan Mode
 
 - Simple bug fixes (single file, obvious solution)
 - Minor text/formatting changes
@@ -62,6 +63,7 @@ Plan Mode (`Shift+Tab`) allows Claude to **think deeply** before coding:
 Press `Shift+Tab` to enter Plan Mode.
 
 **Choose thinking level:**
+
 - `think` - For moderately complex tasks
 - `think harder` - For complex tasks with dependencies
 - `ultrathink` - For critical architectural decisions
@@ -86,6 +88,7 @@ Press `Shift+Tab` to enter Plan Mode.
 **Plan should include:**
 
 ✅ **Tasks breakdown:**
+
 ```
 1. Research existing patterns
 2. Design database schema changes
@@ -97,12 +100,14 @@ Press `Shift+Tab` to enter Plan Mode.
 ```
 
 ✅ **Dependencies:**
+
 ```
 - Task 3 depends on Task 2 (schema must exist)
 - Task 5 depends on Task 4 (models needed for migration)
 ```
 
 ✅ **Edge cases:**
+
 ```
 - What happens to existing data?
 - How to handle tenant switching?
@@ -110,6 +115,7 @@ Press `Shift+Tab` to enter Plan Mode.
 ```
 
 ✅ **Testing strategy:**
+
 ```
 - Unit tests for tenant scopes
 - Feature tests for tenant isolation
@@ -117,6 +123,7 @@ Press `Shift+Tab` to enter Plan Mode.
 ```
 
 ✅ **Trade-offs:**
+
 ```
 Approach A: Single database with tenant_id
   Pros: Simpler, cheaper
@@ -132,6 +139,7 @@ Recommendation: Approach A (current scale)
 ### Step 4: Review with User
 
 **Present plan for approval:**
+
 - Explain approach and reasoning
 - Highlight trade-offs
 - Ask for feedback/adjustments
@@ -142,6 +150,7 @@ Recommendation: Approach A (current scale)
 Press `Shift+Tab` again to exit Plan Mode.
 
 **Then execute with specialized agents:**
+
 ```
 Task 1: Use context-manager to explore codebase
 Task 2: Use database-architect for schema design
@@ -154,11 +163,13 @@ Task 6: Use test-engineer for comprehensive tests
 ### Example 1: Complex Feature
 
 **User Request:**
+
 ```
 "Add real-time collaboration feature with WebSockets"
 ```
 
 **Plan Mode Response:**
+
 ```
 I'll create a detailed plan for real-time collaboration:
 
@@ -202,11 +213,13 @@ Shall I proceed with this approach?
 ### Example 2: Architectural Decision
 
 **User Request:**
+
 ```
 "Should we use Repository pattern or stick with Eloquent?"
 ```
 
 **Plan Mode Response (ultrathink):**
+
 ```
 I'll analyze this architectural decision:
 
@@ -258,6 +271,7 @@ Post::published()->latest()->get();
 ```
 
 Is this analysis aligned with your needs?
+
 ```
 
 ## Tips for Effective Planning

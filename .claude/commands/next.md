@@ -12,9 +12,11 @@ You are tasked with implementing: **$ARGUMENTS**
 ## CRITICAL SEQUENCE (NO SKIPPING!)
 
 ### 1️⃣ 🔍 RESEARCH FIRST
+
 **YOU MUST SAY:** "Let me research the codebase and create a plan before implementing."
 
 **What to research:**
+
 - Existing patterns in codebase
 - Related code and dependencies
 - Architecture decisions
@@ -25,7 +27,9 @@ You are tasked with implementing: **$ARGUMENTS**
 "Let me ultrathink about this architecture before proposing a solution."
 
 ### 2️⃣ 📋 PLAN
+
 Present a detailed plan:
+
 - Overall architecture
 - Files to create/modify
 - Testing strategy
@@ -35,7 +39,9 @@ Present a detailed plan:
 **Get approval before proceeding!**
 
 ### 3️⃣ ✅ IMPLEMENT
+
 Execute with validation checkpoints:
+
 - Implement in small increments
 - Validate after each major component
 - Run linters after EVERY file edit
@@ -46,6 +52,7 @@ Execute with validation checkpoints:
 ## USE MULTIPLE AGENTS
 
 For tasks with independent parts:
+
 ```
 "I'll spawn agents to tackle different aspects:
 - Agent 1: Backend service layer
@@ -59,6 +66,7 @@ Let me coordinate these in parallel..."
 ## Completion Standards (NOT NEGOTIABLE)
 
 ### All Checks MUST Pass
+
 - ✅ `composer quality` - ZERO warnings
 - ✅ `npm run quality` - ZERO warnings
 - ✅ All tests pass (PHP + JS + E2E)
@@ -66,6 +74,7 @@ Let me coordinate these in parallel..."
 - ✅ No TODOs, placeholders, or "good enough" compromises
 
 ### Reality Checkpoints (MANDATORY)
+
 - After EVERY 3 file edits → Run linters
 - After each component → Validate it works
 - Before saying "done" → Run FULL test suite
@@ -76,6 +85,7 @@ Let me coordinate these in parallel..."
 ## Code Evolution Rules (PineCMS)
 
 ### Direct Implementation
+
 - This is a feature branch → implement NEW solution directly
 - DELETE old code when replacing it
 - NO migration functions or compatibility layers
@@ -85,6 +95,7 @@ Let me coordinate these in parallel..."
 ### Language-Specific Requirements
 
 #### PHP/Laravel
+
 - ❌ NO raw SQL - use Eloquent/Query Builder
 - ❌ NO direct `$_GET`/`$_POST` - use Request validation
 - ✅ Type hints on ALL methods
@@ -95,6 +106,7 @@ Let me coordinate these in parallel..."
 - ✅ Enum classes with methods (NO constants for UI)
 
 #### Vue 3 + Inertia
+
 - ✅ Composition API ONLY (NO Options API)
 - ✅ TypeScript for ALL components
 - ✅ `<script setup lang="ts">` syntax
@@ -103,6 +115,7 @@ Let me coordinate these in parallel..."
 - ❌ NO direct API calls - use Inertia router
 
 #### PrimeVue
+
 - ✅ Auto-import components (configured in Vite)
 - ✅ Use PrimeVue composables (`useToast`, `useConfirm`)
 - ✅ Follow PrimeVue patterns
@@ -113,6 +126,7 @@ Let me coordinate these in parallel..."
 ## PineCMS Specific Patterns
 
 ### Flat-File Content Management
+
 ```php
 // Use spatie/yaml-front-matter
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -123,6 +137,7 @@ $body = $object->body();
 ```
 
 ### Security (MANDATORY)
+
 ```php
 // Form Request validation
 class StorePostRequest extends FormRequest
@@ -138,6 +153,7 @@ class StorePostRequest extends FormRequest
 ```
 
 ### Inertia Forms
+
 ```vue
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3'
@@ -161,12 +177,14 @@ const submit = () => {
 ## Documentation Requirements
 
 ### Reference Official Docs
+
 - Link to Laravel docs for framework features
 - Link to Inertia docs for SPA patterns
 - Link to PrimeVue docs for components
 - Document WHY decisions were made
 
 Example:
+
 ```markdown
 // Per Laravel docs on Eloquent relationships:
 // https://laravel.com/docs/12.x/eloquent-relationships#one-to-many
@@ -180,7 +198,8 @@ public function posts(): HasMany
 
 ## Forbidden Patterns (PineCMS)
 
-### ❌ NEVER DO THIS:
+### ❌ NEVER DO THIS
+
 ```php
 // Raw SQL
 DB::select('SELECT * FROM users');
@@ -201,7 +220,8 @@ class Status {
 }
 ```
 
-### ✅ ALWAYS DO THIS:
+### ✅ ALWAYS DO THIS
+
 ```php
 // Eloquent
 User::query()->where('active', true)->get();

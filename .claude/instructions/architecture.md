@@ -17,6 +17,7 @@ User Action → Controller → Service → Repository → Database
 **Registration:** `app/Providers/EventServiceProvider.php`
 
 **Example:**
+
 ```php
 // Dispatch event from Service
 event(new PostPublished($post));
@@ -104,6 +105,7 @@ public function handle(PostCreated $event): void
 ### Implementation
 
 **Use `filesystem` MCP for all flat-file operations:**
+
 ```php
 // Read markdown content
 $content = Storage::disk('content')->get('posts/my-post.md');
@@ -116,6 +118,7 @@ $files = Storage::disk('content')->files('posts');
 ```
 
 **Database for metadata:**
+
 ```php
 // Store metadata in SQLite
 Post::create([
@@ -173,6 +176,7 @@ Post::with(['comments' => function ($query) {
 ### Detection
 
 Use `database-query` MCP tool to check actual queries:
+
 ```bash
 # In tinker or test
 DB::enableQueryLog();
@@ -252,6 +256,7 @@ Post::published()->latest()->get();
 ### Migrations
 
 **When modifying columns, include ALL attributes:**
+
 ```php
 // ❌ Bad - Other attributes will be lost
 $table->string('name')->nullable()->change();

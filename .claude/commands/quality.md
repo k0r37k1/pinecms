@@ -68,11 +68,13 @@ npm run test:e2e:ui  # Interactive mode
 ## Quality Gate Enforcement
 
 **MANDATORY before finalizing:**
+
 ```bash
 composer quality && npm run quality
 ```
 
 **If ANY check fails:**
+
 1. Fix the issues
 2. Re-run quality checks
 3. Only proceed when ALL checks pass

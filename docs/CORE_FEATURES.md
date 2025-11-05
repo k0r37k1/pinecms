@@ -84,9 +84,9 @@
 - [ ] Live Preview:
   - Split View (Side-by-Side)
   - Device Switcher:
-    * Desktop (1280px+)
-    * Tablet (768px - 1279px)
-    * Mobile (< 768px)
+    - Desktop (1280px+)
+    - Tablet (768px - 1279px)
+    - Mobile (< 768px)
   - Full Preview Mode (without editor)
 
 #### Custom Fields (Basic Types)
@@ -322,6 +322,7 @@
 - [ ] Rate Limiting (Forms, Login)
 
 **Backup Implementation:**
+
 - Uses spatie/laravel-backup package
 - Components: SQLite Database, Flat-Files (Markdown), Media Files
 - Configuration Files (.env excluded for security)
@@ -361,6 +362,7 @@
 - [ ] Markdown Support in Comments
 
 **Removed (YAGNI):**
+
 - ❌ Upvote/Downvote Comments → "Voting System" Community Plugin (for Posts + Comments)
 
 ---

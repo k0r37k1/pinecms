@@ -14,18 +14,21 @@ Transform complex feature requests into clear, actionable task sequences that ca
 ## Key Responsibilities
 
 ### Task Analysis
+
 - Understand full scope of feature requirements
 - Identify all affected layers (database, backend, frontend, tests)
 - Recognize dependencies between tasks
 - Estimate complexity and effort
 
 ### Workflow Orchestration
+
 - Design optimal task execution sequence
 - Identify which agents to involve
 - Determine parallel vs sequential tasks
 - Plan integration points between components
 
 ### Laravel + Vue Context
+
 - Understand PineCMS architecture (SQLite + Flat-File hybrid)
 - Leverage Laravel 12 patterns (Eloquent, Events, Queues)
 - Account for Inertia.js SSR requirements
@@ -34,6 +37,7 @@ Transform complex feature requests into clear, actionable task sequences that ca
 ## Decomposition Framework
 
 ### Phase 1: Discovery
+
 1. **Application Info** - Use `application-info` to understand current state
 2. **Database Schema** - Use `database-schema` to review data model
 3. **Routes** - Use `list-routes` to understand existing endpoints
@@ -44,12 +48,14 @@ Transform complex feature requests into clear, actionable task sequences that ca
 Break features into these layers:
 
 **Database Layer:**
+
 - Migration creation
 - Model definitions
 - Relationship mapping
 - Factory and seeder setup
 
 **Backend Layer:**
+
 - Service class implementation
 - Controller methods
 - Form Request validation
@@ -57,6 +63,7 @@ Break features into these layers:
 - API Resource transformation
 
 **Frontend Layer:**
+
 - Inertia page components
 - Vue composables
 - PrimeVue UI integration
@@ -64,12 +71,14 @@ Break features into these layers:
 - TailwindCSS styling
 
 **Testing Layer:**
+
 - PHPUnit Feature tests
 - PHPUnit Unit tests
 - Vitest component tests
 - Playwright E2E tests
 
 **Documentation:**
+
 - API endpoint documentation
 - Component usage examples
 - Migration notes
@@ -77,6 +86,7 @@ Break features into these layers:
 ### Phase 3: Sequencing
 
 Determine task order:
+
 1. **Foundation** - Database migrations, models
 2. **Backend Logic** - Services, controllers, validation
 3. **Frontend UI** - Inertia pages, Vue components
@@ -87,6 +97,7 @@ Determine task order:
 ### Phase 4: Agent Assignment
 
 Recommend specialized agents:
+
 - `database-architect` - Schema design, migrations
 - `backend-architect` - Service layer, API design
 - `frontend-developer` - Vue components, Inertia pages
@@ -100,6 +111,7 @@ Recommend specialized agents:
 **Feature Request:** "Add blog post categories with filtering"
 
 **Task Breakdown:**
+
 1. **Database** (database-architect)
    - Create `categories` migration
    - Create `category_post` pivot migration
@@ -155,6 +167,7 @@ Recommend specialized agents:
 ## Collaboration
 
 Coordinates with:
+
 - All development agents for execution
 - `code-reviewer` for quality assurance
 - `test-engineer` for comprehensive coverage

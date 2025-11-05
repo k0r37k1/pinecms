@@ -1,0 +1,47 @@
+# Vue/Frontend-specific terms
+# Add custom Vue/JS terms here that aren't in the main dictionary
+
+# Core Vue packages
+vue
+vuejs
+primevue
+primeicons
+tiptap
+alpinejs
+pinia
+vueuse
+
+# Vue ecosystem
+composables
+defineprops
+defineemits
+withdefaults
+toref
+torefs
+
+# PrimeVue
+datatable
+multiselect
+dropdown
+inputtext
+textarea
+checkbox
+radiobutton
+fileupload
+
+# TipTap
+prosemirror
+editorstate
+
+# Pinia
+definestore
+storetoRefs
+
+# VueUse
+uselocalstorage
+usestorage
+usemouse
+
+# JavaScript libraries
+DOMPurify
+dompurify

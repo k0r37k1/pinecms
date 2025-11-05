@@ -90,6 +90,7 @@ FEEDBACK LOOP
 ## 🎭 When Each System Activates
 
 ### **Skills (Automatic)**
+
 ```
 test-driven-development → When implementing features
 systematic-debugging → When fixing bugs
@@ -99,6 +100,7 @@ verification-before-completion → Before declaring done
 ```
 
 ### **Agents (On-Demand or by Commands)**
+
 ```
 backend-architect → Backend design/implementation
 frontend-developer → Vue/Inertia/PrimeVue work
@@ -109,6 +111,7 @@ debugger → Complex debugging
 ```
 
 ### **Hooks (Always - After Every Edit)**
+
 ```
 PostToolUse → After Edit/Write (ALWAYS runs)
   1. PHP hook tracks file
@@ -119,6 +122,7 @@ PostToolUse → After Edit/Write (ALWAYS runs)
 ```
 
 ### **Commands (User-Triggered)**
+
 ```
 /check → Comprehensive quality validation
 /next → Structured implementation workflow
@@ -172,6 +176,7 @@ PostToolUse → After Edit/Write (ALWAYS runs)
 ## 💡 Pro Tips
 
 ### Tip 1: Trust the Automation
+
 ```
 ❌ "Let me disable hooks for this"
 ✅ "Hooks caught an issue, let me fix it"
@@ -180,6 +185,7 @@ If hooks block, there's a REAL issue.
 ```
 
 ### Tip 2: Use /next for Complex Work
+
 ```
 ❌ "Just implement X" (ad-hoc)
 ✅ "/next Implement X" (structured)
@@ -188,6 +194,7 @@ Research → Plan → Implement = Better results
 ```
 
 ### Tip 3: Let Skills Auto-Activate
+
 ```
 ❌ Manually invoking skills each time
 ✅ Just describe what you want
@@ -196,6 +203,7 @@ skill-rules.json handles activation automatically
 ```
 
 ### Tip 4: Spawn Agents for Parallel Work
+
 ```
 ❌ "Do this, then this, then this"
 ✅ "Spawn agents for backend, frontend, tests"
@@ -204,6 +212,7 @@ Agents work in parallel = Faster completion
 ```
 
 ### Tip 5: /check Before PR
+
 ```
 ❌ "Looks good, let's commit"
 ✅ "/check" then commit
@@ -216,6 +225,7 @@ Comprehensive validation prevents CI failures
 ## 🔧 Configuration Quick Access
 
 ### Enable/Disable Hooks
+
 ```bash
 # In .claude-hooks-config.sh
 export CLAUDE_HOOKS_ENABLED=false  # Disable
@@ -223,12 +233,14 @@ export CLAUDE_HOOKS_ENABLED=true   # Enable (default)
 ```
 
 ### Debug Mode
+
 ```bash
 # See what hooks are doing
 export CLAUDE_HOOKS_DEBUG=1
 ```
 
 ### Ignore Files
+
 ```bash
 # Edit .claude/hooks/.claude-hooks-ignore
 vendor/**
@@ -237,6 +249,7 @@ your-custom-ignores/**
 ```
 
 ### Force Stack Detection
+
 ```bash
 # In .claude-hooks-config.sh
 export CLAUDE_HOOKS_LARAVEL_STACK="pinecms-inertia-vue-primevue"
@@ -262,6 +275,7 @@ export CLAUDE_HOOKS_LARAVEL_STACK="pinecms-inertia-vue-primevue"
 ## 🚨 When Things Go Wrong
 
 ### Hook Blocks Unexpectedly
+
 ```bash
 # 1. See what's failing
 bash .claude/hooks/pinecms-lint.sh
@@ -275,6 +289,7 @@ npm run quality
 ```
 
 ### Skill Not Activating
+
 ```bash
 # Check skill-rules.json
 # Ensure keywords/patterns match your prompt
@@ -282,6 +297,7 @@ npm run quality
 ```
 
 ### Agent Produces Wrong Code
+
 ```bash
 # Hooks will catch it!
 # If hook blocks, Claude will fix
@@ -289,6 +305,7 @@ npm run quality
 ```
 
 ### Debug Mode Not Working
+
 ```bash
 # Set in terminal before running
 export CLAUDE_HOOKS_DEBUG=1
@@ -337,6 +354,7 @@ npm run quality
 ## 🎉 Remember
 
 **The system is designed to:**
+
 1. ✅ Guide you (Skills + Instructions)
 2. ✅ Execute efficiently (Agents + Commands)
 3. ✅ Validate automatically (Hooks)

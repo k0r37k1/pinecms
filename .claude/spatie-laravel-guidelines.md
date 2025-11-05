@@ -14,34 +14,43 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
 - Always specify `void` return types when methods return nothing
 
 ## Class Structure
+
 - Use typed properties, not docblocks:
 - Constructor property promotion when all properties can be promoted:
 - One trait per line:
 
 ## Type Declarations & Docblocks
+
 - Use typed properties over docblocks
 - Specify return types including `void`
 - Use short nullable syntax: `?Type` not `Type|null`
 - Document iterables with generics:
+
   ```php
   /** @return Collection<int, User> */
   public function getUsers(): Collection
   ```
 
 ### Docblock Rules
+
 - Don't use docblocks for fully type-hinted methods (unless description needed)
 - **Always import classnames in docblocks** - never use fully qualified names:
+
   ```php
   use \Spatie\Url\Url;
   /** @return Url */
   ```
+
 - Use one-line docblocks when possible: `/** @var string */`
 - Most common type should be first in multi-type docblocks:
+
   ```php
   /** @var Collection|SomeWeirdVendor\Collection */
   ```
+
 - If one parameter needs docblock, add docblocks for all parameters
 - For iterables, always specify key and value types:
+
   ```php
   /**
    * @param array<int, MyObject> $myArray
@@ -49,7 +58,9 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
    */
   function someFunction(array $myArray, int $typedArgument) {}
   ```
+
 - Use array shape notation for fixed keys, put each key on it's own line:
+
   ```php
   /** @return array{
      first: SomeClass, 
@@ -58,6 +69,7 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
   ```
 
 ## Control Flow
+
 - **Happy path last**: Handle error conditions first, success case last
 - **Avoid else**: Use early returns instead of nested conditions  
 - **Separate conditions**: Prefer multiple if statements over compound conditions
@@ -93,27 +105,32 @@ $condition
 ## Laravel Conventions
 
 ### Routes
+
 - URLs: kebab-case (`/open-source`)
 - Route names: camelCase (`->name('openSource')`)
 - Parameters: camelCase (`{userId}`)
 - Use tuple notation: `[Controller::class, 'method']`
 
 ### Controllers
+
 - Plural resource names (`PostsController`)
 - Stick to CRUD methods (`index`, `create`, `store`, `show`, `edit`, `update`, `destroy`)
 - Extract new controllers for non-CRUD actions
 
 ### Configuration
+
 - Files: kebab-case (`pdf-generator.php`)
 - Keys: snake_case (`chrome_path`)
 - Add service configs to `config/services.php`, don't create new files
 - Use `config()` helper, avoid `env()` outside config files
 
 ### Artisan Commands
+
 - Names: kebab-case (`delete-old-records`)
 - Always provide feedback (`$this->comment('All ok!')`)
 - Show progress for loops, summary at end
 - Put output BEFORE processing item (easier debugging):
+
   ```php
   $items->each(function(Item $item) {
       $this->info("Processing item id `{$item->id}`...");
@@ -135,6 +152,7 @@ $condition
 
 - **Avoid comments** - write expressive code instead
 - When needed, use proper formatting:
+
   ```php
   // Single line with space after //
   
@@ -142,6 +160,7 @@ $condition
    * Multi-line blocks start with single *
    */
   ```
+
 - Refactor comments into descriptive function names
 
 ## Whitespace
@@ -154,6 +173,7 @@ $condition
 ## Validation
 
 - Use array notation for multiple rules (easier for custom rule classes):
+
   ```php
   public function rules() {
       return [
@@ -161,7 +181,9 @@ $condition
       ];
   }
   ```
+
 - Custom validation rules use snake_case:
+
   ```php
   Validator::extend('organisation_type', function ($attribute, $value) {
       return OrganisationType::isValid($value);
@@ -172,6 +194,7 @@ $condition
 
 - Indent with 4 spaces
 - No spaces after control structures:
+
   ```blade
   @if($condition)
       Something
@@ -192,6 +215,7 @@ $condition
 - Use plural resource names: `/errors`
 - Use kebab-case: `/error-occurrences`
 - Limit deep nesting for simplicity:
+
   ```
   /error-occurrences/1
   /errors/1/occurrences
@@ -206,6 +230,7 @@ $condition
 ## Quick Reference
 
 ### Naming Conventions
+
 - **Classes**: PascalCase (`UserController`, `OrderStatus`)
 - **Methods/Variables**: camelCase (`getUserName`, `$firstName`)
 - **Routes**: kebab-case (`/open-source`, `/user-profile`)
@@ -214,6 +239,7 @@ $condition
 - **Artisan commands**: kebab-case (`php artisan delete-old-records`)
 
 ### File Structure
+
 - Controllers: plural resource name + `Controller` (`PostsController`)
 - Views: camelCase (`openSource.blade.php`)  
 - Jobs: action-based (`CreateUser`, `SendEmailNotification`)
@@ -225,11 +251,13 @@ $condition
 - Enums: descriptive name, no prefix (`OrderStatus`, `BookingType`)
 
 ### Migrations
+
 - do not write down methods in migrations, only up methods
 
 ### Code Quality Reminders
 
 #### PHP
+
 - Use typed properties over docblocks
 - Prefer early returns over nested if/else
 - Use constructor property promotion when all properties can be promoted

@@ -10,11 +10,13 @@ Based on: "Claude Code is a Beast - Tips from 6 Months" Reddit post.
 Create a comprehensive strategic plan for a feature or task. This command should be used at the START of any large task.
 
 **When to use:**
+
 - Starting a new feature implementation
 - Planning a refactoring effort
 - Before any multi-step task (3+ steps)
 
 **Process:**
+
 1. Research the codebase thoroughly
 2. Analyze project structure and existing patterns
 3. Create a structured plan with:
@@ -26,6 +28,7 @@ Create a comprehensive strategic plan for a feature or task. This command should
    - Timeline estimate
 
 **Output format:**
+
 ```markdown
 # [Task Name] - Strategic Plan
 
@@ -78,9 +81,11 @@ Create a comprehensive strategic plan for a feature or task. This command should
 After plan approval, create the 3-file dev docs system in `~/dev/active/[task-name]/`.
 
 **Arguments:**
+
 - `task-name` - Kebab-case task identifier (e.g., `user-authentication`, `payment-integration`)
 
 **Creates:**
+
 ```
 ~/dev/active/[task-name]/
 ├── [task-name]-plan.md      # The approved strategic plan
@@ -89,6 +94,7 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 ```
 
 **Process:**
+
 1. Create task directory
 2. Save approved plan to `[task-name]-plan.md`
 3. Extract key context to `[task-name]-context.md`:
@@ -102,6 +108,7 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
    - Include next steps
 
 **Context file format:**
+
 ```markdown
 # [Task Name] - Context
 
@@ -137,6 +144,7 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 ```
 
 **Tasks file format:**
+
 ```markdown
 # [Task Name] - Tasks
 
@@ -163,12 +171,14 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 ## /update-dev-docs - Update Before Compaction
 
 Before running out of context or compacting conversation, update dev docs with:
+
 - Current progress
 - New tasks discovered
 - Important decisions made
 - Next steps
 
 **Process:**
+
 1. Find the active task directory in `~/dev/active/`
 2. Update `[task-name]-context.md`:
    - Add any new key files discovered
@@ -182,6 +192,7 @@ Before running out of context or compacting conversation, update dev docs with:
 
 **After updating:**
 Run `/clear` to compact conversation. In the new session, say:
+
 - "Continue with [task-name]"
 - Claude will read the dev docs and pick up exactly where it left off
 
@@ -192,6 +203,7 @@ Run `/clear` to compact conversation. In the new session, say:
 Resume work on an existing task from dev docs.
 
 **Process:**
+
 1. List tasks in `~/dev/active/`
 2. Ask which task to continue
 3. Read all 3 dev doc files
@@ -203,6 +215,7 @@ Resume work on an existing task from dev docs.
 ## Workflow Example
 
 ### Starting New Task
+
 ```
 You: I want to implement user authentication with OAuth
 Claude: Let me create a strategic plan...
@@ -220,6 +233,7 @@ Ready to start Phase 1!
 ```
 
 ### During Implementation
+
 ```
 [Working on feature... context getting low]
 
@@ -273,12 +287,14 @@ From the Reddit post author:
 > was doing, even through an auto-compaction."
 
 The dev docs system prevents:
+
 - ❌ Claude forgetting the plan mid-implementation
 - ❌ Going off on tangents and losing focus
 - ❌ Losing progress during context compaction
 - ❌ Repeating work or missing tasks
 
 And enables:
+
 - ✅ Clear, trackable progress
 - ✅ Seamless continuation across sessions
 - ✅ Confidence that nothing is forgotten

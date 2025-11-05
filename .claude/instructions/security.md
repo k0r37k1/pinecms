@@ -9,6 +9,7 @@
 - ✅ Include both validation rules and custom error messages
 
 **Example:**
+
 ```php
 // ✅ Good - FormRequest
 php artisan make:request StoreUserRequest
@@ -26,6 +27,7 @@ public function rules(): array
 ### Check Existing Patterns
 
 Before creating FormRequests, check sibling files:
+
 - Are rules defined as arrays or strings?
 - What validation patterns are used?
 
@@ -42,6 +44,7 @@ Before creating FormRequests, check sibling files:
 ```
 
 **Only use `{!! !!}` for:**
+
 - Trusted admin content
 - Sanitized HTML (e.g., from TipTap editor with proper sanitization)
 
@@ -56,6 +59,7 @@ Before creating FormRequests, check sibling files:
 ```
 
 **Always sanitize before v-html:**
+
 ```javascript
 import DOMPurify from 'dompurify'
 
@@ -169,6 +173,7 @@ $path = $request->file('avatar')->store('avatars', 'public');
 ## Content Security Policy (CSP)
 
 **Use spatie/laravel-csp:**
+
 ```php
 // config/csp.php
 'default-src' => ['self'],
@@ -179,6 +184,7 @@ $path = $request->file('avatar')->store('avatars', 'public');
 ## Activity Logging
 
 **Use spatie/laravel-activitylog for auditing:**
+
 ```php
 activity()
     ->performedOn($post)
