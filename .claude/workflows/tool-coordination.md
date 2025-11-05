@@ -190,9 +190,9 @@ gh pr create --title "feat: add new feature" --body "Description"
 - Review CodeRabbit comments
 - Address critical issues immediately
 - Use `@coderabbitai` commands for clarification
-  - `@coderabbitai help` - Show commands
-  - `@coderabbitai review` - Re-review after fixes
-  - `@coderabbitai ask <question>` - Specific questions
+    - `@coderabbitai help` - Show commands
+    - `@coderabbitai review` - Re-review after fixes
+    - `@coderabbitai ask <question>` - Specific questions
 
 **Claude Code Review (On-Demand):**
 

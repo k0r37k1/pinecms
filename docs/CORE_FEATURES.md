@@ -1,14 +1,15 @@
 # 📋 PineCMS - Core Features
 
-> **Last Updated:** 2025-01-26
-> **Architecture:** Core CMS + Official Plugins
+> **Last Updated:** 2025-01-26 **Architecture:** Core CMS + Official Plugins
 > **License:** MIT - 100% Open Source
 
 ---
 
 ## 🎯 Core Philosophy
 
-**PineCMS Core** ist schlank, schnell und für Shared Hosting optimiert. Alle Features die 90%+ der Nutzer brauchen sind im Core enthalten. Spezialisierte Features werden als **Official Plugins** bereitgestellt.
+**PineCMS Core** ist schlank, schnell und für Shared Hosting optimiert. Alle
+Features die 90%+ der Nutzer brauchen sind im Core enthalten. Spezialisierte
+Features werden als **Official Plugins** bereitgestellt.
 
 **Core Prinzipien:**
 
@@ -22,9 +23,8 @@
 
 ## 📦 Version 1.0.0 - Core CMS (MVP)
 
-**Timeline:** 10-11 Wochen
-**Goal:** Schlankes, schnelles Blogging-CMS mit Migration-Path
-**Features:** ~90
+**Timeline:** 10-11 Wochen **Goal:** Schlankes, schnelles Blogging-CMS mit
+Migration-Path **Features:** ~90
 
 ### Phase 0: Installer & Setup (Week 1-2)
 
@@ -46,7 +46,7 @@
 
 - [ ] CRUD (Create, Read, Update, Delete)
 - [ ] Status: Published / Unpublished
-- [ ] Auto-Save (30 seconds)
+- [ ] Auto-Save (30/60/custom seconds)
 - [ ] Slug Management (Auto-Generate, Custom)
 - [ ] SEO Meta (Title, Description, OpenGraph, Twitter Cards)
 - [ ] Flat-File Storage (Markdown)
@@ -64,9 +64,9 @@
 - [ ] Reading Time Calculation (Auto-calculate, ~200 words/min)
 - [ ] Duplicate Post (Create copy with "(Copy)" suffix)
 - [ ] Content Scheduler:
-  - Publish Date/Time
-  - Unpublish Date/Time (automatically take offline)
-  - Timezone Support
+    - Publish Date/Time
+    - Unpublish Date/Time (automatically take offline)
+    - Timezone Support
 - [ ] Tags & Categories (Hierarchical)
 - [ ] Flat-File Storage (Markdown)
 
@@ -82,12 +82,12 @@
 - [ ] Images (Upload, URL, Drag & Drop)
 - [ ] WYSIWYG ↔ Markdown Toggle
 - [ ] Live Preview:
-  - Split View (Side-by-Side)
-  - Device Switcher:
-    - Desktop (1280px+)
-    - Tablet (768px - 1279px)
-    - Mobile (< 768px)
-  - Full Preview Mode (without editor)
+    - Split View (Side-by-Side)
+    - Device Switcher:
+        - Desktop (1280px+)
+        - Tablet (768px - 1279px)
+        - Mobile (< 768px)
+    - Full Preview Mode (without editor)
 
 #### Custom Fields (Basic Types)
 
@@ -112,24 +112,24 @@
 
 - [ ] Media Library UI
 - [ ] Upload Settings:
-  - Max File Size (default: PHP upload_max_filesize, configurable)
-  - Allowed File Types (whitelist: JPEG, PNG, GIF, WebP, PDF)
-  - Upload Directory Structure (YYYY/MM)
+    - Max File Size (default: PHP upload_max_filesize, configurable)
+    - Allowed File Types (whitelist: JPEG, PNG, GIF, WebP, PDF)
+    - Upload Directory Structure (YYYY/MM)
 - [ ] Drag & Drop Upload
 - [ ] Multi-File Upload
 - [ ] Supported File Types:
-  - Images (JPEG, PNG, GIF, WebP)
-  - Documents (PDF)
+    - Images (JPEG, PNG, GIF, WebP)
+    - Documents (PDF)
 - [ ] Image Processing:
-  - Auto-Resize (Max width/height)
-  - Thumbnail Generation
-  - WebP Conversion (with fallback)
-  - Image Compression
-  - EXIF Data Stripping (Privacy)
+    - Auto-Resize (Max width/height)
+    - Thumbnail Generation
+    - WebP Conversion (with fallback)
+    - Image Compression
+    - EXIF Data Stripping (Privacy)
 - [ ] Image Metadata:
-  - Alt Text (Accessibility/SEO)
-  - Title & Caption
-  - Focal Point Selection (for auto-crop)
+    - Alt Text (Accessibility/SEO)
+    - Title & Caption
+    - Focal Point Selection (for auto-crop)
 - [ ] File Organization (Folders)
 - [ ] Media Search & Filters
 - [ ] Image Preview (Modal)
@@ -148,8 +148,8 @@
 - [ ] User Profiles (Avatar, Bio, Social Links)
 - [ ] Role-Based Access Control (RBAC)
 - [ ] 2 Default Roles (v1.0):
-  - **Administrator** - Full system access
-  - **Author** - Create/edit own posts, upload media
+    - **Administrator** - Full system access
+    - **Author** - Create/edit own posts, upload media
 
 #### Authentication
 
@@ -251,9 +251,9 @@
 
 - [ ] SMTP Configuration
 - [ ] Email Templates (Plain text, editable in Settings):
-  - Welcome Email (on user creation)
-  - Invite Email (invitation token)
-  - Password Reset Email
+    - Welcome Email (on user creation)
+    - Invite Email (invitation token)
+    - Password Reset Email
 - [ ] Test Email Function
 
 **Note:** Rich HTML Email Templates available in v1.1.0 or via Plugin
@@ -344,9 +344,8 @@
 
 ## 📦 Version 1.1.0 - Enhanced Core
 
-**Timeline:** +3-4 Wochen
-**Goal:** Professionelle Features + Plugin-System + Analytics
-**Features:** ~48 zusätzlich (Total: ~143)
+**Timeline:** +3-4 Wochen **Goal:** Professionelle Features + Plugin-System +
+Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 ### Comments System (Week 10-11)
 
@@ -363,7 +362,8 @@
 
 **Removed (YAGNI):**
 
-- ❌ Upvote/Downvote Comments → "Voting System" Community Plugin (for Posts + Comments)
+- ❌ Upvote/Downvote Comments → "Voting System" Community Plugin (for Posts +
+  Comments)
 
 ---
 
@@ -371,10 +371,10 @@
 
 - [ ] Full-Text Search Engine (TNTSearch default)
 - [ ] Search Filters:
-  - By Content Type (Posts, Pages)
-  - By Date Range
-  - By Author
-  - By Tags/Categories
+    - By Content Type (Posts, Pages)
+    - By Date Range
+    - By Author
+    - By Tags/Categories
 - [ ] Search Highlighting (Match preview)
 - [ ] Search Suggestions (Did you mean...)
 
@@ -382,11 +382,11 @@
 
 - [ ] Quick Search (Posts, Pages, Tags, Categories)
 - [ ] Quick Actions:
-  - Create New Post
-  - Create New Page
-  - Navigate to Settings
-  - Navigate to Profile
-  - Clear Cache
+    - Create New Post
+    - Create New Page
+    - Navigate to Settings
+    - Navigate to Profile
+    - Clear Cache
 - [ ] Keyboard Navigation
 - [ ] Recent Searches
 
@@ -433,27 +433,27 @@
 ### Advanced Media Library (Week 12)
 
 - [ ] Additional File Types:
-  - Videos (MP4, WebM, OGG)
-  - Audio (MP3, WAV, OGG)
-  - Documents (DOC, DOCX, XLS, XLSX)
-  - Archives (ZIP, TAR, GZ)
+    - Videos (MP4, WebM, OGG)
+    - Audio (MP3, WAV, OGG)
+    - Documents (DOC, DOCX, XLS, XLSX)
+    - Archives (ZIP, TAR, GZ)
 
 - [ ] Advanced Image Processing:
-  - Image Filters (Grayscale, Blur, Brightness)
-  - Responsive Images (srcset generation)
-  - Retina/HiDPI Support (2x, 3x)
-  - Image CDN Support (optional)
+    - Image Filters (Grayscale, Blur, Brightness)
+    - Responsive Images (srcset generation)
+    - Retina/HiDPI Support (2x, 3x)
+    - Image CDN Support (optional)
 
 - [ ] Media Usage Tracking:
-  - Show where image/file is used (Posts, Pages)
-  - "Used in X posts" indicator
-  - Prevent deletion if in use (warning + override option)
+    - Show where image/file is used (Posts, Pages)
+    - "Used in X posts" indicator
+    - Prevent deletion if in use (warning + override option)
 
 - [ ] Bulk Actions:
-  - Bulk Upload (Multiple files at once)
-  - Bulk Delete
-  - Bulk Move
-  - Bulk Download
+    - Bulk Upload (Multiple files at once)
+    - Bulk Delete
+    - Bulk Move
+    - Bulk Download
 
 ---
 
@@ -484,28 +484,28 @@
 
 - [ ] Matomo Integration (Self-Hosted, PHP SDK)
 - [ ] Privacy-First Analytics:
-  - No Cookies Required (Cookieless Tracking)
-  - IP Anonymization (GDPR-compliant)
-  - DNT (Do Not Track) Support
-  - Anonymous Tracking Mode
+    - No Cookies Required (Cookieless Tracking)
+    - IP Anonymization (GDPR-compliant)
+    - DNT (Do Not Track) Support
+    - Anonymous Tracking Mode
 - [ ] Dashboard Widget (Admin Panel):
-  - Pageviews (Today, Week, Month)
-  - Unique Visitors
-  - Top Posts/Pages
-  - Referrers (Where visitors come from)
-  - Browser/Device Stats
+    - Pageviews (Today, Week, Month)
+    - Unique Visitors
+    - Top Posts/Pages
+    - Referrers (Where visitors come from)
+    - Browser/Device Stats
 - [ ] Detailed Reports (Admin Panel):
-  - Visitor Log
-  - Geographic Location (Country-level only)
-  - Page Performance
+    - Visitor Log
+    - Geographic Location (Country-level only)
+    - Page Performance
 - [ ] Privacy Controls (Settings → Privacy Tab):
-  - Enable/Disable Analytics
-  - Analytics Opt-Out (User Preference)
-  - Data Retention Settings (GDPR: 6/12/24 months)
-  - Cookie Consent Integration
+    - Enable/Disable Analytics
+    - Analytics Opt-Out (User Preference)
+    - Data Retention Settings (GDPR: 6/12/24 months)
+    - Cookie Consent Integration
 - [ ] Performance:
-  - Async Tracking (No impact on page load)
-  - Optional: Separate SQLite DB for analytics
+    - Async Tracking (No impact on page load)
+    - Optional: Separate SQLite DB for analytics
 
 ---
 
@@ -537,23 +537,23 @@
 - [ ] Plugin Discovery (Auto-Load from `/plugins/`)
 - [ ] Plugin Structure:
 
-  ```
-  plugins/
-    my-plugin/
-      plugin.json          # Metadata (name, version, author)
-      PluginServiceProvider.php
-      routes.php
-      views/
-      assets/
-  ```
+    ```
+    plugins/
+      my-plugin/
+        plugin.json          # Metadata (name, version, author)
+        PluginServiceProvider.php
+        routes.php
+        views/
+        assets/
+    ```
 
 - [ ] Plugin Activation/Deactivation (Admin Panel)
 - [ ] Plugin Settings Page (Per Plugin)
 - [ ] Plugin Hooks/Events:
-  - Content Save (Before/After)
-  - User Login (Before/After)
-  - Comment Posted (Before/After)
-  - Page Render (Before/After)
+    - Content Save (Before/After)
+    - User Login (Before/After)
+    - Comment Posted (Before/After)
+    - Page Render (Before/After)
 
 ---
 
@@ -562,12 +562,12 @@
 - [ ] Check for Updates (GitHub API)
 - [ ] Update Available Notification (Admin Dashboard)
 - [ ] One-Click Update:
-  - Download Update ZIP
-  - Auto-Backup Before Update
-  - Extract Update
-  - Run Database Migrations
-  - Clear Cache
-  - Restore on Failure
+    - Download Update ZIP
+    - Auto-Backup Before Update
+    - Extract Update
+    - Run Database Migrations
+    - Clear Cache
+    - Restore on Failure
 - [ ] Manual Update Instructions
 - [ ] Update History Log
 - [ ] Rollback to Previous Version
@@ -576,9 +576,8 @@
 
 ## 📦 Version 1.2.0 - Professional Features
 
-**Timeline:** +2-3 Wochen
-**Goal:** Erweiterte CMS-Features
-**Features:** ~10 zusätzlich (Total: ~153)
+**Timeline:** +2-3 Wochen **Goal:** Erweiterte CMS-Features **Features:** ~10
+zusätzlich (Total: ~153)
 
 ### Import/Export Enhancements (Week 14)
 
@@ -616,23 +615,23 @@
 - [ ] Drag & Drop Menu Creation
 - [ ] Menu Locations (Header, Footer, Sidebar)
 - [ ] Menu Items:
-  - Pages
-  - Posts
-  - Categories
-  - Tags
-  - Custom Links
-  - Nested Items (Unlimited Depth)
+    - Pages
+    - Posts
+    - Categories
+    - Tags
+    - Custom Links
+    - Nested Items (Unlimited Depth)
 - [ ] Menu Item Options (CSS Class, Target, Icon)
 
 #### Widget System
 
 - [ ] Widget Areas (Sidebar, Footer)
 - [ ] Default Widgets:
-  - Recent Posts
-  - Popular Posts
-  - Categories
-  - Tags
-  - Custom HTML
+    - Recent Posts
+    - Popular Posts
+    - Categories
+    - Tags
+    - Custom HTML
 - [ ] Drag & Drop Widget Management
 
 #### Custom Routing
@@ -692,11 +691,11 @@
 
 ## 📊 Core Feature Summary
 
-| Version | Features | Timeline | Total Core Features |
-|---------|----------|----------|---------------------|
-| **v1.0.0 (MVP)** | ~95 | 10-11 Wochen | 95 |
-| **v1.1.0 (Enhanced)** | +48 | +3-4 Wochen | 143 |
-| **v1.2.0 (Professional)** | +10 | +2-3 Wochen | 153 |
+| Version                   | Features | Timeline     | Total Core Features |
+| ------------------------- | -------- | ------------ | ------------------- |
+| **v1.0.0 (MVP)**          | ~95      | 10-11 Wochen | 95                  |
+| **v1.1.0 (Enhanced)**     | +48      | +3-4 Wochen  | 143                 |
+| **v1.2.0 (Professional)** | +10      | +2-3 Wochen  | 153                 |
 
 **Total Development Time:** 15-18 Wochen für v1.2.0
 
@@ -715,14 +714,17 @@
 
 Die folgenden Features sind als **Official Plugins** verfügbar:
 
-1. **Newsletter Plugin** (~7 Features) - Newsletter-System mit Subscriber Management
+1. **Newsletter Plugin** (~7 Features) - Newsletter-System mit Subscriber
+   Management
 2. **Webhooks Plugin** (~11 Features) - Webhook-System für Integrationen
-3. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater, Gallery, JSON, etc.)
+3. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater,
+   Gallery, JSON, etc.)
 4. **Multi-Language Plugin** (~7 Features) - Content Translation UI (erweitert)
 5. **Workflow Plugin** (~6 Features) - Draft → Review → Publish Workflow
 6. **Two-Factor Auth Plugin** (~5 Features) - 2FA mit Google Authenticator
 7. **Form Builder Plugin** (~12 Features) - Drag & Drop Formular-Builder
-8. **SEO Pro Plugin** (~5 Features) - Advanced SEO (Schema.org, Broken Link Checker)
+8. **SEO Pro Plugin** (~5 Features) - Advanced SEO (Schema.org, Broken Link
+   Checker)
 
 **Total Plugin Features:** ~60 (optimiert nach KISS/DRY/YAGNI principles)
 
@@ -730,6 +732,5 @@ Die folgenden Features sind als **Official Plugins** verfügbar:
 
 ---
 
-**Last Updated:** 2025-01-26
-**Maintained By:** PineCMS Team
-**License:** MIT - 100% Open Source
+**Last Updated:** 2025-01-26 **Maintained By:** PineCMS Team **License:** MIT -
+100% Open Source

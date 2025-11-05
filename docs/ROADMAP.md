@@ -18,12 +18,12 @@
 - ✅ Extended v1.0.0 to 10-11 weeks (was 8-10) - More realistic timeline
 - ✅ Import/Export moved from v1.2.0 → v1.0.0 (Critical for adoption)
 - ✅ Enhanced Core Features:
-  - Hierarchical Categories (Parent → Child, Default Category)
-  - Enhanced Media Library (Alt Text, Focal Point, EXIF stripping, Upload Settings)
-  - Advanced Live Preview (Device switcher with breakpoints, Full preview mode)
-  - Enhanced Scheduler (Unpublish date, Timezone support)
-  - Revision Management (Limits, Auto-cleanup, Changes List)
-  - Post Essentials (Template Selection, Excerpt, Reading Time, Duplicate)
+    - Hierarchical Categories (Parent → Child, Default Category)
+    - Enhanced Media Library (Alt Text, Focal Point, EXIF stripping, Upload Settings)
+    - Advanced Live Preview (Device switcher with breakpoints, Full preview mode)
+    - Enhanced Scheduler (Unpublish date, Timezone support)
+    - Revision Management (Limits, Auto-cleanup, Changes List)
+    - Post Essentials (Template Selection, Excerpt, Reading Time, Duplicate)
 - ✅ Removed YAGNI Features: Upvote/Downvote, Social Sharing, Breadcrumbs, Lightbox
 - ✅ +15 Core Features in v1.0.0 (95 instead of 80), -4 YAGNI = Net +11
 
@@ -73,10 +73,10 @@
 - [ ] Revisions System (Flat-File with Auto-Save, Limits, Auto-Cleanup, Changes List)
 - [ ] Basic CRUD for Pages
 - [ ] Basic CRUD for Posts with:
-  - Template Selection (Default, Full Width, Sidebar)
-  - Excerpt (Manual or Auto-generated from first 160 chars)
-  - Reading Time Calculation (~200 words/min)
-  - Duplicate Post feature
+    - Template Selection (Default, Full Width, Sidebar)
+    - Excerpt (Manual or Auto-generated from first 160 chars)
+    - Reading Time Calculation (~200 words/min)
+    - Duplicate Post feature
 - [ ] Basic Custom Fields (Text, Number, Date, Boolean)
 - [ ] Enhanced Content Scheduler (Publish/Unpublish Date/Time, Timezone Support)
 
@@ -91,30 +91,30 @@
 - [ ] Images (Upload, URL, Drag & Drop)
 - [ ] WYSIWYG ↔ Markdown Toggle
 - [ ] Live Preview:
-  - Split View (Side-by-Side)
-  - Device Switcher (Desktop / Tablet / Mobile)
-  - Full Preview Mode
+    - Split View (Side-by-Side)
+    - Device Switcher (Desktop / Tablet / Mobile)
+    - Full Preview Mode
 - [ ] Auto-Save (30 seconds)
 
 #### Week 5: Media Library (Basic)
 
 - [ ] Media Library UI
 - [ ] Upload Settings:
-  - Max File Size (configurable)
-  - Allowed File Types (whitelist)
-  - Upload Directory Structure (YYYY/MM)
+    - Max File Size (configurable)
+    - Allowed File Types (whitelist)
+    - Upload Directory Structure (YYYY/MM)
 - [ ] Drag & Drop Upload
 - [ ] Supported Types (Images: JPEG, PNG, GIF, WebP; Documents: PDF)
 - [ ] Image Processing:
-  - Auto-Resize
-  - Thumbnail Generation
-  - WebP Conversion
-  - Compression
-  - EXIF Data Stripping (Privacy)
+    - Auto-Resize
+    - Thumbnail Generation
+    - WebP Conversion
+    - Compression
+    - EXIF Data Stripping (Privacy)
 - [ ] Image Metadata:
-  - Alt Text (Accessibility/SEO)
-  - Title & Caption
-  - Focal Point Selection
+    - Alt Text (Accessibility/SEO)
+    - Title & Caption
+    - Focal Point Selection
 - [ ] File Organization (Folders)
 - [ ] Media Search & Filters
 - [ ] Image Preview (Modal)
@@ -130,13 +130,13 @@
 - [ ] User CRUD
 - [ ] User Profiles (Avatar, Bio, Social Links)
 - [ ] 2 Roles (v1.0):
-  - **Administrator** (Full system access)
-  - **Author** (Create/edit own posts, upload media)
+    - **Administrator** (Full system access)
+    - **Author** (Create/edit own posts, upload media)
 - [ ] Authentication:
-  - Login/Logout
-  - Password Reset
-  - Remember Me
-  - Invite-Only Registration (default)
+    - Login/Logout
+    - Password Reset
+    - Remember Me
+    - Invite-Only Registration (default)
 - [ ] Activity Log (Admin Actions)
 - [ ] Authentication Log (Login History)
 
@@ -358,17 +358,17 @@
 #### Advanced Media Library
 
 - [ ] Additional File Types:
-  - Videos (MP4, WebM, OGG)
-  - Audio (MP3, WAV, OGG)
-  - Documents (DOC, DOCX, XLS, XLSX)
-  - Archives (ZIP, TAR, GZ)
+    - Videos (MP4, WebM, OGG)
+    - Audio (MP3, WAV, OGG)
+    - Documents (DOC, DOCX, XLS, XLSX)
+    - Archives (ZIP, TAR, GZ)
 - [ ] Advanced Image Processing:
-  - Crop & Focal Point
-  - Filters (Grayscale, Blur, Brightness)
-  - Responsive Images (srcset)
-  - Retina/HiDPI Support (2x, 3x)
-  - EXIF Data Stripping (Privacy)
-  - CDN Support (optional)
+    - Crop & Focal Point
+    - Filters (Grayscale, Blur, Brightness)
+    - Responsive Images (srcset)
+    - Retina/HiDPI Support (2x, 3x)
+    - EXIF Data Stripping (Privacy)
+    - CDN Support (optional)
 - [ ] Bulk Actions (Delete, Move, Download)
 
 #### TipTap Editor (Advanced)
@@ -404,28 +404,28 @@
 
 - [ ] Matomo PHP SDK Integration
 - [ ] Privacy-First Tracking:
-  - Cookieless Tracking
-  - IP Anonymization (GDPR)
-  - DNT (Do Not Track) Support
-  - Anonymous Tracking Mode
+    - Cookieless Tracking
+    - IP Anonymization (GDPR)
+    - DNT (Do Not Track) Support
+    - Anonymous Tracking Mode
 - [ ] Dashboard Widget:
-  - Pageviews (Today, Week, Month)
-  - Unique Visitors
-  - Top Posts/Pages
-  - Referrers
-  - Browser/Device Stats
+    - Pageviews (Today, Week, Month)
+    - Unique Visitors
+    - Top Posts/Pages
+    - Referrers
+    - Browser/Device Stats
 - [ ] Detailed Reports (Admin Panel):
-  - Visitor Log
-  - Geographic Location (Country-level)
-  - Page Performance
+    - Visitor Log
+    - Geographic Location (Country-level)
+    - Page Performance
 - [ ] Privacy Controls (Settings → Privacy Tab):
-  - Enable/Disable Analytics
-  - Analytics Opt-Out (User Preference)
-  - Data Retention Settings (6/12/24 months)
-  - Cookie Consent Integration
+    - Enable/Disable Analytics
+    - Analytics Opt-Out (User Preference)
+    - Data Retention Settings (6/12/24 months)
+    - Cookie Consent Integration
 - [ ] Performance:
-  - Async Tracking (No page load impact)
-  - Optional: Separate SQLite DB for analytics
+    - Async Tracking (No page load impact)
+    - Optional: Separate SQLite DB for analytics
 
 ---
 
@@ -436,27 +436,27 @@
 - [ ] Event-Driven Architecture (Laravel Events)
 - [ ] Plugin Discovery (Auto-Load from `/plugins/`)
 - [ ] Plugin Structure:
-  - plugin.json (Metadata)
-  - PluginServiceProvider.php
-  - routes.php, views/, assets/
+    - plugin.json (Metadata)
+    - PluginServiceProvider.php
+    - routes.php, views/, assets/
 - [ ] Plugin Activation/Deactivation UI
 - [ ] Plugin Settings Pages
 - [ ] Plugin Hooks/Events:
-  - Content Save (Before/After)
-  - User Login (Before/After)
-  - Comment Posted (Before/After)
-  - Page Render (Before/After)
+    - Content Save (Before/After)
+    - User Login (Before/After)
+    - Comment Posted (Before/After)
+    - Page Render (Before/After)
 
 #### Update Manager
 
 - [ ] Check for Updates (GitHub API)
 - [ ] Update Available Notification
 - [ ] One-Click Update:
-  - Download Update ZIP
-  - Auto-Backup Before Update
-  - Extract & Run Migrations
-  - Clear Cache
-  - Restore on Failure
+    - Download Update ZIP
+    - Auto-Backup Before Update
+    - Extract & Run Migrations
+    - Clear Cache
+    - Restore on Failure
 - [ ] Update History Log
 - [ ] Rollback to Previous Version
 
@@ -655,10 +655,10 @@
 - [ ] Cross-Browser Testing (Chrome, Firefox, Safari, Edge)
 - [ ] Mobile Testing (iOS, Android)
 - [ ] Documentation:
-  - [ ] Installation Guide
-  - [ ] User Guide
-  - [ ] Plugin Development Guide
-  - [ ] API Documentation
+    - [ ] Installation Guide
+    - [ ] User Guide
+    - [ ] Plugin Development Guide
+    - [ ] API Documentation
 - [ ] Demo Site Setup
 - [ ] Release Notes & Changelog
 - [ ] MIT License File

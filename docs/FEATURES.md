@@ -61,7 +61,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 **Version 1.1.0 - Enhanced (+48 Features, Total: ~143):**
 
 - Comments System (Nested, Moderation, Guest Comments, Sorting)
-  - Note: Upvote/Downvote → "Voting System" Community Plugin
+    - Note: Upvote/Downvote → "Voting System" Community Plugin
 - Search System (TNTSearch, Command Palette CMD+K)
 - RBAC Enhanced (4 Roles: Administrator, Author, User, Guest)
 - Advanced Media (Crop, Filters, EXIF Stripping, Retina Support, **Media Usage Tracking**)
