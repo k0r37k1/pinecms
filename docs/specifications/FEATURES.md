@@ -1,6 +1,6 @@
 # 📋 PineCMS - Feature Overview
 
-> **Last Updated:** 2025-01-26
+> **Last Updated:** 2025-11-06
 > **Architecture:** Core CMS + Official Plugins
 > **License:** MIT - 100% Open Source
 
@@ -208,7 +208,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 **Grand Total:** ~183 Features (159 Core + 24 Plugins)
 
-**Software Engineering Improvements (2025-01-27):**
+**Software Engineering Improvements (2025-11-06):**
 
 - **Removed 4 Complete Plugins:**
     - ❌ Webhooks (~11) → v2.0 (over-engineered)
@@ -282,6 +282,6 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind willkommen!
 
 ---
 
-**Last Updated:** 2025-01-26
+**Last Updated:** 2025-11-06
 **Maintained By:** PineCMS Team
 **License:** MIT - 100% Open Source & Kostenlos

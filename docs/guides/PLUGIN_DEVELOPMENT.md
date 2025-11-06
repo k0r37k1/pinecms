@@ -2,7 +2,7 @@
 
 > **Version:** 1.0 (Draft)
 > **Plugin API:** v1.1.0+
-> **Last Updated:** 2025-01-26
+> **Last Updated:** 2025-11-06
 
 ---
 
@@ -470,6 +470,6 @@ Want to contribute to official plugins or create your own?
 
 ---
 
-**Last Updated:** 2025-01-26
+**Last Updated:** 2025-11-06
 **Maintained By:** PineCMS Team
 **License:** MIT

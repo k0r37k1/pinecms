@@ -1,6 +1,6 @@
 # 🔌 PineCMS - Official Plugins
 
-> **Last Updated:** 2025-01-26
+> **Last Updated:** 2025-11-06
 > **License:** MIT - 100% Open Source & Kostenlos
 > **Plugin API Version:** v1.1.0+
 > **Breaking Changes:** See [PLUGIN_DEVELOPMENT.md](./PLUGIN_DEVELOPMENT.md) for API changes and migration guides
@@ -337,7 +337,7 @@ Die Community kann eigene Plugins entwickeln und teilen:
 | **SEO Pro**           | ~3       | v1.2.0+  | Geplant |
 | **Total**             | **~24**  | -        | -       |
 
-**Software Engineering Improvements (2025-01-27):**
+**Software Engineering Improvements (2025-11-06):**
 
 - **Removed 4 Complete Plugins (YAGNI):**
     - ❌ Webhooks (~11 features) → Over-engineered, v2.0
@@ -355,6 +355,6 @@ Die Community kann eigene Plugins entwickeln und teilen:
 
 ---
 
-**Last Updated:** 2025-01-26
+**Last Updated:** 2025-11-06
 **Maintained By:** PineCMS Team
 **License:** MIT - 100% Open Source & Kostenlos

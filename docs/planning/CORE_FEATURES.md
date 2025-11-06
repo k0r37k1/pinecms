@@ -1,6 +1,6 @@
 # 📋 PineCMS - Core Features
 
-> **Last Updated:** 2025-01-26 **Architecture:** Core CMS + Official Plugins
+> **Last Updated:** 2025-11-06 **Architecture:** Core CMS + Official Plugins
 > **License:** MIT - 100% Open Source
 
 ---
@@ -1175,5 +1175,5 @@ Die folgenden Features sind als **Official Plugins** verfügbar:
 
 ---
 
-**Last Updated:** 2025-01-27 **Maintained By:** PineCMS Team **License:** MIT -
+**Last Updated:** 2025-11-06 **Maintained By:** PineCMS Team **License:** MIT -
 100% Open Source

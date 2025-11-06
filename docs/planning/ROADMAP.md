@@ -318,7 +318,7 @@
 
 **Feature Count History:**
 
-- **2025-01-26:** 90 → 95 Features (Net: +5) nach SEP-Analyse
+- **2025-11-06:** 90 → 95 Features (Net: +5) nach SEP-Analyse
     - Added (+15): Hierarchical Categories, Template Selection, Excerpt, Reading Time, Import/Export, Frontend Event System, Concurrent Editing Protection, UTC Storage, Upload Security (5-Layer), Revision Enhancements, Media Settings, Duplicate Post, Email Templates, Bulk Status Change, Media Usage Tracking
     - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics (→ Matomo), Multi-Level Comments (>3 levels), Advanced SEO (→ SEO Pro Plugin), Dashboard Widgets (→ Plugin System)
 
@@ -859,7 +859,7 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 
 ---
 
-**Last Updated:** 2025-01-26
+**Last Updated:** 2025-11-06
 **Next Review:** End of v1.0.0 (Week 9)
 
 **Changes in this version:**
@@ -873,7 +873,7 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 - Plugin System as core feature in v1.1.0
 - Timeline optimized: 15-18 weeks (realistic estimation with all enhancements)
 - Clear separation: Core (~159 features) + Plugins (~24 features) = ~183 total
-- Software Engineering Improvements (2025-01-27):
+- Software Engineering Improvements (2025-11-06):
     - Removed 4 complete plugins: Webhooks (~11), Two-Factor Auth (~5), Form Builder (~12) → v2.0
     - Workflow (~6) → Moved to Core v1.1.0 (essential for teams)
     - Plugin Feature Cleanup (YAGNI/KISS): Newsletter, Custom Fields Pro, Multi-Language, SEO Pro
