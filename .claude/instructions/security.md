@@ -60,11 +60,15 @@ Before creating FormRequests, check sibling files:
 
 **Always sanitize before v-html:**
 
+<!-- cspell:disable -->
+
 ```javascript
 import DOMPurify from 'dompurify';
 
 const sanitizedHtml = DOMPurify.sanitize(userInput);
 ```
+
+<!-- cspell:enable -->
 
 ## Authentication & Authorization
 

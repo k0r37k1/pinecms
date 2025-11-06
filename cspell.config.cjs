@@ -71,6 +71,7 @@ module.exports = {
         'artisan',
         'resources/views/**',
         'resources/js/**',
+        '.claude/agents/**',
     ],
 
     // Custom project dictionary
