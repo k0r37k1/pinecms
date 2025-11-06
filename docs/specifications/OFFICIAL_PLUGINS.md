@@ -2,7 +2,8 @@
 
 > **Last Updated:** 2025-01-26
 > **License:** MIT - 100% Open Source & Kostenlos
-> **Plugin API Version:** 1.0
+> **Plugin API Version:** v1.1.0+
+> **Breaking Changes:** See [PLUGIN_DEVELOPMENT.md](./PLUGIN_DEVELOPMENT.md) for API changes and migration guides
 
 ---
 
@@ -25,35 +26,35 @@
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~7 Features)
 
-- [ ] Newsletter Editor (separate von Posts, eigenes Content-Type)
-- [ ] Subscriber Management (separate von Users):
+- **Newsletter Editor** - Separate von Posts, eigenes Content-Type
+- **Subscriber Management** - Separate von Users:
     - Import/Export Subscribers (CSV)
     - Subscriber Groups/Tags
     - Subscriber Status (Active, Unsubscribed, Bounced)
-- [ ] Email Campaign Scheduling:
+- **Email Campaign Scheduling:**
     - Send Now
     - Schedule for Later
-- [ ] Newsletter Templates:
+- **Newsletter Templates:**
     - Template Selection (5 vordefinierte Templates)
     - HTML/Text Preview
     - Responsive Email Templates (Mobile-First)
-- [ ] Privacy-Friendly Tracking (optional):
+- **Privacy-Friendly Tracking** (optional):
     - Open Rate Tracking (optional, disable by default)
     - Click Tracking (optional, disable by default)
     - Privacy Mode (no tracking, GDPR-compliant)
-- [ ] Unsubscribe Management:
+- **Unsubscribe Management:**
     - One-Click Unsubscribe Link
     - Unsubscribe Reasons (optional feedback)
     - Unsubscribe Confirmation Page
-- [ ] Double Opt-In (GDPR-compliant):
+- **Double Opt-In** (GDPR-compliant):
     - Email Verification before subscribing
     - Confirmation Email Template
     - Opt-In Timestamp
-- [ ] Subscriber Segmentation:
+- **Subscriber Segmentation:**
     - Filter by Tags
     - Filter by Categories
 
@@ -64,6 +65,32 @@
 - ❌ Newsletter Archive RSS Feed → Nobody needs RSS for archives
 - ❌ Custom Segments → Filter by Tags/Categories is sufficient
 - ❌ Drag & Drop Template Builder → Simplified to Template Selection
+
+#### Infrastructure Requirements
+
+**Email Sending:**
+- **SMTP Server Required** - Configure external SMTP service (Mailgun, SendGrid, Amazon SES, or custom SMTP)
+- **Shared Hosting Limits** - Most shared hosts limit emails/hour (typically 100-500/hour)
+- **Queue System** - Laravel Queues used for background email processing
+- **Rate Limiting:**
+    - Configurable sending rate (e.g., 100 emails/hour)
+    - Automatic throttling to prevent SMTP service blocks
+    - Retry logic for failed sends
+
+**Bounce & Complaint Handling:**
+- **Bounce Detection** - Requires webhook support from SMTP service (Mailgun, SendGrid)
+- **Automated Unsubscribe** - Hard bounces auto-mark subscribers as "Bounced"
+- **Complaint Handling** - Spam complaints auto-unsubscribe users (via webhook)
+
+**Scalability Considerations:**
+- **Small Lists (< 1,000)** - Shared hosting SMTP sufficient
+- **Medium Lists (1,000-10,000)** - Dedicated SMTP service recommended (Mailgun, SendGrid)
+- **Large Lists (10,000+)** - Enterprise SMTP + dedicated queue workers required
+
+**Privacy & Compliance:**
+- **GDPR Compliant** - Double opt-in, unsubscribe tracking, data export
+- **CAN-SPAM Act** - Physical address required in footer (configurable)
+- **Cookie-Free Tracking** - Optional tracking mode without cookies
 
 #### Use Cases
 
@@ -82,17 +109,17 @@ Nicht jeder Blogger/Website-Betreiber braucht Newsletter-Funktionalität. Extern
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~11 Features)
 
-- [ ] Webhook Management UI (Create, Edit, Delete)
-- [ ] Webhook Configuration:
+- **Webhook Management UI** - Create, Edit, Delete
+- **Webhook Configuration:**
     - Name & Description
     - Target URL
     - HTTP Method (POST, PUT, PATCH)
     - Event Selection (Multi-Select)
-- [ ] 8 Event Types:
+- **8 Event Types:**
     - `post.published` - When a post is published
     - `post.updated` - When a post is edited
     - `post.deleted` - When a post is deleted
@@ -101,25 +128,25 @@ Nicht jeder Blogger/Website-Betreiber braucht Newsletter-Funktionalität. Extern
     - `comment.created` - When a comment is posted
     - `comment.approved` - When a comment is approved
     - `page.published` - When a page is published
-- [ ] Custom Headers & Payloads:
+- **Custom Headers & Payloads:**
     - Custom HTTP Headers (Authorization, Content-Type, etc.)
     - Payload Customization (JSON template)
     - Secret Token (for signature verification)
-- [ ] Webhook Testing & Logs:
+- **Webhook Testing & Logs:**
     - Test Webhook (Send test payload)
     - Webhook History (last 100 requests)
     - Request/Response Logs
     - Error Logs (failed webhooks)
-- [ ] Retry Logic (on failure):
+- **Retry Logic** (on failure):
     - Auto-Retry on 5xx errors
     - Exponential Backoff (1s, 2s, 4s, 8s, 16s)
     - Max Retries (configurable, default: 5)
     - Disable Webhook after N failures
-- [ ] Webhook Signing (for security):
+- **Webhook Signing** (for security):
     - HMAC-SHA256 Signature
     - Signature Header (X-PineCMS-Signature)
     - Secret Key Management
-- [ ] Rate Limiting (per webhook):
+- **Rate Limiting** (per webhook):
     - Max Requests per Minute (configurable)
     - Queue Webhooks if rate limit exceeded
 
@@ -141,40 +168,40 @@ Webhooks sind ein fortgeschrittenes Feature für Automation & Integrations. Nich
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.0.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~7 Advanced Field Types)
 
-- [ ] **Relationship Fields:**
+- **Relationship Fields:**
     - Link to Posts
     - Link to Pages
     - Link to Users
     - Link to Categories/Tags
     - Bi-Directional Relationships
-- [ ] **Repeater Field:**
+- **Repeater Field:**
     - Nested Fields (unlimited depth)
     - Add/Remove/Reorder Rows
     - Field Groups
     - Collapsible Rows
-- [ ] **Gallery Field:**
+- **Gallery Field:**
     - Multiple Image Upload
     - Drag & Drop Reorder
     - Image Captions & Alt Text
     - Thumbnail Preview
-- [ ] **JSON Field:**
+- **JSON Field:**
     - JSON Textarea with Syntax Highlighting
     - Validation
-- [ ] **Color Picker:**
+- **Color Picker:**
     - Hex, RGB, HSL
     - Opacity/Alpha Support
     - Preset Colors
     - Recent Colors
-- [ ] **Rich Text Field:**
+- **Rich Text Field:**
     - TipTap Editor instance
     - Size Option (Full/Mini)
     - Independent formatting
     - Media Embedding (Full mode only)
-- [ ] **File Field:**
+- **File Field:**
     - Upload any file type
     - File Preview
     - File Metadata
@@ -207,37 +234,37 @@ Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind f
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~7 Features)
 
-- [ ] Multi-Language Support:
+- **Multi-Language Support:**
     - Unlimited Languages
     - Pre-configured Languages (DE, EN, FR, ES, IT, PT, etc.)
     - Custom Languages (Add any language)
-- [ ] Content Translation UI:
+- **Content Translation UI:**
     - Side-by-Side Editor (Original + Translation)
     - Copy from Original Button
     - Translation Progress Indicator
     - Missing Translations Warning
-- [ ] Translatable Fields:
+- **Translatable Fields:**
     - Post Title & Content
     - Page Title & Content
     - Categories & Tags
     - Site Settings (Name, Tagline, etc.)
     - SEO Meta (Title, Description)
-- [ ] Locale Switcher (Frontend):
+- **Locale Switcher** (Frontend):
     - Language Dropdown
     - Flag Icons
     - Language-Specific URLs
     - Auto-Detect Browser Language
-- [ ] Language-Specific URLs:
+- **Language-Specific URLs:**
     - URL Prefix (/en/, /de/)
     - Subdirectory (/en/, /de/)
-- [ ] Fallback Language:
+- **Fallback Language:**
     - Default Language Selection
     - Fallback if translation missing
-- [ ] SEO for Multi-Language:
+- **SEO for Multi-Language:**
     - hreflang Tags (automatic)
     - Language-Specific Sitemap
     - Language-Specific RSS
@@ -266,31 +293,31 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~6 Features)
 
-- [ ] Content Status Workflow:
+- **Content Status Workflow:**
     - **Draft** - Work in progress
     - **Review** - Submitted for review
     - **Published** - Live on website
-- [ ] Reviewer Assignment:
+- **Reviewer Assignment:**
     - Assign specific users as reviewers
     - Multiple reviewers per post
     - Reviewer Notifications (Email)
-- [ ] Approval/Rejection:
+- **Approval/Rejection:**
     - Approve Button (publish immediately)
     - Reject Button (send back to draft)
     - Request Changes (with feedback)
-- [ ] Review Comments:
+- **Review Comments:**
     - General Feedback
     - Comment Thread (Discussion)
-- [ ] Workflow History:
+- **Workflow History:**
     - Who Reviewed (User, Date, Time)
     - Decision (Approved, Rejected, Changes Requested)
     - Feedback/Comments
     - Status Change Log
-- [ ] Email Notifications:
+- **Email Notifications:**
     - Review Request (to Reviewer)
     - Approval Notification (to Author)
     - Rejection Notification (to Author)
@@ -319,28 +346,28 @@ Solo-Blogger brauchen keinen Workflow. Nur Teams mit mehreren Autoren und Review
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.1.0 Release
+**Status:** 📋 Geplant (Planned for v1.1.0)
 
 #### Features (~5 Features)
 
-- [ ] 2FA Setup:
+- **2FA Setup:**
     - QR Code Generation
     - Manual Secret Key (for manual entry)
     - Verify Setup (test 2FA before enabling)
-- [ ] TOTP Support:
+- **TOTP Support:**
     - Google Authenticator
     - Microsoft Authenticator
     - Authy
     - 1Password, Bitwarden, etc.
-- [ ] Backup Codes:
+- **Backup Codes:**
     - Generate 10 backup codes
     - One-time use
     - Regenerate codes
     - Download codes (TXT)
-- [ ] Recovery Options:
+- **Recovery Options:**
     - Email-based recovery
     - Admin can reset 2FA for users
-- [ ] Per-User Enable/Disable:
+- **Per-User Enable/Disable:**
     - Users can enable 2FA in profile
     - Optional: Enforce 2FA for Administrator role
     - Optional: Enforce 2FA for all roles
@@ -362,45 +389,45 @@ Solo-Blogger brauchen keinen Workflow. Nur Teams mit mehreren Autoren und Review
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
-**Status:** Geplant für v1.2.0 Release
+**Status:** 📋 Geplant (Planned for v1.2.0)
 
 #### Features (~12 Features)
 
-- [ ] Drag & Drop Form Builder:
+- **Drag & Drop Form Builder:**
     - Visual Form Editor
     - Drag & Drop Field Placement
     - Field Reordering
     - Field Duplication
-- [ ] 12 Field Types:
+- **12 Field Types:**
     - Text (Short, Long, Textarea)
     - Email, URL, Phone
     - Number, Date, Time
     - Select (Dropdown, Multi-Select, Radio)
     - Checkbox, Toggle
     - File Upload
-- [ ] Validation Rules:
+- **Validation Rules:**
     - Required Field
     - Min/Max Length
     - Email Validation
     - URL Validation
     - Custom Regex
-- [ ] Form Submissions:
+- **Form Submissions:**
     - Submissions Management (Admin Panel)
     - View Submission Details
     - Export Submissions (CSV, JSON)
     - Delete Submissions
     - Search & Filter Submissions
-- [ ] Email Notifications:
+- **Email Notifications:**
     - Send to Admin
     - Send to User (with custom message)
     - Custom Email Templates
     - Multiple Recipients
-- [ ] Form Settings:
+- **Form Settings:**
     - Success Message
     - Redirect URL (after submission)
     - Submit Button Text
     - Form Title & Description
-- [ ] Anti-Spam:
+- **Anti-Spam:**
     - Honeypot Field (hidden)
     - reCAPTCHA v2 Integration (optional)
     - hCaptcha Integration (optional)
@@ -429,11 +456,11 @@ Nicht jede Website braucht Formulare. Core hat keine Formular-Funktionalität, d
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.2.0
-**Status:** Geplant für v1.2.0 Release
+**Status:** 📋 Geplant (Planned for v1.2.0)
 
 #### Features (~5 Features)
 
-- [ ] Schema.org Markup (Advanced):
+- **Schema.org Markup** (Advanced):
     - Article Schema (automatic)
     - Blog Schema
     - Organization Schema
@@ -441,22 +468,22 @@ Nicht jede Website braucht Formulare. Core hat keine Formular-Funktionalität, d
     - FAQ Schema (manual)
     - How-To Schema (manual)
     - Product Schema (manual)
-- [ ] Open Graph & Twitter Cards (Enhanced):
+- **Open Graph & Twitter Cards** (Enhanced):
     - Custom OG Image per Post/Page
     - Custom Twitter Card Type
     - Preview Generator (see how it looks on social media)
-- [ ] Advanced Sitemap:
+- **Advanced Sitemap:**
     - Sitemap Priority per Post/Page
     - Image Sitemap
     - Video Sitemap
     - News Sitemap (for Google News)
-- [ ] Broken Link Checker:
+- **Broken Link Checker:**
     - Scan all Posts/Pages for broken links
     - External Link Checking
     - Internal Link Checking
     - Email Alerts (when broken link found)
     - Fix Suggestions
-- [ ] SEO Analysis (per Post/Page):
+- **SEO Analysis** (per Post/Page):
     - Keyword Density
     - Readability Score
     - Meta Length Check (Title, Description)

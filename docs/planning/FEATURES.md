@@ -50,6 +50,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - SEO Basics (Slugs, Meta, Sitemap, RSS)
 - Privacy & Security (CipherSweet, CSRF, XSS Protection)
 - Backup System (One-Click Backup/Restore)
+- **Import/Export (WordPress, Ghost, Markdown)** - Critical for adoption
 
 **Removed from Core (moved to themes/plugins):**
 
@@ -76,12 +77,14 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 **Version 1.2.0 - Professional (+10 Features, Total: ~153):**
 
-- Import/Export (WordPress, Ghost, Markdown)
+- Import/Export Enhancements (Medium, Substack, Error Handling, Scheduled Exports)
 - Advanced SEO (Schema.org, Open Graph Enhanced)
 - Redirect Management (301/302, Bulk Import, Wildcards)
 - Menu Builder (Drag & Drop, Nested Items)
 - Widget System (Sidebar, Footer, Drag & Drop)
 - Custom Routing (Multi-Language URLs, Hierarchical URLs)
+
+**Note:** Basic Import/Export (WordPress, Ghost, Markdown) is in v1.0.0
 
 ---
 
@@ -204,7 +207,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - **Admin:** PrimeVue + Inertia.js + Vue 3.5, Dark Mode
 - **Plugins:** Event-Driven Architecture, Plugin Manager UI
 - **Updates:** One-Click Update Manager (GitHub API)
-- **Import/Export:** WordPress, Ghost, Markdown
+- **Import/Export:** WordPress, Ghost, Markdown (v1.0.0) + Enhancements (Medium, Substack - v1.2.0)
 - **Menus:** Drag & Drop Menu Builder
 - **Widgets:** Drag & Drop Widget System
 - **Redirects:** 301/302 Management
