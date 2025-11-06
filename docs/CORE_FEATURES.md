@@ -24,64 +24,83 @@ Features werden als **Official Plugins** bereitgestellt.
 ## 📦 Version 1.0.0 - Core CMS (MVP)
 
 **Timeline:** 10-11 Wochen **Goal:** Schlankes, schnelles Blogging-CMS mit
-Migration-Path **Features:** ~90
+Migration-Path **Features:** ~95
 
 ### Phase 0: Installer & Setup (Week 1-2)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Web-Installer
 
-- [ ] System Requirements Check (PHP 8.3+, Extensions, Permissions)
-- [ ] Environment Setup (.env Generator)
-- [ ] SQLite Database Creation
-- [ ] Admin User Setup (Email, Password, Nickname)
-- [ ] Post-Install Cleanup (Remove /install/ directory)
-- [ ] Apache .htaccess Generator
-- [ ] nginx.conf.example
+- System Requirements Check (PHP 8.3+, Extensions, Permissions)
+- Cron-Job Detection (optional, shows setup instructions if available)
+- Environment Setup (.env Generator)
+- SQLite Database Creation
+- Admin User Setup (Email, Password, Nickname)
+- Post-Install Cleanup (Remove /install/ directory)
+- Apache .htaccess Generator
+- nginx.conf.example
 
 ---
 
 ### Phase 1: Content Management (Weeks 3-5)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Pages
 
-- [ ] CRUD (Create, Read, Update, Delete)
-- [ ] Status: Published / Unpublished
-- [ ] Auto-Save (30/60/custom seconds)
-- [ ] Slug Management (Auto-Generate, Custom)
-- [ ] SEO Meta (Title, Description, OpenGraph, Twitter Cards)
-- [ ] Flat-File Storage (Markdown)
-- [ ] Flat-File Revisions System
+- CRUD (Create, Read, Update, Delete)
+- Status: Published / Unpublished
+- Auto-Save (30/60/custom seconds)
+- Slug Management (Auto-Generate, Custom)
+- SEO Meta (Title, Description, OpenGraph, Twitter Cards)
+- Flat-File Storage (Markdown)
+- Flat-File Revisions System
 
 #### Posts
 
-- [ ] CRUD (Create, Read, Update, Delete)
-- [ ] Status: Draft / Published
-- [ ] Auto-Save (30 seconds)
-- [ ] Pin/Unpin Posts
-- [ ] Featured Posts (Mark as Featured, Display on Homepage)
-- [ ] Template Selection (Default, Full Width, Sidebar - theme-dependent)
-- [ ] Excerpt (Manual or Auto-generated from first 160 characters)
-- [ ] Reading Time Calculation (Auto-calculate, ~200 words/min)
-- [ ] Duplicate Post (Create copy with "(Copy)" suffix)
-- [ ] Content Scheduler:
-    - Publish Date/Time
+- CRUD (Create, Read, Update, Delete)
+- Status: Draft / Published
+- Auto-Save (30 seconds)
+- Pin/Unpin Posts
+- Featured Posts (Mark as Featured, Display on Homepage)
+- Template Selection:
+    - Dropdown populated from active theme's `theme.json` → `templates` object
+    - Template files located in `themes/{active-theme}/templates/`
+    - Template keys (e.g., "default", "full-width") map to Blade files (default.blade.php)
+    - Default template fallback: Falls back to "default" if selected template missing
+    - Per-post override: Template choice stored in database (posts table, `template` column)
+    - Theme switch behavior: Posts keep template key, frontend validates against new theme
+- Excerpt (Manual or Auto-generated from first 160 characters)
+- Reading Time Calculation (Auto-calculate, ~200 words/min)
+- Duplicate Post (Create copy with "(Copy)" suffix, see detailed behavior below)
+- Content Scheduler:
+    - Publish Date/Time (future scheduling, stored as UTC)
     - Unpublish Date/Time (automatically take offline)
-    - Timezone Support
-- [ ] Tags & Categories (Hierarchical)
-- [ ] Flat-File Storage (Markdown)
+    - Timezone Support (admin timezone preference)
+    - Scheduler Modes:
+        - Visit-Triggered (default, Laravel Middleware, 60s cache lock)
+        - Traditional Cron (optional, `* * * * * php artisan schedule:run`)
+    - Unpublish Behavior (status → "Unpublished", URL returns 404)
+- Tags & Categories (Hierarchical)
+- Flat-File Storage (Markdown)
 
 #### TipTap Editor (Basic Features)
 
-- [ ] Basic Formatting (Bold, Italic, Strike, Underline)
-- [ ] Headings (H1-H6)
-- [ ] Lists (Bullet, Numbered, Task Lists)
-- [ ] Blockquote
-- [ ] Code Block (Syntax Highlighting)
-- [ ] Inline Code
-- [ ] Links (with preview)
-- [ ] Images (Upload, URL, Drag & Drop)
-- [ ] WYSIWYG ↔ Markdown Toggle
-- [ ] Live Preview:
+- Basic Formatting (Bold, Italic, Strike, Underline)
+- Headings (H1-H6)
+- Lists (Bullet, Numbered, Task Lists)
+- Blockquote
+- Code Block (Syntax Highlighting)
+- Inline Code
+- Links (with preview)
+- Images (Upload, URL, Drag & Drop)
+- WYSIWYG ↔ Markdown Toggle
+- Live Preview:
     - Split View (Side-by-Side)
     - Device Switcher:
         - Desktop (1280px+)
@@ -91,50 +110,109 @@ Migration-Path **Features:** ~90
 
 #### Custom Fields (Basic Types)
 
-- [ ] Text (Short Text, Long Text)
-- [ ] Number (Integer, Decimal)
-- [ ] Boolean (Toggle, Checkbox)
-- [ ] Date/Time (Date, Time, DateTime)
+- Text (Short Text, Long Text)
+- Number (Integer, Decimal)
+- Boolean (Toggle, Checkbox)
+- Date/Time (Date, Time, DateTime)
 
 #### Revisions System (Flat-File)
 
-- [ ] Auto-Create Revision on Save (Every 30 seconds)
-- [ ] Revisions List (Date, User, Preview)
-- [ ] Compare Revisions (Show Changes List: added/removed/modified)
-- [ ] Restore to Any Revision
-- [ ] Revision Author & Timestamp
-- [ ] Revision Limits (max 10 per post, configurable: 5/10/20/50)
-- [ ] Auto-Cleanup (delete old revisions beyond limit)
+- Auto-Create Revision on Save (Every 30 seconds)
+- Revisions List (Date, User, Preview)
+- Compare Revisions:
+    - **v1.0.0:** Changes List (text-based summary)
+        - Shows added/removed/modified sections
+        - Line-by-line change summary
+        - Character count differences
+    - **v1.1.0:** Side-by-side Diff-View (visual comparison)
+        - Split-screen layout
+        - Color-coded additions (green) and deletions (red)
+        - Inline change highlighting
+- Restore to Any Revision
+- Revision Author & Timestamp
+- Revision Limits (max 10 per post, configurable: 5/10/20/50)
+- Auto-Cleanup (delete old revisions beyond limit)
+- Revision Storage:
+    - Each revision = separate .md file
+    - Naming: `{post-slug}.{timestamp}.md`
+    - Metadata stored in YAML front matter
 
-**Note:** Side-by-side Diff-View available in v1.1.0
+#### Duplicate Post/Page
+
+- Duplicate Button in Post List & Edit Screen
+- Duplicated Content:
+    - ✅ Title (with "(Copy)" suffix appended)
+    - ✅ Content (full Markdown content)
+    - ✅ Excerpt (if manually set)
+    - ✅ Categories (all assigned categories)
+    - ✅ Tags (all assigned tags)
+    - ✅ Template Selection
+    - ✅ Custom Fields (all field values)
+    - ❌ Status (always set to "Draft", never "Published")
+    - ❌ Slug (auto-generated from new title)
+    - ❌ Author (set to current user)
+    - ❌ Publish Date (set to current date/time)
+    - ❌ Featured Image (not duplicated, security concern)
+    - ❌ Revisions (fresh revision history)
+- Duplicate Behavior:
+    - Redirects to edit screen of new duplicate
+    - Success notification: "Post duplicated successfully"
+    - Original post remains unchanged
 
 #### Media Library (Basic)
 
-- [ ] Media Library UI
-- [ ] Upload Settings:
-    - Max File Size (default: PHP upload_max_filesize, configurable)
-    - Allowed File Types (whitelist: JPEG, PNG, GIF, WebP, PDF)
-    - Upload Directory Structure (YYYY/MM)
-- [ ] Drag & Drop Upload
-- [ ] Multi-File Upload
-- [ ] Supported File Types:
-    - Images (JPEG, PNG, GIF, WebP)
-    - Documents (PDF)
-- [ ] Image Processing:
-    - Auto-Resize (Max width/height)
-    - Thumbnail Generation
-    - WebP Conversion (with fallback)
-    - Image Compression
-    - EXIF Data Stripping (Privacy)
-- [ ] Image Metadata:
-    - Alt Text (Accessibility/SEO)
-    - Title & Caption
-    - Focal Point Selection (for auto-crop)
-- [ ] File Organization (Folders)
-- [ ] Media Search & Filters
-- [ ] Image Preview (Modal)
-- [ ] Direct Link Copy
-- [ ] Storage Quota Display
+- Media Library UI
+- Drag & Drop Upload
+- Multi-File Upload
+- Upload Directory Structure (YYYY/MM)
+- File Organization (Folders)
+- Media Search & Filters
+- Image Preview (Modal)
+- Direct Link Copy
+- Storage Quota Display
+
+#### Upload Security (Multi-Layer Validation)
+
+- **Layer 1: File Extension Whitelist**
+    - Allowed: .jpg, .jpeg, .png, .gif, .webp, .pdf
+    - Rejected: Executable extensions (.php, .exe, .sh, .htaccess, etc.)
+- **Layer 2: MIME Type Validation**
+    - Check real MIME type via `finfo_file()`
+    - Extension must match MIME type (`.jpg` → `image/jpeg`)
+    - Prevents disguised executables
+- **Layer 3: File Content Validation**
+    - Images: Re-encode via GD/Imagick (strips embedded malware)
+    - PDFs: Validate PDF structure, check for embedded executables
+    - Reject files with suspicious content
+- **Layer 4: File Size Limits**
+    - Max File Size: 10MB default (configurable, respects PHP limits)
+    - Per-upload batch limit: 50MB total
+- **Layer 5: Filename Sanitization**
+    - Remove special characters, spaces
+    - Generate random filename (prevents overwrites/path traversal)
+    - Store original filename in database metadata only
+
+#### Upload Settings (Admin Configurable)
+
+- Max File Size (default: 10MB, max: PHP upload_max_filesize)
+- Allowed File Types (whitelist managed in Admin panel)
+- Image Max Dimensions (default: 2560x2560px)
+- Auto-optimization on upload
+
+#### Image Processing
+
+- Auto-Resize (respects max dimensions)
+- Thumbnail Generation (multiple sizes: 150px, 300px, 768px)
+- EXIF Data Stripping (removes GPS, camera data for privacy)
+- WebP Conversion (optional, with JPEG/PNG fallback)
+- Image Compression (configurable quality)
+
+#### Image Metadata
+
+- Alt Text (Accessibility/SEO)
+- Title & Caption
+- Focal Point Selection (for auto-crop)
+- Storage Quota Display
 
 **Note:** Media Usage Tracking available in v1.1.0 (Week 12 - Advanced Media)
 
@@ -142,135 +220,288 @@ Migration-Path **Features:** ~90
 
 ### Phase 1: User Management (Week 5)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### User System
 
-- [ ] User CRUD (Create, Read, Update, Delete)
-- [ ] User Profiles (Avatar, Bio, Social Links)
-- [ ] Role-Based Access Control (RBAC)
-- [ ] 2 Default Roles (v1.0):
-    - **Administrator** - Full system access
-    - **Author** - Create/edit own posts, upload media
+- User CRUD (Create, Read, Update, Delete)
+- User Profiles (Avatar, Bio, Social Links)
+- Role-Based Access Control (RBAC):
+    - **Capability-Based Permissions** (granular, not just roles)
+    - **Permission Storage:** `role_capabilities` table (role → capabilities mapping)
+    - **Enforcement:** Laravel Gates/Policies (e.g., `Gate::authorize('edit-post', $post)`)
+    - **Default Roles (v1.0):**
+        - **Administrator** - All capabilities (`*` wildcard)
+        - **Author** - Create/edit own posts, upload media
+        - **User** - Comment on posts, view published content
+        - **Guest** - View published content only (unauthenticated)
+
+    **Permission Matrix (v1.0):**
+
+    | Capability | Administrator | Author | User | Guest |
+    |------------|---------------|--------|------|-------|
+    | `create-post` | ✓ | ✓ | ✗ | ✗ |
+    | `edit-own-post` | ✓ | ✓ | ✗ | ✗ |
+    | `edit-all-posts` | ✓ | ✗ | ✗ | ✗ |
+    | `delete-own-post` | ✓ | ✓ | ✗ | ✗ |
+    | `delete-all-posts` | ✓ | ✗ | ✗ | ✗ |
+    | `publish-post` | ✓ | ✓ | ✗ | ✗ |
+    | `create-page` | ✓ | ✗ | ✗ | ✗ |
+    | `edit-page` | ✓ | ✗ | ✗ | ✗ |
+    | `delete-page` | ✓ | ✗ | ✗ | ✗ |
+    | `upload-media` | ✓ | ✓ | ✗ | ✗ |
+    | `delete-own-media` | ✓ | ✓ | ✗ | ✗ |
+    | `delete-all-media` | ✓ | ✗ | ✗ | ✗ |
+    | `post-comment` | ✓ | ✓ | ✓ | ⚙️* |
+    | `moderate-comments` | ✓ | ✓** | ✗ | ✗ |
+    | `manage-users` | ✓ | ✗ | ✗ | ✗ |
+    | `manage-settings` | ✓ | ✗ | ✗ | ✗ |
+    | `manage-themes` | ✓ | ✗ | ✗ | ✗ |
+    | `manage-plugins` | ✓ | ✗ | ✗ | ✗ |
+    | `view-published` | ✓ | ✓ | ✓ | ✓ |
+    | `view-drafts` | ✓ | ✓** | ✗ | ✗ |
+
+    **Notes:**
+    - `*` Guest comments configurable (Settings → Comments → Allow Guest Comments)
+    - `**` Author = Own content only
+    - "Own" = User created the resource (`created_by` column)
+    - "All" = Can modify any resource regardless of creator
 
 #### Authentication
 
-- [ ] Login / Logout
-- [ ] Password Reset
-- [ ] Remember Me
-- [ ] Invite-Only Registration (default)
-- [ ] Invite Token Generation & Email
-- [ ] First Setup Wizard (Admin Creation)
-- [ ] Session Management
+- Login / Logout
+- Password Reset
+- Remember Me
+- Invite-Only Registration (default)
+- Invite Token Generation & Email
+- First Setup Wizard (Admin Creation)
+- Session Management
 
 #### Activity Tracking
 
-- [ ] Activity Log (Admin Actions)
-- [ ] Authentication Log (Login History, IP, User Agent)
-- [ ] Failed Login Attempts
+- Activity Log (Admin Actions)
+- Authentication Log (Login History, IP, User Agent)
+- Failed Login Attempts
 
 ---
 
 ### Phase 1: Theme System (Week 6)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Frontend (Public Site)
 
-- [ ] Blade Templates + Alpine.js + Tailwind CSS 4
-- [ ] 1 Default Theme (included)
-- [ ] Standalone Themes (ZIP Upload)
-- [ ] Theme Switcher (Admin Panel)
-- [ ] Dark/Light Mode Toggle (User Preference, Cookie-Saved)
-- [ ] Lucide Icons (Frontend)
+- Blade Templates + Alpine.js + Tailwind CSS 4
+- 1 Default Theme (included: `themes/default/`)
+- Theme Installation via SFTP (no ZIP upload)
+- Theme Switcher (Admin Panel, scans `themes/` directory)
+- Dark/Light Mode Toggle (User Preference, Cookie-Saved)
+- Lucide Icons (Frontend)
+
+#### Theme Structure
+
+```
+themes/
+├── default/                    ← Included theme
+│   ├── theme.json              ← Metadata (name, version, author, templates)
+│   ├── layouts/
+│   │   └── default.blade.php   ← Master layout
+│   ├── templates/              ← Post/Page templates
+│   │   ├── default.blade.php   ← Default template
+│   │   ├── full-width.blade.php
+│   │   └── sidebar.blade.php
+│   ├── partials/
+│   │   ├── header.blade.php
+│   │   ├── footer.blade.php
+│   │   └── sidebar.blade.php
+│   └── assets/
+│       ├── css/
+│       ├── js/
+│       └── images/
+```
+
+#### theme.json Format
+
+```json
+{
+  "name": "Default Theme",
+  "slug": "default",
+  "version": "1.0.0",
+  "author": "PineCMS",
+  "description": "Clean minimal theme",
+  "templates": {
+    "default": "Default (Featured Image + Content)",
+    "full-width": "Full Width (No Sidebar)",
+    "sidebar": "With Sidebar"
+  }
+}
+```
+
+#### Theme Discovery
+
+- Scans `themes/` directory for folders with `theme.json`
+- Active theme stored in database (`settings` table)
+- Fallback to `default` theme if active theme missing
+- Template dropdown populated from theme.json templates
 
 #### Admin Panel
 
-- [ ] PrimeVue + Inertia.js + Vue 3.5
-- [ ] Dark/Light Mode Toggle (User Preference)
-- [ ] PrimeIcons (Admin Only)
-- [ ] Responsive Design (Mobile-Friendly)
+- PrimeVue + Inertia.js + Vue 3.5
+- Dark/Light Mode Toggle (User Preference)
+- PrimeIcons (Admin Only)
+- Responsive Design (Mobile-Friendly)
+
+---
+
+### Phase 0: Frontend Hooks System (Week 6)
+
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
+#### Blade @hook() Directive
+
+- Custom Blade directive `@hook('hook-name')` for theme integration
+- Output sanitization (XSS prevention)
+- HTML/CSS/JS injection support (controlled)
+- Hook existence check (silent failure if no handlers)
+- Debug mode logging (hook execution tracking)
+
+#### Pre-defined Hook Points
+
+- `theme.head.before` - Before closing `</head>` tag
+- `theme.head.after` - After opening `<body>` tag
+- `theme.body.before` - Before main content area
+- `theme.body.after` - After main content area
+- `theme.footer.before` - Before footer section
+- `theme.footer.after` - Before closing `</body>` tag
+- `theme.content.before` - Before post/page content
+- `theme.content.after` - After post/page content
+- `theme.sidebar.before` - Before sidebar widgets
+- `theme.sidebar.after` - After sidebar widgets
+
+#### Hook Registration API
+
+- `Hooks::register('hook-name', callable)` - Register hook handler
+- `Hooks::priority('hook-name', int)` - Set execution priority (1-100)
+- `Hooks::remove('hook-name', callable)` - Unregister hook handler
+- `Hooks::clear('hook-name')` - Clear all handlers for hook
+- `Hooks::has('hook-name')` - Check if hook has handlers
+
+#### Hook Priority System
+
+- Priority range: 1-100 (1 = highest, 100 = lowest)
+- Default priority: 50
+- Same priority: execution order = registration order
+- Core hooks: priority 1-20 (reserved)
+- Plugin hooks: priority 21-100 (recommended)
+
+#### Plugin Integration
+
+- Hooks register in `PluginServiceProvider::boot()`
+- Auto-discovery of hook handlers in plugin classes
+- Hook validation (prevent infinite loops)
+- Hook caching (performance optimization)
+- Cross-reference: `docs/PLUGIN_DEVELOPMENT.md` for usage examples
 
 ---
 
 ### Phase 1: Categories & Tags System (Week 7)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Categories (Hierarchical)
 
-- [ ] Hierarchical Structure (Parent → Child, max 2 levels)
-- [ ] Category CRUD (Create, Read, Update, Delete)
-- [ ] Category Slug (SEO-friendly URLs, auto-generated)
-- [ ] Category Description (Plain Text, max 200 characters)
-- [ ] Category Color/Badge (optional visual identifier)
-- [ ] Category Post Count (display number of posts)
-- [ ] Default Category (Auto-assign "Uncategorized" if none selected)
-- [ ] Drag & Drop Reordering
+- Hierarchical Structure (Parent → Child, max 2 levels)
+- Category CRUD (Create, Read, Update, Delete)
+- Category Slug (SEO-friendly URLs, auto-generated)
+- Category Description (Plain Text, max 200 characters)
+- Category Color/Badge (optional visual identifier)
+- Category Post Count (display number of posts)
+- Default Category (Auto-assign "Uncategorized" if none selected)
+- Drag & Drop Reordering
 
 #### Tags (Flat)
 
-- [ ] Tag CRUD (Create, Read, Update, Delete)
-- [ ] Tag Autocomplete (suggestions while typing)
-- [ ] Tag Usage Count (how often used?)
-- [ ] Popular Tags Widget
-- [ ] Tag Merging (combine 2 tags into 1)
-- [ ] Tag Cloud (Frontend Widget)
+- Tag CRUD (Create, Read, Update, Delete)
+- Tag Autocomplete (suggestions while typing)
+- Tag Usage Count (how often used?)
+- Popular Tags Widget
+- Tag Merging (combine 2 tags into 1)
+- Tag Cloud (Frontend Widget)
 
 ---
 
 ### Phase 1: Admin Panel & Settings (Week 8)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Dashboard
 
-- [ ] Quick Stats (Posts, Pages, Users)
-- [ ] Recent Activity Feed
-- [ ] Quick Actions (New Post, New Page)
-- [ ] System Health (Storage, Cache Status)
+- Quick Stats (Posts, Pages, Users)
+- Recent Activity Feed
+- Quick Actions (New Post, New Page)
+- System Health (Storage, Cache Status)
 
 #### Site Settings (Tabbed UI)
 
 **General Tab:**
 
-- [ ] Site Name, Tagline, Description
-- [ ] Logo Upload
-- [ ] Favicon Upload
-- [ ] Timezone
-- [ ] Date/Time Format
+- Site Name, Tagline, Description
+- Logo Upload
+- Favicon Upload
+- Timezone
+- Date/Time Format
 
 **SEO Tab:**
 
-- [ ] Default Meta Title Template
-- [ ] Default Meta Description
-- [ ] OpenGraph Defaults
-- [ ] Twitter Card Defaults
-- [ ] Sitemap Settings
-- [ ] Robots.txt Editor
+- Default Meta Title Template
+- Default Meta Description
+- OpenGraph Defaults
+- Twitter Card Defaults
+- Sitemap Settings
+- Robots.txt Editor
 
 **Privacy Tab:**
 
-- [ ] Cookie Consent Banner (Enable/Disable, Customizable)
-- [ ] GDPR Compliance Settings
-- [ ] Field-Level Encryption (Enable/Disable via CipherSweet)
+- Cookie Consent Banner (Enable/Disable, Customizable)
+- GDPR Compliance Settings
+- Field-Level Encryption (Enable/Disable via CipherSweet)
 
 **Email Tab:**
 
-- [ ] SMTP Configuration
-- [ ] Email Templates (Plain text, editable in Settings):
+- SMTP Configuration
+- Email Templates (Plain text, editable in Settings):
     - Welcome Email (on user creation)
     - Invite Email (invitation token)
     - Password Reset Email
-- [ ] Test Email Function
+- Test Email Function
 
 **Note:** Rich HTML Email Templates available in v1.1.0 or via Plugin
 
 **Security Tab:**
 
-- [ ] Registration Mode (Invite-Only default)
-- [ ] Rate Limiting (Enable/Disable, Limits)
-- [ ] Content Security Policy (CSP)
-- [ ] Secure Headers (HSTS, X-Frame-Options)
+- Registration Mode (Invite-Only default)
+- Rate Limiting (Enable/Disable, Limits)
+- Content Security Policy (CSP)
+- Secure Headers (HSTS, X-Frame-Options)
 
 **Backup Tab:**
 
-- [ ] Auto-Backup Schedule (Daily/Weekly/Monthly)
-- [ ] Backup Storage Location (Local only in v1.0)
-- [ ] One-Click Backup
-- [ ] Backup History & Restore
+- Auto-Backup Schedule (Daily/Weekly/Monthly)
+- Scheduler Mode (Visit-Triggered or Traditional Cron)
+- Backup Storage Location (Local only in v1.0)
+- One-Click Backup
+- Backup History & Restore
+- Scheduler Status (last run, next run)
 
 **Note:** S3/SFTP Backup available via "Backup Pro" Plugin (v1.2.0+)
 
@@ -278,65 +509,73 @@ Migration-Path **Features:** ~90
 
 ### Phase 1: Import/Export System (Week 9)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### Import (Critical for Adoption)
 
-- [ ] Import from WordPress (XML/WXR format)
-- [ ] Import from Ghost (JSON export)
-- [ ] Import from Markdown Files (Bulk upload)
-- [ ] Content Mapping UI (map fields during import)
-- [ ] Import Preview (review before final import)
-- [ ] Import Progress Indicator
+- Import from WordPress (XML/WXR format)
+- Import from Ghost (JSON export)
+- Import from Markdown Files (Bulk upload)
+- Content Mapping UI (map fields during import)
+- Import Preview (review before final import)
+- Import Progress Indicator
 
 #### Export
 
-- [ ] Export to JSON (full site export)
-- [ ] Export to Markdown (ZIP archive)
-- [ ] Export Media Files (included in ZIP)
-- [ ] Selective Export (choose posts/pages/categories)
+- Export to JSON (full site export)
+- Export to Markdown (ZIP archive)
+- Export Media Files (included in ZIP)
+- Selective Export (choose posts/pages/categories)
 
 ---
 
 ### Phase 1: SEO & Privacy (Week 10)
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
 #### SEO Features
 
-- [ ] Auto-Slug Generation (Eloquent Sluggable)
-- [ ] Custom Slugs (Editable)
-- [ ] XML Sitemap (Auto-Updated)
-- [ ] RSS Feed (Posts, Categories, Tags)
-- [ ] Meta Tags Management (OpenGraph, Twitter Cards)
-- [ ] Canonical URLs
+- Auto-Slug Generation (Eloquent Sluggable)
+- Custom Slugs (Editable)
+- XML Sitemap (Auto-Updated)
+- RSS Feed (Posts, Categories, Tags)
+- Meta Tags Management (OpenGraph, Twitter Cards)
+- Canonical URLs
 
 **Note:** Breadcrumbs are theme-specific (themes generate their own breadcrumbs)
 
 #### Privacy & Security
 
-- [ ] Cookie Consent Banner
-- [ ] Field-Level Encryption (Email, PII via CipherSweet)
-- [ ] Content Security Policy (CSP Headers)
-- [ ] Secure Headers (XSS Protection, HSTS)
-- [ ] IP Anonymization
-- [ ] CSRF Protection (Laravel Default)
-- [ ] XSS Protection
-- [ ] SQL Injection Protection (Eloquent ORM)
-- [ ] Rate Limiting (Forms, Login)
+- Cookie Consent Banner
+- Field-Level Encryption (Email, PII via CipherSweet)
+- Content Security Policy (CSP Headers)
+- Secure Headers (XSS Protection, HSTS)
+- IP Anonymization
+- CSRF Protection (Laravel Default)
+- XSS Protection
+- SQL Injection Protection (Eloquent ORM)
+- Rate Limiting (Forms, Login)
 
 **Backup Implementation:**
 
 - Uses spatie/laravel-backup package
 - Components: SQLite Database, Flat-Files (Markdown), Media Files
 - Configuration Files (.env excluded for security)
-- Automated scheduling via Laravel Task Scheduler
+- Automated scheduling (Visit-Triggered or Traditional Cron)
 - One-Click operations via Admin Panel
 
 #### UI/UX Polish
 
-- [ ] Custom Error Pages (404, 403, 500, 503)
-- [ ] Loading States (Skeleton Loaders)
-- [ ] Toast Notifications (Success, Error, Info, Warning)
-- [ ] Modal System (Confirm Dialogs)
-- [ ] Form Validation (Real-Time)
-- [ ] Responsive Design (Mobile, Tablet, Desktop)
+- Custom Error Pages (404, 403, 500, 503)
+- Loading States (Skeleton Loaders)
+- Toast Notifications (Success, Error, Info, Warning)
+- Modal System (Confirm Dialogs)
+- Form Validation (Real-Time)
+- Responsive Design (Mobile, Tablet, Desktop)
 
 **Note:** Lightbox is theme-specific (not in core)
 
@@ -349,16 +588,20 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 ### Comments System (Week 10-11)
 
-- [ ] Comment CRUD
-- [ ] Moderation Queue (Approve/Reject/Spam)
-- [ ] Guest Comments Toggle (Enable/Disable in Settings, disabled by default)
-- [ ] Nested Comments (Replies, Max Depth: 3)
-- [ ] Comment Sorting (Newest, Oldest)
-- [ ] Email Notifications (New Comment, Reply)
-- [ ] Comment Count per Post
-- [ ] Commenter Info (Name, Email, Website - Optional)
-- [ ] Gravatar Support
-- [ ] Markdown Support in Comments
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+- Comment CRUD
+- Moderation Queue (Approve/Reject/Spam)
+- Guest Comments Toggle (Enable/Disable in Settings, disabled by default)
+- Nested Comments (Replies, Max Depth: 3)
+- Comment Sorting (Newest, Oldest)
+- Email Notifications (New Comment, Reply)
+- Comment Count per Post
+- Commenter Info (Name, Email, Website - Optional)
+- Gravatar Support
+- Markdown Support in Comments
 
 **Removed (YAGNI):**
 
@@ -369,37 +612,45 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 ### Search System (Week 10-11)
 
-- [ ] Full-Text Search Engine (TNTSearch default)
-- [ ] Search Filters:
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+- Full-Text Search Engine (TNTSearch default)
+- Search Filters:
     - By Content Type (Posts, Pages)
     - By Date Range
     - By Author
     - By Tags/Categories
-- [ ] Search Highlighting (Match preview)
-- [ ] Search Suggestions (Did you mean...)
+- Search Highlighting (Match preview)
+- Search Suggestions (Did you mean...)
 
 #### Command Palette (CMD+K / CTRL+K)
 
-- [ ] Quick Search (Posts, Pages, Tags, Categories)
-- [ ] Quick Actions:
+- Quick Search (Posts, Pages, Tags, Categories)
+- Quick Actions:
     - Create New Post
     - Create New Page
     - Navigate to Settings
     - Navigate to Profile
     - Clear Cache
-- [ ] Keyboard Navigation
-- [ ] Recent Searches
+- Keyboard Navigation
+- Recent Searches
 
 ---
 
 ### Advanced User Management (Week 11)
 
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
 #### RBAC Enhanced (4 Roles)
 
-- [ ] **Administrator** - Full system access
-- [ ] **Author** - Create/edit own posts, upload media
-- [ ] **User** - View content, comment, manage profile (NEW)
-- [ ] **Guest** - Read-only access to published content (NEW)
+- **Administrator** - Full system access
+- **Author** - Create/edit own posts, upload media
+- **User** - View content, comment, manage profile (NEW)
+- **Guest** - Read-only access to published content (NEW)
 
 #### Permissions Matrix
 
@@ -424,32 +675,36 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 #### Registration Mode
 
-- [ ] Public Registration Toggle (Settings → Security Tab)
-- [ ] Switch from Invite-Only to Public Registration
-- [ ] Email Verification (optional for public registration)
+- Public Registration Toggle (Settings → Security Tab)
+- Switch from Invite-Only to Public Registration
+- Email Verification (optional for public registration)
 
 ---
 
 ### Advanced Media Library (Week 12)
 
-- [ ] Additional File Types:
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
+- Additional File Types:
     - Videos (MP4, WebM, OGG)
     - Audio (MP3, WAV, OGG)
     - Documents (DOC, DOCX, XLS, XLSX)
     - Archives (ZIP, TAR, GZ)
 
-- [ ] Advanced Image Processing:
+- Advanced Image Processing:
     - Image Filters (Grayscale, Blur, Brightness)
     - Responsive Images (srcset generation)
     - Retina/HiDPI Support (2x, 3x)
     - Image CDN Support (optional)
 
-- [ ] Media Usage Tracking:
+- Media Usage Tracking:
     - Show where image/file is used (Posts, Pages)
     - "Used in X posts" indicator
     - Prevent deletion if in use (warning + override option)
 
-- [ ] Bulk Actions:
+- Bulk Actions:
     - Bulk Upload (Multiple files at once)
     - Bulk Delete
     - Bulk Move
@@ -459,51 +714,63 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 ### TipTap Editor (Advanced Features) (Week 12)
 
-- [ ] Tables (Create, Edit, Delete rows/columns)
-- [ ] Horizontal Rule
-- [ ] Embed (YouTube, Vimeo, Twitter, etc.)
-- [ ] Markdown Shortcuts
-- [ ] Slash Commands (/ menu)
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
+- Tables (Create, Edit, Delete rows/columns)
+- Horizontal Rule
+- Embed (YouTube, Vimeo, Twitter, etc.)
+- Markdown Shortcuts
+- Slash Commands (/ menu)
 
 ---
 
 ### Bulk Actions (Week 12)
 
-- [ ] Bulk Select (Checkboxes)
-- [ ] Bulk Change Status (Draft ↔ Published)
-- [ ] Bulk Delete
-- [ ] Bulk Move to Category/Tag
-- [ ] Bulk Assign Author
-- [ ] Bulk Export (CSV, JSON)
-- [ ] Duplicate Post/Page (included above in Posts section)
-- [ ] Inline Editing (Title, Status, Date)
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
+- Bulk Select (Checkboxes)
+- Bulk Change Status (Draft ↔ Published)
+- Bulk Delete
+- Bulk Move to Category/Tag
+- Bulk Assign Author
+- Bulk Export (CSV, JSON)
+- Duplicate Post/Page (see "Duplicate Post/Page" section in Phase 0 for detailed behavior)
+- Inline Editing (Title, Status, Date)
 
 ---
 
 ### Analytics (Matomo Integration) - **CORE FEATURE** (Week 12)
 
-- [ ] Matomo Integration (Self-Hosted, PHP SDK)
-- [ ] Privacy-First Analytics:
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+- Matomo Integration (Self-Hosted, PHP SDK)
+- Privacy-First Analytics:
     - No Cookies Required (Cookieless Tracking)
     - IP Anonymization (GDPR-compliant)
     - DNT (Do Not Track) Support
     - Anonymous Tracking Mode
-- [ ] Dashboard Widget (Admin Panel):
+- Dashboard Widget (Admin Panel):
     - Pageviews (Today, Week, Month)
     - Unique Visitors
     - Top Posts/Pages
     - Referrers (Where visitors come from)
     - Browser/Device Stats
-- [ ] Detailed Reports (Admin Panel):
+- Detailed Reports (Admin Panel):
     - Visitor Log
     - Geographic Location (Country-level only)
     - Page Performance
-- [ ] Privacy Controls (Settings → Privacy Tab):
+- Privacy Controls (Settings → Privacy Tab):
     - Enable/Disable Analytics
     - Analytics Opt-Out (User Preference)
     - Data Retention Settings (GDPR: 6/12/24 months)
     - Cookie Consent Integration
-- [ ] Performance:
+- Performance:
     - Async Tracking (No impact on page load)
     - Optional: Separate SQLite DB for analytics
 
@@ -511,31 +778,43 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
 ### Custom Fields (Advanced Types) (Week 13)
 
-- [ ] Select (Dropdown, Multi-select, Radio)
-- [ ] URL
-- [ ] Email
-- [ ] Rich Text (TipTap instance for field)
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
+- Select (Dropdown, Multi-select, Radio)
+- URL
+- Email
+- Rich Text (TipTap instance for field)
 
 ---
 
 ### Advanced Settings Tab (Week 13)
 
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.1.0
+
 **Advanced Tab:**
 
-- [ ] Cache Settings (Enable/Disable, Clear Cache)
-- [ ] Maintenance Mode
-- [ ] Debug Mode Toggle
-- [ ] Custom Code (Head/Footer Injection)
+- Cache Settings (Enable/Disable, Clear Cache)
+- Maintenance Mode
+- Debug Mode Toggle
+- Custom Code (Head/Footer Injection)
 
 ---
 
 ### Plugin System (Week 13) - **CRITICAL**
 
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
 #### Plugin Architecture
 
-- [ ] Event-Driven Architecture (Laravel Events)
-- [ ] Plugin Discovery (Auto-Load from `/plugins/`)
-- [ ] Plugin Structure:
+- Event-Driven Architecture (Laravel Events)
+- Plugin Discovery (Auto-Load from `/plugins/`)
+- Plugin Structure:
 
     ```
     plugins/
@@ -547,30 +826,53 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
         assets/
     ```
 
-- [ ] Plugin Activation/Deactivation (Admin Panel)
-- [ ] Plugin Settings Page (Per Plugin)
-- [ ] Plugin Hooks/Events:
-    - Content Save (Before/After)
-    - User Login (Before/After)
-    - Comment Posted (Before/After)
-    - Page Render (Before/After)
+- Plugin Activation/Deactivation (Admin Panel)
+- Plugin Settings Page (Per Plugin)
+- Plugin Hooks/Events:
+    - **Laravel Event System** (Events + Listeners, NOT WordPress-style hooks)
+    - **Event Registration:** Plugin's `PluginServiceProvider` → `$listen` array
+    - **Priority System:** Listener execution order via array position (first = highest priority)
+    - **Event Payloads:** Each event object contains relevant data + mutable properties
+
+    **Available Events (v1.1):**
+
+    | Event | Payload | When Dispatched |
+    |-------|---------|-----------------|
+    | `PostSaving` | `$post` (mutable) | Before post saved to database |
+    | `PostSaved` | `$post` (immutable) | After post saved to database |
+    | `PostDeleting` | `$post` (mutable) | Before post deleted |
+    | `PostDeleted` | `$post` (immutable) | After post deleted |
+    | `UserLoggedIn` | `$user` (immutable) | After successful login |
+    | `UserLoggedOut` | `$user` (immutable) | After logout |
+    | `CommentCreating` | `$comment` (mutable) | Before comment saved |
+    | `CommentCreated` | `$comment` (immutable) | After comment created |
+    | `PageRendering` | `$page`, `$view` (mutable) | Before Blade render |
+    | `PageRendered` | `$page`, `$html` (mutable) | After Blade render |
+
+    **Event Mutability:**
+    - Pre-action events (PostSaving, PageRendering): Can modify data before action
+    - Post-action events (PostSaved, PageRendered): Read-only, for logging/side effects
 
 ---
 
 ### Update Manager (Week 13)
 
-- [ ] Check for Updates (GitHub API)
-- [ ] Update Available Notification (Admin Dashboard)
-- [ ] One-Click Update:
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+- Check for Updates (GitHub API)
+- Update Available Notification (Admin Dashboard)
+- One-Click Update:
     - Download Update ZIP
     - Auto-Backup Before Update
     - Extract Update
     - Run Database Migrations
     - Clear Cache
     - Restore on Failure
-- [ ] Manual Update Instructions
-- [ ] Update History Log
-- [ ] Rollback to Previous Version
+- Manual Update Instructions
+- Update History Log
+- Rollback to Previous Version
 
 ---
 
@@ -581,65 +883,77 @@ zusätzlich (Total: ~153)
 
 ### Import/Export Enhancements (Week 14)
 
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.2.0
+
 **Note:** Basic Import/Export is now in v1.0.0 (Week 9)
 
-- [ ] Import Error Handling & Retry
-- [ ] Advanced Content Mapping (custom field mapping)
-- [ ] Import from Medium (via RSS)
-- [ ] Import from Substack
-- [ ] Scheduled Exports (automatic weekly/monthly backups)
+- Import Error Handling & Retry
+- Advanced Content Mapping (custom field mapping)
+- Import from Medium (via RSS)
+- Import from Substack
+- Scheduled Exports (automatic weekly/monthly backups)
 
 ---
 
 ### Advanced SEO (Week 14)
 
-- [ ] Schema.org Structured Data (Article, Blog, Organization)
-- [ ] Open Graph & Twitter Cards (Enhanced)
-- [ ] XML Sitemap (Advanced with images, priorities)
-- [ ] Custom Meta Tags per Post/Page
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.2.0
+
+- Schema.org Structured Data (Article, Blog, Organization)
+- Open Graph & Twitter Cards (Enhanced)
+- XML Sitemap (Advanced with images, priorities)
+- Custom Meta Tags per Post/Page
 
 ---
 
 ### Advanced Features (Week 15)
 
+**Status:** 📋 Geplant
+**Typ:** 🔧 Enhancement
+**Version:** v1.2.0
+
 #### Redirect Management
 
-- [ ] 301/302 Redirect Management
-- [ ] Redirect CRUD (Admin Panel)
-- [ ] Bulk Import (CSV)
-- [ ] Wildcard Redirects
-- [ ] Redirect History (Track Usage)
+- 301/302 Redirect Management
+- Redirect CRUD (Admin Panel)
+- Bulk Import (CSV)
+- Wildcard Redirects
+- Redirect History (Track Usage)
 
 #### Menu Builder
 
-- [ ] Drag & Drop Menu Creation
-- [ ] Menu Locations (Header, Footer, Sidebar)
-- [ ] Menu Items:
+- Drag & Drop Menu Creation
+- Menu Locations (Header, Footer, Sidebar)
+- Menu Items:
     - Pages
     - Posts
     - Categories
     - Tags
     - Custom Links
     - Nested Items (Unlimited Depth)
-- [ ] Menu Item Options (CSS Class, Target, Icon)
+- Menu Item Options (CSS Class, Target, Icon)
 
 #### Widget System
 
-- [ ] Widget Areas (Sidebar, Footer)
-- [ ] Default Widgets:
+- Widget Areas (Sidebar, Footer)
+- Default Widgets:
     - Recent Posts
     - Popular Posts
     - Categories
     - Tags
     - Custom HTML
-- [ ] Drag & Drop Widget Management
+- Drag & Drop Widget Management
 
 #### Custom Routing
 
-- [ ] Multi-Language URL Prefixes (/en/, /de/)
-- [ ] Hierarchical URLs (/blog/category/subcategory/post)
-- [ ] Custom Post Type URLs
-- [ ] Route Wildcards
+- Multi-Language URL Prefixes (/en/, /de/)
+- Hierarchical URLs (/blog/category/subcategory/post)
+- Custom Post Type URLs
+- Route Wildcards
 
 ---
 
@@ -647,21 +961,58 @@ zusätzlich (Total: ~153)
 
 ### Health Check Dashboard
 
-- [ ] Storage Usage (Media, Backups, Cache)
-- [ ] File Permissions Check
-- [ ] PHP Version & Extensions
-- [ ] Database Status
-- [ ] Cache Status
-- [ ] Queue Status
-- [ ] System Logs
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0+
+
+- Storage Usage (Media, Backups, Cache)
+- File Permissions Check
+- PHP Version & Extensions
+- Database Status
+- Cache Status
+- Queue Status
+- System Logs
 
 ### Performance
 
-- [ ] Page Caching (Laravel Cache)
-- [ ] Query Caching
-- [ ] Asset Optimization (Vite Build)
-- [ ] Image Lazy Loading
-- [ ] CDN Support (Configurable)
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0+
+
+- Page Caching (Laravel Cache)
+- Query Caching
+- Asset Optimization (Vite Build)
+- Image Lazy Loading
+- CDN Support (Configurable)
+
+---
+
+### Scheduler Implementation
+
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
+#### Visit-Triggered (Default)
+
+- Laravel Middleware on public routes
+- Cache-based lock (60s TTL)
+- Executes on page visits (if cache expired)
+- Zero configuration needed
+- Proven technique (WordPress, ProcessWire, Craft CMS)
+
+#### Traditional Cron (Optional)
+
+- System cron: `* * * * * php artisan schedule:run`
+- 0ms web overhead (runs externally)
+- Requires cron-job access
+- Setup instructions provided by installer
+
+#### Scheduled Tasks
+
+- Content Publishing/Unpublishing
+- Automated Backups
+- Cache & Session Cleanup
 
 ---
 
@@ -669,23 +1020,32 @@ zusätzlich (Total: ~153)
 
 ### Shared Hosting Compatibility
 
-- [ ] Apache Support (.htaccess)
-- [ ] nginx Support (nginx.conf.example)
-- [ ] PHP 8.3+ Required
-- [ ] SQLite Database (No MySQL Required)
-- [ ] File-Based Sessions
-- [ ] File-Based Cache
-- [ ] No Git Required on Server
-- [ ] FTP/SFTP Upload Support
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
+- Apache Support (.htaccess)
+- nginx Support (nginx.conf.example)
+- PHP 8.3+ Required
+- SQLite Database (No MySQL Required)
+- File-Based Sessions
+- File-Based Cache
+- No Git Required on Server
+- FTP/SFTP Upload Support
+- Scheduler: Visit-Triggered (default) or Traditional Cron (optional)
 
 ### Release Package
 
-- [ ] Pre-Compiled Assets (Vite Build)
-- [ ] Optimized Autoloader
-- [ ] Cached Config/Routes/Views
-- [ ] Production-Ready .env.example
-- [ ] Installation Guide (README.md)
-- [ ] Changelog (CHANGELOG.md)
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.0.0
+
+- Pre-Compiled Assets (Vite Build)
+- Optimized Autoloader
+- Cached Config/Routes/Views
+- Production-Ready .env.example
+- Installation Guide (README.md)
+- Changelog (CHANGELOG.md)
 
 ---
 

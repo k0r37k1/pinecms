@@ -125,6 +125,7 @@ mfs
 testid
 signup
 tdd
+sed
 
 # German technical terms
 Benutzer
@@ -141,6 +142,8 @@ Reviewern
 Entpackung
 gehooked
 gehookt
+produktionsbereit
+Spezifikations
 
 # User/contributor names
 k0r37k1
