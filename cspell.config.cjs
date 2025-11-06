@@ -62,6 +62,14 @@ module.exports = {
         '.claude-hooks-config.sh',
         '.claude/hooks/**',
         '.claude/skill-rules.json',
+        'dictionaries/**',
+        'cspell.config.cjs',
+        'deptrac.yaml',
+        'codecov.yml',
+        'config/**',
+        'database/migrations/**',
+        'artisan',
+        'resources/views/**',
     ],
 
     // Custom project dictionary
