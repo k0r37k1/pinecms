@@ -58,7 +58,7 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 - ❌ **NEVER create inline styles** - Use TailwindCSS utility classes
 - ❌ **NEVER commit `console.log`** - Remove debug statements
 - ❌ **NEVER delete files/code without asking** - Always request user approval first
-- ❌ **NEVER create .md files outside `docs/`** - Exception: README.md in project root
+- ❌ **NEVER create .md files outside `docs/`** - Exceptions: README.md, AGENTS.md (CLI-agnostic guidelines)
 
 ### Documentation Organization
 
@@ -69,6 +69,10 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 - `docs/architecture/` - System design, ADRs, decisions
 - `docs/guides/` - How-to guides, tutorials
 - `docs/meta/` - Documentation standards
+
+**Root-Level Exceptions:**
+- `README.md` - Project overview
+- `AGENTS.md` - CLI-agnostic repository guidelines (Codex, Cursor, Claude, etc.)
 
 **Rules:** Never create `.md` files in `docs/` root. Ask before moving existing files.
 
