@@ -45,3 +45,5 @@ usemouse
 # JavaScript libraries
 DOMPurify
 dompurify
+inertiajs
+laravel

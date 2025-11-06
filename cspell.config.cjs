@@ -70,6 +70,7 @@ module.exports = {
         'database/migrations/**',
         'artisan',
         'resources/views/**',
+        'resources/js/**',
     ],
 
     // Custom project dictionary

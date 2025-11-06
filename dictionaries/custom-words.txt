@@ -126,6 +126,8 @@ JWT
 OAuth
 UUID
 YAML
+REST
+RESTful
 
 # Command/shell related
 blks
