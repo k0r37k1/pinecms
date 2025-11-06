@@ -1157,23 +1157,23 @@ zusätzlich (Total: ~153)
 
 Die folgenden Features sind als **Official Plugins** verfügbar:
 
-1. **Newsletter Plugin** (~7 Features) - Newsletter-System mit Subscriber
-   Management
-2. **Webhooks Plugin** (~11 Features) - Webhook-System für Integrationen
-3. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater,
-   Gallery, JSON, etc.)
-4. **Multi-Language Plugin** (~7 Features) - Content Translation UI (erweitert)
-5. **Workflow Plugin** (~6 Features) - Draft → Review → Publish Workflow
-6. **Two-Factor Auth Plugin** (~5 Features) - 2FA mit Google Authenticator
-7. **Form Builder Plugin** (~12 Features) - Drag & Drop Formular-Builder
-8. **SEO Pro Plugin** (~5 Features) - Advanced SEO (Schema.org, Broken Link
-   Checker)
+1. **Newsletter Plugin** (~6 Features) - Newsletter-System mit Subscriber Management, Signup Widget, Campaign Scheduling
+2. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater max 5 levels, Gallery, JSON, Color Picker, Conditional Logic)
+3. **Multi-Language Plugin** (~8 Features) - Content Translation UI, RTL Support (Arabic, Hebrew), Language-Specific URLs
+4. **SEO Pro Plugin** (~3 Features) - Advanced SEO (Schema.org: Article/Blog/Organization, Advanced Sitemap, Broken Link Checker)
 
-**Total Plugin Features:** ~60 (optimiert nach KISS/DRY/YAGNI principles)
+**Total Plugin Features:** ~24 (optimiert nach KISS/DRY/YAGNI principles)
 
-➡️ Siehe `docs/OFFICIAL_PLUGINS.md` für Details
+**Entfernte Plugins (→ v2.0):**
+
+- ❌ Webhooks (~11) - Over-engineered
+- ❌ Two-Factor Auth (~5) - Core security sufficient
+- ❌ Form Builder (~12) - Too complex
+- ❌ Workflow (~6) - **Moved to Core v1.1.0** (essential for teams)
+
+➡️ Siehe `docs/planning/OFFICIAL_PLUGINS.md` für Details
 
 ---
 
-**Last Updated:** 2025-01-26 **Maintained By:** PineCMS Team **License:** MIT -
+**Last Updated:** 2025-01-27 **Maintained By:** PineCMS Team **License:** MIT -
 100% Open Source
