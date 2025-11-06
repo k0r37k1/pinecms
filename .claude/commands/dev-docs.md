@@ -20,12 +20,12 @@ Create a comprehensive strategic plan for a feature or task. This command should
 1. Research the codebase thoroughly
 2. Analyze project structure and existing patterns
 3. Create a structured plan with:
-   - Executive summary
-   - Implementation phases
-   - Detailed tasks checklist
-   - Potential risks
-   - Success metrics
-   - Timeline estimate
+    - Executive summary
+    - Implementation phases
+    - Detailed tasks checklist
+    - Potential risks
+    - Success metrics
+    - Timeline estimate
 
 **Output format:**
 
@@ -33,42 +33,53 @@ Create a comprehensive strategic plan for a feature or task. This command should
 # [Task Name] - Strategic Plan
 
 ## Executive Summary
+
 [Brief overview of what we're building and why]
 
 ## Current State
+
 [What exists now, what needs to change]
 
 ## Goals
+
 [What we want to achieve]
 
 ## Implementation Phases
 
 ### Phase 1: [Phase Name]
+
 **Goal:** [Phase objective]
 
 **Tasks:**
+
 1. [ ] Task 1
 2. [ ] Task 2
 
 **Key Files:**
+
 - path/to/file.ext - Purpose
 
 **Risks:**
+
 - Risk description and mitigation
 
 ### Phase 2: [Phase Name]
+
 ...
 
 ## Success Criteria
+
 - [ ] Criterion 1
 - [ ] Criterion 2
 
 ## Timeline
+
 - Phase 1: X days
 - Phase 2: Y days
 - Total: Z days
 
 ## Next Steps
+
 1. Review and approve plan
 2. Run `/create-dev-docs [task-name]` to create dev doc files
 3. Begin Phase 1 implementation
@@ -98,14 +109,14 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 1. Create task directory
 2. Save approved plan to `[task-name]-plan.md`
 3. Extract key context to `[task-name]-context.md`:
-   - Important file paths with descriptions
-   - Architectural decisions made
-   - External dependencies
-   - Integration points
+    - Important file paths with descriptions
+    - Architectural decisions made
+    - External dependencies
+    - Integration points
 4. Create initial tasks checklist in `[task-name]-tasks.md`:
-   - Break down phases into actionable items
-   - Add checkboxes for tracking
-   - Include next steps
+    - Break down phases into actionable items
+    - Add checkboxes for tracking
+    - Include next steps
 
 **Context file format:**
 
@@ -117,10 +128,12 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 ## Key Files
 
 ### Backend
+
 - `app/Http/Controllers/XController.php` - Handles X requests
 - `app/Services/XService.php` - Business logic for X
 
 ### Frontend
+
 - `resources/js/Pages/X/Index.vue` - Main X page
 - `resources/js/Components/X/XForm.vue` - X form component
 
@@ -131,15 +144,18 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
    **Files:** `app/Events/XEvent.php`, `app/Listeners/XListener.php`
 
 ## Dependencies
+
 - Package X v2.0 - Used for Y functionality
 - Service Z API - Provides data for A
 
 ## Integration Points
+
 - Database: `x_table`, `y_table` (migrations in `database/migrations/`)
 - API Endpoints: `/api/x`, `/api/y` (routes in `routes/api.php`)
 - Frontend Routes: `/x`, `/x/{id}` (Inertia pages)
 
 ## Notes
+
 - [Any important observations, gotchas, or reminders]
 ```
 
@@ -152,15 +168,18 @@ After plan approval, create the 3-file dev docs system in `~/dev/active/[task-na
 **Status:** In Progress / Completed
 
 ## Phase 1: [Phase Name]
+
 - [ ] Task 1
 - [ ] Task 2
 - [x] Task 3 (completed)
 
 ## Phase 2: [Phase Name]
+
 - [ ] Task 1
 - [ ] Task 2
 
 ## Next Steps
+
 1. Complete Phase 1 tasks
 2. Review and test
 3. Move to Phase 2
@@ -181,13 +200,13 @@ Before running out of context or compacting conversation, update dev docs with:
 
 1. Find the active task directory in `~/dev/active/`
 2. Update `[task-name]-context.md`:
-   - Add any new key files discovered
-   - Document decisions made during implementation
-   - Note any important observations
+    - Add any new key files discovered
+    - Document decisions made during implementation
+    - Note any important observations
 3. Update `[task-name]-tasks.md`:
-   - Mark completed tasks as `[x]`
-   - Add newly discovered tasks
-   - Update "Next Steps" section
+    - Mark completed tasks as `[x]`
+    - Add newly discovered tasks
+    - Update "Next Steps" section
 4. Update timestamps
 
 **After updating:**

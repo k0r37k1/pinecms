@@ -50,17 +50,17 @@ PostToolUse hooks run automatically after Edit/Write:
 
 ```json
 {
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          { "type": "command", "command": "php .claude/hooks/post-tool-use.php" },
-          { "type": "command", "command": "bash .claude/hooks/pinecms-lint.sh" }
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Edit|Write",
+                "hooks": [
+                    { "type": "command", "command": "php .claude/hooks/post-tool-use.php" },
+                    { "type": "command", "command": "bash .claude/hooks/pinecms-lint.sh" }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }
 ```
 

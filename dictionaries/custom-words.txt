@@ -36,7 +36,21 @@ Postgre
 mysql
 mariadb
 mongodb
+MongoDB
 redis
+Redis
+elasticsearch
+Elasticsearch
+influxdb
+InfluxDB
+
+# Database connection classes
+MongoDBConnection
+RedisConnection
+ElasticsearchConnection
+InfluxDBConnection
+PostgreSQLConnection
+DatabaseConnection
 
 # Common technical terms
 composables

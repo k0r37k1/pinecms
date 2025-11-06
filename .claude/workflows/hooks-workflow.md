@@ -147,18 +147,16 @@ Post::query()->where('active', true)->get();
 <!-- Claude writes this code: -->
 <script>
 export default {
-  data() {
-    return { count: 0 }
-  }
-}
+    data() {
+        return { count: 0 };
+    },
+};
 </script>
 
-// PostToolUse Hook runs:
-✗ Bash hook detects Options API
-✗ Exit 2 (BLOCK)
-
-// Claude sees:
-"❌ Vue Options API detected - use Composition API with <script setup>"
+// PostToolUse Hook runs: ✗ Bash hook detects Options API ✗ Exit 2 (BLOCK) // Claude sees: "❌ Vue Options API detected
+- use Composition API with
+<script setup>
+"
 
 // Claude MUST fix:
 <script setup lang="ts">
@@ -166,10 +164,7 @@ import { ref } from 'vue'
 const count = ref(0)
 </script>
 
-// Hook runs again:
-✓ Composition API used
-✓ TypeScript check passes
-✓ Exit 0 (CONTINUE)
+// Hook runs again: ✓ Composition API used ✓ TypeScript check passes ✓ Exit 0 (CONTINUE)
 ```
 
 ## 🔍 Debugging Hooks

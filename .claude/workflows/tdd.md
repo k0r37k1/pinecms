@@ -163,19 +163,21 @@ $admin = User::factory()->admin()->create();
 // 1. RED - Write failing test
 describe('PostForm', () => {
     it('should emit submit event with form data', async () => {
-        const wrapper = mount(PostForm)
+        const wrapper = mount(PostForm);
 
-        await wrapper.find('input[name="title"]').setValue('Test Post')
-        await wrapper.find('textarea[name="content"]').setValue('Content')
-        await wrapper.find('form').trigger('submit')
+        await wrapper.find('input[name="title"]').setValue('Test Post');
+        await wrapper.find('textarea[name="content"]').setValue('Content');
+        await wrapper.find('form').trigger('submit');
 
-        expect(wrapper.emitted()).toHaveProperty('submit')
-        expect(wrapper.emitted('submit')[0]).toEqual([{
-            title: 'Test Post',
-            content: 'Content'
-        }])
-    })
-})
+        expect(wrapper.emitted()).toHaveProperty('submit');
+        expect(wrapper.emitted('submit')[0]).toEqual([
+            {
+                title: 'Test Post',
+                content: 'Content',
+            },
+        ]);
+    });
+});
 
 // 2. GREEN - Implement component
 // 3. REFACTOR - Optimize

@@ -69,6 +69,7 @@
 #### Infrastructure Requirements
 
 **Email Sending:**
+
 - **SMTP Server Required** - Configure external SMTP service (Mailgun, SendGrid, Amazon SES, or custom SMTP)
 - **Shared Hosting Limits** - Most shared hosts limit emails/hour (typically 100-500/hour)
 - **Queue System** - Laravel Queues used for background email processing
@@ -78,16 +79,19 @@
     - Retry logic for failed sends
 
 **Bounce & Complaint Handling:**
+
 - **Bounce Detection** - Requires webhook support from SMTP service (Mailgun, SendGrid)
 - **Automated Unsubscribe** - Hard bounces auto-mark subscribers as "Bounced"
 - **Complaint Handling** - Spam complaints auto-unsubscribe users (via webhook)
 
 **Scalability Considerations:**
+
 - **Small Lists (< 1,000)** - Shared hosting SMTP sufficient
 - **Medium Lists (1,000-10,000)** - Dedicated SMTP service recommended (Mailgun, SendGrid)
 - **Large Lists (10,000+)** - Enterprise SMTP + dedicated queue workers required
 
 **Privacy & Compliance:**
+
 - **GDPR Compliant** - Double opt-in, unsubscribe tracking, data export
 - **CAN-SPAM Act** - Physical address required in footer (configurable)
 - **Cookie-Free Tracking** - Optional tracking mode without cookies
@@ -588,17 +592,17 @@ Die Community kann eigene Plugins entwickeln und teilen:
 
 ## 📊 Plugin Summary
 
-| Plugin | Features | Requires | Status |
-|--------|----------|----------|--------|
-| **Newsletter** | ~7 | v1.1.0+ | Geplant |
-| **Webhooks** | ~11 | v1.1.0+ | Geplant |
-| **Custom Fields Pro** | ~7 | v1.0.0+ | Geplant |
-| **Multi-Language** | ~7 | v1.1.0+ | Geplant |
-| **Workflow** | ~6 | v1.1.0+ | Geplant |
-| **Two-Factor Auth** | ~5 | v1.1.0+ | Geplant |
-| **Form Builder** | ~12 | v1.1.0+ | Geplant |
-| **SEO Pro** | ~5 | v1.2.0+ | Geplant |
-| **Total** | **~60** | - | - |
+| Plugin                | Features | Requires | Status  |
+| --------------------- | -------- | -------- | ------- |
+| **Newsletter**        | ~7       | v1.1.0+  | Geplant |
+| **Webhooks**          | ~11      | v1.1.0+  | Geplant |
+| **Custom Fields Pro** | ~7       | v1.0.0+  | Geplant |
+| **Multi-Language**    | ~7       | v1.1.0+  | Geplant |
+| **Workflow**          | ~6       | v1.1.0+  | Geplant |
+| **Two-Factor Auth**   | ~5       | v1.1.0+  | Geplant |
+| **Form Builder**      | ~12      | v1.1.0+  | Geplant |
+| **SEO Pro**           | ~5       | v1.2.0+  | Geplant |
+| **Total**             | **~60**  | -        | -       |
 
 **Software Engineering Improvements:**
 

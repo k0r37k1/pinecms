@@ -26,52 +26,52 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
 - Use short nullable syntax: `?Type` not `Type|null`
 - Document iterables with generics:
 
-  ```php
-  /** @return Collection<int, User> */
-  public function getUsers(): Collection
-  ```
+    ```php
+    /** @return Collection<int, User> */
+    public function getUsers(): Collection
+    ```
 
 ### Docblock Rules
 
 - Don't use docblocks for fully type-hinted methods (unless description needed)
 - **Always import classnames in docblocks** - never use fully qualified names:
 
-  ```php
-  use \Spatie\Url\Url;
-  /** @return Url */
-  ```
+    ```php
+    use \Spatie\Url\Url;
+    /** @return Url */
+    ```
 
 - Use one-line docblocks when possible: `/** @var string */`
 - Most common type should be first in multi-type docblocks:
 
-  ```php
-  /** @var Collection|SomeWeirdVendor\Collection */
-  ```
+    ```php
+    /** @var Collection|SomeWeirdVendor\Collection */
+    ```
 
 - If one parameter needs docblock, add docblocks for all parameters
 - For iterables, always specify key and value types:
 
-  ```php
-  /**
-   * @param array<int, MyObject> $myArray
-   * @param int $typedArgument 
-   */
-  function someFunction(array $myArray, int $typedArgument) {}
-  ```
+    ```php
+    /**
+     * @param array<int, MyObject> $myArray
+     * @param int $typedArgument
+     */
+    function someFunction(array $myArray, int $typedArgument) {}
+    ```
 
 - Use array shape notation for fixed keys, put each key on it's own line:
 
-  ```php
-  /** @return array{
-     first: SomeClass, 
-     second: SomeClass
-  } */
-  ```
+    ```php
+    /** @return array{
+       first: SomeClass,
+       second: SomeClass
+    } */
+    ```
 
 ## Control Flow
 
 - **Happy path last**: Handle error conditions first, success case last
-- **Avoid else**: Use early returns instead of nested conditions  
+- **Avoid else**: Use early returns instead of nested conditions
 - **Separate conditions**: Prefer multiple if statements over compound conditions
 - **Always use curly brackets** even for single statements
 - **Ternary operators**: Each part on own line unless very short
@@ -131,14 +131,14 @@ $condition
 - Show progress for loops, summary at end
 - Put output BEFORE processing item (easier debugging):
 
-  ```php
-  $items->each(function(Item $item) {
-      $this->info("Processing item id `{$item->id}`...");
-      $this->processItem($item);
-  });
-  
-  $this->comment("Processed {$items->count()} items.");
-  ```
+    ```php
+    $items->each(function(Item $item) {
+        $this->info("Processing item id `{$item->id}`...");
+        $this->processItem($item);
+    });
+
+    $this->comment("Processed {$items->count()} items.");
+    ```
 
 ## Strings & Formatting
 
@@ -153,13 +153,13 @@ $condition
 - **Avoid comments** - write expressive code instead
 - When needed, use proper formatting:
 
-  ```php
-  // Single line with space after //
-  
-  /*
-   * Multi-line blocks start with single *
-   */
-  ```
+    ```php
+    // Single line with space after //
+
+    /*
+     * Multi-line blocks start with single *
+     */
+    ```
 
 - Refactor comments into descriptive function names
 
@@ -174,32 +174,32 @@ $condition
 
 - Use array notation for multiple rules (easier for custom rule classes):
 
-  ```php
-  public function rules() {
-      return [
-          'email' => ['required', 'email'],
-      ];
-  }
-  ```
+    ```php
+    public function rules() {
+        return [
+            'email' => ['required', 'email'],
+        ];
+    }
+    ```
 
 - Custom validation rules use snake_case:
 
-  ```php
-  Validator::extend('organisation_type', function ($attribute, $value) {
-      return OrganisationType::isValid($value);
-  });
-  ```
+    ```php
+    Validator::extend('organisation_type', function ($attribute, $value) {
+        return OrganisationType::isValid($value);
+    });
+    ```
 
 ## Blade Templates
 
 - Indent with 4 spaces
 - No spaces after control structures:
 
-  ```blade
-  @if($condition)
-      Something
-  @endif
-  ```
+    ```blade
+    @if($condition)
+        Something
+    @endif
+    ```
 
 ## Authorization
 
@@ -216,10 +216,10 @@ $condition
 - Use kebab-case: `/error-occurrences`
 - Limit deep nesting for simplicity:
 
-  ```
-  /error-occurrences/1
-  /errors/1/occurrences
-  ```
+    ```
+    /error-occurrences/1
+    /errors/1/occurrences
+    ```
 
 ## Testing
 
@@ -241,7 +241,7 @@ $condition
 ### File Structure
 
 - Controllers: plural resource name + `Controller` (`PostsController`)
-- Views: camelCase (`openSource.blade.php`)  
+- Views: camelCase (`openSource.blade.php`)
 - Jobs: action-based (`CreateUser`, `SendEmailNotification`)
 - Events: tense-based (`UserRegistering`, `UserRegistered`)
 - Listeners: action + `Listener` suffix (`SendInvitationMailListener`)
@@ -267,4 +267,4 @@ $condition
 
 ---
 
-*These guidelines are maintained by [Spatie](https://spatie.be/guidelines) and optimized for AI code assistants.*
+_These guidelines are maintained by [Spatie](https://spatie.be/guidelines) and optimized for AI code assistants._

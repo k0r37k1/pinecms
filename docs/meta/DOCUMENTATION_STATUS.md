@@ -8,6 +8,7 @@
 ## 🎯 Übersicht
 
 Dieses Dokument definiert das konsistente Status-Marker-System für:
+
 - `docs/CORE_FEATURES.md` - Feature-Spezifikationen
 - `docs/ROADMAP.md` - Entwicklungs-Roadmap
 - `docs/OFFICIAL_PLUGINS.md` - Plugin-Dokumentation
@@ -18,13 +19,13 @@ Dieses Dokument definiert das konsistente Status-Marker-System für:
 
 Diese Marker zeigen den **Implementierungs-Status** eines Features:
 
-| Marker | Status | Bedeutung | Verwendung |
-|--------|--------|-----------|------------|
-| ✅ | **Abgeschlossen** | Feature ist implementiert, getestet und produktionsbereit | Fertige Features |
-| 🚧 | **In Arbeit** | Feature wird aktuell entwickelt | Aktive Entwicklung |
-| 📋 | **Geplant** | Feature ist geplant, aber noch nicht gestartet | Backlog |
-| ⏸️ | **Pausiert** | Feature-Entwicklung temporär pausiert | Blockierte/verschobene Features |
-| ❌ | **Gestrichen** | Feature wurde aus dem Scope entfernt (YAGNI/Deprioritisiert) | Entfernte Features |
+| Marker | Status            | Bedeutung                                                    | Verwendung                      |
+| ------ | ----------------- | ------------------------------------------------------------ | ------------------------------- |
+| ✅     | **Abgeschlossen** | Feature ist implementiert, getestet und produktionsbereit    | Fertige Features                |
+| 🚧     | **In Arbeit**     | Feature wird aktuell entwickelt                              | Aktive Entwicklung              |
+| 📋     | **Geplant**       | Feature ist geplant, aber noch nicht gestartet               | Backlog                         |
+| ⏸️     | **Pausiert**      | Feature-Entwicklung temporär pausiert                        | Blockierte/verschobene Features |
+| ❌     | **Gestrichen**    | Feature wurde aus dem Scope entfernt (YAGNI/Deprioritisiert) | Entfernte Features              |
 
 ---
 
@@ -32,12 +33,12 @@ Diese Marker zeigen den **Implementierungs-Status** eines Features:
 
 Diese Marker zeigen die **Priorität/Dringlichkeit** für die Roadmap:
 
-| Marker | Priorität | Bedeutung | Release-Impact |
-|--------|-----------|-----------|----------------|
-| 🔴 | **Critical** | Blocker für Release - MUSS fertig sein | Release blockiert |
-| 🟠 | **High** | Wichtig - sollte im Release sein | Release-Ziel |
-| 🟡 | **Medium** | Wünschenswert - kann verschoben werden | Optional |
-| 🟢 | **Low** | Nice-to-have - niedrige Priorität | Future Release |
+| Marker | Priorität    | Bedeutung                              | Release-Impact    |
+| ------ | ------------ | -------------------------------------- | ----------------- |
+| 🔴     | **Critical** | Blocker für Release - MUSS fertig sein | Release blockiert |
+| 🟠     | **High**     | Wichtig - sollte im Release sein       | Release-Ziel      |
+| 🟡     | **Medium**   | Wünschenswert - kann verschoben werden | Optional          |
+| 🟢     | **Low**      | Nice-to-have - niedrige Priorität      | Future Release    |
 
 ---
 
@@ -45,12 +46,12 @@ Diese Marker zeigen die **Priorität/Dringlichkeit** für die Roadmap:
 
 Diese Marker zeigen den **Feature-Typ**:
 
-| Marker | Typ | Bedeutung | Scope |
-|--------|-----|-----------|-------|
-| 🎯 | **Core Feature** | Kern-Funktionalität im Core CMS | Core CMS |
-| 🔧 | **Enhancement** | Verbesserung/Erweiterung | Core CMS |
-| 🔌 | **Plugin** | Plugin-Feature (Official/Community) | Plugin-System |
-| 🧪 | **Experimental** | Experimentelles Feature (Beta) | Testing/Preview |
+| Marker | Typ              | Bedeutung                           | Scope           |
+| ------ | ---------------- | ----------------------------------- | --------------- |
+| 🎯     | **Core Feature** | Kern-Funktionalität im Core CMS     | Core CMS        |
+| 🔧     | **Enhancement**  | Verbesserung/Erweiterung            | Core CMS        |
+| 🔌     | **Plugin**       | Plugin-Feature (Official/Community) | Plugin-System   |
+| 🧪     | **Experimental** | Experimentelles Feature (Beta)      | Testing/Preview |
 
 ---
 
@@ -59,6 +60,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ### CORE_FEATURES.md
 
 **Format:**
+
 ```markdown
 #### Feature Name
 
@@ -71,6 +73,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ```
 
 **Beispiel:**
+
 ```markdown
 #### Web-Installer
 
@@ -88,6 +91,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ### ROADMAP.md
 
 **Format:**
+
 ```markdown
 ### Week X: Feature Category
 
@@ -102,6 +106,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ```
 
 **Beispiel:**
+
 ```markdown
 ### Week 1-2: Installer & Setup
 
@@ -120,6 +125,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ### OFFICIAL_PLUGINS.md
 
 **Format:**
+
 ```markdown
 ### Plugin Name
 
@@ -135,6 +141,7 @@ Diese Marker zeigen den **Feature-Typ**:
 ```
 
 **Beispiel:**
+
 ```markdown
 ### Newsletter Plugin
 
@@ -164,6 +171,7 @@ Features durchlaufen typischerweise diese Status-Übergänge:
 ```
 
 **Regeln:**
+
 1. **Neue Features starten als:** 📋 Geplant
 2. **Bei Entwicklungs-Start:** 📋 → 🚧
 3. **Bei Fertigstellung:** 🚧 → ✅
@@ -222,24 +230,26 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 
 ### Core Features Status
 
-| Status | Anzahl | Prozent |
-|--------|--------|---------|
-| ✅ Abgeschlossen | 15 | 16% |
-| 🚧 In Arbeit | 20 | 21% |
-| 📋 Geplant | 60 | 63% |
-| **Total** | **95** | **100%** |
+| Status           | Anzahl | Prozent  |
+| ---------------- | ------ | -------- |
+| ✅ Abgeschlossen | 15     | 16%      |
+| 🚧 In Arbeit     | 20     | 21%      |
+| 📋 Geplant       | 60     | 63%      |
+| **Total**        | **95** | **100%** |
 
 ---
 
 ## 🛠️ Wartung
 
 **Wann Status aktualisieren:**
+
 - Nach jedem Feature-Abschluss: 🚧 → ✅
 - Bei Feature-Start: 📋 → 🚧
 - Bei Scope-Änderungen: beliebig → ❌ (mit Begründung)
 - Bei Blockierungen: 🚧 → ⏸️ (mit Grund)
 
 **Review-Frequenz:**
+
 - Wöchentlich: Status-Update für alle "In Arbeit" Features
 - Monatlich: Review aller "Pausiert" Features (reaktivieren oder streichen?)
 - Quarterly: Review aller "Geplant" Features (noch relevant?)
@@ -251,6 +261,7 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 ### Vorher (Checkboxen-System)
 
 **Format:**
+
 ```markdown
 #### Feature Section
 
@@ -260,6 +271,7 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 ```
 
 **Probleme:**
+
 - ❌ **Ambiguität** - Checkboxen implizieren "To-do" statt Spezifikation
 - ❌ **Doppelte Semantik** - Checkboxen + Status-Marker verwirrend
 - ❌ **Visuelles Rauschen** - `[ ]` lenkt von Inhalt ab
@@ -269,6 +281,7 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 ### Nachher (Bullet-Points + Status-Marker)
 
 **Format:**
+
 ```markdown
 #### Feature Section
 
@@ -282,6 +295,7 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 ```
 
 **Vorteile:**
+
 - ✅ **Klarheit** - Status explizit in Section-Header, nicht implizit in Checkboxen
 - ✅ **Sauber** - Bullet-Points sind Standard für Spezifikations-Listen
 - ✅ **Semantisch korrekt** - Features = Spezifikationen, nicht Tasks
@@ -301,6 +315,7 @@ grep "Priorität.*🔴" docs/ROADMAP.md
 **Tool:** `sed -i '' 's/^- \[ \] /- /g' docs/*.md`
 
 **Ergebnis:**
+
 - Alle Feature-Listen nutzen jetzt **Bullet-Points** für Spezifikationen
 - Status-Marker in **Section-Headern** für Progress-Tracking
 - Konsistente Formatierung über alle 3 Dokumentations-Dateien

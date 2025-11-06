@@ -113,39 +113,39 @@ Recommend specialized agents:
 **Task Breakdown:**
 
 1. **Database** (database-architect)
-   - Create `categories` migration
-   - Create `category_post` pivot migration
-   - Add Category model with relationships
-   - Create CategoryFactory and seeder
+    - Create `categories` migration
+    - Create `category_post` pivot migration
+    - Add Category model with relationships
+    - Create CategoryFactory and seeder
 
 2. **Backend** (backend-architect)
-   - Create CategoryService for CRUD operations
-   - Add CategoryController with CRUD methods
-   - Create CategoryResource for API responses
-   - Add category filtering to PostService
-   - Create Form Requests for validation
+    - Create CategoryService for CRUD operations
+    - Add CategoryController with CRUD methods
+    - Create CategoryResource for API responses
+    - Add category filtering to PostService
+    - Create Form Requests for validation
 
 3. **Frontend** (frontend-developer)
-   - Create Categories/Index.vue (list categories)
-   - Create Categories/Create.vue (add category)
-   - Create Categories/Edit.vue (edit category)
-   - Add category filter to Posts/Index.vue
-   - Create CategoryBadge.vue component
+    - Create Categories/Index.vue (list categories)
+    - Create Categories/Create.vue (add category)
+    - Create Categories/Edit.vue (edit category)
+    - Add category filter to Posts/Index.vue
+    - Create CategoryBadge.vue component
 
 4. **Testing** (test-engineer)
-   - Feature test: Create, update, delete category
-   - Feature test: Filter posts by category
-   - Unit test: CategoryService methods
-   - E2E test: Category management flow
+    - Feature test: Create, update, delete category
+    - Feature test: Filter posts by category
+    - Unit test: CategoryService methods
+    - E2E test: Category management flow
 
 5. **Integration** (fullstack-developer)
-   - Connect all layers
-   - Verify data flow
-   - Check error handling
+    - Connect all layers
+    - Verify data flow
+    - Check error handling
 
 6. **Review** (code-reviewer)
-   - Final code quality check
-   - Verify all tests pass
+    - Final code quality check
+    - Verify all tests pass
 
 ## MCP Tool Usage
 

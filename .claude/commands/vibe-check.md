@@ -5,8 +5,8 @@ last_updated: 2025-10-31
 author: PineCMS Team
 status: active
 related:
-  - .claude/instructions/quality-gates.md
-  - .claude/workflows/plan-mode.md
+    - .claude/instructions/quality-gates.md
+    - .claude/workflows/plan-mode.md
 ---
 
 # Vibe Check MCP Commands
@@ -22,20 +22,17 @@ Metacognitive questioning system to prevent tunnel vision and cascading errors.
 ```javascript
 // Basic usage
 vibe_check({
-  goal: "What you're trying to achieve",
-  plan: "Your detailed implementation plan"
-})
+    goal: "What you're trying to achieve",
+    plan: 'Your detailed implementation plan',
+});
 
 // With uncertainties
 vibe_check({
-  goal: "Implement real-time collaboration",
-  plan: "1. Install Soketi\n2. Configure broadcasting\n3. Create channels",
-  uncertainties: [
-    "Should conflict resolution be backend or frontend?",
-    "How to handle connection drops?"
-  ],
-  taskContext: "PineCMS Laravel 12 + Vue 3"
-})
+    goal: 'Implement real-time collaboration',
+    plan: '1. Install Soketi\n2. Configure broadcasting\n3. Create channels',
+    uncertainties: ['Should conflict resolution be backend or frontend?', 'How to handle connection drops?'],
+    taskContext: 'PineCMS Laravel 12 + Vue 3',
+});
 ```
 
 **Returns:** Probing questions that reveal hidden assumptions, pitfalls, and overlooked edge cases.
@@ -49,26 +46,26 @@ vibe_check({
 ```javascript
 // Log a mistake
 vibe_learn({
-  mistake: "Forgot to eager load relationships, caused N+1 queries",
-  category: "Premature Implementation",
-  solution: "Added ->with('posts') to query",
-  type: "mistake"
-})
+    mistake: 'Forgot to eager load relationships, caused N+1 queries',
+    category: 'Premature Implementation',
+    solution: "Added ->with('posts') to query",
+    type: 'mistake',
+});
 
 // Log a preference
 vibe_learn({
-  mistake: "User prefers Eloquent query scopes over Repository pattern",
-  category: "Preference",
-  type: "preference"
-})
+    mistake: 'User prefers Eloquent query scopes over Repository pattern',
+    category: 'Preference',
+    type: 'preference',
+});
 
 // Log a success
 vibe_learn({
-  mistake: "Event-driven approach for post-save actions worked perfectly",
-  category: "Success",
-  solution: "Used Laravel Events instead of Observers",
-  type: "success"
-})
+    mistake: 'Event-driven approach for post-save actions worked perfectly',
+    category: 'Success',
+    solution: 'Used Laravel Events instead of Observers',
+    type: 'success',
+});
 ```
 
 **Categories:**
@@ -91,24 +88,20 @@ vibe_learn({
 ```javascript
 // Add a rule
 update_constitution({
-  sessionId: "feature-auth-2025-10-31",
-  rule: "Always write tests first (TDD)"
-})
+    sessionId: 'feature-auth-2025-10-31',
+    rule: 'Always write tests first (TDD)',
+});
 
 // Replace all rules
 reset_constitution({
-  sessionId: "feature-auth-2025-10-31",
-  rules: [
-    "Always write tests first",
-    "Never use Repository pattern",
-    "Prefer Eloquent query scopes"
-  ]
-})
+    sessionId: 'feature-auth-2025-10-31',
+    rules: ['Always write tests first', 'Never use Repository pattern', 'Prefer Eloquent query scopes'],
+});
 
 // Check current rules
 check_constitution({
-  sessionId: "feature-auth-2025-10-31"
-})
+    sessionId: 'feature-auth-2025-10-31',
+});
 ```
 
 ---
@@ -178,12 +171,12 @@ Claude: Noted! I'll remember this preference.
 
 ## Quick Reference
 
-| Tool | Purpose | When |
-|------|---------|------|
-| `vibe_check` | Validate approach | BEFORE coding |
-| `vibe_learn` | Log patterns | AFTER mistakes/successes |
-| `update_constitution` | Add session rule | Start of feature |
-| `check_constitution` | View rules | Anytime |
+| Tool                  | Purpose           | When                     |
+| --------------------- | ----------------- | ------------------------ |
+| `vibe_check`          | Validate approach | BEFORE coding            |
+| `vibe_learn`          | Log patterns      | AFTER mistakes/successes |
+| `update_constitution` | Add session rule  | Start of feature         |
+| `check_constitution`  | View rules        | Anytime                  |
 
 ---
 

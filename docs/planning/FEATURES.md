@@ -22,11 +22,11 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 ## 📦 Version Roadmap
 
-| Version | Core Features | Official Plugins | Total | Timeline |
-|---------|--------------|------------------|-------|----------|
-| **v1.0.0 (MVP)** | ~95 | - | 95 | 10-11 Wochen |
-| **v1.1.0 (Enhanced)** | ~143 | 5 Plugins (~38 features) | 181 | +3-4 Wochen |
-| **v1.2.0 (Professional)** | ~153 | 8 Plugins (~60 features) | 213 | +2-3 Wochen |
+| Version                   | Core Features | Official Plugins         | Total | Timeline     |
+| ------------------------- | ------------- | ------------------------ | ----- | ------------ |
+| **v1.0.0 (MVP)**          | ~95           | -                        | 95    | 10-11 Wochen |
+| **v1.1.0 (Enhanced)**     | ~143          | 5 Plugins (~38 features) | 181   | +3-4 Wochen  |
+| **v1.2.0 (Professional)** | ~153          | 8 Plugins (~60 features) | 213   | +2-3 Wochen  |
 
 **Total Timeline:** 15-18 Wochen (3.5-4.5 Monate) für v1.2.0
 
@@ -95,42 +95,42 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 **Alle Plugins sind 100% Open Source & Kostenlos (MIT License)**
 
 1. **Newsletter Plugin** (~7 Features)
-   - Newsletter Editor, Subscriber Management, Campaign Scheduling
-   - Template Selection, Privacy-Friendly Tracking, Double Opt-In
-   - Segmentation by Tags/Categories
+    - Newsletter Editor, Subscriber Management, Campaign Scheduling
+    - Template Selection, Privacy-Friendly Tracking, Double Opt-In
+    - Segmentation by Tags/Categories
 
 2. **Webhooks Plugin** (~11 Features)
-   - Webhook Management UI, 8 Event Types
-   - Custom Headers & Payloads, Testing & Logs
-   - Retry Logic, Signing, Rate Limiting
+    - Webhook Management UI, 8 Event Types
+    - Custom Headers & Payloads, Testing & Logs
+    - Retry Logic, Signing, Rate Limiting
 
 3. **Custom Fields Pro Plugin** (~7 Features)
-   - Relationship Fields, Repeater, Gallery
-   - JSON Field, Color Picker, Rich Text Field (Full/Mini)
-   - File Field
+    - Relationship Fields, Repeater, Gallery
+    - JSON Field, Color Picker, Rich Text Field (Full/Mini)
+    - File Field
 
 4. **Multi-Language Plugin** (~7 Features)
-   - Unlimited Languages, Content Translation UI
-   - Language-Specific URLs (Prefix/Subdirectory)
-   - SEO for Multi-Language (hreflang, Sitemap, RSS)
+    - Unlimited Languages, Content Translation UI
+    - Language-Specific URLs (Prefix/Subdirectory)
+    - SEO for Multi-Language (hreflang, Sitemap, RSS)
 
 5. **Workflow Plugin** (~6 Features)
-   - Draft → Review → Published Workflow
-   - Reviewer Assignment, Approval/Rejection
-   - Review Comments, Workflow History, Email Notifications
+    - Draft → Review → Published Workflow
+    - Reviewer Assignment, Approval/Rejection
+    - Review Comments, Workflow History, Email Notifications
 
 6. **Two-Factor Auth Plugin** (~5 Features)
-   - 2FA Setup (QR Code), TOTP Support
-   - Backup Codes, Recovery Options
+    - 2FA Setup (QR Code), TOTP Support
+    - Backup Codes, Recovery Options
 
 7. **Form Builder Plugin** (~12 Features)
-   - Drag & Drop Form Builder, 12 Field Types
-   - Submissions Management, Email Notifications
-   - Anti-Spam (Honeypot, reCAPTCHA, hCaptcha)
+    - Drag & Drop Form Builder, 12 Field Types
+    - Submissions Management, Email Notifications
+    - Anti-Spam (Honeypot, reCAPTCHA, hCaptcha)
 
 8. **SEO Pro Plugin** (~5 Features)
-   - Schema.org Advanced, Open Graph Enhanced
-   - Advanced Sitemap, Broken Link Checker, SEO Analysis
+    - Schema.org Advanced, Open Graph Enhanced
+    - Advanced Sitemap, Broken Link Checker, SEO Analysis
 
 ---
 

@@ -29,11 +29,11 @@
 
 ### Feature Counts
 
-| Version | Core Features | Official Plugins | Total |
-|---------|--------------|------------------|-------|
-| **v1.0.0 (MVP)** | ~95 | - | 95 |
-| **v1.1.0 (Enhanced)** | ~143 | 5 Plugins (~38 features) | 181 |
-| **v1.2.0 (Professional)** | ~153 | 8 Plugins (~60 features) | 213 |
+| Version                   | Core Features | Official Plugins         | Total |
+| ------------------------- | ------------- | ------------------------ | ----- |
+| **v1.0.0 (MVP)**          | ~95           | -                        | 95    |
+| **v1.1.0 (Enhanced)**     | ~143          | 5 Plugins (~38 features) | 181   |
+| **v1.2.0 (Professional)** | ~153          | 8 Plugins (~60 features) | 213   |
 
 ---
 

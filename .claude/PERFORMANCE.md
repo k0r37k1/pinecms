@@ -5,9 +5,9 @@ last_updated: 2025-10-31
 author: PineCMS Team
 status: active
 related:
-  - .claude/workflows/plan-mode.md
-  - .claude/instructions/quality-gates.md
-  - https://github.com/Njengah/claude-code-cheat-sheet
+    - .claude/workflows/plan-mode.md
+    - .claude/instructions/quality-gates.md
+    - https://github.com/Njengah/claude-code-cheat-sheet
 ---
 
 # Performance & Session Management

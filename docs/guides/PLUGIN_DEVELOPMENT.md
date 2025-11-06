@@ -53,18 +53,18 @@ plugins/
 
 ```json
 {
-  "name": "my-plugin",
-  "displayName": "My Plugin",
-  "description": "Short description of what this plugin does",
-  "version": "1.0.0",
-  "author": "Your Name",
-  "email": "your@email.com",
-  "license": "MIT",
-  "requires": {
-    "pinecms": ">=1.1.0"
-  },
-  "homepage": "https://github.com/yourname/pinecms-my-plugin",
-  "keywords": ["newsletter", "email", "marketing"]
+    "name": "my-plugin",
+    "displayName": "My Plugin",
+    "description": "Short description of what this plugin does",
+    "version": "1.0.0",
+    "author": "Your Name",
+    "email": "your@email.com",
+    "license": "MIT",
+    "requires": {
+        "pinecms": ">=1.1.0"
+    },
+    "homepage": "https://github.com/yourname/pinecms-my-plugin",
+    "keywords": ["newsletter", "email", "marketing"]
 }
 ```
 
@@ -308,29 +308,29 @@ Route::middleware(['auth', 'admin'])->prefix('admin/my-plugin')->group(function 
 ```vue
 <!-- resources/js/Pages/MyPlugin/Settings.vue -->
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-import AdminLayout from '@/Layouts/AdminLayout.vue'
+import { useForm } from '@inertiajs/vue3';
+import AdminLayout from '@/Layouts/AdminLayout.vue';
 
 defineProps({
-  settings: Object
-})
+    settings: Object,
+});
 
 const form = useForm({
-  api_key: settings.api_key,
-  enabled: settings.enabled
-})
+    api_key: settings.api_key,
+    enabled: settings.enabled,
+});
 
 const submit = () => {
-  form.post(route('my-plugin.settings.update'))
-}
+    form.post(route('my-plugin.settings.update'));
+};
 </script>
 
 <template>
-  <AdminLayout title="My Plugin Settings">
-    <form @submit.prevent="submit">
-      <!-- Form fields -->
-    </form>
-  </AdminLayout>
+    <AdminLayout title="My Plugin Settings">
+        <form @submit.prevent="submit">
+            <!-- Form fields -->
+        </form>
+    </AdminLayout>
 </template>
 ```
 

@@ -116,11 +116,11 @@ CSpell läuft automatisch bei jedem `git commit`:
 
 ```json
 {
-  "lint-staged": {
-    "*.{js,ts,vue}": ["cspell --no-must-find-files"],
-    "*.{md,json,yaml,yml}": ["cspell --no-must-find-files"],
-    "*.php": ["cspell --no-must-find-files"]
-  }
+    "lint-staged": {
+        "*.{js,ts,vue}": ["cspell --no-must-find-files"],
+        "*.{md,json,yaml,yml}": ["cspell --no-must-find-files"],
+        "*.php": ["cspell --no-must-find-files"]
+    }
 }
 ```
 
@@ -164,10 +164,10 @@ Die Extension liest automatisch die `cspell.config.cjs`.
 
 ```javascript
 words: [
-  // Füge hier neue Begriffe hinzu
-  'newterm',
-  'customword',
-]
+    // Füge hier neue Begriffe hinzu
+    'newterm',
+    'customword',
+];
 ```
 
 **Option B: Zu Custom Dictionaries**
@@ -183,10 +183,13 @@ echo "newpackage" >> dictionaries/laravel.txt
 
 ```markdown
 <!-- cSpell:disable -->
+
 Dieser Text wird nicht geprüft.
+
 <!-- cSpell:enable -->
 
 <!-- cSpell:ignore specialword anotherword -->
+
 Diese specialword und anotherword werden ignoriert.
 ```
 
@@ -231,15 +234,15 @@ Die Konfiguration ignoriert bereits:
 
 1. Prüfe ob das deutsche Wörterbuch korrekt importiert ist:
 
-   ```javascript
-   import: ['@cspell/dict-de-de/cspell-ext.json']
-   ```
+    ```javascript
+    import: ['@cspell/dict-de-de/cspell-ext.json']
+    ```
 
 2. Prüfe die `language` Einstellung:
 
-   ```javascript
-   language: 'en,de'
-   ```
+    ```javascript
+    language: 'en,de';
+    ```
 
 3. Prüfe `languageSettings` für dateitypspezifische Konfiguration
 
@@ -249,9 +252,9 @@ Die Konfiguration ignoriert bereits:
 
 1. Verwende `--no-progress` Flag:
 
-   ```bash
-   npm run spell:check
-   ```
+    ```bash
+    npm run spell:check
+    ```
 
 2. Erhöhe die `ignorePaths` Liste in der Konfiguration
 
@@ -265,17 +268,17 @@ Die Konfiguration ignoriert bereits:
 
 ```javascript
 languageSettings: [
-  {
-    languageId: 'php',
-    locale: 'en',
-    dictionaries: ['php', 'laravel'],
-  },
-  {
-    languageId: 'markdown',
-    locale: 'en,de',  // Deutsch + Englisch für Markdown
-    dictionaries: ['softwareTerms'],
-  },
-]
+    {
+        languageId: 'php',
+        locale: 'en',
+        dictionaries: ['php', 'laravel'],
+    },
+    {
+        languageId: 'markdown',
+        locale: 'en,de', // Deutsch + Englisch für Markdown
+        dictionaries: ['softwareTerms'],
+    },
+];
 ```
 
 ### Case Sensitivity

@@ -8,12 +8,12 @@
 
 ## 🎯 Security Coverage Matrix
 
-| Language | Static Analysis | Security Scanning | Dependency Security |
-|----------|----------------|------------------|-------------------|
-| **PHP** | PHPStan Level 8 | Enlightn Security Checker | Composer audit |
-| **JavaScript/TypeScript** | ESLint | **CodeQL** | npm audit |
-| **CSS** | Stylelint | N/A | N/A |
-| **Infrastructure** | N/A | GitHub Dependabot | N/A |
+| Language                  | Static Analysis | Security Scanning         | Dependency Security |
+| ------------------------- | --------------- | ------------------------- | ------------------- |
+| **PHP**                   | PHPStan Level 8 | Enlightn Security Checker | Composer audit      |
+| **JavaScript/TypeScript** | ESLint          | **CodeQL**                | npm audit           |
+| **CSS**                   | Stylelint       | N/A                       | N/A                 |
+| **Infrastructure**        | N/A             | GitHub Dependabot         | N/A                 |
 
 **Result:** ✅ **100% Coverage across all languages**
 
@@ -27,20 +27,20 @@
 
 ```javascript
 // BAD: CodeQL will flag this
-element.innerHTML = userInput  // Unsanitized user input
+element.innerHTML = userInput; // Unsanitized user input
 
 // GOOD: Use safer alternatives
-element.textContent = userInput  // Safe
+element.textContent = userInput; // Safe
 ```
 
 #### SQL Injection (Client-Side)
 
 ```javascript
 // BAD: String concatenation in queries
-const query = "SELECT * FROM users WHERE id = " + userId
+const query = 'SELECT * FROM users WHERE id = ' + userId;
 
 // GOOD: Parameterized queries
-const query = { id: userId }
+const query = { id: userId };
 ```
 
 #### Prototype Pollution
@@ -48,34 +48,34 @@ const query = { id: userId }
 ```javascript
 // BAD: Unsafe object merging
 function merge(target, source) {
-  for (let key in source) {
-    target[key] = source[key]  // Can pollute __proto__
-  }
+    for (let key in source) {
+        target[key] = source[key]; // Can pollute __proto__
+    }
 }
 
 // GOOD: Use Object.assign or spread
-const merged = { ...target, ...source }
+const merged = { ...target, ...source };
 ```
 
 #### Path Traversal
 
 ```javascript
 // BAD: Unsanitized file paths
-const filePath = basePath + userInput
+const filePath = basePath + userInput;
 
 // GOOD: Validate and sanitize
-import { join, normalize } from 'path'
-const filePath = join(basePath, normalize(userInput))
+import { join, normalize } from 'path';
+const filePath = join(basePath, normalize(userInput));
 ```
 
 #### Regular Expression DoS
 
 ```javascript
 // BAD: Catastrophic backtracking
-const regex = /^(a+)+$/  // Can hang on "aaaaaaaaaaaaaaaaaaaX"
+const regex = /^(a+)+$/; // Can hang on "aaaaaaaaaaaaaaaaaaaX"
 
 // GOOD: Efficient patterns
-const regex = /^a+$/
+const regex = /^a+$/;
 ```
 
 ---
@@ -210,12 +210,12 @@ const regex = /^a+$/
 ```typescript
 // Add runtime validation
 const props = defineProps<{
-  user: User
-}>()
+    user: User;
+}>();
 
 // Validate before use
 if (!props.user?.id) {
-  throw new Error('Invalid user data')
+    throw new Error('Invalid user data');
 }
 ```
 
@@ -224,8 +224,8 @@ if (!props.user?.id) {
 ```typescript
 // Form data is automatically validated server-side
 form.post('/users', {
-  preserveScroll: true
-})
+    preserveScroll: true,
+});
 ```
 
 ---
@@ -379,16 +379,16 @@ npm run quality        # ESLint + Tests
 ### Enable GitHub Security Features
 
 1. **Enable Dependabot Security Updates**
-   - Settings → Security & Analysis → Dependabot security updates → Enable
+    - Settings → Security & Analysis → Dependabot security updates → Enable
 
 2. **Enable Secret Scanning**
-   - Settings → Security & Analysis → Secret scanning → Enable
+    - Settings → Security & Analysis → Secret scanning → Enable
 
 3. **Enable Push Protection**
-   - Settings → Security & Analysis → Push protection → Enable
+    - Settings → Security & Analysis → Push protection → Enable
 
 4. **Configure Security Policy**
-   - Create `SECURITY.md` with vulnerability reporting process
+    - Create `SECURITY.md` with vulnerability reporting process
 
 ---
 

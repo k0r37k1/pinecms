@@ -156,19 +156,19 @@ class StorePostRequest extends FormRequest
 
 ```vue
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-  title: '',
-  content: '',
-})
+    title: '',
+    content: '',
+});
 
 const submit = () => {
-  form.post(route('posts.store'), {
-    preserveScroll: true,
-    onSuccess: () => form.reset(),
-  })
-}
+    form.post(route('posts.store'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
+};
 </script>
 ```
 
@@ -190,7 +190,7 @@ Example:
 // https://laravel.com/docs/12.x/eloquent-relationships#one-to-many
 public function posts(): HasMany
 {
-    return $this->hasMany(Post::class);
+return $this->hasMany(Post::class);
 }
 ```
 

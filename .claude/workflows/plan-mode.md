@@ -5,8 +5,8 @@ last_updated: 2025-10-31
 author: PineCMS Team
 status: active
 related:
-  - .claude/commands/dev-docs.md
-  - .claude/agents/task-decomposition-expert.md
+    - .claude/commands/dev-docs.md
+    - .claude/agents/task-decomposition-expert.md
 ---
 
 # Plan Mode Usage Guide
@@ -24,29 +24,29 @@ Plan Mode (`Shift+Tab`) allows Claude to **think deeply** before coding:
 ### ✅ ALWAYS Use Plan Mode For
 
 1. **Complex multi-step implementations**
-   - Features requiring >3 files
-   - Database migrations with data transformations
-   - Multiple service integrations
+    - Features requiring >3 files
+    - Database migrations with data transformations
+    - Multiple service integrations
 
 2. **Large-scale refactoring**
-   - Architectural changes
-   - Renaming/restructuring core modules
-   - Breaking API changes
+    - Architectural changes
+    - Renaming/restructuring core modules
+    - Breaking API changes
 
 3. **Database migrations with data transformations**
-   - Adding/removing columns with data migration
-   - Changing relationships
-   - Schema redesigns
+    - Adding/removing columns with data migration
+    - Changing relationships
+    - Schema redesigns
 
 4. **Architecture & design decisions**
-   - Choosing between patterns (Repository vs. Active Record)
-   - Performance optimization strategies
-   - Security implementations
+    - Choosing between patterns (Repository vs. Active Record)
+    - Performance optimization strategies
+    - Security implementations
 
 5. **Features requiring multiple agents/subtasks**
-   - Full-stack features (backend + frontend + tests)
-   - Multi-step workflows
-   - Integration of multiple packages
+    - Full-stack features (backend + frontend + tests)
+    - Multi-step workflows
+    - Integration of multiple packages
 
 ### ❌ When NOT to Use Plan Mode
 
@@ -220,7 +220,7 @@ Shall I proceed with this approach?
 
 **Plan Mode Response (ultrathink):**
 
-```
+````
 I'll analyze this architectural decision:
 
 ## Current Situation
@@ -268,7 +268,7 @@ class Post extends Model {
 
 // Usage
 Post::published()->latest()->get();
-```
+````
 
 Is this analysis aligned with your needs?
 
@@ -332,3 +332,4 @@ Before exiting Plan Mode:
 - [ ] Specialized agents identified (if needed)
 
 **Only then proceed with implementation.**
+```

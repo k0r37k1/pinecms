@@ -5,8 +5,8 @@ last_updated: 2025-10-31
 author: PineCMS Team
 status: active
 related:
-  - .claude/commands/quality.md
-  - .claude/commands/code-review.md
+    - .claude/commands/quality.md
+    - .claude/commands/code-review.md
 ---
 
 # Quality Gates & Self-Review (Metacognitive Oversight)
@@ -155,7 +155,7 @@ npm run quality   # JS: Prettier + ESLint + TypeScript + Vitest
 **NEVER speculate about code you haven't read.**
 
 ❌ Bad: "The validation is probably in UserController"
-✅ Good: *Reads UserController* "The validation is in UserStoreRequest:15"
+✅ Good: _Reads UserController_ "The validation is in UserStoreRequest:15"
 
 **Always verify assumptions** by reading actual files.
 
@@ -195,7 +195,7 @@ Use `vibe_learn` MCP tool to log mistakes and prevent recurrence.
 - 🛠️ Tool: `database-query` to check actual queries
 - 📚 Reference: Architecture "N+1 Prevention"
 
-*[More patterns will be added as they're discovered]*
+_[More patterns will be added as they're discovered]_
 
 ## Quality Gates Summary
 

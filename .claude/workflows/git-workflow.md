@@ -12,29 +12,29 @@ the above settings" to enforce this workflow even for solo development.
 
 1. **Create Feature Branch**
 
-   ```bash
-   git checkout -b feature/feature-name
-   # or: fix/, refactor/, test/, etc.
-   ```
+    ```bash
+    git checkout -b feature/feature-name
+    # or: fix/, refactor/, test/, etc.
+    ```
 
 2. **Implement & Commit**
 
-   ```bash
-   git add .
-   git commit -m "feat: description"
-   ```
+    ```bash
+    git add .
+    git commit -m "feat: description"
+    ```
 
 3. **Push Branch**
 
-   ```bash
-   git push -u origin feature/feature-name
-   ```
+    ```bash
+    git push -u origin feature/feature-name
+    ```
 
 4. **Create Pull Request**
 
-   ```bash
-   gh pr create --title "..." --body "..."
-   ```
+    ```bash
+    gh pr create --title "..." --body "..."
+    ```
 
 5. **Wait for CI/CD** (status checks must pass)
 
@@ -44,7 +44,7 @@ the above settings" to enforce this workflow even for solo development.
 
 **ONLY these changes can be pushed directly to `main`:**
 
-- Documentation in `docs/` directory (*.md files)
+- Documentation in `docs/` directory (\*.md files)
 - README.md updates
 - Trivial typo fixes (comments, docs)
 - `.gitignore` updates
@@ -145,19 +145,19 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ### Types
 
-| Type | Description | Example |
-|------|-------------|---------|
-| `feat` | New feature | `feat(posts): add markdown editor` |
-| `fix` | Bug fix | `fix(auth): resolve login redirect` |
-| `refactor` | Code refactoring | `refactor(api): simplify PostService` |
-| `test` | Add/update tests | `test(posts): add PostController tests` |
-| `docs` | Documentation | `docs(readme): update install guide` |
-| `style` | Formatting, spacing | `style(admin): improve spacing` |
-| `chore` | Maintenance, deps | `chore(deps): update Laravel to 12` |
-| `perf` | Performance | `perf(posts): optimize query loading` |
-| `ci` | CI/CD changes | `ci(github): add test workflow` |
-| `build` | Build system | `build(vite): update config` |
-| `revert` | Revert commit | `revert: revert feat(posts)` |
+| Type       | Description         | Example                                 |
+| ---------- | ------------------- | --------------------------------------- |
+| `feat`     | New feature         | `feat(posts): add markdown editor`      |
+| `fix`      | Bug fix             | `fix(auth): resolve login redirect`     |
+| `refactor` | Code refactoring    | `refactor(api): simplify PostService`   |
+| `test`     | Add/update tests    | `test(posts): add PostController tests` |
+| `docs`     | Documentation       | `docs(readme): update install guide`    |
+| `style`    | Formatting, spacing | `style(admin): improve spacing`         |
+| `chore`    | Maintenance, deps   | `chore(deps): update Laravel to 12`     |
+| `perf`     | Performance         | `perf(posts): optimize query loading`   |
+| `ci`       | CI/CD changes       | `ci(github): add test workflow`         |
+| `build`    | Build system        | `build(vite): update config`            |
+| `revert`   | Revert commit       | `revert: revert feat(posts)`            |
 
 ### Scopes (Optional but Recommended)
 

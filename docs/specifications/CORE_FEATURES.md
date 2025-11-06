@@ -240,28 +240,28 @@ Migration-Path **Features:** ~95
 
     **Permission Matrix (v1.0):**
 
-    | Capability | Administrator | Author | User | Guest |
-    |------------|---------------|--------|------|-------|
-    | `create-post` | ✓ | ✓ | ✗ | ✗ |
-    | `edit-own-post` | ✓ | ✓ | ✗ | ✗ |
-    | `edit-all-posts` | ✓ | ✗ | ✗ | ✗ |
-    | `delete-own-post` | ✓ | ✓ | ✗ | ✗ |
-    | `delete-all-posts` | ✓ | ✗ | ✗ | ✗ |
-    | `publish-post` | ✓ | ✓ | ✗ | ✗ |
-    | `create-page` | ✓ | ✗ | ✗ | ✗ |
-    | `edit-page` | ✓ | ✗ | ✗ | ✗ |
-    | `delete-page` | ✓ | ✗ | ✗ | ✗ |
-    | `upload-media` | ✓ | ✓ | ✗ | ✗ |
-    | `delete-own-media` | ✓ | ✓ | ✗ | ✗ |
-    | `delete-all-media` | ✓ | ✗ | ✗ | ✗ |
-    | `post-comment` | ✓ | ✓ | ✓ | ⚙️* |
-    | `moderate-comments` | ✓ | ✓** | ✗ | ✗ |
-    | `manage-users` | ✓ | ✗ | ✗ | ✗ |
-    | `manage-settings` | ✓ | ✗ | ✗ | ✗ |
-    | `manage-themes` | ✓ | ✗ | ✗ | ✗ |
-    | `manage-plugins` | ✓ | ✗ | ✗ | ✗ |
-    | `view-published` | ✓ | ✓ | ✓ | ✓ |
-    | `view-drafts` | ✓ | ✓** | ✗ | ✗ |
+    | Capability          | Administrator | Author | User | Guest |
+    | ------------------- | ------------- | ------ | ---- | ----- |
+    | `create-post`       | ✓             | ✓      | ✗    | ✗     |
+    | `edit-own-post`     | ✓             | ✓      | ✗    | ✗     |
+    | `edit-all-posts`    | ✓             | ✗      | ✗    | ✗     |
+    | `delete-own-post`   | ✓             | ✓      | ✗    | ✗     |
+    | `delete-all-posts`  | ✓             | ✗      | ✗    | ✗     |
+    | `publish-post`      | ✓             | ✓      | ✗    | ✗     |
+    | `create-page`       | ✓             | ✗      | ✗    | ✗     |
+    | `edit-page`         | ✓             | ✗      | ✗    | ✗     |
+    | `delete-page`       | ✓             | ✗      | ✗    | ✗     |
+    | `upload-media`      | ✓             | ✓      | ✗    | ✗     |
+    | `delete-own-media`  | ✓             | ✓      | ✗    | ✗     |
+    | `delete-all-media`  | ✓             | ✗      | ✗    | ✗     |
+    | `post-comment`      | ✓             | ✓      | ✓    | ⚙️\*  |
+    | `moderate-comments` | ✓             | ✓\*\*  | ✗    | ✗     |
+    | `manage-users`      | ✓             | ✗      | ✗    | ✗     |
+    | `manage-settings`   | ✓             | ✗      | ✗    | ✗     |
+    | `manage-themes`     | ✓             | ✗      | ✗    | ✗     |
+    | `manage-plugins`    | ✓             | ✗      | ✗    | ✗     |
+    | `view-published`    | ✓             | ✓      | ✓    | ✓     |
+    | `view-drafts`       | ✓             | ✓\*\*  | ✗    | ✗     |
 
     **Notes:**
     - `*` Guest comments configurable (Settings → Comments → Allow Guest Comments)
@@ -328,16 +328,16 @@ themes/
 
 ```json
 {
-  "name": "Default Theme",
-  "slug": "default",
-  "version": "1.0.0",
-  "author": "PineCMS",
-  "description": "Clean minimal theme",
-  "templates": {
-    "default": "Default (Featured Image + Content)",
-    "full-width": "Full Width (No Sidebar)",
-    "sidebar": "With Sidebar"
-  }
+    "name": "Default Theme",
+    "slug": "default",
+    "version": "1.0.0",
+    "author": "PineCMS",
+    "description": "Clean minimal theme",
+    "templates": {
+        "default": "Default (Featured Image + Content)",
+        "full-width": "Full Width (No Sidebar)",
+        "sidebar": "With Sidebar"
+    }
 }
 ```
 
@@ -836,18 +836,18 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 
     **Available Events (v1.1):**
 
-    | Event | Payload | When Dispatched |
-    |-------|---------|-----------------|
-    | `PostSaving` | `$post` (mutable) | Before post saved to database |
-    | `PostSaved` | `$post` (immutable) | After post saved to database |
-    | `PostDeleting` | `$post` (mutable) | Before post deleted |
-    | `PostDeleted` | `$post` (immutable) | After post deleted |
-    | `UserLoggedIn` | `$user` (immutable) | After successful login |
-    | `UserLoggedOut` | `$user` (immutable) | After logout |
-    | `CommentCreating` | `$comment` (mutable) | Before comment saved |
-    | `CommentCreated` | `$comment` (immutable) | After comment created |
-    | `PageRendering` | `$page`, `$view` (mutable) | Before Blade render |
-    | `PageRendered` | `$page`, `$html` (mutable) | After Blade render |
+    | Event             | Payload                    | When Dispatched               |
+    | ----------------- | -------------------------- | ----------------------------- |
+    | `PostSaving`      | `$post` (mutable)          | Before post saved to database |
+    | `PostSaved`       | `$post` (immutable)        | After post saved to database  |
+    | `PostDeleting`    | `$post` (mutable)          | Before post deleted           |
+    | `PostDeleted`     | `$post` (immutable)        | After post deleted            |
+    | `UserLoggedIn`    | `$user` (immutable)        | After successful login        |
+    | `UserLoggedOut`   | `$user` (immutable)        | After logout                  |
+    | `CommentCreating` | `$comment` (mutable)       | Before comment saved          |
+    | `CommentCreated`  | `$comment` (immutable)     | After comment created         |
+    | `PageRendering`   | `$page`, `$view` (mutable) | Before Blade render           |
+    | `PageRendered`    | `$page`, `$html` (mutable) | After Blade render            |
 
     **Event Mutability:**
     - Pre-action events (PostSaving, PageRendering): Can modify data before action

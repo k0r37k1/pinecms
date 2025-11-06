@@ -169,10 +169,10 @@ Working in parallel..."
 3. **VERIFY** - Re-run all checks
 4. **REPEAT** - Keep going until ✅ GREEN
 5. **NO EXCUSES**:
-   - ❌ "It's just formatting" → Auto-format NOW
-   - ❌ "It's a false positive" → Prove it or fix it
-   - ❌ "It works fine" → Not enough, fix it
-   - ❌ "Other code does this" → Fix that too
+    - ❌ "It's just formatting" → Auto-format NOW
+    - ❌ "It's a false positive" → Prove it or fix it
+    - ❌ "It works fine" → Not enough, fix it
+    - ❌ "Other code does this" → Fix that too
 
 ---
 

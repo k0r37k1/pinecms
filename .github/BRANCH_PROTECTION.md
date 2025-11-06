@@ -9,12 +9,14 @@
 ## Why Branch Protection for Open Source?
 
 ✅ **For Contributors:**
+
 - Clear feature development history
 - Professional contribution workflow
 - Automated quality checks visible to all
 - Easy to review and understand changes
 
 ✅ **For You (Solo Maintainer):**
+
 - Protection from accidental broken commits
 - CI/CD runs automatically before merge
 - Clean, reviewable git history
@@ -145,19 +147,20 @@ If you see this error, protection is working correctly! ✅
 Your GitHub Actions workflows should be configured to:
 
 1. **Run on Pull Requests:**
-   ```yaml
-   on:
-     pull_request:
-       branches: [main]
-   ```
+
+    ```yaml
+    on:
+        pull_request:
+            branches: [main]
+    ```
 
 2. **Run Quality Checks:**
-   - PHP: Laravel Pint, PHPStan, PHPUnit
-   - JavaScript: ESLint, Prettier, TypeScript, Vitest
+    - PHP: Laravel Pint, PHPStan, PHPUnit
+    - JavaScript: ESLint, Prettier, TypeScript, Vitest
 
 3. **Report Status:**
-   - Must complete successfully before PR can be merged
-   - Failed checks block the merge
+    - Must complete successfully before PR can be merged
+    - Failed checks block the merge
 
 ---
 

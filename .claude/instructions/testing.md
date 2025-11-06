@@ -84,20 +84,20 @@ Check sibling tests to see which pattern the project uses.
 ### Structure
 
 ```typescript
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect } from 'vitest';
 
 describe('ComponentName', () => {
     it('should render correctly', () => {
         // Arrange
-        const wrapper = mount(Component)
+        const wrapper = mount(Component);
 
         // Act
         // ... perform actions
 
         // Assert
-        expect(wrapper.text()).toContain('Expected text')
-    })
-})
+        expect(wrapper.text()).toContain('Expected text');
+    });
+});
 ```
 
 ### Best Practices

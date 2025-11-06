@@ -259,16 +259,16 @@ export CLAUDE_HOOKS_LARAVEL_STACK="pinecms-inertia-vue-primevue"
 
 ## 🎯 Cheat Sheet
 
-| Want to... | Use... | Result |
-|------------|--------|--------|
-| Implement simple feature | Just code | Auto: Skills + Hooks validate |
-| Implement complex feature | `/next` | Research → Plan → Agents → Validate |
-| Fix bug | Describe issue | Auto: debugging skill + fix workflow |
-| Design complex system | `/superpowers:brainstorm` | Guided design discussion |
-| Validate everything | `/check` | Zero-tolerance quality check |
-| Review code | `/code-review` | Agent reviews architecture |
-| Track long task | `/dev-docs` | 3-file system (plan/context/tasks) |
-| Meta-check approach | `/vibe-check` | Prevent tunnel vision |
+| Want to...                | Use...                    | Result                               |
+| ------------------------- | ------------------------- | ------------------------------------ |
+| Implement simple feature  | Just code                 | Auto: Skills + Hooks validate        |
+| Implement complex feature | `/next`                   | Research → Plan → Agents → Validate  |
+| Fix bug                   | Describe issue            | Auto: debugging skill + fix workflow |
+| Design complex system     | `/superpowers:brainstorm` | Guided design discussion             |
+| Validate everything       | `/check`                  | Zero-tolerance quality check         |
+| Review code               | `/code-review`            | Agent reviews architecture           |
+| Track long task           | `/dev-docs`               | 3-file system (plan/context/tasks)   |
+| Meta-check approach       | `/vibe-check`             | Prevent tunnel vision                |
 
 ---
 

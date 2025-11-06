@@ -27,15 +27,15 @@ Launch the `code-reviewer` agent to review recently changed code for:
 1. Identify files changed in current session (use git status/diff)
 2. Launch `code-reviewer` agent with context about what was implemented
 3. Agent reviews code against:
-   - `.claude/instructions/` (backend, frontend, security, architecture)
-   - Project patterns and conventions
-   - SOLID principles
-   - Laravel/Vue best practices
+    - `.claude/instructions/` (backend, frontend, security, architecture)
+    - Project patterns and conventions
+    - SOLID principles
+    - Laravel/Vue best practices
 4. Return detailed review with:
-   - Critical issues (must fix)
-   - Warnings (should fix)
-   - Suggestions (nice to have)
-   - Positive feedback (what's done well)
+    - Critical issues (must fix)
+    - Warnings (should fix)
+    - Suggestions (nice to have)
+    - Positive feedback (what's done well)
 
 **Agent prompt:**
 
@@ -77,32 +77,32 @@ Systematically run all build checks and fix errors until clean.
 
 1. **TypeScript Check** (if frontend modified):
 
-   ```bash
-   npx tsc --noEmit
-   ```
+    ```bash
+    npx tsc --noEmit
+    ```
 
 2. **PHPStan Check** (if backend modified):
 
-   ```bash
-   composer analyse
-   ```
+    ```bash
+    composer analyse
+    ```
 
 3. **For each error found:**
-   - Show error
-   - Explain what's wrong
-   - Fix it
-   - Re-run check to verify
+    - Show error
+    - Explain what's wrong
+    - Fix it
+    - Re-run check to verify
 
 4. **If > 10 errors:**
-   - Consider launching `debugger` agent
-   - Work through errors systematically
+    - Consider launching `debugger` agent
+    - Work through errors systematically
 
 5. **Final verification:**
 
-   ```bash
-   composer quality  # PHP: format + analyze + test
-   npm run quality   # JS: format + lint + type-check + test
-   ```
+    ```bash
+    composer quality  # PHP: format + analyze + test
+    npm run quality   # JS: format + lint + type-check + test
+    ```
 
 ---
 
@@ -138,6 +138,7 @@ Complete checklist before creating a Pull Request.
 
 ```markdown
 ## Code Quality
+
 - [ ] `composer quality` passes
 - [ ] `npm run quality` passes
 - [ ] No console.log statements
@@ -145,29 +146,34 @@ Complete checklist before creating a Pull Request.
 - [ ] No debug code
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] Feature tests added/updated
 - [ ] Manual testing completed
 - [ ] Edge cases tested
 
 ## Documentation
+
 - [ ] Code comments added where needed
 - [ ] README updated (if needed)
 - [ ] API docs updated (if API changes)
 
 ## Security
+
 - [ ] No secrets in code
 - [ ] Input validation present
 - [ ] Error handling implemented
 - [ ] CSRF protection present
 
 ## Architecture
+
 - [ ] Follows project patterns
 - [ ] No N+1 queries
 - [ ] Events used (not hooks)
 - [ ] Services/Repositories used correctly
 
 ## Git
+
 - [ ] Commits follow conventional format
 - [ ] Branch up to date with main
 - [ ] No merge conflicts
@@ -263,24 +269,24 @@ Shall I:
 ## Best Practices from Reddit Post
 
 1. **Review often during implementation**
-   - Don't wait until the end
-   - Catch big mistakes early
-   - Saves headaches later
+    - Don't wait until the end
+    - Catch big mistakes early
+    - Saves headaches later
 
 2. **Have Claude review its own code**
-   - Use the `code-reviewer` agent
-   - Gets a fresh perspective
-   - Catches things you both might miss
+    - Use the `code-reviewer` agent
+    - Gets a fresh perspective
+    - Catches things you both might miss
 
 3. **Never commit without quality checks**
-   - Always run `/build-and-fix` minimum
-   - Run `/pr-ready` before PRs
-   - Zero errors left behind (#NoMessLeftBehind)
+    - Always run `/build-and-fix` minimum
+    - Run `/pr-ready` before PRs
+    - Zero errors left behind (#NoMessLeftBehind)
 
 4. **Systematic error fixing**
-   - Don't skip errors thinking they're "unrelated"
-   - Fix them all, every time
-   - Use the hooks system to catch them automatically
+    - Don't skip errors thinking they're "unrelated"
+    - Fix them all, every time
+    - Use the hooks system to catch them automatically
 
 ---
 

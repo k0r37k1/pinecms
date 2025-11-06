@@ -350,17 +350,17 @@ git push
 
 ## 📊 Tool Comparison
 
-| Aspect | CodeRabbit (Lite) | Claude Code | GitHub Actions | CodeQL |
-|--------|------------------|-------------|----------------|---------|
-| **Trigger** | Automatic | On-demand | Automatic | Automatic + Weekly |
-| **Speed** | 1-2 min | 3-5 min | 2-5 min | 3-5 min |
-| **Depth** | Patterns & logic | Deep analysis | Binary pass/fail | Vulnerability-focused |
-| **Context** | Multi-file | Codebase-wide | File-specific | Data flow analysis |
-| **Learning** | Knowledge base | Session-based | N/A | Query evolution |
-| **Languages** | All (AI) | All (AI) | PHP (PHPStan) | JS/TS only |
-| **SAST Tools** | ❌ (Pro only) | ✅ Via MCP | ✅ Native | ✅ Built-in |
-| **Security** | General | Advisory | Checks | ⭐ Advanced |
-| **Best For** | Architecture review | Problem solving | Quality gates | Vulnerability detection |
+| Aspect         | CodeRabbit (Lite)   | Claude Code     | GitHub Actions   | CodeQL                  |
+| -------------- | ------------------- | --------------- | ---------------- | ----------------------- |
+| **Trigger**    | Automatic           | On-demand       | Automatic        | Automatic + Weekly      |
+| **Speed**      | 1-2 min             | 3-5 min         | 2-5 min          | 3-5 min                 |
+| **Depth**      | Patterns & logic    | Deep analysis   | Binary pass/fail | Vulnerability-focused   |
+| **Context**    | Multi-file          | Codebase-wide   | File-specific    | Data flow analysis      |
+| **Learning**   | Knowledge base      | Session-based   | N/A              | Query evolution         |
+| **Languages**  | All (AI)            | All (AI)        | PHP (PHPStan)    | JS/TS only              |
+| **SAST Tools** | ❌ (Pro only)       | ✅ Via MCP      | ✅ Native        | ✅ Built-in             |
+| **Security**   | General             | Advisory        | Checks           | ⭐ Advanced             |
+| **Best For**   | Architecture review | Problem solving | Quality gates    | Vulnerability detection |
 
 **Key Insight:** With CodeQL added, you have **complete security coverage**:
 
@@ -384,12 +384,12 @@ git push
 
 **What Lite Doesn't Do (Requires Workaround):**
 
-| Missing Feature | Workaround | Tool |
-|----------------|-----------|------|
-| PHPStan integration | GitHub Actions | `composer analyse` |
-| ESLint integration | GitHub Actions | `npm run lint` |
-| Semgrep security | GitHub Actions | Enlightn Security Checker |
-| Auto-docstrings | Manual + Claude | Ask Claude for docblocks |
+| Missing Feature     | Workaround      | Tool                      |
+| ------------------- | --------------- | ------------------------- |
+| PHPStan integration | GitHub Actions  | `composer analyse`        |
+| ESLint integration  | GitHub Actions  | `npm run lint`            |
+| Semgrep security    | GitHub Actions  | Enlightn Security Checker |
+| Auto-docstrings     | Manual + Claude | Ask Claude for docblocks  |
 
 ### Recommended Workflow with Lite
 
@@ -432,16 +432,16 @@ gh pr create --draft --title "feat: feature name"
 ### Monthly Review
 
 1. **Check CodeRabbit learnings:**
-   - Visit: <https://app.coderabbit.ai/repos/k0r37k1/pinecms>
-   - Review: Recurring suggestions → Update guidelines
+    - Visit: <https://app.coderabbit.ai/repos/k0r37k1/pinecms>
+    - Review: Recurring suggestions → Update guidelines
 
 2. **Update GitHub Actions:**
-   - Check for dependency updates
-   - Review action versions
+    - Check for dependency updates
+    - Review action versions
 
 3. **Update Guidelines:**
-   - Sync changes across CLAUDE.md files
-   - Update .coderabbit.yaml if patterns change
+    - Sync changes across CLAUDE.md files
+    - Update .coderabbit.yaml if patterns change
 
 ---
 

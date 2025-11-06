@@ -86,7 +86,7 @@ When using deferred props, add animated skeleton/pulsing empty states.
 
 ```css
 /* ✅ Correct - Tailwind v4 */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ❌ Wrong - Tailwind v3 deprecated */
 @tailwind base;
@@ -96,19 +96,19 @@ When using deferred props, add animated skeleton/pulsing empty states.
 
 **Replaced Utilities:**
 
-| Deprecated | Replacement |
-|------------|-------------|
-| bg-opacity-* | bg-black/* |
-| text-opacity-* | text-black/* |
-| border-opacity-* | border-black/* |
-| divide-opacity-* | divide-black/* |
-| ring-opacity-* | ring-black/* |
-| placeholder-opacity-* | placeholder-black/* |
-| flex-shrink-* | shrink-* |
-| flex-grow-* | grow-* |
-| overflow-ellipsis | text-ellipsis |
-| decoration-slice | box-decoration-slice |
-| decoration-clone | box-decoration-clone |
+| Deprecated             | Replacement          |
+| ---------------------- | -------------------- |
+| bg-opacity-\*          | bg-black/\*          |
+| text-opacity-\*        | text-black/\*        |
+| border-opacity-\*      | border-black/\*      |
+| divide-opacity-\*      | divide-black/\*      |
+| ring-opacity-\*        | ring-black/\*        |
+| placeholder-opacity-\* | placeholder-black/\* |
+| flex-shrink-\*         | shrink-\*            |
+| flex-grow-\*           | grow-\*              |
+| overflow-ellipsis      | text-ellipsis        |
+| decoration-slice       | box-decoration-slice |
+| decoration-clone       | box-decoration-clone |
 
 **Note:** Opacity values remain numeric.
 

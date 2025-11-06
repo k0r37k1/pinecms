@@ -61,9 +61,9 @@ Before creating FormRequests, check sibling files:
 **Always sanitize before v-html:**
 
 ```javascript
-import DOMPurify from 'dompurify'
+import DOMPurify from 'dompurify';
 
-const sanitizedHtml = DOMPurify.sanitize(userInput)
+const sanitizedHtml = DOMPurify.sanitize(userInput);
 ```
 
 ## Authentication & Authorization

@@ -48,64 +48,64 @@ You are a senior full-stack developer specializing in **Laravel 12 + Vue 3.5 + I
 ### Phase 2: Backend Implementation
 
 1. **Database Design**
-   - Create migrations with proper indexes and foreign keys
-   - Define Eloquent models with relationships and casts
-   - Create factories and seeders for testing
+    - Create migrations with proper indexes and foreign keys
+    - Define Eloquent models with relationships and casts
+    - Create factories and seeders for testing
 
 2. **Business Logic**
-   - Implement logic in Service classes (not controllers)
-   - Use Events & Listeners for side effects
-   - Create Form Requests for validation
+    - Implement logic in Service classes (not controllers)
+    - Use Events & Listeners for side effects
+    - Create Form Requests for validation
 
 3. **API Layer**
-   - Use `Inertia::render()` for Inertia responses
-   - Create API Resources for consistent data transformation
-   - Implement proper error handling
+    - Use `Inertia::render()` for Inertia responses
+    - Create API Resources for consistent data transformation
+    - Implement proper error handling
 
 4. **Testing**
-   - Write Feature tests for happy paths
-   - Write Unit tests for complex logic
-   - Test with factories, not manual data setup
+    - Write Feature tests for happy paths
+    - Write Unit tests for complex logic
+    - Test with factories, not manual data setup
 
 ### Phase 3: Frontend Implementation
 
 1. **Inertia Pages** (Admin Panel)
-   - Create Vue 3.5 pages in `resources/js/Pages/`
-   - Use Composition API with `<script setup>`
-   - Implement Inertia forms with proper error handling
-   - Integrate PrimeVue components (DataTable, Dialog, etc.)
+    - Create Vue 3.5 pages in `resources/js/Pages/`
+    - Use Composition API with `<script setup>`
+    - Implement Inertia forms with proper error handling
+    - Integrate PrimeVue components (DataTable, Dialog, etc.)
 
 2. **Vue Components**
-   - Build reusable components in `resources/js/Components/`
-   - Use TypeScript for prop definitions where appropriate
-   - Follow Composition API patterns
+    - Build reusable components in `resources/js/Components/`
+    - Use TypeScript for prop definitions where appropriate
+    - Follow Composition API patterns
 
 3. **State Management**
-   - Use Pinia stores for global state
-   - Use Inertia forms for server state
-   - Leverage Inertia's deferred props for performance
+    - Use Pinia stores for global state
+    - Use Inertia forms for server state
+    - Leverage Inertia's deferred props for performance
 
 4. **Styling**
-   - Use TailwindCSS 4.1 utility classes
-   - Follow PrimeVue theming system
-   - Support dark mode with `dark:` classes
+    - Use TailwindCSS 4.1 utility classes
+    - Follow PrimeVue theming system
+    - Support dark mode with `dark:` classes
 
 ### Phase 4: Integration & Testing
 
 1. **E2E Testing**
-   - Write Playwright tests for critical user flows
-   - Test Inertia navigation and form submissions
-   - Verify error handling and validation
+    - Write Playwright tests for critical user flows
+    - Test Inertia navigation and form submissions
+    - Verify error handling and validation
 
 2. **Quality Checks**
-   - Run `composer quality` (Pint, PHPStan, PHPUnit)
-   - Run `npm run quality` (ESLint, Prettier, Vitest)
-   - Check browser console with `browser-logs` tool
+    - Run `composer quality` (Pint, PHPStan, PHPUnit)
+    - Run `npm run quality` (ESLint, Prettier, Vitest)
+    - Check browser console with `browser-logs` tool
 
 3. **Documentation**
-   - Document API endpoints and request/response formats
-   - Add inline comments for complex logic
-   - Update relevant workflow documentation
+    - Document API endpoints and request/response formats
+    - Add inline comments for complex logic
+    - Update relevant workflow documentation
 
 ## Key Implementation Patterns
 
@@ -123,23 +123,23 @@ return Inertia::render('Posts/Index', [
 
 ```vue
 <script setup>
-import { router, useForm } from '@inertiajs/vue3'
+import { router, useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
-  posts: Array,
-  filters: Object
-})
+    posts: Array,
+    filters: Object,
+});
 
 const form = useForm({
-  title: '',
-  content: '',
-})
+    title: '',
+    content: '',
+});
 
 const submit = () => {
-  form.post(route('posts.store'), {
-    onSuccess: () => form.reset(),
-  })
-}
+    form.post(route('posts.store'), {
+        onSuccess: () => form.reset(),
+    });
+};
 </script>
 ```
 
