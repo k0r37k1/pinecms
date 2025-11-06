@@ -853,26 +853,31 @@ class InjectAnalytics
 **Version:** v1.1.0
 
 **Content Status Workflow:**
+
 - Draft → Review → Published (3 states)
 - Status badge in post list
 - Filter by status
 
 **Reviewer Assignment:**
+
 - Assign 1 reviewer per post
 - Email notification to reviewer
 - Reviewer sees "Pending Review" queue
 
 **Approval/Rejection:**
+
 - Approve Button (auto-publish)
 - Reject Button (back to draft with feedback)
 - Request Changes (feedback required)
 
 **Workflow History:**
+
 - Status change log (User, Date, Decision)
 - Review feedback/comments
 - Audit trail
 
 **Email Notifications:**
+
 - Review Request → Reviewer
 - Approval → Author
 - Rejection → Author
