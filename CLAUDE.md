@@ -60,38 +60,17 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 - ❌ **NEVER delete files/code without asking** - Always request user approval first
 - ❌ **NEVER create .md files outside `docs/`** - Exception: README.md in project root
 
-### Documentation Organization (docs/ Structure)
+### Documentation Organization
 
-**MANDATORY:** All `.md` files in `docs/` MUST be organized into categories:
+**All `.md` files MUST go into `docs/{category}/` folders:**
 
-```
-docs/
-├── planning/          # Roadmaps, feature plans, version planning
-│   ├── ROADMAP.md
-│   └── FEATURES.md
-├── specifications/    # Detailed feature specifications
-│   ├── CORE_FEATURES.md
-│   └── OFFICIAL_PLUGINS.md
-├── architecture/      # System design, ADRs, technical decisions
-│   └── (architecture docs)
-├── guides/           # How-to guides, tutorials, setup instructions
-│   └── (user/dev guides)
-└── meta/             # Documentation about documentation
-    └── DOCUMENTATION_STATUS.md
-```
+- `docs/planning/` - Roadmaps, feature lists, version planning
+- `docs/specifications/` - Technical specs, feature definitions
+- `docs/architecture/` - System design, ADRs, decisions
+- `docs/guides/` - How-to guides, tutorials
+- `docs/meta/` - Documentation standards
 
-**Rules:**
-- **New docs MUST go into appropriate category folder**
-- **Root docs/ is ONLY for index files (README.md if needed)**
-- **No loose .md files in docs/ root** (except temporary during refactoring)
-- **Ask user before moving existing files** (breaking links risk)
-
-**Category Guidelines:**
-- `planning/` - Strategic planning, roadmaps, feature lists, version goals
-- `specifications/` - Detailed technical specifications, feature definitions
-- `architecture/` - System architecture, design decisions, ADRs, technical deep-dives
-- `guides/` - Step-by-step guides, tutorials, how-to documentation
-- `meta/` - Documentation standards, status systems, doc-about-docs
+**Rules:** Never create `.md` files in `docs/` root. Ask before moving existing files.
 
 ### Protected Areas (Ask Before Modifying)
 
