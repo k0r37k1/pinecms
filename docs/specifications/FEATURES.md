@@ -25,8 +25,8 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 | Version                   | Core Features | Official Plugins         | Total | Timeline     |
 | ------------------------- | ------------- | ------------------------ | ----- | ------------ |
 | **v1.0.0 (MVP)**          | ~95           | -                        | 95    | 10-11 Wochen |
-| **v1.1.0 (Enhanced)**     | ~143          | 5 Plugins (~38 features) | 181   | +3-4 Wochen  |
-| **v1.2.0 (Professional)** | ~153          | 8 Plugins (~60 features) | 213   | +2-3 Wochen  |
+| **v1.1.0 (Enhanced)**     | ~149          | 3 Plugins (~21 features) | 170   | +3-4 Wochen  |
+| **v1.2.0 (Professional)** | ~159          | 4 Plugins (~24 features) | 183   | +2-3 Wochen  |
 
 **Total Timeline:** 15-18 Wochen (3.5-4.5 Monate) für v1.2.0
 
@@ -41,11 +41,11 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 **Version 1.0.0 - MVP (~95 Features):**
 
 - Installer & Setup
-- Content Management (Posts, Pages, Tags, Categories, **Template Selection, Excerpt, Reading Time**)
+- Content Management (Posts, Pages, Tags, Categories, **Template Selection, Excerpt, Reading Time, Scheduler (UTC Storage), Concurrent Editing Protection**)
 - TipTap Editor (Basic Features)
-- Media Library (Basic with **Upload Settings, Max File Size, Allowed File Types**)
+- Media Library (Basic with **Upload Security 5-Layer, Upload Settings, Max File Size, Allowed File Types**)
 - User Management (2 Roles: Administrator, Author)
-- Theme System (Blade + Alpine.js + TailwindCSS 4, **Frontend Hooks System**)
+- Theme System (Blade + Alpine.js + TailwindCSS 4, **Frontend Event System**)
 - Admin Panel (PrimeVue + Inertia.js + Vue 3.5)
 - SEO Basics (Slugs, Meta, Sitemap, RSS)
 - Privacy & Security (CipherSweet, CSRF, XSS Protection)
@@ -59,10 +59,9 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - ❌ Breadcrumbs (Auto-Generated) → Theme-specific
 - ❌ Image Preview & Lightbox → Theme Modal only
 
-**Version 1.1.0 - Enhanced (+48 Features, Total: ~143):**
+**Version 1.1.0 - Enhanced (+54 Features, Total: ~149):**
 
 - Comments System (Nested, Moderation, Guest Comments, Sorting)
-    - Note: Upvote/Downvote → "Voting System" Community Plugin
 - Search System (TNTSearch, Command Palette CMD+K)
 - RBAC Enhanced (4 Roles: Administrator, Author, User, Guest)
 - Advanced Media (Crop, Filters, EXIF Stripping, Retina Support, **Media Usage Tracking**)
@@ -70,12 +69,13 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - Bulk Actions (Select, Publish, Delete, Move, Export, **Bulk Status Change**)
 - **Matomo Analytics (CORE)** - Privacy-First, Self-Hosted
 - Custom Fields Advanced (Select, URL, Email, Rich Text)
+- **Workflow System (CORE)** - Draft → Review → Published, Reviewer Assignment, Email Notifications
 - **Plugin System** - Event-Driven Architecture
 - **Update Manager** - One-Click Updates
 - **Revisions:** Side-by-side Diff-View (moved from v1.0.0)
 - **Email Templates:** Rich HTML Templates (moved from v1.0.0)
 
-**Version 1.2.0 - Professional (+10 Features, Total: ~153):**
+**Version 1.2.0 - Professional (+10 Features, Total: ~159):**
 
 - Import/Export Enhancements (Medium, Substack, Error Handling, Scheduled Exports)
 - Advanced SEO (Schema.org, Open Graph Enhanced)
@@ -90,47 +90,30 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 ### Official Plugins
 
-➡️ **[OFFICIAL_PLUGINS.md](./OFFICIAL_PLUGINS.md)** - 8 Official Plugins im Detail
+➡️ **[OFFICIAL_PLUGINS.md](./OFFICIAL_PLUGINS.md)** - 4 Official Plugins im Detail
 
 **Alle Plugins sind 100% Open Source & Kostenlos (MIT License)**
 
-1. **Newsletter Plugin** (~7 Features)
-    - Newsletter Editor, Subscriber Management, Campaign Scheduling
-    - Template Selection, Privacy-Friendly Tracking, Double Opt-In
-    - Segmentation by Tags/Categories
+1. **Newsletter Plugin** (~6 Features)
+    - Newsletter Editor (TipTap), Subscriber Management, Sign-up Widget
+    - Campaign Scheduling, Email Templates, Privacy-Friendly Tracking
+    - Double Opt-In, Segmentation by Tags/Categories
 
-2. **Webhooks Plugin** (~11 Features)
-    - Webhook Management UI, 8 Event Types
-    - Custom Headers & Payloads, Testing & Logs
-    - Retry Logic, Signing, Rate Limiting
-
-3. **Custom Fields Pro Plugin** (~7 Features)
-    - Relationship Fields, Repeater, Gallery
+2. **Custom Fields Pro Plugin** (~7 Features)
+    - Relationship Fields, Repeater (max 5 levels), Gallery
     - JSON Field, Color Picker, Rich Text Field (Full/Mini)
-    - File Field
+    - File Field, Conditional Logic
 
-4. **Multi-Language Plugin** (~7 Features)
+3. **Multi-Language Plugin** (~8 Features)
     - Unlimited Languages, Content Translation UI
     - Language-Specific URLs (Prefix/Subdirectory)
+    - RTL Support (Arabic, Hebrew), Auto-Detect Browser Language
     - SEO for Multi-Language (hreflang, Sitemap, RSS)
 
-5. **Workflow Plugin** (~6 Features)
-    - Draft → Review → Published Workflow
-    - Reviewer Assignment, Approval/Rejection
-    - Review Comments, Workflow History, Email Notifications
-
-6. **Two-Factor Auth Plugin** (~5 Features)
-    - 2FA Setup (QR Code), TOTP Support
-    - Backup Codes, Recovery Options
-
-7. **Form Builder Plugin** (~12 Features)
-    - Drag & Drop Form Builder, 12 Field Types
-    - Submissions Management, Email Notifications
-    - Anti-Spam (Honeypot, reCAPTCHA, hCaptcha)
-
-8. **SEO Pro Plugin** (~5 Features)
-    - Schema.org Advanced, Open Graph Enhanced
-    - Advanced Sitemap, Broken Link Checker, SEO Analysis
+4. **SEO Pro Plugin** (~3 Features)
+    - Schema.org (Article, Blog, Organization)
+    - Open Graph & Twitter Cards (Enhanced)
+    - Advanced Sitemap (Image, Video, News), Broken Link Checker
 
 ---
 
@@ -193,9 +176,9 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 ### Core Features (v1.2.0)
 
-- **Content:** Posts, Pages, Tags, Categories, Custom Fields, Revisions
+- **Content:** Posts, Pages, Tags, Categories, Custom Fields, Revisions, Concurrent Editing Protection (Optimistic Locking), Scheduler (UTC Storage, DST-safe)
 - **Editor:** TipTap WYSIWYG (Markdown, Tables, Embeds, Slash Commands)
-- **Media:** Upload, Crop, Filters, Responsive Images, EXIF Stripping
+- **Media:** Upload Security (5-Layer Protection: Extension Whitelist, MIME Validation, Imagick/GD Re-encoding, Size Limits, Filename Sanitization), Crop, Filters, Responsive Images, EXIF Stripping
 - **Users:** 4 Roles (Administrator, Author, User, Guest), RBAC, Activity Log
 - **Comments:** Nested (3 levels), Moderation, Guest Comments (optional)
 - **Search:** TNTSearch, Command Palette (CMD+K), Filters
@@ -203,7 +186,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - **SEO:** Slugs, Meta, OpenGraph, Twitter Cards, Sitemap, RSS, Schema.org
 - **Security:** CipherSweet, CSRF, XSS, Rate Limiting, Secure Headers
 - **Backup:** One-Click Backup/Restore (SQLite + Flat-Files + Media)
-- **Themes:** Blade + Alpine.js + TailwindCSS 4, Theme Switcher
+- **Themes:** Blade + Alpine.js + TailwindCSS 4, Theme Switcher, Frontend Event System (Laravel Events)
 - **Admin:** PrimeVue + Inertia.js + Vue 3.5, Dark Mode
 - **Plugins:** Event-Driven Architecture, Plugin Manager UI
 - **Updates:** One-Click Update Manager (GitHub API)
@@ -212,29 +195,36 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - **Widgets:** Drag & Drop Widget System
 - **Redirects:** 301/302 Management
 
-**Total Core:** ~153 Features
+**Total Core:** ~159 Features
 
 ### Official Plugins
 
-- Newsletter (~7 Features)
-- Webhooks (~11 Features)
+- Newsletter (~6 Features)
 - Custom Fields Pro (~7 Features)
-- Multi-Language (~7 Features)
-- Workflow (~6 Features)
-- Two-Factor Auth (~5 Features)
-- Form Builder (~12 Features)
-- SEO Pro (~5 Features)
+- Multi-Language (~8 Features)
+- SEO Pro (~3 Features)
 
-**Total Plugins:** ~60 Features
+**Total Plugins:** ~24 Features
 
-**Grand Total:** ~213 Features
+**Grand Total:** ~183 Features (159 Core + 24 Plugins)
 
-**Software Engineering Improvements:**
+**Software Engineering Improvements (2025-01-27):**
 
-- Removed 15 YAGNI features (Enterprise/overengineered → v2.0)
+- **Removed 4 Complete Plugins:**
+    - ❌ Webhooks (~11) → v2.0 (over-engineered)
+    - ❌ Two-Factor Auth (~5) → v2.0 (core security sufficient)
+    - ❌ Form Builder (~12) → v2.0 (too complex)
+    - ❌ Workflow (~6) → **Moved to Core v1.1.0** (essential for teams)
+- **Plugin Feature Cleanup (YAGNI/KISS):**
+    - Newsletter: Bounce Handling → v2.0, Added Signup Widget
+    - Custom Fields Pro: Unlimited depth → Max 5, Bi-Directional → v2.0, Added Conditional Logic
+    - Multi-Language: Added RTL Support (critical)
+    - SEO Pro: 7 Schema → 3, SEO Analysis → v2.0
+- Added 15 critical Core features (Workflow, Frontend Events, Concurrent Editing, UTC Storage, Upload Security 5-Layer, etc.)
+- Removed 10 YAGNI features from Core (moved to Community Plugins or Theme-specific)
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG fields)
-- Simplified 3 KISS violations (JSON Editor, Template Builder, Workflow)
 - Eliminated deprecated features (AMP Support)
+- **Result:** 8 Plugins → 4 Plugins (~60 → ~24 features, -60%), Grand Total: ~213 → ~183 features
 
 ---
 

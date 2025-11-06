@@ -69,7 +69,7 @@ Migration-Path **Features:** ~95
 - Pin/Unpin Posts
 - Featured Posts (Mark as Featured, Display on Homepage)
 - Template Selection:
-    - Dropdown populated from active theme's `theme.json` → `templates` object
+    - Dropdown populated from active theme's `theme.json` → `templates` object (see [Theme Structure](#theme-structure) for config format)
     - Template files located in `themes/{active-theme}/templates/`
     - Template keys (e.g., "default", "full-width") map to Blade files (default.blade.php)
     - Default template fallback: Falls back to "default" if selected template missing
@@ -86,6 +86,14 @@ Migration-Path **Features:** ~95
         - Visit-Triggered (default, Laravel Middleware, 60s cache lock)
         - Traditional Cron (optional, `* * * * * php artisan schedule:run`)
     - Unpublish Behavior (status → "Unpublished", URL returns 404)
+    - UTC Storage: All timestamps stored as UTC (`Carbon::parse($input, $tz)->utc()`), display converts to user timezone
+    - Edge Cases:
+        - Publish Date in Past → Immediate publish, no scheduling
+        - Unpublish < Publish Date → Validation error, `unpublish_at >= publish_at + 1min`
+        - Timezone Change → UTC storage prevents issues, display auto-adjusts
+        - DST Changes → UTC prevents duplicate/skipped execution
+    - Validation: `publish_at` after_or_equal:now, `unpublish_at` after:publish_at
+    - Manual Overrides: "Publish Now", "Unpublish Now", "Cancel Schedule" buttons
 - Tags & Categories (Hierarchical)
 - Flat-File Storage (Markdown)
 
@@ -137,6 +145,16 @@ Migration-Path **Features:** ~95
     - Naming: `{post-slug}.{timestamp}.md`
     - Metadata stored in YAML front matter
 
+**Note:** For preventing data loss when multiple users edit simultaneously, see [Concurrent Editing Protection](#concurrent-editing-protection-optimistic-locking) below.
+
+#### Concurrent Editing Protection (Optimistic Locking)
+
+- **Problem:** Data Loss bei gleichzeitigem Bearbeiten
+- **Solution:** Laravel Optimistic Locking - `lock_version INTEGER` column, `WHERE lock_version = ?` check, throw `StaleModelException` on conflict
+- **Conflict Resolution UI:** 4 options - Keep My Version, Use Their Version, View Diff, Merge Manually
+- **Auto-Save Integration:** Check `lock_version` before auto-save, pause + notify if changed
+- **Real-time Notification:** "{User} is editing this post" badge (30s updates, WebSocket in v2.0)
+
 #### Duplicate Post/Page
 
 - Duplicate Button in Post List & Edit Screen
@@ -176,21 +194,26 @@ Migration-Path **Features:** ~95
 - **Layer 1: File Extension Whitelist**
     - Allowed: .jpg, .jpeg, .png, .gif, .webp, .pdf
     - Rejected: Executable extensions (.php, .exe, .sh, .htaccess, etc.)
+
 - **Layer 2: MIME Type Validation**
     - Check real MIME type via `finfo_file()`
     - Extension must match MIME type (`.jpg` → `image/jpeg`)
     - Prevents disguised executables
-- **Layer 3: File Content Validation**
-    - Images: Re-encode via GD/Imagick (strips embedded malware)
-    - PDFs: Validate PDF structure, check for embedded executables
-    - Reject files with suspicious content
+
+- **Layer 3: File Content Validation (Imagick/GD)**
+    - **Images:** Re-encode to strip malware & metadata
+        - Priority 1: Imagick (`stripImage()` + `setImageCompressionQuality()`) - best quality
+        - Fallback: GD (`imagecreatefromjpeg()` + `imagecopy()`) - available on all hosts
+        - Reject: Only if both unavailable (installer warning)
+    - Quality Settings: Low (70%), Medium (85% default), High (95%)
+    - **PDFs:** Validate via `smalot/pdfparser` - check embedded JS/launch actions, PDF v1.4-1.7 only, max 10MB
+
 - **Layer 4: File Size Limits**
-    - Max File Size: 10MB default (configurable, respects PHP limits)
-    - Per-upload batch limit: 50MB total
+    - Max: 10MB default (configurable), batch limit: 50MB total
+
 - **Layer 5: Filename Sanitization**
-    - Remove special characters, spaces
-    - Generate random filename (prevents overwrites/path traversal)
-    - Store original filename in database metadata only
+    - Algorithm: `{uuid}_{timestamp}.{extension}` (original stored in DB)
+    - Security Headers: `nosniff`, `Content-Disposition`, `X-Frame-Options: DENY`
 
 #### Upload Settings (Admin Configurable)
 
@@ -357,21 +380,23 @@ themes/
 
 ---
 
-### Phase 0: Frontend Hooks System (Week 6)
+### Phase 0: Frontend Event System (Week 6)
 
 **Status:** 📋 Geplant
 **Typ:** 🎯 Core Feature
 **Version:** v1.0.0
 
-#### Blade @hook() Directive
+**Architektur-Entscheidung:** Laravel Events (einheitlich für Backend + Frontend)
 
-- Custom Blade directive `@hook('hook-name')` for theme integration
-- Output sanitization (XSS prevention)
-- HTML/CSS/JS injection support (controlled)
-- Hook existence check (silent failure if no handlers)
-- Debug mode logging (hook execution tracking)
+#### Blade @event() Directive
 
-#### Pre-defined Hook Points
+- Custom Blade directive `@event('event-name')` for theme integration
+- Triggers Laravel Events from Blade templates
+- Output sanitization (XSS prevention via Blade escaping)
+- Event existence check (silent failure if no listeners)
+- Debug mode logging (event execution tracking)
+
+#### Pre-defined Event Points
 
 - `theme.head.before` - Before closing `</head>` tag
 - `theme.head.after` - After opening `<body>` tag
@@ -384,28 +409,46 @@ themes/
 - `theme.sidebar.before` - Before sidebar widgets
 - `theme.sidebar.after` - After sidebar widgets
 
-#### Hook Registration API
+#### Event Registration (Laravel Native)
 
-- `Hooks::register('hook-name', callable)` - Register hook handler
-- `Hooks::priority('hook-name', int)` - Set execution priority (1-100)
-- `Hooks::remove('hook-name', callable)` - Unregister hook handler
-- `Hooks::clear('hook-name')` - Clear all handlers for hook
-- `Hooks::has('hook-name')` - Check if hook has handlers
+Plugins register Event Listeners in `PluginServiceProvider`:
 
-#### Hook Priority System
+```php
+protected $listen = [
+    'theme.head.before' => [
+        \MyPlugin\Listeners\InjectAnalytics::class,
+    ],
+];
+```
 
-- Priority range: 1-100 (1 = highest, 100 = lowest)
-- Default priority: 50
-- Same priority: execution order = registration order
-- Core hooks: priority 1-20 (reserved)
-- Plugin hooks: priority 21-100 (recommended)
+**Event Listener Example:**
+
+```php
+namespace MyPlugin\Listeners;
+
+class InjectAnalytics
+{
+    public function handle($event): string
+    {
+        // Return HTML (Blade-escaped by default)
+        return view('my-plugin::analytics')->render();
+    }
+}
+```
+
+#### Event Priority System
+
+- Priority: Array position in `$listen` (first = highest priority)
+- Multiple listeners: Execute in registration order
+- Core events: Registered first (highest priority)
+- Plugin events: Registered after core (lower priority)
 
 #### Plugin Integration
 
-- Hooks register in `PluginServiceProvider::boot()`
-- Auto-discovery of hook handlers in plugin classes
-- Hook validation (prevent infinite loops)
-- Hook caching (performance optimization)
+- Events register in `PluginServiceProvider::$listen` array
+- Laravel auto-discovery of Event Listeners
+- Event validation (prevent infinite loops)
+- Event caching (performance optimization via Laravel)
 - Cross-reference: `docs/PLUGIN_DEVELOPMENT.md` for usage examples
 
 ---
@@ -583,8 +626,7 @@ themes/
 
 ## 📦 Version 1.1.0 - Enhanced Core
 
-**Timeline:** +3-4 Wochen **Goal:** Professionelle Features + Plugin-System +
-Analytics **Features:** ~48 zusätzlich (Total: ~143)
+**Timeline:** +3-4 Wochen **Goal:** Professionelle Features + Plugin-System + Analytics + Workflow **Features:** ~54 zusätzlich (Total: ~149)
 
 ### Comments System (Week 10-11)
 
@@ -801,6 +843,42 @@ Analytics **Features:** ~48 zusätzlich (Total: ~143)
 - Maintenance Mode
 - Debug Mode Toggle
 - Custom Code (Head/Footer Injection)
+
+---
+
+### Workflow System (Week 13)
+
+**Status:** 📋 Geplant
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+**Content Status Workflow:**
+- Draft → Review → Published (3 states)
+- Status badge in post list
+- Filter by status
+
+**Reviewer Assignment:**
+- Assign 1 reviewer per post
+- Email notification to reviewer
+- Reviewer sees "Pending Review" queue
+
+**Approval/Rejection:**
+- Approve Button (auto-publish)
+- Reject Button (back to draft with feedback)
+- Request Changes (feedback required)
+
+**Workflow History:**
+- Status change log (User, Date, Decision)
+- Review feedback/comments
+- Audit trail
+
+**Email Notifications:**
+- Review Request → Reviewer
+- Approval → Author
+- Rejection → Author
+
+**Why Core (not Plugin):**
+Team collaboration is essential for multi-author blogs. Solo bloggers can ignore it.
 
 ---
 
@@ -1054,8 +1132,8 @@ zusätzlich (Total: ~153)
 | Version                   | Features | Timeline     | Total Core Features |
 | ------------------------- | -------- | ------------ | ------------------- |
 | **v1.0.0 (MVP)**          | ~95      | 10-11 Wochen | 95                  |
-| **v1.1.0 (Enhanced)**     | +48      | +3-4 Wochen  | 143                 |
-| **v1.2.0 (Professional)** | +10      | +2-3 Wochen  | 153                 |
+| **v1.1.0 (Enhanced)**     | +54      | +3-4 Wochen  | 149                 |
+| **v1.2.0 (Professional)** | +10      | +2-3 Wochen  | 159                 |
 
 **Total Development Time:** 15-18 Wochen für v1.2.0
 

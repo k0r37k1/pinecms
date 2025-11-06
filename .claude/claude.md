@@ -57,7 +57,7 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 
 ### Forbidden Patterns
 
-- ❌ **NEVER use Hooks** - This project uses Events only (Laravel event system)
+- ❌ **NEVER use custom Hooks system** - This project uses **Laravel Events** for all event-driven functionality (both backend and frontend). WordPress-style "hooks" are forbidden. Always use Laravel's Event system (`Event::listen()`, `Event::dispatch()`, ServiceProvider `$listen` array)
 - ❌ **NEVER skip `declare(strict_types=1);`** in PHP files
 - ❌ **NEVER use `env()` directly** - ALWAYS use `config()` (after config:cache, env() returns null)
 - ❌ **NEVER use CommonJS `require`** - Use ES modules

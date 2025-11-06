@@ -19,9 +19,9 @@
 - ✅ Import/Export moved from v1.2.0 → v1.0.0 (Critical for adoption)
 - ✅ Enhanced Core Features:
     - Hierarchical Categories (Parent → Child, Default Category)
-    - Enhanced Media Library (Alt Text, Focal Point, EXIF stripping, Upload Settings)
+    - Enhanced Media Library (Upload Security 5-Layer, Alt Text, Focal Point, EXIF stripping)
     - Advanced Live Preview (Device switcher with breakpoints, Full preview mode)
-    - Enhanced Scheduler (Unpublish date, Timezone support)
+    - Enhanced Scheduler (UTC Storage, Unpublish date, Timezone support, DST-safe)
     - Revision Management (Limits, Auto-cleanup, Changes List)
     - Post Essentials (Template Selection, Excerpt, Reading Time, Duplicate)
 - ✅ Removed YAGNI Features: Upvote/Downvote, Social Sharing, Breadcrumbs, Lightbox
@@ -32,8 +32,8 @@
 | Version                   | Core Features | Official Plugins         | Total |
 | ------------------------- | ------------- | ------------------------ | ----- |
 | **v1.0.0 (MVP)**          | ~95           | -                        | 95    |
-| **v1.1.0 (Enhanced)**     | ~143          | 5 Plugins (~38 features) | 181   |
-| **v1.2.0 (Professional)** | ~153          | 8 Plugins (~60 features) | 213   |
+| **v1.1.0 (Enhanced)**     | ~149          | 3 Plugins (~21 features) | 170   |
+| **v1.2.0 (Professional)** | ~159          | 4 Plugins (~24 features) | 183   |
 
 ---
 
@@ -88,7 +88,7 @@
     - Reading Time Calculation (~200 words/min)
     - Duplicate Post feature
 - Basic Custom Fields (Text, Number, Date, Boolean)
-- Enhanced Content Scheduler (Publish/Unpublish Date/Time, Timezone Support)
+- Enhanced Content Scheduler (Publish/Unpublish Date/Time, UTC Storage, Timezone Support, DST-safe)
 
 **Note:** Side-by-side Revision Diff moved to v1.1.0
 
@@ -115,6 +115,12 @@
 **Priorität:** 🔴 Critical
 
 - Media Library UI
+- Upload Security (5-Layer Protection):
+    - File Extension Whitelist
+    - MIME Type Validation
+    - Content Validation (Imagick/GD re-encoding, PDF parsing)
+    - File Size Limits (10MB default, configurable)
+    - Filename Sanitization (UUID + Timestamp)
 - Upload Settings:
     - Max File Size (configurable)
     - Allowed File Types (whitelist)
@@ -302,13 +308,19 @@
 - 2-role system works (Administrator, Author)
 - Hierarchical Categories with Default Category & Enhanced Tags
 - Import from WordPress/Ghost works
-- Enhanced Content Scheduler (Publish/Unpublish dates, Timezone)
+- Enhanced Content Scheduler (Publish/Unpublish dates, UTC Storage, Timezone, DST-safe)
 - Revision Management with Limits, Auto-Cleanup, Changes List
 - Theme system works (1 default theme included)
 - One-Click Backup/Restore works (Local storage)
 - Installation completes in < 5 minutes on shared hosting
 - Page load < 1 second on shared hosting
 - **~95 Core Features Implemented** (was 90)
+
+**Feature Count History:**
+
+- **2025-01-26:** 90 → 95 Features (Net: +5) nach SEP-Analyse
+    - Added (+15): Hierarchical Categories, Template Selection, Excerpt, Reading Time, Import/Export, Frontend Event System, Concurrent Editing Protection, UTC Storage, Upload Security (5-Layer), Revision Enhancements, Media Settings, Duplicate Post, Email Templates, Bulk Status Change, Media Usage Tracking
+    - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics (→ Matomo), Multi-Level Comments (>3 levels), Advanced SEO (→ SEO Pro Plugin), Dashboard Widgets (→ Plugin System)
 
 **Removed from Core (YAGNI):**
 
@@ -354,9 +366,9 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 ## 🚀 **Version 1.1.0 - Enhanced Core + Plugin System**
 
 **Duration:** +3-4 Weeks
-**Goal:** Professionelle Features + Plugin-System + Analytics
-**Core Features:** +48 (Total: ~143)
-**Plugins:** 5 Official Plugins (~38 features)
+**Goal:** Professionelle Features + Plugin-System + Analytics + Workflow
+**Core Features:** +54 (Total: ~149)
+**Plugins:** 3 Official Plugins (~21 features)
 
 ### Week 10-11: Comments & Search
 
@@ -542,7 +554,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
     - routes.php, views/, assets/
 - Plugin Activation/Deactivation UI
 - Plugin Settings Pages
-- Plugin Hooks/Events:
+- Plugin Events (Laravel Events):
     - Content Save (Before/After)
     - User Login (Before/After)
     - Comment Posted (Before/After)
@@ -563,6 +575,21 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
+### Week 13: **Workflow System (CORE)**
+
+**Status:** 📋 Geplant
+**Priorität:** 🟠 High
+**Typ:** 🎯 Core Feature
+**Version:** v1.1.0
+
+- Content Status Workflow (Draft → Review → Published)
+- Reviewer Assignment (1 reviewer per post)
+- Approval/Rejection with Feedback
+- Workflow History (Audit Trail)
+- Email Notifications (Review Request, Approval, Rejection)
+
+---
+
 ### Week 10-13: **Official Plugins Development (Parallel)**
 
 **Status:** 📋 Geplant
@@ -570,62 +597,38 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 **Typ:** 🔌 Plugin
 **Version:** v1.1.0
 
-#### Plugin 1: Newsletter Plugin (~7 features)
+#### Plugin 1: Newsletter Plugin (~6 features)
 
-- Newsletter Editor
-- Subscriber Management
-- Campaign Scheduling
-- Templates
+- Newsletter Editor (TipTap)
+- Subscriber Management (Import/Export, Groups/Tags)
+- Subscriber Sign-up Widget
+- Campaign Scheduling (Send Now, Schedule)
+- Email Templates (3 responsive templates)
 - Privacy-Friendly Tracking (optional)
-- Unsubscribe Management
 - Double Opt-In (GDPR)
-- Subscriber Segmentation
-- A/B Testing
-- Newsletter Archive
+- Subscriber Segmentation (Tags/Categories)
 
-#### Plugin 2: Webhooks Plugin (~11 features)
+#### Plugin 2: Custom Fields Pro (~7 features)
 
-- Webhook Management UI
-- 8 Event Types (post.published, user.created, etc.)
-- Custom Headers & Payloads
-- Testing & Logs
-- Retry Logic
-- Signing
-- Rate Limiting
-
-#### Plugin 3: Custom Fields Pro (~7 features)
-
-- Relationship Fields
-- Repeater Field
+- Relationship Fields (Posts/Pages/Users, Categories/Tags)
+- Repeater Field (max 5 levels)
 - Gallery Field
 - JSON Field
 - Color Picker
-- Rich Text Field
+- Rich Text Field (TipTap, Full/Mini)
 - File Field
-- WYSIWYG Field
+- Field Conditional Logic
 
-#### Plugin 4: Multi-Language Plugin (~7 features)
+#### Plugin 3: Multi-Language Plugin (~8 features)
 
 - Multi-Language Support (Unlimited)
-- Content Translation UI
-- Translatable Fields
-- Locale Switcher
-- Language-Specific URLs
+- Content Translation UI (Side-by-Side)
+- Translatable Fields (Post/Page, Categories/Tags, SEO)
+- Locale Switcher (Dropdown, Flags, Auto-Detect)
+- Language-Specific URLs (Prefix/Subdirectory)
 - Fallback Language
-- Translation Memory
-- SEO for Multi-Language
-- Auto-Translation API (optional)
-
-#### Plugin 5: Workflow Plugin (~6 features)
-
-- Content Status (Draft → Review → Published)
-- Reviewer Assignment
-- Approval/Rejection
-- Review Comments
-- Workflow History
-- Email Notifications
-- Workflow Dashboard
-- Custom Workflow States (optional)
+- RTL Support (Arabic, Hebrew)
+- SEO for Multi-Language (hreflang, Sitemap, RSS)
 
 ---
 
@@ -639,18 +642,19 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 - Matomo Analytics tracks visits (Privacy-First)
 - 4-role RBAC system works
 - Bulk Actions functional
-- Plugin System works (5 official plugins installable)
+- Workflow System functional (Draft → Review → Published)
+- Plugin System works (3 official plugins installable)
 - Update Manager works (One-Click Update)
-- ~143 Core Features + ~38 Plugin Features = 181 Total
+- ~149 Core Features + ~21 Plugin Features = 170 Total
 
 ---
 
 ## 🔧 **Version 1.2.0 - Professional Features**
 
 **Duration:** +2-3 Weeks
-**Goal:** Erweiterte CMS-Features + Additional Plugins
-**Core Features:** +10 (Total: ~153)
-**Plugins:** +3 Official Plugins (Total: 8 plugins, ~60 features)
+**Goal:** Erweiterte CMS-Features + SEO Pro Plugin
+**Core Features:** +10 (Total: ~159)
+**Plugins:** +1 Official Plugin (Total: 4 plugins, ~24 features)
 
 ### Week 14: Import/Export Enhancements & Advanced SEO
 
@@ -717,43 +721,19 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
-### Week 14-15: **Additional Official Plugins**
+### Week 14-15: **SEO Pro Plugin**
 
 **Status:** 📋 Geplant
-**Priorität:** 🟢 Low
+**Priorität:** 🟡 Medium
 **Typ:** 🔌 Plugin
 **Version:** v1.2.0
 
-#### Plugin 6: Two-Factor Auth Plugin (~5 features)
+#### Plugin 4: SEO Pro Plugin (~3 features)
 
-- 2FA Setup (QR Code, Manual Secret)
-- TOTP Support (Google Authenticator, Authy, etc.)
-- Backup Codes
-- Recovery Options
-- Per-User Enable/Disable
-
-#### Plugin 7: Form Builder Plugin (~12 features)
-
-- Drag & Drop Form Builder
-- 12 Field Types
-- Validation Rules
-- Submissions Management
-- Email Notifications
-- Export Submissions (CSV, JSON)
-- Anti-Spam (Honeypot, reCAPTCHA, hCaptcha)
-- Conditional Logic (optional)
-- Multi-Step Forms (optional)
-
-#### Plugin 8: SEO Pro Plugin (~5 features)
-
-- Schema.org Markup (Advanced)
+- Schema.org Markup (Article, Blog, Organization)
 - Open Graph & Twitter Cards (Enhanced with Preview)
-- AMP Support
 - Advanced Sitemap (Image, Video, News)
-- Redirect Management (Enhanced)
-- Broken Link Checker
-- Canonical URL Management
-- SEO Analysis per Post/Page
+- Broken Link Checker (Email Alerts, Broken Links Report)
 
 ---
 
@@ -768,8 +748,8 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 - Menu Builder creates navigation
 - Widget System functional
 - Custom Routing works
-- All 8 Official Plugins installable & functional
-- ~153 Core Features + ~60 Plugin Features = 213 Total
+- All 4 Official Plugins installable & functional
+- ~159 Core Features + ~24 Plugin Features = 183 Total
 
 ---
 
@@ -804,7 +784,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 - pinecms-v1.0.0.zip (Core Only)
 - pinecms-v1.1.0.zip (Core + Plugin System)
 - pinecms-v1.2.0.zip (Core + All Features)
-- Official Plugins (8 separate ZIPs)
+- Official Plugins (5 separate ZIPs)
 - Installation Guide (README.md)
 - User Documentation (docs.pinecms.org)
 - Plugin Development Docs
@@ -846,9 +826,9 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ### Features
 
-- ~153 Core Features (v1.2.0)
-- ~60 Plugin Features (8 official plugins)
-- ~213 Total Features
+- ~159 Core Features (v1.2.0)
+- ~24 Plugin Features (4 official plugins)
+- ~183 Total Features
 - Zero Critical Bugs
 - Full Mobile Responsiveness
 - Advanced Features: Matomo Analytics, Plugin System, Import/Export
@@ -887,9 +867,15 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 - Completely restructured roadmap around **Core + Plugins** architecture
 - Split into **3 versions** (v1.0.0, v1.1.0, v1.2.0)
 - **Matomo Analytics** moved to Core (v1.1.0)
-- **8 Official Plugins** documented (all 100% Open Source & kostenlos)
+- **Workflow System** moved to Core (v1.1.0) - essential for team collaboration
+- **4 Official Plugins** documented (all 100% Open Source & kostenlos)
 - **Removed REST API** from roadmap (focus on Core CMS)
 - Plugin System as core feature in v1.1.0
 - Timeline optimized: 15-18 weeks (realistic estimation with all enhancements)
-- Clear separation: Core (~153 features) + Plugins (~60 features) = ~213 total
-- Software Engineering: Removed 15 YAGNI features, fixed 1 DRY violation, simplified 3 KISS violations
+- Clear separation: Core (~159 features) + Plugins (~24 features) = ~183 total
+- Software Engineering Improvements (2025-01-27):
+    - Removed 4 complete plugins: Webhooks (~11), Two-Factor Auth (~5), Form Builder (~12) → v2.0
+    - Workflow (~6) → Moved to Core v1.1.0 (essential for teams)
+    - Plugin Feature Cleanup (YAGNI/KISS): Newsletter, Custom Fields Pro, Multi-Language, SEO Pro
+    - Plugin reduction: 8 → 4 plugins, ~60 → ~24 features (60% reduction)
+    - Grand Total: ~213 → ~183 features
