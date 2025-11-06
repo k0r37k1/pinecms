@@ -71,6 +71,7 @@ npm run quality               # Format, lint, type-check, test (all-in-one)
 - `docs/meta/` - Documentation standards
 
 **Root-Level Exceptions:**
+
 - `README.md` - Project overview
 - `AGENTS.md` - CLI-agnostic repository guidelines (Codex, Cursor, Claude, etc.)
 
@@ -209,7 +210,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 ### Constructors
 
 - Use PHP 8 constructor property promotion in `__construct()`.
-    - <code-snippet>public function __construct(public GitHub $github) { }</code-snippet>
+    - <code-snippet>public function \_\_construct(public GitHub $github) { }</code-snippet>
 - Do not allow empty `__construct()` methods with zero parameters.
 
 ### Type Declarations
@@ -431,6 +432,7 @@ Route::get('/users', function () {
     </button>
 
     <div v-if="wasSuccessful">User created successfully!</div>
+
 </Form>
 
 </code-snippet>
@@ -448,13 +450,13 @@ Route::get('/users', function () {
 
 - When listing items, use gap utilities for spacing, don't use margins.
 
-    <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
-        <div class="flex gap-8">
-            <div>Superior</div>
-            <div>Michigan</div>
-            <div>Erie</div>
-        </div>
-    </code-snippet>
+      <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
+          <div class="flex gap-8">
+              <div>Superior</div>
+              <div>Michigan</div>
+              <div>Erie</div>
+          </div>
+      </code-snippet>
 
 ### Dark Mode
 
@@ -482,14 +484,14 @@ Route::get('/users', function () {
 
 | Deprecated | Replacement |
 |------------+--------------|
-| bg-opacity-*| bg-black/* |
-| text-opacity-*| text-black/* |
-| border-opacity-*| border-black/* |
-| divide-opacity-*| divide-black/* |
-| ring-opacity-*| ring-black/* |
-| placeholder-opacity-*| placeholder-black/* |
-| flex-shrink-*| shrink-* |
-| flex-grow-*| grow-* |
+| bg-opacity-_| bg-black/_ |
+| text-opacity-_| text-black/_ |
+| border-opacity-_| border-black/_ |
+| divide-opacity-_| divide-black/_ |
+| ring-opacity-_| ring-black/_ |
+| placeholder-opacity-_| placeholder-black/_ |
+| flex-shrink-_| shrink-_ |
+| flex-grow-_| grow-_ |
 | overflow-ellipsis | text-ellipsis |
 | decoration-slice | box-decoration-slice |
 | decoration-clone | box-decoration-clone |
