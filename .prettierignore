@@ -1,38 +1,19 @@
-# Dependencies
-vendor/
-node_modules/
+# Laravel Boost Guidelines haben spezielle Formatierung
+CLAUDE.md
 
-# Build & Distribution
-public/build/
+# Build artifacts
+public/build
 public/hot
-dist/
-build/
+storage
+bootstrap/cache
 
-# Storage & Cache
-storage/
-bootstrap/cache/
+# Dependencies
+node_modules
+vendor
 
-# Coverage & Reports
-coverage/
-.phpunit.cache
-
-# Compiled Assets
-*.min.js
-*.min.css
-
-# Lock Files
-composer.lock
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-
-# Environment
-.env
-.env.*
-
-# Logs
-*.log
+# Coverage
+coverage
 
 # IDE
-.idea/
-.vscode/
+.vscode
+.idea

@@ -19,8 +19,8 @@
         "lint:css:fix": "stylelint \"resources/css/**/*.css\" --fix",
         "spell": "cspell --dot --gitignore .",
         "spell:check": "cspell --dot --gitignore . --no-progress",
-        "format": "prettier --write \"resources/**/*.{js,ts,css}\"",
-        "format:check": "prettier --check \"resources/**/*.{js,ts,css}\"",
+        "format": "prettier --write \"resources/**/*.{js,ts,css}\" \"**/*.md\"",
+        "format:check": "prettier --check \"resources/**/*.{js,ts,css}\" \"**/*.md\"",
         "type-check": "tsc --noEmit",
         "quality": "npm run format && npm run lint:fix && npm run lint:css:fix && npm run type-check && npm run spell:check && npm run test:coverage",
         "prepare": "husky"
