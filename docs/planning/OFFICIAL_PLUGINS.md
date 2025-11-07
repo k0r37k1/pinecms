@@ -345,7 +345,7 @@ Die Community kann eigene Plugins entwickeln und teilen:
     - ❌ Form Builder (~12 features) → Too complex, v2.0
     - ❌ Workflow (~6 features) → **Moved to Core v1.1.0** (essential for teams)
 - **Plugin Feature Cleanup (YAGNI/KISS):**
-    - Newsletter: Bounce Handling → v2.0, Added Signup Form
+    - Newsletter: Bounce Handling → v2.0, Added Signup Widget
     - Custom Fields Pro: Unlimited depth → Max 5, Bi-Directional → v2.0, Added Conditional Logic
     - Multi-Language: Added RTL Support (critical)
     - SEO Pro: 7 Schema → 3 Schema, SEO Analysis → v2.0
