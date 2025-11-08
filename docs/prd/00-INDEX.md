@@ -37,11 +37,11 @@
 
 ## 📊 Feature Summary
 
-| Version                   | Core Features | Plugin Features | Total Features | Timeline    |
-| ------------------------- | ------------- | --------------- | -------------- | ----------- |
-| **v1.0.0 (MVP)**          | ~95           | 0               | **95**         | 10-11 weeks |
-| **v1.1.0 (Enhanced)**     | ~149          | ~17             | **166**        | +3-4 weeks  |
-| **v1.2.0 (Professional)** | ~159          | ~17             | **176**        | +2-3 weeks  |
+| Version          | Core Features | Plugin Features | Total Features | Timeline    |
+| ---------------- | ------------- | --------------- | -------------- | ----------- |
+| **v1.0.0 (MVP)** | ~95           | 0               | **95**         | 10-11 weeks |
+| **v1.1.0**       | ~149          | ~17             | **166**        | +3-4 weeks  |
+| **v1.2.0**       | ~159          | ~17             | **176**        | +2-3 weeks  |
 
 **Total Development Time:** 15-18 weeks (3.5-4.5 months)
 **Target Release:** Q2 2025 (v1.0.0), Q3 2025 (v1.2.0)

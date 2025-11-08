@@ -31,11 +31,11 @@ This document outlines the development roadmap for PineCMS across three major re
 **Total Development Time:** 15-18 Weeks (3.5-4.5 Months)
 **Target Public Release:** Q2 2025 (v1.0.0)
 
-| Version                   | Duration    | Core Features | Plugin Features | Total Features | Release Date |
-| ------------------------- | ----------- | ------------- | --------------- | -------------- | ------------ |
-| **v1.0.0 (MVP)**          | 10-11 weeks | ~95           | -               | **95**         | Q2 2025      |
-| **v1.1.0 (Enhanced)**     | +3-4 weeks  | ~149          | ~17             | **166**        | Q3 2025      |
-| **v1.2.0 (Professional)** | +2-3 weeks  | ~159          | ~17             | **176**        | Q3 2025      |
+| Version          | Duration    | Core Features | Plugin Features | Total Features | Release Date |
+| ---------------- | ----------- | ------------- | --------------- | -------------- | ------------ |
+| **v1.0.0 (MVP)** | 10-11 weeks | ~95           | -               | **95**         | Q2 2025      |
+| **v1.1.0**       | +3-4 weeks  | ~149          | ~17             | **166**        | Q3 2025      |
+| **v1.2.0**       | +2-3 weeks  | ~159          | ~17             | **176**        | Q3 2025      |
 
 **Note:** Plugin development happens in parallel during weeks 11-18.
 
@@ -669,12 +669,12 @@ themes/
 
 ---
 
-## 4. Version 1.1.0 - Enhanced Core + Plugin System
+## 4. Version 1.1.0 - Core + Plugin System
 
 ### 4.1 Overview
 
 **Duration:** +3-4 Weeks (Weeks 10-13)
-**Goal:** Professional features + Plugin System + Workflow
+**Goal:** Plugin System + Workflow + Advanced Features
 **Core Features:** +54 (Total: ~149)
 **Plugin Features:** ~17 (3 Official Plugins)
 **Total Features:** 166
@@ -1076,7 +1076,7 @@ plugins/
 
 ---
 
-## 5. Version 1.2.0 - Professional Features
+## 5. Version 1.2.0 - Advanced Features
 
 ### 5.1 Overview
 

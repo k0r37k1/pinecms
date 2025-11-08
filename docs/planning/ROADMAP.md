@@ -32,8 +32,8 @@
 | Version                   | Core Features | Official Plugins         | Total |
 | ------------------------- | ------------- | ------------------------ | ----- |
 | **v1.0.0 (MVP)**          | ~95           | -                        | 95    |
-| **v1.1.0 (Enhanced)**     | ~149          | 3 Plugins (~21 features) | 170   |
-| **v1.2.0 (Professional)** | ~159          | 4 Plugins (~24 features) | 183   |
+| **v1.1.0**                | ~149          | 3 Plugins (~17 features) | 166   |
+| **v1.2.0**                | ~159          | 3 Plugins (~17 features) | 176   |
 
 ---
 
@@ -363,7 +363,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
-## 🚀 **Version 1.1.0 - Enhanced Core + Plugin System**
+## 🚀 **Version 1.1.0 - Core + Plugin System**
 
 **Duration:** +3-4 Weeks
 **Goal:** Professionelle Features + Plugin-System + Analytics + Workflow
@@ -649,7 +649,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
-## 🔧 **Version 1.2.0 - Professional Features**
+## 🔧 **Version 1.2.0 - Advanced Features**
 
 **Duration:** +2-3 Weeks
 **Goal:** Erweiterte CMS-Features + SEO Pro Plugin
@@ -689,7 +689,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 **Priorität:** 🟡 Medium
 **Typ:** 🔧 Enhancement
 **Version:** v1.2.0
-**Note:** Professional CMS improvements
+**Note:** Advanced CMS improvements
 
 #### Redirect Management
 

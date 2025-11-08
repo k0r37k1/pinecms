@@ -624,7 +624,7 @@ class InjectAnalytics
 
 ---
 
-## 📦 Version 1.1.0 - Enhanced Core
+## 📦 Version 1.1.0
 
 **Timeline:** +3-4 Wochen **Goal:** Professionelle Features + Plugin-System + Analytics + Workflow **Features:** ~54 zusätzlich (Total: ~149)
 
@@ -959,7 +959,7 @@ Team collaboration is essential for multi-author blogs. Solo bloggers can ignore
 
 ---
 
-## 📦 Version 1.2.0 - Professional Features
+## 📦 Version 1.2.0
 
 **Timeline:** +2-3 Wochen **Goal:** Erweiterte CMS-Features **Features:** ~10
 zusätzlich (Total: ~153)
@@ -1137,15 +1137,15 @@ zusätzlich (Total: ~153)
 | Version                   | Features | Timeline     | Total Core Features |
 | ------------------------- | -------- | ------------ | ------------------- |
 | **v1.0.0 (MVP)**          | ~95      | 10-11 Wochen | 95                  |
-| **v1.1.0 (Enhanced)**     | +54      | +3-4 Wochen  | 149                 |
-| **v1.2.0 (Professional)** | +10      | +2-3 Wochen  | 159                 |
+| **v1.1.0**                | +54      | +3-4 Wochen  | 149                 |
+| **v1.2.0**                | +10      | +2-3 Wochen  | 159                 |
 
 **Total Development Time:** 15-18 Wochen für v1.2.0
 
 **Key Improvements in v1.0.0:**
 
 - ✅ Import/Export (WordPress, Ghost) - Critical for adoption
-- ✅ Hierarchical Categories - Professional content structure
+- ✅ Hierarchical Categories - Advanced content structure
 - ✅ Enhanced Media Library (Alt Text, Focal Point, EXIF stripping)
 - ✅ Advanced Live Preview (Device switcher, Full preview mode)
 - ✅ Enhanced Content Scheduler (Unpublish date, Timezone support)
