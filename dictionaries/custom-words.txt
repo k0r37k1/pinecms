@@ -22,6 +22,9 @@ tailwindcss
 stylelint
 eslint
 prettier
+Shiki
+shiki
+nord
 
 # Web servers
 nginx
@@ -74,27 +77,50 @@ earch
 ath
 Uncategorized
 Upvote
+upvote
 Anonymization
 RESTful
+journaling
+uncompromised
+unregisters
+exposé
+devs
+Devs
 
 # SOLID Principles
 Liskov
 
 # PHP Extensions
 Mbstring
+mbstring
 Ctype
 openssl
 fileinfo
+Exif
+pdo
+opcache
 
 # Third-party services & CMS
-Matomo
 Statamic
+statamic
+Grav
+getgrav
+octobercms
+wintercms
+getkirby
+Joomla
+Symfony
 Authy
 Enlightn
 Deptrac
 Soketi
 soketi
 otplib
+Matomo
+Akismet
+Yoast
+Canva
+Dribbble
 
 # Business terms
 sku
@@ -128,6 +154,11 @@ UUID
 YAML
 REST
 RESTful
+cms
+seo
+rtl
+rgba
+ttp
 
 # Command/shell related
 blks
@@ -166,5 +197,25 @@ k0r37k1
 romeovs
 Njengah
 
+# Proper names (algorithms, people, etc.)
+Flesch
+Kincaid
+
 # British English variants
 organisation
+
+# Typography & Fonts
+Segoe
+Merriweather
+Fira
+Consolas
+
+# Lorem Ipsum
+amet
+adipiscing
+elit
+
+# Typos/Fragments (to be reviewed)
+ditor
+urifier
+Deactivatable
