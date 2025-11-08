@@ -869,11 +869,11 @@ Team collaboration is essential for multi-author blogs. Solo bloggers can ignore
 
 ## 7. Core Feature Summary
 
-| Version                   | Features | Timeline    | Total Core Features |
-| ------------------------- | -------- | ----------- | ------------------- |
-| **v1.0.0 (MVP)**          | ~95      | 10-11 Weeks | 95                  |
-| **v1.1.0**                | +54      | +3-4 Weeks  | 149                 |
-| **v1.2.0**                | +10      | +2-3 Weeks  | 159                 |
+| Version          | Features | Timeline    | Total Core Features |
+| ---------------- | -------- | ----------- | ------------------- |
+| **v1.0.0 (MVP)** | ~95      | 10-11 Weeks | 95                  |
+| **v1.1.0**       | +54      | +3-4 Weeks  | 149                 |
+| **v1.2.0**       | +10      | +2-3 Weeks  | 159                 |
 
 **Total Development Time:** 15-18 Weeks for v1.2.0
 
@@ -903,11 +903,10 @@ Team collaboration is essential for multi-author blogs. Solo bloggers can ignore
 The following features are available as **Official Plugins**:
 
 1. **Newsletter Plugin** (~6 Features) - v1.1.0+
-2. **Custom Fields Pro Plugin** (~7 Features) - v1.1.0+
-3. **Multi-Language Plugin** (~8 Features) - v1.1.0+
-4. **SEO Pro Plugin** (~3 Features) - v1.2.0+
+2. **Multi-Language Plugin** (~8 Features) - v1.1.0+
+3. **SEO+ Plugin** (~3 Features) - v1.1.0+
 
-**Total Official Plugin Features:** ~24 (optimized after KISS/DRY/YAGNI principles)
+**Total Official Plugin Features:** ~17 (optimized after KISS/DRY/YAGNI principles)
 
 **Removed Plugins (→ v2.0 or Community):**
 

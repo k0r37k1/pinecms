@@ -1021,31 +1021,13 @@ plugins/
 
 ---
 
-#### Plugin 3: SEO Pro Plugin (~7 features)
+#### Plugin 3: SEO+ Plugin (~3 features)
 
 **Features:**
 
 - Schema.org structured data (Article, Blog, Organization, Breadcrumbs)
 - Open Graph & Twitter Cards (enhanced with preview)
 - Advanced sitemap (image sitemap, video sitemap, news sitemap)
-- Broken link checker (scan posts/pages for broken links)
-- SEO analysis (keyword density, readability score)
-- Social media preview (Facebook, Twitter card preview)
-- Redirect suggestions (detect 404s, suggest redirects)
-
-**SEO Analysis:**
-
-- Keyword density (target keyword, synonyms)
-- Readability score (Flesch-Kincaid)
-- Title length check (50-60 chars optimal)
-- Meta description length check (150-160 chars optimal)
-- Image alt text check (missing alt tags)
-
-**Broken Link Checker:**
-
-- Scan all posts/pages for broken links
-- Email alerts (daily digest)
-- Broken links report (admin panel widget)
 - Fix link UI (edit link inline)
 
 ---
@@ -1065,7 +1047,7 @@ plugins/
 **Feature Requirements:**
 
 - ✅ **~149 Core Features** (+54 from v1.0.0)
-- ✅ **~21 Plugin Features** (3 official plugins)
+- ✅ **~17 Plugin Features** (3 official plugins)
 - ✅ **Total: 170 Features**
 
 **Quality Requirements:**
@@ -1254,7 +1236,7 @@ plugins/
 **Feature Requirements:**
 
 - ✅ **~159 Core Features** (+10 from v1.1.0)
-- ✅ **~17 Plugin Features** (Newsletter, Multi-Language, SEO Pro)
+- ✅ **~17 Plugin Features** (Newsletter, Multi-Language, SEO+)
 - ✅ **Total: 183 Features**
 
 **Quality Requirements:**
@@ -1383,7 +1365,7 @@ plugins/
 
 - `newsletter-v1.0.0.zip` (~6 features)
 - `multi-language-v1.0.0.zip` (~8 features)
-- `seo-pro-v1.0.0.zip` (~7 features)
+- `seo-plus-v1.0.0.zip` (~3 features)
 
 **Documentation:**
 
@@ -1461,8 +1443,8 @@ plugins/
 **v1.2.0:**
 
 - ✅ ~159 Core Features
-- ✅ ~17 Plugin Features (Newsletter, Multi-Language, SEO Pro)
-- ✅ Total: 183 Features
+- ✅ ~17 Plugin Features (Newsletter, Multi-Language, SEO+)
+- ✅ Total: 176 Features
 
 ---
 
@@ -1566,13 +1548,13 @@ plugins/
 
 - v1.0.0: 90 → 95 Features (Net: +5)
     - Added (+15): Hierarchical Categories, Template Selection, Excerpt, Reading Time, Import/Export, Frontend Event System, Concurrent Editing Protection, UTC Storage, Upload Security (5-Layer), Revision Enhancements, Media Settings, Duplicate Post, Email Templates, Bulk Status Change
-    - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics, Multi-Level Comments (>3 levels), Advanced SEO (→ SEO Pro Plugin), Dashboard Widgets (→ Plugin System)
+    - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics, Multi-Level Comments (>3 levels), Advanced SEO (→ SEO+ Plugin), Dashboard Widgets (→ Plugin System)
 
 **2025-11-08 - PRD Finalization:**
 
 - Matomo Analytics completely removed (was in v1.1.0 core)
 - Custom Fields Pro removed from official plugins (→ Community Plugin)
-- SEO Pro Plugin added to v1.1.0 (was in v1.2.0)
+- SEO+ Plugin in v1.1.0
 - **Official Plugins reduced: 4 → 3 plugins**
 - **Plugin Features reduced: ~60 → ~17 features (72% reduction)**
 

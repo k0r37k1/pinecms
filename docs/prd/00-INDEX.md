@@ -149,7 +149,7 @@
 - Official Plugins (3 total):
     1. Newsletter Plugin (~6 features)
     2. Multi-Language Plugin (~8 features)
-    3. SEO Pro Plugin (~3 features)
+    3. SEO+ Plugin (~3 features)
 - Community Plugin Guidelines:
     - Custom Fields Pro (Community Plugin)
     - Analytics Integration (Matomo, Plausible, etc.)

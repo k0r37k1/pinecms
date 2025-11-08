@@ -145,7 +145,7 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
 
 ---
 
-### 3. SEO Pro Plugin
+### 3. SEO+ Plugin
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.2.0
@@ -188,7 +188,7 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
 
 #### Why Plugin?
 
-Core hat SEO Basics (Slugs, Meta, Sitemap, RSS). SEO Pro ist für Profis und Agenturen die maximale SEO-Performance wollen.
+Core hat SEO Basics (Slugs, Meta, Sitemap, RSS). SEO+ ist für Profis und Agenturen die maximale SEO-Performance wollen.
 
 ---
 
@@ -275,7 +275,7 @@ Die Community kann eigene Plugins entwickeln und teilen:
 | ------------------ | -------- | -------- | ------- |
 | **Newsletter**     | ~6       | v1.1.0+  | Geplant |
 | **Multi-Language** | ~8       | v1.1.0+  | Geplant |
-| **SEO Pro**        | ~3       | v1.1.0+  | Geplant |
+| **SEO+**           | ~3       | v1.1.0+  | Geplant |
 | **Total**          | **~17**  | -        | -       |
 
 **Software Engineering Improvements (2025-11-07):**
@@ -289,7 +289,7 @@ Die Community kann eigene Plugins entwickeln und teilen:
 - **Plugin Feature Cleanup (YAGNI/KISS):**
     - Newsletter: Bounce Handling → v2.0, Added Signup Widget
     - Multi-Language: Added RTL Support (critical)
-    - SEO Pro: 7 Schema → 3 Schema, SEO Analysis → v2.0
+    - SEO+: 7 Schema → 3 Schema, SEO Analysis → v2.0
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG)
 - Eliminated deprecated features (AMP Support)
 - **Result:** 8 Plugins → 3 Official Plugins, ~60 → ~17 Features (72% reduction)

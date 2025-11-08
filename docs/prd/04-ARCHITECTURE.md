@@ -532,18 +532,19 @@ echo "Hello, PineCMS!";
 
 **Decision:**
 - **No default analytics** (no Google Analytics, no tracking scripts)
-- Optional **Matomo Analytics Plugin** (self-hosted, privacy mode)
+- Users can integrate their own analytics via community plugins or theme event listeners
 - Zero cookies without user consent
 
 **Consequences:**
 - ✅ Privacy-first by design (competitive advantage)
 - ✅ GDPR compliant by default (no cookie banners needed)
 - ✅ Trust from privacy-conscious users (key persona)
-- ⚠️ No out-of-the-box analytics (users must install Matomo plugin)
+- ⚠️ No out-of-the-box analytics (users integrate their preferred solution)
 
 **Alternatives Considered:**
 - Google Analytics by default: Rejected (privacy violation)
-- Bundled Matomo in core: Rejected (feature bloat, moved to plugin)
+- Bundled Matomo in core: Rejected (feature bloat)
+- Official Matomo plugin: Rejected (analytics best handled by community)
 
 ---
 

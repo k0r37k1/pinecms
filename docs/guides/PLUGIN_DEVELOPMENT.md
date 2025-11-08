@@ -456,7 +456,7 @@ Check out the **Official Plugins** source code:
 5. [Workflow](https://github.com/pinecms/plugin-workflow)
 6. [Two-Factor Auth](https://github.com/pinecms/plugin-2fa)
 7. [Form Builder](https://github.com/pinecms/plugin-form-builder)
-8. [SEO Pro](https://github.com/pinecms/plugin-seo-pro)
+8. [SEO+](https://github.com/pinecms/plugin-seo-plus)
 
 ---
 

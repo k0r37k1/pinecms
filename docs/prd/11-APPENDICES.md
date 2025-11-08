@@ -796,12 +796,12 @@ This document provides supplementary information referenced throughout the PineC
 - **Impact:** Official plugins reduced from 4 to 3
 - **Status:** ✅ Approved
 
-**Decision 4: SEO Pro Plugin in v1.1.0 (Not v1.2.0)**
+**Decision 4: SEO+ Plugin in v1.1.0**
 
 - **Date:** 2025-11-08
-- **Decision:** Move SEO Pro Plugin from v1.2.0 to v1.1.0
+- **Decision:** SEO+ Plugin (renamed from "SEO Pro") in v1.1.0
 - **Rationale:** SEO is essential for blogging, should be available earlier
-- **Impact:** v1.1.0 includes 3 official plugins (Newsletter, Multi-Language, SEO Pro)
+- **Impact:** v1.1.0 includes 3 official plugins (Newsletter, Multi-Language, SEO+)
 - **Status:** ✅ Approved
 
 **Decision 5: Plugin System in v1.1.0 (Not v1.0.0)**
@@ -863,7 +863,7 @@ This document provides supplementary information referenced throughout the PineC
 **Features:**
 
 - [05-CORE-FEATURES.md](./05-CORE-FEATURES.md) - 159 core features (v1.0-1.2), NO Matomo
-- [06-PLUGIN-ECOSYSTEM.md](./06-PLUGIN-ECOSYSTEM.md) - 3 official plugins (Newsletter, Multi-Language, SEO Pro)
+- [06-PLUGIN-ECOSYSTEM.md](./06-PLUGIN-ECOSYSTEM.md) - 3 official plugins (Newsletter, Multi-Language, SEO+)
 
 **Design & Quality:**
 

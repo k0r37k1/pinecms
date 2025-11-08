@@ -621,15 +621,15 @@ This document presents comprehensive user research for **PineCMS**, including de
 **Actions:**
 
 1. Writes 50+ posts over 3 months
-2. Installs Matomo Analytics Plugin (optional, privacy mode)
-3. Uses Custom Fields for source notes (encrypted)
+2. Optional: Integrates analytics via community plugin (privacy-focused)
+3. Uses basic custom fields for source notes (encrypted)
 4. Backs up SQLite + flat-files via FTP monthly
 5. Updates PineCMS manually (upload new version)
 
 **Touchpoints:**
 
 - Admin dashboard (daily)
-- Plugin system (Matomo)
+- Plugin system (optional analytics)
 - Backup/export tools
 - Update notifications
 
@@ -1052,7 +1052,7 @@ This document presents comprehensive user research for **PineCMS**, including de
 | Pain Point                  | Sarah | Alex | Maria | David | PineCMS Solution                                     |
 | --------------------------- | ----- | ---- | ----- | ----- | ---------------------------------------------------- |
 | **WordPress Plugin Bloat**  | ✅    | ✅   | ✅    | ✅    | Core features built-in (95 features v1.0)            |
-| **Tracking by Default**     | ✅    | ❌   | ❌    | ❌    | No default analytics, optional Matomo plugin         |
+| **Tracking by Default**     | ✅    | ❌   | ❌    | ❌    | No default analytics, optional via community plugins |
 | **Complex Setup**           | ⚠️    | ✅   | ✅    | ❌    | Web installer (< 10 minutes)                         |
 | **Plugin Conflicts**        | ✅    | ✅   | ✅    | ✅    | Event-driven architecture, minimal plugins           |
 | **Security Confusion**      | ✅    | ⚠️   | ✅    | ❌    | Built-in security (field encryption, EXIF stripping) |
@@ -1086,7 +1086,7 @@ This document presents comprehensive user research for **PineCMS**, including de
 **PineCMS Solution:**
 
 - ✅ No default analytics/tracking
-- ✅ Optional Matomo plugin (privacy mode)
+- ✅ Optional analytics via community plugins (Matomo, Plausible, etc.)
 - ✅ Field-level encryption (CipherSweet)
 - ✅ EXIF stripping on upload
 - ✅ Cookieless by default
@@ -1264,7 +1264,7 @@ This document presents comprehensive user research for **PineCMS**, including de
     2. View public site
     3. Check browser dev tools → Network tab
     4. Verify: No Google Analytics, no tracking scripts
-    5. (Optional) Install Matomo plugin later
+    5. (Optional) Install community analytics plugin later if needed
 - **Postconditions:** Zero tracking by default
 - **Success Criteria:** No external scripts loaded without user consent
 
@@ -1447,40 +1447,6 @@ This document presents comprehensive user research for **PineCMS**, including de
 
 ### 6.9 Plugin Installation (Optional)
 
-**UC-19: Install Matomo Analytics Plugin (Sarah)**
-
-- **Actor:** Privacy-conscious blogger (wants analytics)
-- **Preconditions:** v1.1.0+, Matomo plugin available
-- **Steps:**
-    1. Navigate to "Plugins" → "Available Plugins"
-    2. Find "Matomo Analytics (Official)"
-    3. Click "Install" → Plugin ZIP uploaded
-    4. Activate plugin
-    5. Configure Matomo settings:
-        - Self-hosted Matomo URL
-        - Site ID
-        - Privacy mode (no cookies, anonymized IPs)
-    6. Analytics visible in admin dashboard
-- **Postconditions:** Privacy-focused analytics enabled
-- **Success Criteria:** Matomo integration works, privacy mode default
-
----
-
-**UC-20: Install Custom Fields Pro Plugin (Maria)**
-
-- **Actor:** Small business needing event fields (date, location)
-- **Preconditions:** v1.1.0+, Custom Fields Pro plugin available
-- **Steps:**
-    1. Navigate to "Plugins" → "Install Plugin"
-    2. Upload Custom Fields Pro ZIP
-    3. Activate plugin
-    4. Create custom field group: "Event Details"
-    5. Add fields: Date (date picker), Location (text), Registration Link (URL)
-    6. Assign to "Events" post type
-    7. Staff adds event posts with custom fields
-- **Postconditions:** Custom fields available for posts
-- **Success Criteria:** Custom fields render correctly, repeater works
-
 ---
 
 ### 6.10 Updates & Maintenance
@@ -1539,8 +1505,6 @@ This document presents comprehensive user research for **PineCMS**, including de
 | **Backup/Export**          | 🟠 High     | ✅    | ⚠️   | ⚠️    | ❌    | v1.0.0  |
 | **Workflow System**        | 🟡 Medium   | ❌    | ❌   | ✅    | ⚠️    | v1.1.0  |
 | **Plugin System**          | 🟠 High     | ⚠️    | ❌   | ⚠️    | ✅    | v1.1.0  |
-| **Matomo Plugin**          | 🟡 Medium   | ✅    | ❌   | ❌    | ❌    | v1.1.0  |
-| **Custom Fields Pro**      | 🟡 Medium   | ⚠️    | ❌   | ✅    | ⚠️    | v1.1.0  |
 | **Event-Driven Arch**      | 🟠 High     | ❌    | ❌   | ❌    | ✅    | v1.0.0  |
 | **Laravel 12 Code**        | 🟠 High     | ❌    | ❌   | ❌    | ✅    | v1.0.0  |
 | **< 1s Page Load**         | 🔴 Critical | ✅    | ✅   | ✅    | ⚠️    | v1.0.0  |
@@ -1805,10 +1769,10 @@ This document presents comprehensive user research for **PineCMS**, including de
 
 **Plugin Ecosystem Gradual Growth:**
 
-- Official plugins only (4-5 total, v1.1-1.2)
+- Official plugins only (3 total, v1.1-1.2)
 - Community plugins later (v2.0+, plugin directory)
 - Quality over quantity (no plugin bloat)
-- **Action:** Focus on 4 official plugins (Newsletter, Custom Fields Pro, Multi-Language, SEO Pro) + optional Matomo
+- **Action:** Focus on 3 official plugins (Newsletter, Multi-Language, SEO+)
 
 ---
 
@@ -1827,17 +1791,16 @@ This document presents comprehensive user research for **PineCMS**, including de
 - SEO fields ✅
 - Backup/export ✅
 
-**v1.1.0 Enhanced (Team Workflows + Plugins):**
+**v1.1.0 (Team Workflows + Plugins):**
 
 - Workflow system ✅ (Maria's critical need)
 - Plugin system ✅ (David's extensibility)
-- Matomo Analytics Plugin ✅ (Sarah's optional analytics)
-- Custom Fields Pro ✅ (Maria's custom content needs)
+- Newsletter Plugin ✅ (content distribution)
+- Multi-Language Plugin ✅ (international users)
 
 **v1.2.0 (Advanced Features):**
 
-- Multi-Language Plugin ✅ (International users)
-- SEO Pro Plugin ✅ (Maria's advanced SEO)
+- SEO+ Plugin ✅ (Maria's advanced SEO)
 - Menu Builder ✅ (Complex navigation)
 - Redirects Manager ✅ (Site migrations)
 
@@ -1903,7 +1866,7 @@ This document presents comprehensive user research for **PineCMS**, including de
 
 ### 12.2 Feature Questions
 
-- ❓ Should Custom Fields Pro be in core or plugin? (Currently plugin)
+- ✅ Custom Fields Pro → Community Plugin (advanced fields available via ecosystem)
 - ❓ Is Comments System needed in v1.0.0 or v1.1.0? (Currently v1.1.0)
 - ❓ Should Workflow System support custom statuses? (Currently: Draft/Pending/Approved)
 - ❓ Is auto-save frequency 30 seconds optimal or too frequent?

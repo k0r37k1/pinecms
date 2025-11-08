@@ -99,7 +99,8 @@
       "Bash(repos/k0r37k1/pinecms/branches/main/protection )",
       "Bash(open:*)",
       "Bash(curl:*)",
-      "WebFetch(domain:www.reddit.com)"
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:code.claude.com)"
     ],
     "deny": [],
     "ask": []

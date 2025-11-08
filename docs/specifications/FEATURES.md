@@ -22,11 +22,11 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 ## 📦 Version Roadmap
 
-| Version                   | Core Features | Official Plugins         | Total | Timeline     |
-| ------------------------- | ------------- | ------------------------ | ----- | ------------ |
-| **v1.0.0 (MVP)**          | ~95           | -                        | 95    | 10-11 Wochen |
-| **v1.1.0 (Enhanced)**     | ~149          | 3 Plugins (~21 features) | 170   | +3-4 Wochen  |
-| **v1.2.0 (Professional)** | ~159          | 4 Plugins (~24 features) | 183   | +2-3 Wochen  |
+| Version          | Core Features | Official Plugins         | Total | Timeline     |
+| ---------------- | ------------- | ------------------------ | ----- | ------------ |
+| **v1.0.0 (MVP)** | ~95           | -                        | 95    | 10-11 Wochen |
+| **v1.1.0**       | ~149          | 3 Plugins (~17 features) | 166   | +3-4 Wochen  |
+| **v1.2.0**       | ~159          | 3 Plugins (~17 features) | 176   | +2-3 Wochen  |
 
 **Total Timeline:** 15-18 Wochen (3.5-4.5 Monate) für v1.2.0
 
@@ -67,7 +67,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - Advanced Media (Crop, Filters, EXIF Stripping, Retina Support, **Media Usage Tracking**)
 - TipTap Editor Advanced (Tables, Embeds, Slash Commands)
 - Bulk Actions (Select, Publish, Delete, Move, Export, **Bulk Status Change**)
-- **Matomo Analytics (CORE)** - Privacy-First, Self-Hosted
+- **No default analytics** - Privacy-First (users integrate their own via community plugins)
 - Custom Fields Advanced (Select, URL, Email, Rich Text)
 - **Workflow System (CORE)** - Draft → Review → Published, Reviewer Assignment, Email Notifications
 - **Plugin System** - Event-Driven Architecture
@@ -99,18 +99,13 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
     - Campaign Scheduling, Email Templates, Privacy-Friendly Tracking
     - Double Opt-In, Segmentation by Tags/Categories
 
-2. **Custom Fields Pro Plugin** (~7 Features)
-    - Relationship Fields, Repeater (max 5 levels), Gallery
-    - JSON Field, Color Picker, Rich Text Field (Full/Mini)
-    - File Field, Conditional Logic
-
-3. **Multi-Language Plugin** (~8 Features)
+2. **Multi-Language Plugin** (~8 Features)
     - Unlimited Languages, Content Translation UI
     - Language-Specific URLs (Prefix/Subdirectory)
     - RTL Support (Arabic, Hebrew), Auto-Detect Browser Language
     - SEO for Multi-Language (hreflang, Sitemap, RSS)
 
-4. **SEO Pro Plugin** (~3 Features)
+3. **SEO+ Plugin** (~3 Features)
     - Schema.org (Article, Blog, Organization)
     - Open Graph & Twitter Cards (Enhanced)
     - Advanced Sitemap (Image, Video, News), Broken Link Checker
@@ -161,7 +156,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 
 - ✅ **Shared Hosting** - Kein Node.js/Docker nötig
 - ✅ **Günstiger** - Keine Ghost Pro Kosten ($9-199/Monat)
-- ✅ **Matomo im Core** - Privacy-First Analytics (Ghost braucht externe Services)
+- ✅ **No default analytics** - Privacy-First by design (Ghost has tracking)
 - ✅ **Plugin-System** - Ghost hat kein Plugin-System
 
 ### vs Statamic
@@ -182,7 +177,7 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 - **Users:** 4 Roles (Administrator, Author, User, Guest), RBAC, Activity Log
 - **Comments:** Nested (3 levels), Moderation, Guest Comments (optional)
 - **Search:** TNTSearch, Command Palette (CMD+K), Filters
-- **Analytics:** Matomo Self-Hosted (Privacy-First, Cookieless)
+- **Analytics:** No default tracking (users integrate their own via community plugins)
 - **SEO:** Slugs, Meta, OpenGraph, Twitter Cards, Sitemap, RSS, Schema.org
 - **Security:** CipherSweet, CSRF, XSS, Rate Limiting, Secure Headers
 - **Backup:** One-Click Backup/Restore (SQLite + Flat-Files + Media)
@@ -200,13 +195,12 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
 ### Official Plugins
 
 - Newsletter (~6 Features)
-- Custom Fields Pro (~7 Features)
 - Multi-Language (~8 Features)
-- SEO Pro (~3 Features)
+- SEO+ (~3 Features)
 
-**Total Plugins:** ~24 Features
+**Total Plugins:** ~17 Features
 
-**Grand Total:** ~183 Features (159 Core + 24 Plugins)
+**Grand Total:** ~176 Features (159 Core + 17 Plugins)
 
 **Software Engineering Improvements (2025-11-06):**
 
@@ -217,14 +211,14 @@ PineCMS besteht aus einem **schlanken Core** und **Official Plugins** für spezi
     - ❌ Workflow (~6) → **Moved to Core v1.1.0** (essential for teams)
 - **Plugin Feature Cleanup (YAGNI/KISS):**
     - Newsletter: Bounce Handling → v2.0, Added Signup Widget
-    - Custom Fields Pro: Unlimited depth → Max 5, Bi-Directional → v2.0, Added Conditional Logic
+    - Custom Fields Pro: Moved to Community Plugin
     - Multi-Language: Added RTL Support (critical)
-    - SEO Pro: 7 Schema → 3, SEO Analysis → v2.0
+    - SEO+: 7 Schema → 3, SEO Analysis → v2.0
 - Added 15 critical Core features (Workflow, Frontend Events, Concurrent Editing, UTC Storage, Upload Security 5-Layer, etc.)
 - Removed 10 YAGNI features from Core (moved to Community Plugins or Theme-specific)
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG fields)
 - Eliminated deprecated features (AMP Support)
-- **Result:** 8 Plugins → 4 Plugins (~60 → ~24 features, -60%), Grand Total: ~213 → ~183 features
+- **Result:** 8 Plugins → 3 Plugins (~60 → ~17 features, -72%), Grand Total: ~213 → ~176 features
 
 ---
 

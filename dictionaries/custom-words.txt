@@ -219,3 +219,8 @@ elit
 ditor
 urifier
 Deactivatable
+mcp
+awk
+vlucas
+sebastiandedeyne
+laravel

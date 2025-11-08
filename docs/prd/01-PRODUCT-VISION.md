@@ -417,7 +417,7 @@ Provide a **sustainable, privacy-first CMS** that:
 - Privacy tools (field-level encryption, no default analytics)
 - Performance optimization
 
-**v1.1.0 (Q3 2025) - Enhanced**
+**v1.1.0 (Q3 2025)**
 
 - Comments, search, workflow
 - Plugin system
@@ -432,10 +432,8 @@ Provide a **sustainable, privacy-first CMS** that:
 **Official Plugins (Optional Installation):**
 
 - Newsletter Plugin
-- Custom Fields Pro
 - Multi-Language Plugin
-- SEO Pro Plugin
-- Analytics Plugin (Matomo - self-hosted, privacy-focused)
+- SEO+ Plugin
 
 **v2.0+ (2026-2030) - Sustainable**
 

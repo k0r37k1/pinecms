@@ -29,11 +29,11 @@
 
 ### Feature Counts
 
-| Version                   | Core Features | Official Plugins         | Total |
-| ------------------------- | ------------- | ------------------------ | ----- |
-| **v1.0.0 (MVP)**          | ~95           | -                        | 95    |
-| **v1.1.0**                | ~149          | 3 Plugins (~17 features) | 166   |
-| **v1.2.0**                | ~159          | 3 Plugins (~17 features) | 176   |
+| Version          | Core Features | Official Plugins         | Total |
+| ---------------- | ------------- | ------------------------ | ----- |
+| **v1.0.0 (MVP)** | ~95           | -                        | 95    |
+| **v1.1.0**       | ~149          | 3 Plugins (~17 features) | 166   |
+| **v1.2.0**       | ~159          | 3 Plugins (~17 features) | 176   |
 
 ---
 
@@ -320,7 +320,7 @@
 
 - **2025-11-06:** 90 → 95 Features (Net: +5) nach SEP-Analyse
     - Added (+15): Hierarchical Categories, Template Selection, Excerpt, Reading Time, Import/Export, Frontend Event System, Concurrent Editing Protection, UTC Storage, Upload Security (5-Layer), Revision Enhancements, Media Settings, Duplicate Post, Email Templates, Bulk Status Change, Media Usage Tracking
-    - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics (→ Matomo), Multi-Level Comments (>3 levels), Advanced SEO (→ SEO Pro Plugin), Dashboard Widgets (→ Plugin System)
+    - Removed (-10): Upvote/Downvote (→ Community Plugin), Social Sharing (→ Theme), Breadcrumbs (→ Theme), Lightbox (→ Theme), Advanced Analytics (→ Matomo), Multi-Level Comments (>3 levels), Advanced SEO (→ SEO+ Plugin), Dashboard Widgets (→ Plugin System)
 
 **Removed from Core (YAGNI):**
 
@@ -501,43 +501,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
-### Week 12: **Matomo Analytics (CORE)**
-
-**Status:** 📋 Geplant
-**Priorität:** 🟠 High
-**Typ:** 🎯 Core Feature
-**Version:** v1.1.0
-
-#### Integration
-
-- Matomo PHP SDK Integration
-- Privacy-First Tracking:
-    - Cookieless Tracking
-    - IP Anonymization (GDPR)
-    - DNT (Do Not Track) Support
-    - Anonymous Tracking Mode
-- Dashboard Widget:
-    - Pageviews (Today, Week, Month)
-    - Unique Visitors
-    - Top Posts/Pages
-    - Referrers
-    - Browser/Device Stats
-- Detailed Reports (Admin Panel):
-    - Visitor Log
-    - Geographic Location (Country-level)
-    - Page Performance
-- Privacy Controls (Settings → Privacy Tab):
-    - Enable/Disable Analytics
-    - Analytics Opt-Out (User Preference)
-    - Data Retention Settings (6/12/24 months)
-    - Cookie Consent Integration
-- Performance:
-    - Async Tracking (No page load impact)
-    - Optional: Separate SQLite DB for analytics
-
----
-
-### Week 13: Plugin System & Update Manager
+### Week 12: Plugin System & Update Manager
 
 **Status:** 📋 Geplant
 **Priorität:** 🔴 Critical
@@ -608,18 +572,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 - Double Opt-In (GDPR)
 - Subscriber Segmentation (Tags/Categories)
 
-#### Plugin 2: Custom Fields Pro (~7 features)
-
-- Relationship Fields (Posts/Pages/Users, Categories/Tags)
-- Repeater Field (max 5 levels)
-- Gallery Field
-- JSON Field
-- Color Picker
-- Rich Text Field (TipTap, Full/Mini)
-- File Field
-- Field Conditional Logic
-
-#### Plugin 3: Multi-Language Plugin (~8 features)
+#### Plugin 2: Multi-Language Plugin (~8 features)
 
 - Multi-Language Support (Unlimited)
 - Content Translation UI (Side-by-Side)
@@ -639,7 +592,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 - Comment System works with moderation
 - Search finds Posts/Pages/Tags with filters
-- Matomo Analytics tracks visits (Privacy-First)
+- Optional analytics via community plugins (Privacy-First)
 - 4-role RBAC system works
 - Bulk Actions functional
 - Workflow System functional (Draft → Review → Published)
@@ -652,7 +605,7 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 ## 🔧 **Version 1.2.0 - Advanced Features**
 
 **Duration:** +2-3 Weeks
-**Goal:** Erweiterte CMS-Features + SEO Pro Plugin
+**Goal:** Erweiterte CMS-Features + SEO+ Plugin
 **Core Features:** +10 (Total: ~159)
 **Plugins:** +1 Official Plugin (Total: 4 plugins, ~24 features)
 
@@ -721,14 +674,14 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 
 ---
 
-### Week 14-15: **SEO Pro Plugin**
+### Week 14-15: **SEO+ Plugin**
 
 **Status:** 📋 Geplant
 **Priorität:** 🟡 Medium
 **Typ:** 🔌 Plugin
 **Version:** v1.2.0
 
-#### Plugin 4: SEO Pro Plugin (~3 features)
+#### Plugin 4: SEO+ Plugin (~3 features)
 
 - Schema.org Markup (Article, Blog, Organization)
 - Open Graph & Twitter Cards (Enhanced with Preview)
@@ -748,8 +701,8 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 - Menu Builder creates navigation
 - Widget System functional
 - Custom Routing works
-- All 4 Official Plugins installable & functional
-- ~159 Core Features + ~24 Plugin Features = 183 Total
+- All 3 Official Plugins installable & functional
+- ~159 Core Features + ~17 Plugin Features = 176 Total
 
 ---
 
@@ -827,11 +780,11 @@ Alle Sections verwenden das einheitliche Status-Marker-System:
 ### Features
 
 - ~159 Core Features (v1.2.0)
-- ~24 Plugin Features (4 official plugins)
-- ~183 Total Features
+- ~17 Plugin Features (3 official plugins)
+- ~176 Total Features
 - Zero Critical Bugs
 - Full Mobile Responsiveness
-- Advanced Features: Matomo Analytics, Plugin System, Import/Export
+- Advanced Features: Plugin System, Import/Export, Workflow System
 
 ### Community
 
@@ -866,7 +819,7 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 
 - Completely restructured roadmap around **Core + Plugins** architecture
 - Split into **3 versions** (v1.0.0, v1.1.0, v1.2.0)
-- **Matomo Analytics** moved to Core (v1.1.0)
+- **No default analytics** (Privacy-First, users integrate their own)
 - **Workflow System** moved to Core (v1.1.0) - essential for team collaboration
 - **4 Official Plugins** documented (all 100% Open Source & kostenlos)
 - **Removed REST API** from roadmap (focus on Core CMS)
@@ -876,6 +829,6 @@ PineCMS ist 100% Open Source (MIT License). Community-Beiträge sind herzlich wi
 - Software Engineering Improvements (2025-11-06):
     - Removed 4 complete plugins: Webhooks (~11), Two-Factor Auth (~5), Form Builder (~12) → v2.0
     - Workflow (~6) → Moved to Core v1.1.0 (essential for teams)
-    - Plugin Feature Cleanup (YAGNI/KISS): Newsletter, Custom Fields Pro, Multi-Language, SEO Pro
+    - Plugin Feature Cleanup (YAGNI/KISS): Newsletter, Multi-Language, SEO+
     - Plugin reduction: 8 → 4 plugins, ~60 → ~24 features (60% reduction)
     - Grand Total: ~213 → ~183 features

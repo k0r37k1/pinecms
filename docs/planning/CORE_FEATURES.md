@@ -785,40 +785,7 @@ class InjectAnalytics
 
 ---
 
-### Analytics (Matomo Integration) - **CORE FEATURE** (Week 12)
-
-**Status:** 📋 Geplant
-**Typ:** 🎯 Core Feature
-**Version:** v1.1.0
-
-- Matomo Integration (Self-Hosted, PHP SDK)
-- Privacy-First Analytics:
-    - No Cookies Required (Cookieless Tracking)
-    - IP Anonymization (GDPR-compliant)
-    - DNT (Do Not Track) Support
-    - Anonymous Tracking Mode
-- Dashboard Widget (Admin Panel):
-    - Pageviews (Today, Week, Month)
-    - Unique Visitors
-    - Top Posts/Pages
-    - Referrers (Where visitors come from)
-    - Browser/Device Stats
-- Detailed Reports (Admin Panel):
-    - Visitor Log
-    - Geographic Location (Country-level only)
-    - Page Performance
-- Privacy Controls (Settings → Privacy Tab):
-    - Enable/Disable Analytics
-    - Analytics Opt-Out (User Preference)
-    - Data Retention Settings (GDPR: 6/12/24 months)
-    - Cookie Consent Integration
-- Performance:
-    - Async Tracking (No impact on page load)
-    - Optional: Separate SQLite DB for analytics
-
----
-
-### Custom Fields (Advanced Types) (Week 13)
+### Custom Fields (Advanced Types) (Week 12)
 
 **Status:** 📋 Geplant
 **Typ:** 🔧 Enhancement
@@ -1134,11 +1101,11 @@ zusätzlich (Total: ~153)
 
 ## 📊 Core Feature Summary
 
-| Version                   | Features | Timeline     | Total Core Features |
-| ------------------------- | -------- | ------------ | ------------------- |
-| **v1.0.0 (MVP)**          | ~95      | 10-11 Wochen | 95                  |
-| **v1.1.0**                | +54      | +3-4 Wochen  | 149                 |
-| **v1.2.0**                | +10      | +2-3 Wochen  | 159                 |
+| Version          | Features | Timeline     | Total Core Features |
+| ---------------- | -------- | ------------ | ------------------- |
+| **v1.0.0 (MVP)** | ~95      | 10-11 Wochen | 95                  |
+| **v1.1.0**       | +54      | +3-4 Wochen  | 149                 |
+| **v1.2.0**       | +10      | +2-3 Wochen  | 159                 |
 
 **Total Development Time:** 15-18 Wochen für v1.2.0
 
@@ -1158,11 +1125,10 @@ zusätzlich (Total: ~153)
 Die folgenden Features sind als **Official Plugins** verfügbar:
 
 1. **Newsletter Plugin** (~6 Features) - Newsletter-System mit Subscriber Management, Signup Widget, Campaign Scheduling
-2. **Custom Fields Pro Plugin** (~7 Features) - Advanced Field Types (Repeater max 5 levels, Gallery, JSON, Color Picker, Conditional Logic)
-3. **Multi-Language Plugin** (~8 Features) - Content Translation UI, RTL Support (Arabic, Hebrew), Language-Specific URLs
-4. **SEO Pro Plugin** (~3 Features) - Advanced SEO (Schema.org: Article/Blog/Organization, Advanced Sitemap, Broken Link Checker)
+2. **Multi-Language Plugin** (~8 Features) - Content Translation UI, RTL Support (Arabic, Hebrew), Language-Specific URLs
+3. **SEO+ Plugin** (~3 Features) - Advanced SEO (Schema.org: Article/Blog/Organization, Advanced Sitemap)
 
-**Total Plugin Features:** ~24 (optimiert nach KISS/DRY/YAGNI principles)
+**Total Plugin Features:** ~17 (optimiert nach KISS/DRY/YAGNI principles)
 
 **Entfernte Plugins (→ v2.0):**
 

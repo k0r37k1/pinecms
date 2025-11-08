@@ -23,7 +23,7 @@
 
 1. Newsletter Plugin (~6 features) - v1.1.0
 2. Multi-Language Plugin (~8 features) - v1.1.0
-3. SEO Pro Plugin (~3 features) - v1.1.0
+3. SEO+ Plugin (~3 features) - v1.1.0
 
 **Total Official Plugin Features:** ~17
 
@@ -263,7 +263,7 @@ Not every website needs multi-language content. Core has admin panel i18n (DE/EN
 
 ---
 
-### 3.3 SEO Pro Plugin
+### 3.3 SEO+ Plugin
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
@@ -318,7 +318,7 @@ Not every website needs multi-language content. Core has admin panel i18n (DE/EN
 
 #### 3.3.4 Why Plugin?
 
-Core has SEO basics (slugs, meta tags, sitemap, RSS). SEO Pro is for professionals and agencies who want maximum SEO performance and advanced features.
+Core has SEO basics (slugs, meta tags, sitemap, RSS). SEO+ is for professionals and agencies who want maximum SEO performance and advanced features.
 
 ---
 
@@ -702,7 +702,7 @@ class NewsletterListener
 | ------------------ | -------- | -------- | ------- |
 | **Newsletter**     | ~6       | v1.1.0+  | v1.1.0  |
 | **Multi-Language** | ~8       | v1.1.0+  | v1.1.0  |
-| **SEO Pro**        | ~3       | v1.1.0+  | v1.1.0  |
+| **SEO+**           | ~3       | v1.1.0+  | v1.1.0  |
 | **Total**          | **~17**  | -        | -       |
 
 ### 9.2 Removed from Official Plugins
