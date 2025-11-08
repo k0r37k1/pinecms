@@ -20,7 +20,7 @@
 
 ---
 
-## 📦 Official Plugins (4 Plugins)
+## 📦 Official Plugins (3 Plugins)
 
 ### 1. Newsletter Plugin
 
@@ -84,66 +84,7 @@ Nicht jeder Blogger/Website-Betreiber braucht Newsletter-Funktionalität. Extern
 
 ---
 
-### 2. Custom Fields Pro Plugin
-
-**Version:** 1.0.0
-**Requires:** PineCMS >= 1.0.0
-**Status:** 📋 Geplant (Planned for v1.1.0)
-
-#### Features (~7 Advanced Field Types)
-
-- **Relationship Fields:**
-    - Link to Posts/Pages/Users
-    - Link to Categories/Tags
-- **Repeater Field:**
-    - Nested Fields (max 5 levels)
-    - Add/Remove/Reorder Rows
-    - Field Groups
-    - Collapsible Rows
-- **Gallery Field:**
-    - Multiple Image Upload
-    - Drag & Drop Reorder
-    - Captions & Alt Text
-- **JSON Field:**
-    - Textarea with Syntax Highlighting
-    - Basic Validation
-- **Color Picker:**
-    - Hex, RGB, HSL
-    - Opacity/Alpha
-    - Preset Colors
-- **Rich Text Field:**
-    - TipTap instance
-    - Size Option (Full/Mini)
-    - Media Embedding (Full only)
-- **File Field:**
-    - Any file type upload
-    - Preview & Metadata
-- **Field Conditional Logic:**
-    - Show/Hide based on other fields
-    - Simple conditions (equals, not equals)
-
-**Removed (YAGNI):**
-
-- ❌ Bi-Directional Relationships → v2.0 (too complex)
-- ❌ Unlimited Repeater Depth → Max 5 levels (performance)
-- ❌ JSON Schema Validation → v2.0
-
-#### Use Cases
-
-- 📁 Portfolio Websites (Project Fields: Screenshots, Tech Stack, Live URL)
-- 🏨 Directories (Hotels, Restaurants: Custom repeater fields)
-- 🎬 Event-Sites (Event Fields: Date, Location, Registration forms)
-- 📚 Documentation (Code Examples, API References)
-
-#### Why Plugin?
-
-Core hat basic fields (Text, Number, Date, Boolean). Advanced field types sind für spezielle Use Cases (Portfolios, Verzeichnisse, komplexe Content-Strukturen).
-
-**Note:** Specialized field types like Address Fields (Street, City, ZIP, Country) and Google Maps Integration are available as separate community plugins to keep this plugin focused.
-
----
-
-### 3. Multi-Language Plugin
+### 2. Multi-Language Plugin
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.1.0
@@ -204,7 +145,7 @@ Nicht jede Website braucht mehrsprachige Inhalte. Core hat Admin Panel i18n (DE/
 
 ---
 
-### 4. SEO Pro Plugin
+### 3. SEO Pro Plugin
 
 **Version:** 1.0.0
 **Requires:** PineCMS >= 1.2.0
@@ -313,8 +254,9 @@ Die Community kann eigene Plugins entwickeln und teilen:
 
 **Potential Community Plugins:**
 
-- 👍 Voting System Plugin (Upvote/Downvote for Posts & Comments, Reddit/HackerNews-style)
+- 📁 **Custom Fields Pro** (Repeater, Gallery, Relationships, JSON, Color Picker, File Upload, Conditional Logic)
 - 📍 Address & Location Plugin (Address Fields, Google Maps, Geocoding)
+- 👍 Voting System Plugin (Upvote/Downvote for Posts & Comments, Reddit/HackerNews-style)
 - 🌐 Advanced Multi-Language (DeepL Translation, Language Detection)
 - 🎨 Advanced Page Builder (Visual Drag & Drop Layouts)
 - 📊 Advanced Analytics (Heatmaps, Session Recording, A/B Testing)
@@ -329,29 +271,28 @@ Die Community kann eigene Plugins entwickeln und teilen:
 
 ## 📊 Plugin Summary
 
-| Plugin                | Features | Requires | Status  |
-| --------------------- | -------- | -------- | ------- |
-| **Newsletter**        | ~6       | v1.1.0+  | Geplant |
-| **Custom Fields Pro** | ~7       | v1.1.0+  | Geplant |
-| **Multi-Language**    | ~8       | v1.1.0+  | Geplant |
-| **SEO Pro**           | ~3       | v1.2.0+  | Geplant |
-| **Total**             | **~24**  | -        | -       |
+| Plugin             | Features | Requires | Status  |
+| ------------------ | -------- | -------- | ------- |
+| **Newsletter**     | ~6       | v1.1.0+  | Geplant |
+| **Multi-Language** | ~8       | v1.1.0+  | Geplant |
+| **SEO Pro**        | ~3       | v1.1.0+  | Geplant |
+| **Total**          | **~17**  | -        | -       |
 
-**Software Engineering Improvements (2025-11-06):**
+**Software Engineering Improvements (2025-11-07):**
 
-- **Removed 4 Complete Plugins (YAGNI):**
+- **Removed 5 Complete Plugins (YAGNI):**
+    - ❌ **Custom Fields Pro** (~7 features) → **Community Plugin** (not essential for 80% of users)
     - ❌ Webhooks (~11 features) → Over-engineered, v2.0
     - ❌ Two-Factor Auth (~5 features) → Core security sufficient, v2.0
     - ❌ Form Builder (~12 features) → Too complex, v2.0
     - ❌ Workflow (~6 features) → **Moved to Core v1.1.0** (essential for teams)
 - **Plugin Feature Cleanup (YAGNI/KISS):**
     - Newsletter: Bounce Handling → v2.0, Added Signup Widget
-    - Custom Fields Pro: Unlimited depth → Max 5, Bi-Directional → v2.0, Added Conditional Logic
     - Multi-Language: Added RTL Support (critical)
     - SEO Pro: 7 Schema → 3 Schema, SEO Analysis → v2.0
 - Fixed 1 DRY violation (merged Rich Text + WYSIWYG)
 - Eliminated deprecated features (AMP Support)
-- **Result:** 8 Plugins → 4 Plugins, ~60 → ~24 Features (60% reduction)
+- **Result:** 8 Plugins → 3 Official Plugins, ~60 → ~17 Features (72% reduction)
 
 ---
 
