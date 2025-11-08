@@ -164,9 +164,17 @@ temp/
 *.old
 *.orig
 
-# Claude Code Hook Logs
-.claude/.edit-log.json
+###############################################################################
+# Claude Code - AI Development Assistant
+###############################################################################
+# Personal Settings & Logs (DO NOT COMMIT)
 .claude/settings.local.json
+.claude/.edit-log.json
+.claude/.hook-error.log
+.claude/*.log
+
+# Personal Instructions (Team instructions go in CLAUDE.md, which IS committed)
+CLAUDE.local.md
 
 ###############################################################################
 # IMPORTANT: Lock Files MUST BE COMMITTED
