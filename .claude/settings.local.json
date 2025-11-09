@@ -102,7 +102,14 @@
       "WebFetch(domain:www.reddit.com)",
       "WebFetch(domain:code.claude.com)",
       "mcp__filesystem__directory_tree",
-      "Skill(superpowers:writing-plans)"
+      "Skill(superpowers:writing-plans)",
+      "Bash(vendor/bin/phpstan:*)",
+      "Bash(test:*)",
+      "mcp__laravel-boost__tinker",
+      "Bash(vendor/bin/phpunit:*)",
+      "Bash(kill:*)",
+      "Bash(php -d variables_order=EGPCS artisan test:*)",
+      "Bash(./vendor/bin/phpstan analyse:*)"
     ],
     "deny": [],
     "ask": []
