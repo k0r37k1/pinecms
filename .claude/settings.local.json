@@ -100,7 +100,9 @@
       "Bash(open:*)",
       "Bash(curl:*)",
       "WebFetch(domain:www.reddit.com)",
-      "WebFetch(domain:code.claude.com)"
+      "WebFetch(domain:code.claude.com)",
+      "mcp__filesystem__directory_tree",
+      "Skill(superpowers:writing-plans)"
     ],
     "deny": [],
     "ask": []
