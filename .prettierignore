@@ -1,6 +1,10 @@
 # Laravel Boost Guidelines haben spezielle Formatierung
 CLAUDE.md
 
+# Task documentation (auto-generated, not code)
+tasks/**/*.md
+docs/plans/*.md
+
 # Build artifacts
 public/build
 public/hot
