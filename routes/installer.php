@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['api'])->group(function (): void {
     Route::get('/requirements', [RequirementsController::class, 'check'])->name('installer.requirements.check');
+    Route::post('/environment', [EnvironmentController::class, 'generate'])->name('installer.environment.generate');
 });

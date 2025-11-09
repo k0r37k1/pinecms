@@ -64,6 +64,7 @@ smalot
 
 # PHP Extensions & Functions
 ctype
+phpredis
 strtolower
 strtoupper
 uniqid

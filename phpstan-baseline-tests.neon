@@ -1,6 +1,36 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Class Tests\\Feature\\Installer\\EnvironmentGenerationTest has an uninitialized property \$envPath\. Give it default value or assign it in the constructor\.$#'
+			identifier: property.uninitialized
+			count: 1
+			path: tests/Feature/Installer/EnvironmentGenerationTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertEquals\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Feature/Installer/EnvironmentGenerationTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertMatchesRegularExpression\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Feature/Installer/EnvironmentGenerationTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringContainsString\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 18
+			path: tests/Feature/Installer/EnvironmentGenerationTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertTrue\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 3
+			path: tests/Feature/Installer/EnvironmentGenerationTest.php
+
+		-
 			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\)\.$#'
 			identifier: staticMethod.dynamicCall
 			count: 10
@@ -65,6 +95,66 @@ parameters:
 			identifier: staticMethod.dynamicCall
 			count: 2
 			path: tests/Feature/Installer/RequirementsEndpointTest.php
+
+		-
+			message: '#^Class Tests\\Unit\\Services\\Installer\\EnvironmentGeneratorTest has an uninitialized property \$generator\. Give it default value or assign it in the constructor\.$#'
+			identifier: property.uninitialized
+			count: 1
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 4
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertEquals\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 4
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertFalse\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 6
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertNotEquals\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringContainsString\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 16
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringEndsWith\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 2
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringStartsWith\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertTrue\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 2
+			path: tests/Unit/Services/Installer/EnvironmentGeneratorTest.php
 
 		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, string\> will always evaluate to true\.$#'
