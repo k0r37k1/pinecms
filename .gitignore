@@ -165,6 +165,13 @@ temp/
 *.orig
 
 ###############################################################################
+# Planning & Documentation (Working Drafts)
+###############################################################################
+# Task planning and drafts (docs/ contains final documentation)
+/docs/plans/
+/tasks/
+
+###############################################################################
 # Claude Code - AI Development Assistant
 ###############################################################################
 # Personal Settings & Logs (DO NOT COMMIT)

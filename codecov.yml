@@ -1,3 +1,7 @@
+# Codecov Configuration for PineCMS
+# Documentation: https://docs.codecov.com/docs/codecov-yaml
+# Last Updated: 2025-11-09
+
 codecov:
   require_ci_to_pass: yes
   notify:
@@ -7,20 +11,22 @@ codecov:
 coverage:
   precision: 2
   round: down
-  range: 50..80
+  range: "70...100"  # Red at 70%, green at 100%
+
   status:
     project:
       default:
         target: 80%
-        threshold: 5%
+        threshold: 2%  # Stricter threshold
         base: auto
         if_ci_failed: error
         informational: false
         only_pulls: false
+
     patch:
       default:
-        target: 80%
-        threshold: 5%
+        target: 85%  # New code requires higher coverage
+        threshold: 1%  # Very strict for new code
         base: auto
         if_ci_failed: error
         informational: false
@@ -42,33 +48,74 @@ comment:
   require_head: yes
 
 ignore:
+  # Tests & Test Helpers
   - "tests/**/*"
-  - "app/Exceptions/**/*"
-  - "app/helpers.php"
+  - "**/*.spec.js"
+  - "**/*.test.js"
+  - "**/*.spec.ts"
+  - "**/*.test.ts"
+
+  # Laravel Bootstrap & Framework
   - "bootstrap/**/*"
-  - "config/**/*"
-  - "public/**/*"
-  - "resources/**/*"
-  - "routes/**/*"
+  - "config/**/*"  # Config files are hard to test
   - "storage/**/*"
+  - "public/**/*"
+
+  # Views (Blade templates - hard to test)
+  - "resources/views/**/*"
+
+  # Database
+  - "database/factories/**/*"
+  - "database/seeders/**/*"
+
+  # Vendor
   - "vendor/**/*"
   - "node_modules/**/*"
 
+  # Exception handlers (hard to test meaningfully)
+  - "app/Exceptions/**/*"
+
+  # Build Output
+  - "coverage/**/*"
+  - "dist/**/*"
+
+  # Language Files
+  - "lang/**/*"
+  - "resources/lang/**/*"
+
 flags:
-  # PHP Coverage Flags
-  php-unit:
+  # PHP Backend Coverage
+  php:
     paths:
       - app/
+      - routes/
     carryforward: true
-  php-feature:
-    paths:
-      - app/
-    carryforward: true
-  # JavaScript/TypeScript Coverage Flags
+    # Require 80% coverage for PHP code
+    target: 80%
+
+  # JavaScript Frontend Coverage
   javascript:
     paths:
       - resources/js/
     carryforward: true
+    # Require 75% coverage for JS code (frontend is harder to test)
+    target: 75%
 
+# Flag Management (auto-carryforward for incomplete builds)
+flag_management:
+  default_rules:
+    carryforward: true
+    statuses:
+      - type: project
+        target: 80%
+      - type: patch
+        target: 85%
+
+# GitHub Checks Configuration
 github_checks:
   annotations: true
+
+# Codecov AI Features (NEW 2024/2025)
+ai:
+  enabled: true
+  # Let Codecov AI suggest coverage improvements
