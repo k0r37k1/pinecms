@@ -61,3 +61,34 @@ utc
 
 # PDF Processing
 smalot
+
+# PHP Extensions & Functions
+ctype
+strtolower
+strtoupper
+uniqid
+
+# Web Server Technologies
+fastcgi
+apachectl
+mmap
+
+# Database & Model Conventions
+mediables
+
+# Password/Security
+ssw
+
+# GitHub Actions
+shivammathur
+
+# General Technical Terms
+xception
+rfc
+actuals
+unpublishing
+wysiwyg
+mediable
+sebastian
+tring
+ttributes
