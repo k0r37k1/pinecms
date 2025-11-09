@@ -2,8 +2,10 @@
 
 **Status**: ✅ Complete and Ready for Implementation
 **Generated**: 2025-11-09
-**Total Tasks**: 142 across 18 epics
+**Total Tasks**: 140 across 18 epics (2 removed: WordPress/Ghost import)
 **Estimated Duration**: 15-18 weeks
+
+**Note:** Focus on core CMS - WordPress/Ghost import moved to future version
 
 ---
 
@@ -19,9 +21,13 @@
 
 ### Statistics
 - **18 Epics** - Complete organizational structure
-- **142 Tasks** - Fully scaffolded with implementation blueprints
+- **140 Tasks** - Fully scaffolded (2 removed: WordPress/Ghost import)
 - **Templates** - Epic and task templates in `_TEMPLATES/`
 - **Documentation** - Comprehensive reference guides
+
+**Removed Tasks:**
+- 078: WordPress Importer → Moved to future version
+- 079: Ghost Importer → Moved to future version
 
 ### Task Detail Levels
 
@@ -54,7 +60,7 @@
 | **007** - Theme System & Frontend | 054-061 | `007-theme-system-frontend/` | 📋 Ready |
 | **008** - Categories & Tags | 062-067 | `008-categories-tags/` | 📋 Ready |
 | **009** - Admin Panel & Settings | 068-077 | `009-admin-panel-settings/` | 📋 Ready |
-| **010** - Import/Export & SEO | 078-090 | `010-import-export-seo/` | 📋 Ready |
+| **010** - Import/Export & SEO | 080-090 | `010-import-export-seo/` | 📋 Ready (078-079 removed) |
 
 ### v1.1.0 Features (Weeks 12-14) - Plugin System
 
@@ -231,14 +237,18 @@ tags: [tag1, tag2, week-X]
 ## 🎯 Success Criteria
 
 ### v1.0.0 MVP Release
-- [ ] All 90 tasks (001-090) completed
+- [ ] All 88 tasks (001-090, excluding 078-079) completed
 - [ ] Web installer functional (< 5 min setup)
-- [ ] WordPress/Ghost import working
+- [ ] Markdown import working (migration path exists)
+- [ ] JSON/Markdown export working (backups, portability)
+- [ ] SEO complete (Sitemap, RSS, Meta Tags)
 - [ ] Performance targets met (< 1s page load)
 - [ ] PHPStan Level 8 passing
 - [ ] Test coverage > 80%
 - [ ] WCAG 2.1 AA compliant
 - [ ] Tested on 3+ shared hosting providers
+
+**Note:** WordPress/Ghost import moved to future version (focus on core CMS)
 
 ### v1.1.0 Release
 - [ ] All 30 tasks (091-120) completed
@@ -310,12 +320,14 @@ Update `000-OVERVIEW.md` after:
 
 ## 🎉 Project Completion
 
-When all 142 tasks are complete:
+When all 140 tasks are complete:
 - v1.0.0, v1.1.0, v1.2.0 successfully deployed
 - All 3 official plugins released
 - Documentation complete
 - Community ready (GitHub, demo site)
 - Celebrate! 🎊
+
+**Note:** 2 tasks removed (WordPress/Ghost import) - focus on core CMS first
 
 ---
 

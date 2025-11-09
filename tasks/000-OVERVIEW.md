@@ -3,7 +3,7 @@
 **Project**: PineCMS - Privacy-First CMS
 **Repository**: https://github.com/k0r37k1/pinecms
 **Timeline**: 15-18 Weeks (v1.0.0 → v1.2.0)
-**Total Tasks**: ~130 tasks across 18 epics
+**Total Tasks**: 140 tasks across 18 epics (2 removed: WordPress/Ghost import)
 **Last Updated**: 2025-11-09
 
 ---
@@ -12,8 +12,8 @@
 
 ### Overall Progress
 - **Total Epics**: 18
-- **Total Tasks**: ~130
-- **Completed**: 0/130 (0%)
+- **Total Tasks**: 140 (2 removed: WordPress/Ghost import moved to future)
+- **Completed**: 0/140 (0%)
 - **In Progress**: 0
 - **Blocked**: 0
 
@@ -27,7 +27,7 @@
 ## 🎯 Version Milestones
 
 ### v1.0.0 MVP (Weeks 1-11) - Core Blogging CMS
-**Status**: 📋 Planned | **Progress**: 0/90 tasks (0%)
+**Status**: 📋 Planned | **Progress**: 0/88 tasks (0%)
 
 | Epic | Title | Week | Tasks | Status | Progress |
 |------|-------|------|-------|--------|----------|
@@ -40,15 +40,18 @@
 | 007 | Theme System & Frontend | 6 | 8 | pending | 0/8 (0%) |
 | 008 | Categories & Tags | 7 | 6 | pending | 0/6 (0%) |
 | 009 | Admin Panel & Settings | 8 | 10 | pending | 0/10 (0%) |
-| 010 | Import/Export & SEO | 9-10 | 13 | pending | 0/13 (0%) |
+| 010 | Import/Export & SEO | 9-10 | 11 | pending | 0/11 (0%) |
 
 **Features**: ~95 core features
-**Goal**: Lean, fast blogging CMS with WordPress/Ghost import
+**Goal**: Lean, fast blogging CMS with migration path from other platforms
 **Success Criteria**:
 - ✅ Page load < 1 second on shared hosting
-- ✅ Import from WordPress/Ghost functional
+- ✅ Markdown import functional (migration path exists)
+- ✅ JSON/Markdown export for backups and portability
 - ✅ Zero critical bugs
 - ✅ WCAG 2.1 AA compliant
+
+**Note**: WordPress/Ghost import moved to future version (focus on core CMS)
 
 ---
 
@@ -142,10 +145,12 @@
 
 ### By Version
 
-- **v1.0.0 MVP**: Tasks 001-090 (Epics 001-010)
+- **v1.0.0 MVP**: Tasks 001-090 (Epics 001-010, excluding removed 078-079)
 - **v1.1.0**: Tasks 091-120 (Epics 011-014)
 - **v1.2.0**: Tasks 121-130 (Epics 015-016)
 - **Plugins**: Tasks 131-142 (Epics 017-018)
+
+**Note:** Tasks 078-079 (WordPress/Ghost import) removed from MVP - focus on core CMS
 
 ### By Epic
 
@@ -185,12 +190,16 @@
 - **Plugins**: +12 tasks, parallel weeks 10-13
 
 ### Release Criteria (v1.0.0)
-- [ ] 90 MVP tasks completed
+- [ ] 88 MVP tasks completed (excluding removed WordPress/Ghost import)
 - [ ] Web installer functional (< 5 min setup)
-- [ ] Import/Export working (WordPress, Ghost, Markdown)
+- [ ] Markdown import working (migration path exists)
+- [ ] JSON/Markdown export working (backups, portability)
+- [ ] SEO features complete (Sitemap, RSS, Meta Tags)
 - [ ] All quality gates passing
 - [ ] Documentation complete
 - [ ] Tested on 3+ shared hosting providers
+
+**Note:** WordPress/Ghost import moved to future version
 
 ---
 
