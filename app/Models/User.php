@@ -64,7 +64,7 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email'])
+            ->logOnly(['name', 'email', 'status', 'bio'])
             ->logOnlyDirty();
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive', 'suspended'])
                 ->default('active')
                 ->after('password');
-            $table->string('avatar')->nullable()->after('status');
+            $table->string('avatar')->nullable()->after('status'); // File path (255 chars max)
             $table->text('bio')->nullable()->after('avatar');
 
             $table->index('status');
