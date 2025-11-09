@@ -37,6 +37,7 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 **File**: `database/migrations/2025_01_01_000010_create_posts_table.php`
 
 **Key Fields**:
+
 - id, uuid (unique, indexed)
 - title (string, 255)
 - slug (string, unique, indexed)
@@ -69,6 +70,7 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 **File**: `database/migrations/2025_01_01_000012_create_revisions_table.php`
 
 **Key Fields**:
+
 - id
 - revisionable_type (morphs)
 - revisionable_id
@@ -83,10 +85,12 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 ### Step 4: Create Post and Page Models
 
 **Files**:
+
 - `app/Models/Post.php`
 - `app/Models/Page.php`
 
 **Features**:
+
 - Eloquent model with flat-file trait
 - Relationships: belongsTo(User, Category), belongsToMany(Tag), morphMany(Revision)
 - Scopes: published, draft, scheduled, pinned, featured
@@ -99,6 +103,7 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 **File**: `app/Services/Content/ContentSyncService.php`
 
 **Methods**:
+
 - saveToFlatFile(Post|Page $model, string $content)
 - loadFromFlatFile(Post|Page $model): string
 - syncToDatabase(string $filePath): void
@@ -107,42 +112,48 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Models/PostTest.php`
-  - Test relationships
-  - Test scopes (published, draft)
-  - Test slug generation
-  - Test reading time calculation
-  - Test lock version increment
+    - Test relationships
+    - Test scopes (published, draft)
+    - Test slug generation
+    - Test reading time calculation
+    - Test lock version increment
 
 - `tests/Unit/Services/ContentSyncServiceTest.php`
-  - Test flat-file write
-  - Test flat-file read
-  - Test sync integrity
+    - Test flat-file write
+    - Test flat-file read
+    - Test sync integrity
 
 **Feature Tests**:
+
 - `tests/Feature/Database/ContentSchemaTest.php`
-  - Test posts/pages tables exist
-  - Test foreign keys
-  - Test soft deletes
-  - Test unique constraints
+    - Test posts/pages tables exist
+    - Test foreign keys
+    - Test soft deletes
+    - Test unique constraints
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.2 (Content Management)
 - **Architecture**: `docs/prd/04-ARCHITECTURE.md` Section 3 (Hybrid Storage)
 
 **Architecture:**
+
 - **Pattern**: Hybrid Storage (SQLite + Flat-File)
 - **Storage**: `storage/content/posts/YYYY/slug.md`
 - **Events**: PostCreated, PostUpdated, PostDeleted
 
 **Quality Requirements:**
+
 - **Security**: Sanitized slugs, SQL injection prevention
 - **Performance**: Indexed queries < 100ms
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Next**: 011-taxonomy-schema
 - **Blocks**: 015-post-crud (Epic 003)
 - **Depends On**: 009-users-roles-schema
@@ -150,23 +161,27 @@ Implement hybrid storage schema for posts and pages (SQLite metadata + flat-file
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (12+ test cases)
 - [ ] Hybrid storage sync tested
 - [ ] Migration rollback works
 - [ ] Factories generate valid posts
 
 ### Security
+
 - [ ] Slug sanitization
 - [ ] SQL injection prevention (Eloquent ORM)
 - [ ] Soft deletes working
 
 ### Documentation
+
 - [ ] Hybrid storage approach documented
 - [ ] Sync service logic explained
 - [ ] Model relationships documented

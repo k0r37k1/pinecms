@@ -36,6 +36,7 @@ Design media library database schema for tracking uploaded files (images, docume
 **File**: `database/migrations/2025_01_01_000030_create_media_table.php`
 
 **Key Fields**:
+
 - id, uuid (unique, indexed)
 - user_id (uploader, foreign key)
 - filename (string, original filename)
@@ -60,17 +61,20 @@ Design media library database schema for tracking uploaded files (images, docume
 **File**: `app/Models/Media.php`
 
 **Relationships**:
+
 - uploader: belongsTo(User, 'user_id')
 - posts: belongsToMany(Post) via mediables pivot
 - pages: belongsToMany(Page) via mediables pivot
 
 **Scopes**:
+
 - images: where mime_type like 'image/%'
 - documents: where mime_type in [pdf, doc, docx]
 - videos: where mime_type like 'video/%'
 - recent: orderBy created_at desc
 
 **Accessors**:
+
 - human_file_size: Convert bytes to KB/MB/GB
 - thumbnail_url: Get specific thumbnail size
 
@@ -85,6 +89,7 @@ Design media library database schema for tracking uploaded files (images, docume
 **File**: `app/Models/Traits/HasMedia.php`
 
 **Methods for Post/Page models**:
+
 - attachMedia(Media $media)
 - detachMedia(Media $media)
 - syncMedia(array $mediaIds)
@@ -94,37 +99,43 @@ Design media library database schema for tracking uploaded files (images, docume
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Models/MediaTest.php`
-  - Test relationships
-  - Test scopes (images, documents, videos)
-  - Test accessors (human_file_size)
-  - Test file hash uniqueness
-  - Test focal point validation (0-1 range)
+    - Test relationships
+    - Test scopes (images, documents, videos)
+    - Test accessors (human_file_size)
+    - Test file hash uniqueness
+    - Test focal point validation (0-1 range)
 
 **Feature Tests**:
+
 - `tests/Feature/Database/MediaSchemaTest.php`
-  - Test media table structure
-  - Test polymorphic relationships
-  - Test soft deletes
-  - Test unique file_hash constraint
+    - Test media table structure
+    - Test polymorphic relationships
+    - Test soft deletes
+    - Test unique file_hash constraint
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.3 (Media Library)
 - **Timeline**: Week 3-4 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Polymorphic relationships
 - **Storage**: File system for binaries, SQLite for metadata
 - **Security**: EXIF stripping, file validation
 
 **Quality Requirements:**
+
 - **Security**: File hash validation, MIME type checking
 - **Performance**: Indexed queries, lazy loading
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Next**: 013-settings-schema
 - **Blocks**: 035-media-upload (Epic 005)
 - **Depends On**: 009-users-roles-schema
@@ -132,21 +143,25 @@ Design media library database schema for tracking uploaded files (images, docume
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 
 ### Testing
+
 - [ ] Unit tests passing (10+ test cases)
 - [ ] Polymorphic relationships tested
 - [ ] Migration rollback works
 
 ### Security
+
 - [ ] File hash uniqueness enforced
 - [ ] MIME type validation
 - [ ] Focal point range validation
 
 ### Documentation
+
 - [ ] Polymorphic usage explained
 - [ ] Thumbnail generation strategy noted
 - [ ] Storage paths documented

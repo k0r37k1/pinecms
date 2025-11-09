@@ -35,6 +35,7 @@ Create comprehensive Form Request classes for post and page validation with rule
 **File**: `app/Http/Requests/StorePostRequest.php`
 
 **Validation Rules**:
+
 ```php
 public function rules(): array
 {
@@ -56,6 +57,7 @@ public function rules(): array
 ```
 
 **Authorization**:
+
 ```php
 public function authorize(): bool
 {
@@ -64,6 +66,7 @@ public function authorize(): bool
 ```
 
 **Custom Messages**:
+
 ```php
 public function messages(): array
 {
@@ -85,11 +88,13 @@ public function messages(): array
 **File**: `app/Http/Requests/UpdatePostRequest.php`
 
 **Differences from Store**:
+
 - Slug unique rule excludes current post: `unique:posts,slug,{$this->post->id}`
 - lock_version required for concurrent editing: `required|integer`
 - All fields nullable except lock_version
 
 **Validation Rules**:
+
 ```php
 public function rules(): array
 {
@@ -116,11 +121,13 @@ public function rules(): array
 **File**: `app/Http/Requests/StorePageRequest.php`
 
 **Additional Fields**:
+
 - parent_id (nullable, exists:pages,id)
 - template (required, in:default,full-width,sidebar)
 - order (nullable, integer)
 
 **Validation Rules**:
+
 ```php
 public function rules(): array
 {
@@ -146,6 +153,7 @@ public function rules(): array
 **Purpose**: Prevent page from being its own parent (circular reference)
 
 **Implementation**:
+
 ```php
 public function passes($attribute, $value)
 {
@@ -164,11 +172,13 @@ public function passes($attribute, $value)
 **Middleware**: `app/Http/Middleware/SanitizeInput.php`
 
 **Sanitization**:
+
 - Strip tags from title (allow only plain text)
 - Allow HTML in content (TipTap editor handles this)
 - Sanitize slug (already validated by regex)
 
 **Implementation**:
+
 ```php
 protected function sanitize($input)
 {
@@ -185,6 +195,7 @@ protected function sanitize($input)
 **File**: `app/Http/Requests/UpdatePageRequest.php`
 
 **Similar to UpdatePostRequest** but includes:
+
 - Parent-child validation
 - Template validation
 - Order validation
@@ -192,42 +203,48 @@ protected function sanitize($input)
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Requests/StorePostRequestTest.php`
-  - Test required fields
-  - Test max lengths
-  - Test slug format validation
-  - Test unique slug
-  - Test status enum
-  - Test date validations
+    - Test required fields
+    - Test max lengths
+    - Test slug format validation
+    - Test unique slug
+    - Test status enum
+    - Test date validations
 
 - `tests/Unit/Requests/UpdatePostRequestTest.php`
-  - Test lock_version required
-  - Test unique slug excludes current post
+    - Test lock_version required
+    - Test unique slug excludes current post
 
 **Feature Tests**:
+
 - `tests/Feature/Validation/PostValidationTest.php`
-  - Test store validation errors returned
-  - Test update validation errors returned
-  - Test custom messages displayed
-  - Test authorization checked
+    - Test store validation errors returned
+    - Test update validation errors returned
+    - Test custom messages displayed
+    - Test authorization checked
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.12 (Validation)
 - **Timeline**: Week 5 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Laravel Form Requests
 - **Security**: Input sanitization, XSS prevention
 - **Authorization**: Policies integrated
 
 **Quality Requirements:**
+
 - **Security**: All inputs validated
 - **UX**: Clear error messages
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 025-post-page-controllers
 - **Completes**: Epic 003 (Content Management Backend)
 - **Blocks**: Epic 004 (TipTap Editor)
@@ -235,23 +252,27 @@ protected function sanitize($input)
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (20+ test cases)
 - [ ] Feature tests passing (8+ scenarios)
 - [ ] All validation rules tested
 
 ### Security
+
 - [ ] Input sanitization implemented
 - [ ] XSS prevention (strip tags)
 - [ ] SQL injection prevented (Laravel ORM)
 - [ ] Authorization checked
 
 ### Documentation
+
 - [ ] Validation rules documented
 - [ ] Custom messages documented
 - [ ] Error responses documented

@@ -463,23 +463,25 @@ Route::prefix('installer')->middleware('web')->group(function () {
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/DatabaseInitializerTest.php`
-  - Test `getDatabasePath()` handles absolute and relative paths
-  - Test `createDatabase()` creates file with correct permissions
-  - Test `configurePragmas()` sets WAL mode and other settings
-  - Test `validateConnection()` detects invalid database
-  - Test `isWalEnabled()` correctly detects WAL mode
-  - Test `handleExistingDatabase()` doesn't overwrite
-  - Test `formatBytes()` with various sizes
-  - Test error handling for read-only directories
+    - Test `getDatabasePath()` handles absolute and relative paths
+    - Test `createDatabase()` creates file with correct permissions
+    - Test `configurePragmas()` sets WAL mode and other settings
+    - Test `validateConnection()` detects invalid database
+    - Test `isWalEnabled()` correctly detects WAL mode
+    - Test `handleExistingDatabase()` doesn't overwrite
+    - Test `formatBytes()` with various sizes
+    - Test error handling for read-only directories
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/DatabaseInitializationTest.php`
-  - Test POST `/installer/database/initialize` creates database
-  - Test GET `/installer/database/info` returns correct data
-  - Test POST `/installer/database/migrate` runs migrations
-  - Test initialization fails gracefully with invalid path
-  - Test existing database is not overwritten
+    - Test POST `/installer/database/initialize` creates database
+    - Test GET `/installer/database/info` returns correct data
+    - Test POST `/installer/database/migrate` runs migrations
+    - Test initialization fails gracefully with invalid path
+    - Test existing database is not overwritten
 
 **Example Unit Test:**
 
@@ -599,22 +601,26 @@ class DatabaseInitializerTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (SQLite Database Creation)
 - **Architecture**: `docs/prd/04-ARCHITECTURE.md` Section 3 (Hybrid Storage Model)
 - **Timeline**: Week 1-2 (v1.0.0)
 - **Success Criteria**: Database created with WAL mode, < 1 second initialization
 
 **Architecture:**
+
 - **Database**: SQLite with WAL mode (`docs/prd/07-TECHNICAL-SPECIFICATIONS.md` Section 2)
 - **Performance**: PRAGMA optimizations for shared hosting
 - **Storage**: File-based database in `database/` directory
 
 **Quality Requirements:**
+
 - **Security**: File permissions 0600, directory traversal prevention
 - **Performance**: WAL mode for concurrent reads, optimized PRAGMA settings
 - **Testing**: Unit tests for all initialization logic, Feature tests for API endpoints
 
 **Related Tasks:**
+
 - **Next**: 004-admin-user-wizard
 - **Blocks**: 004-admin-user-wizard (needs database for user creation)
 - **Depends On**: 002-environment-generator (needs .env for DB path)
@@ -622,6 +628,7 @@ class DatabaseInitializerTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes (`composer analyse`)
 - [ ] Laravel Pint formatted (`vendor/bin/pint`)
 - [ ] `declare(strict_types=1);` in all PHP files
@@ -629,23 +636,27 @@ class DatabaseInitializerTest extends TestCase
 - [ ] No hardcoded database paths
 
 ### Testing
+
 - [ ] Unit tests written and passing (8+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Test coverage > 80%
 - [ ] Edge cases covered (existing DB, read-only directories, :memory: database)
 
 ### Security
+
 - [ ] File permissions set to 0600 (owner read/write only)
 - [ ] Directory traversal prevention (path validation)
 - [ ] No SQL injection (PDO prepared statements)
 - [ ] Error messages don't expose sensitive paths
 
 ### Performance
+
 - [ ] WAL mode enabled for better concurrency
 - [ ] PRAGMA settings optimized (cache_size, synchronous, mmap_size)
 - [ ] Database initialization < 1 second
 
 ### Documentation
+
 - [ ] PHPDoc comments added with detailed array shapes
 - [ ] PRAGMA settings documented with rationale
 - [ ] WAL mode benefits explained

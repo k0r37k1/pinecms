@@ -516,26 +516,29 @@ return [
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/PostInstallCleanupTest.php`
-  - Test `updateEnvFile()` updates PINECMS_INSTALLED flag
-  - Test `createLockFile()` creates .installed with correct data
-  - Test `isInstalled()` detects installation status
-  - Test `getInstallationInfo()` reads lock file data
-  - Test `unlock()` only works in local/testing environments
-  - Test lock file has read-only permissions (0444)
+    - Test `updateEnvFile()` updates PINECMS_INSTALLED flag
+    - Test `createLockFile()` creates .installed with correct data
+    - Test `isInstalled()` detects installation status
+    - Test `getInstallationInfo()` reads lock file data
+    - Test `unlock()` only works in local/testing environments
+    - Test lock file has read-only permissions (0444)
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/PostInstallCleanupTest.php`
-  - Test POST `/installer/cleanup` completes installation
-  - Test GET `/installer/status` returns installation info
-  - Test middleware blocks installer routes after installation
-  - Test POST `/installer/unlock` works in testing environment
-  - Test 409 status when cleanup runs on installed system
+    - Test POST `/installer/cleanup` completes installation
+    - Test GET `/installer/status` returns installation info
+    - Test middleware blocks installer routes after installation
+    - Test POST `/installer/unlock` works in testing environment
+    - Test 409 status when cleanup runs on installed system
 
 **Middleware Tests:**
+
 - `tests/Unit/Http/Middleware/PreventInstalledAccessTest.php`
-  - Test middleware redirects to admin login when installed
-  - Test middleware allows access when not installed
+    - Test middleware redirects to admin login when installed
+    - Test middleware allows access when not installed
 
 **Example Unit Test:**
 
@@ -662,20 +665,24 @@ class PostInstallCleanupTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Post-Install Cleanup)
 - **Security**: Installer lock prevents re-installation attacks
 - **Timeline**: Week 2 (v1.0.0)
 - **Success Criteria**: Installer locked, redirect to admin login
 
 **Architecture:**
+
 - **Security**: OWASP A05 (Security Misconfiguration) prevention
 - **Pattern**: Service Layer, Middleware
 
 **Quality Requirements:**
+
 - **Security**: Lock file prevents re-installation, middleware blocks access
 - **Testing**: Unit tests for all cleanup logic, middleware tests
 
 **Related Tasks:**
+
 - **Next**: 007-cron-detection (optional scheduler setup)
 - **Blocks**: Installation completion
 - **Depends On**: 005-web-server-config (cleanup is final step)
@@ -683,24 +690,28 @@ class PostInstallCleanupTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all PHP files
 - [ ] PHPDoc blocks with array shapes
 
 ### Testing
+
 - [ ] Unit tests written and passing (6+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Middleware tests written
 - [ ] Test coverage > 80%
 
 ### Security
+
 - [ ] Lock file created with read-only permissions (0444)
 - [ ] Middleware blocks installer access after installation
 - [ ] Unlock only works in local/testing environments
 - [ ] .env updated to mark installation complete
 
 ### Documentation
+
 - [ ] PHPDoc comments added
 - [ ] Lock file format documented
 - [ ] Unlock procedure documented (for developers)

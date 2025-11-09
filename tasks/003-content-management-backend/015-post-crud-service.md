@@ -36,6 +36,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 **File**: `app/Repositories/PostRepository.php`
 
 **Methods**:
+
 - findById(int $id): ?Post
 - findBySlug(string $slug): ?Post
 - create(array $data, string $content): Post
@@ -44,6 +45,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 - paginate(int $perPage, array $filters): LengthAwarePaginator
 
 **Hybrid Storage Logic**:
+
 - Save metadata to SQLite (title, slug, status, timestamps)
 - Save content to flat-file (`storage/content/posts/YYYY/slug.md`)
 - Wrap in database transaction
@@ -54,6 +56,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 **File**: `app/Services/Content/PostService.php`
 
 **Methods**:
+
 - createPost(array $data, string $content): Post
 - updatePost(Post $post, array $data, ?string $content): Post
 - deletePost(Post $post): bool
@@ -63,6 +66,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 - schedulePost(Post $post, Carbon $publishAt, ?Carbon $unpublishAt): bool
 
 **Business Logic**:
+
 - Auto-generate slug from title (Str::slug)
 - Validate slug uniqueness (append -2, -3 if duplicate)
 - Calculate reading time (word count / 200)
@@ -75,6 +79,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 **File**: `app/Services/Content/FlatFileService.php`
 
 **Methods**:
+
 - write(string $path, string $content, array $frontMatter): bool
 - read(string $path): array (returns ['content', 'frontMatter'])
 - delete(string $path): bool
@@ -82,6 +87,7 @@ Implement complete CRUD service and repository for posts with hybrid storage (SQ
 - generatePath(Post $post): string
 
 **Format** (YAML front matter + Markdown):
+
 ```markdown
 ---
 id: 123
@@ -100,11 +106,13 @@ This is the **post body** in Markdown.
 ### Step 4: Implement Event Dispatching
 
 **Files**:
+
 - `app/Events/PostCreated.php`
 - `app/Events/PostUpdated.php`
 - `app/Events/PostDeleted.php`
 
 **Event Properties**:
+
 - public Post $post
 - public User $user (who performed action)
 - public array $changes (for Updated event)
@@ -112,44 +120,50 @@ This is the **post body** in Markdown.
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/PostServiceTest.php`
-  - Test createPost with slug generation
-  - Test updatePost with lock_version increment
-  - Test slug uniqueness handling
-  - Test reading time calculation
-  - Test excerpt generation
+    - Test createPost with slug generation
+    - Test updatePost with lock_version increment
+    - Test slug uniqueness handling
+    - Test reading time calculation
+    - Test excerpt generation
 
 - `tests/Unit/Repositories/PostRepositoryTest.php`
-  - Test hybrid storage save
-  - Test transaction rollback on file failure
-  - Test findBySlug
-  - Test pagination with filters
+    - Test hybrid storage save
+    - Test transaction rollback on file failure
+    - Test findBySlug
+    - Test pagination with filters
 
 **Feature Tests**:
+
 - `tests/Feature/Content/PostCrudTest.php`
-  - Test complete create post flow
-  - Test update post flow
-  - Test delete post (soft delete)
-  - Test duplicate post
-  - Test publish/unpublish
+    - Test complete create post flow
+    - Test update post flow
+    - Test delete post (soft delete)
+    - Test duplicate post
+    - Test publish/unpublish
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.2.2 (Posts CRUD)
 - **Timeline**: Week 4 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Repository Pattern (`docs/prd/04-ARCHITECTURE.md` Section 9)
 - **Storage**: Hybrid (SQLite + Flat-File)
 - **Events**: PostCreated, PostUpdated, PostDeleted
 
 **Quality Requirements:**
+
 - **Security**: Input sanitization, authorization checks
 - **Performance**: Save operation < 200ms
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Next**: 016-page-crud-service
 - **Blocks**: 025-post-controllers
 - **Depends On**: 010-content-schema, 014-factories-seeders
@@ -157,23 +171,27 @@ This is the **post body** in Markdown.
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (15+ test cases)
 - [ ] Feature tests passing (5+ scenarios)
 - [ ] Edge cases covered (duplicate slugs, file write failures)
 - [ ] Transaction rollback tested
 
 ### Security
+
 - [ ] Input sanitization (strip tags from title)
 - [ ] Slug sanitization (no special chars)
 - [ ] File path validation (no directory traversal)
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] Hybrid storage flow explained
 - [ ] Event payloads documented

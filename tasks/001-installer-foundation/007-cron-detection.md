@@ -542,25 +542,28 @@ return [
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/CronDetectorTest.php`
-  - Test `isCronAvailable()` with mocked filesystem
-  - Test `getCronPath()` finds cron binary
-  - Test `generateCronCommand()` generates correct command
-  - Test `setSchedulerMode()` updates .env file
-  - Test `getCurrentMode()` reads from config
+    - Test `isCronAvailable()` with mocked filesystem
+    - Test `getCronPath()` finds cron binary
+    - Test `generateCronCommand()` generates correct command
+    - Test `setSchedulerMode()` updates .env file
+    - Test `getCurrentMode()` reads from config
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/CronDetectionTest.php`
-  - Test GET `/installer/cron/detect` returns detection data
-  - Test POST `/installer/cron/set-mode` updates scheduler mode
-  - Test POST `/installer/cron/test` validates scheduler
-  - Test GET `/installer/cron/mode` returns current mode
+    - Test GET `/installer/cron/detect` returns detection data
+    - Test POST `/installer/cron/set-mode` updates scheduler mode
+    - Test POST `/installer/cron/test` validates scheduler
+    - Test GET `/installer/cron/mode` returns current mode
 
 **Middleware Tests:**
+
 - `tests/Unit/Http/Middleware/RunScheduledTasksTest.php`
-  - Test middleware runs scheduler in visit-triggered mode
-  - Test middleware skips in traditional-cron mode
-  - Test cache lock prevents multiple executions
+    - Test middleware runs scheduler in visit-triggered mode
+    - Test middleware skips in traditional-cron mode
+    - Test cache lock prevents multiple executions
 
 **Example Unit Test:**
 
@@ -660,21 +663,25 @@ class CronDetectorTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Cron-Job Detection)
 - **Architecture**: `docs/prd/04-ARCHITECTURE.md` Section 5.3 (Scheduler Implementation)
 - **Timeline**: Week 2 (v1.0.0)
 - **Success Criteria**: Both scheduler modes work, clear setup instructions
 
 **Architecture:**
+
 - **Visit-Triggered**: Middleware-based (shared hosting compatible)
 - **Traditional Cron**: System cron job (VPS/dedicated servers)
 - **Cache Lock**: Prevents duplicate scheduler runs
 
 **Quality Requirements:**
+
 - **Performance**: Visit-Triggered uses cache lock (minimal overhead)
 - **Testing**: Unit tests for all scheduler logic, middleware tests
 
 **Related Tasks:**
+
 - **Next**: 008-e2e-tests
 - **Blocks**: Scheduled publishing, automated backups
 - **Depends On**: 006-post-install-cleanup (cron setup is post-installation)
@@ -682,18 +689,21 @@ class CronDetectorTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all PHP files
 - [ ] PHPDoc blocks with array shapes
 
 ### Testing
+
 - [ ] Unit tests written and passing (6+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Middleware tests written
 - [ ] Test coverage > 80%
 
 ### Functionality
+
 - [ ] Cron detection works correctly
 - [ ] Visit-Triggered mode runs scheduler via middleware
 - [ ] Traditional Cron mode setup instructions displayed
@@ -701,6 +711,7 @@ class CronDetectorTest extends TestCase
 - [ ] Cache lock prevents duplicate runs
 
 ### Documentation
+
 - [ ] PHPDoc comments added
 - [ ] Scheduler modes explained
 - [ ] Cron command documented

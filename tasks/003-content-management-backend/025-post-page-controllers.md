@@ -35,6 +35,7 @@ Build Inertia.js-powered controllers for posts and pages admin CRUD with complet
 **File**: `app/Http/Controllers/Admin/PostController.php`
 
 **Methods**:
+
 - index(): Response (list posts with filters)
 - create(): Response (show create form)
 - store(StorePostRequest $request): RedirectResponse
@@ -44,6 +45,7 @@ Build Inertia.js-powered controllers for posts and pages admin CRUD with complet
 - destroy(Post $post): RedirectResponse
 
 **Inertia Pages**:
+
 - `Posts/Index.vue` - List with search, filters, bulk actions
 - `Posts/Create.vue` - Create form with TipTap editor
 - `Posts/Edit.vue` - Edit form with revisions, auto-save, concurrent editing
@@ -52,6 +54,7 @@ Build Inertia.js-powered controllers for posts and pages admin CRUD with complet
 ### Step 2: Index Method
 
 **Implementation**:
+
 ```php
 public function index(Request $request): Response
 {
@@ -76,6 +79,7 @@ public function index(Request $request): Response
 ### Step 3: Create Method
 
 **Implementation**:
+
 ```php
 public function create(): Response
 {
@@ -92,6 +96,7 @@ public function create(): Response
 ### Step 4: Store Method
 
 **Implementation**:
+
 ```php
 public function store(StorePostRequest $request): RedirectResponse
 {
@@ -111,6 +116,7 @@ public function store(StorePostRequest $request): RedirectResponse
 ### Step 5: Edit Method
 
 **Implementation**:
+
 ```php
 public function edit(Post $post): Response
 {
@@ -130,6 +136,7 @@ public function edit(Post $post): Response
 ### Step 6: Update Method
 
 **Implementation**:
+
 ```php
 public function update(UpdatePostRequest $request, Post $post): RedirectResponse
 {
@@ -159,6 +166,7 @@ public function update(UpdatePostRequest $request, Post $post): RedirectResponse
 **File**: `app/Http/Controllers/Admin/PageController.php`
 
 **Similar Structure**: Same methods as PostController but with:
+
 - Parent-child relationship management
 - Template selection
 - Hierarchical listing
@@ -166,11 +174,13 @@ public function update(UpdatePostRequest $request, Post $post): RedirectResponse
 ### Step 8: Create API Resources
 
 **Files**:
+
 - `app/Http/Resources/PostResource.php`
 - `app/Http/Resources/PageResource.php`
 - `app/Http/Resources/RevisionResource.php`
 
 **PostResource**:
+
 ```php
 public function toArray($request): array
 {
@@ -197,38 +207,43 @@ public function toArray($request): array
 ## 🧪 Testing Requirements
 
 **Feature Tests**:
+
 - `tests/Feature/Http/Controllers/PostControllerTest.php`
-  - Test index shows post list
-  - Test create shows form
-  - Test store creates post
-  - Test edit shows form with revisions
-  - Test update saves changes
-  - Test destroy soft deletes post
-  - Test authorization enforced
-  - Test concurrent editing exception handled
+    - Test index shows post list
+    - Test create shows form
+    - Test store creates post
+    - Test edit shows form with revisions
+    - Test update saves changes
+    - Test destroy soft deletes post
+    - Test authorization enforced
+    - Test concurrent editing exception handled
 
 - `tests/Feature/Http/Controllers/PageControllerTest.php`
-  - Test hierarchical page listing
-  - Test parent-child relationships
-  - Test template selection
+    - Test hierarchical page listing
+    - Test parent-child relationships
+    - Test template selection
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.11 (Controllers)
 - **Timeline**: Week 5 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Inertia.js SSR + API Resources
 - **Authorization**: Policies (PostPolicy, PagePolicy)
 - **Validation**: Form Requests (StorePostRequest, UpdatePostRequest)
 
 **Quality Requirements:**
+
 - **Performance**: Page load < 2 seconds
 - **Security**: Authorization on all methods
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-024 (all content services)
 - **Next**: 026-form-validation
 - **Blocks**: Epic 004 (TipTap Editor)
@@ -237,22 +252,26 @@ public function toArray($request): array
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Feature tests passing (15+ test cases for PostController)
 - [ ] Feature tests passing (10+ test cases for PageController)
 - [ ] Authorization tested
 
 ### Security
+
 - [ ] All methods authorized
 - [ ] Input validated via Form Requests
 - [ ] CSRF protection enabled
 
 ### Documentation
+
 - [ ] Controller methods documented
 - [ ] API Resources documented
 - [ ] Routes documented

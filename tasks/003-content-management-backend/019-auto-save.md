@@ -35,11 +35,13 @@ Implement automatic draft saving every 30/60/120 seconds (configurable) to preve
 **File**: `app/Services/Content/AutoSaveService.php`
 
 **Methods**:
+
 - saveDraft(Model $content, array $data, string $content): bool
 - getLastAutoSave(int $contentId, string $type): ?array
 - clearAutoSave(Model $content): bool
 
 **Business Logic**:
+
 - Save without validation (draft state)
 - Update only content and metadata
 - Don't increment lock_version
@@ -53,22 +55,24 @@ Implement automatic draft saving every 30/60/120 seconds (configurable) to preve
 **Controller**: `app/Http/Controllers/Admin/AutoSaveController.php`
 
 **Request**:
+
 ```json
 {
-  "type": "post",
-  "id": 123,
-  "title": "Draft Title",
-  "content": "# Draft Content",
-  "metadata": {}
+    "type": "post",
+    "id": 123,
+    "title": "Draft Title",
+    "content": "# Draft Content",
+    "metadata": {}
 }
 ```
 
 **Response**:
+
 ```json
 {
-  "success": true,
-  "timestamp": "2025-11-09 10:30:00",
-  "message": "Draft saved"
+    "success": true,
+    "timestamp": "2025-11-09 10:30:00",
+    "message": "Draft saved"
 }
 ```
 
@@ -77,33 +81,34 @@ Implement automatic draft saving every 30/60/120 seconds (configurable) to preve
 **File**: `resources/js/composables/useAutoSave.ts`
 
 **Implementation**:
+
 ```typescript
 export function useAutoSave(contentId, contentType) {
-  const { interval } = useSettings(); // 30s, 60s, 120s
-  const isSaving = ref(false);
-  const lastSaved = ref(null);
-  const error = ref(null);
+    const { interval } = useSettings(); // 30s, 60s, 120s
+    const isSaving = ref(false);
+    const lastSaved = ref(null);
+    const error = ref(null);
 
-  const debouncedSave = useDebounceFn(async (data) => {
-    isSaving.value = true;
-    try {
-      await axios.post('/api/admin/content/auto-save', data);
-      lastSaved.value = new Date();
-      error.value = null;
-    } catch (e) {
-      error.value = e.message;
-    } finally {
-      isSaving.value = false;
-    }
-  }, interval * 1000);
+    const debouncedSave = useDebounceFn(async (data) => {
+        isSaving.value = true;
+        try {
+            await axios.post('/api/admin/content/auto-save', data);
+            lastSaved.value = new Date();
+            error.value = null;
+        } catch (e) {
+            error.value = e.message;
+        } finally {
+            isSaving.value = false;
+        }
+    }, interval * 1000);
 
-  watch([title, content], () => {
-    if (!isManualSaving.value) {
-      debouncedSave({ contentId, contentType, title, content });
-    }
-  });
+    watch([title, content], () => {
+        if (!isManualSaving.value) {
+            debouncedSave({ contentId, contentType, title, content });
+        }
+    });
 
-  return { isSaving, lastSaved, error };
+    return { isSaving, lastSaved, error };
 }
 ```
 
@@ -112,6 +117,7 @@ export function useAutoSave(contentId, contentType) {
 **Component**: `resources/js/Components/AutoSaveIndicator.vue`
 
 **States**:
+
 - Saving... (spinner icon)
 - Saved at HH:MM:SS (checkmark icon)
 - Error saving (warning icon)
@@ -124,6 +130,7 @@ export function useAutoSave(contentId, contentType) {
 **File**: `config/pinecms.php`
 
 **Config**:
+
 ```php
 'auto_save' => [
     'enabled' => env('AUTO_SAVE_ENABLED', true),
@@ -134,43 +141,50 @@ export function useAutoSave(contentId, contentType) {
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/AutoSaveServiceTest.php`
-  - Test saveDraft without validation
-  - Test getLastAutoSave retrieval
-  - Test clearAutoSave
-  - Test auto-save doesn't increment lock_version
+    - Test saveDraft without validation
+    - Test getLastAutoSave retrieval
+    - Test clearAutoSave
+    - Test auto-save doesn't increment lock_version
 
 **Feature Tests**:
+
 - `tests/Feature/Content/AutoSaveTest.php`
-  - Test API endpoint saves draft
-  - Test auto-save persists data
-  - Test retrieve last auto-save on reload
-  - Test error handling
+    - Test API endpoint saves draft
+    - Test auto-save persists data
+    - Test retrieve last auto-save on reload
+    - Test error handling
 
 **Frontend Tests**:
+
 - `tests/vitest/composables/useAutoSave.spec.ts`
-  - Test debounced saving
-  - Test interval configuration
-  - Test disable during manual save
-  - Test error handling
+    - Test debounced saving
+    - Test interval configuration
+    - Test disable during manual save
+    - Test error handling
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.5 (Auto-Save)
 - **Timeline**: Week 4 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Service Layer + Composable
 - **API**: POST /api/admin/content/auto-save
 - **Storage**: SQLite (draft state)
 
 **Quality Requirements:**
+
 - **Performance**: Save operation < 100ms
 - **UX**: Debounced (no save spam)
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-post-crud-service, 016-page-crud-service
 - **Next**: 020-slug-management
 - **Depends On**: 010-content-schema
@@ -178,23 +192,27 @@ export function useAutoSave(contentId, contentType) {
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] ESLint passes on TypeScript
 
 ### Testing
+
 - [ ] Unit tests passing (8+ test cases)
 - [ ] Feature tests passing (4+ scenarios)
 - [ ] Frontend tests passing (4+ scenarios)
 
 ### UX
+
 - [ ] Visual indicator works correctly
 - [ ] Debouncing prevents spam
 - [ ] Error messages clear
 - [ ] Settings configurable
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] Composable usage documented
 - [ ] API endpoint documented

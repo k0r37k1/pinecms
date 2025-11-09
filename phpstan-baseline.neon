@@ -171,7 +171,7 @@ parameters:
 		-
 			message: '#^Cannot call method fetchColumn\(\) on PDOStatement\|false\.$#'
 			identifier: method.nonObject
-			count: 1
+			count: 2
 			path: tests/Feature/Installer/DatabaseInitializationTest.php
 
 		-
@@ -188,6 +188,12 @@ parameters:
 
 		-
 			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertGreaterThan\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Feature/Installer/DatabaseInitializationTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertGreaterThanOrEqual\(\)\.$#'
 			identifier: staticMethod.dynamicCall
 			count: 1
 			path: tests/Feature/Installer/DatabaseInitializationTest.php

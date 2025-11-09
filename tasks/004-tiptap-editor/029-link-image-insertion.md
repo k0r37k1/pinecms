@@ -41,11 +41,13 @@ npm install @tiptap/extension-link @tiptap/extension-image
 **File**: `resources/js/Components/Editor/LinkModal.vue`
 
 **Fields**:
+
 - URL (required, URL validation)
 - Text (required)
 - Open in new tab (checkbox)
 
 **Buttons**:
+
 - Insert/Update
 - Cancel
 - Remove (if editing existing link)
@@ -55,6 +57,7 @@ npm install @tiptap/extension-link @tiptap/extension-image
 **File**: `resources/js/Components/Editor/ImagePicker.vue`
 
 **Features**:
+
 - Media library integration
 - Upload new image
 - Alt text input
@@ -64,6 +67,7 @@ npm install @tiptap/extension-link @tiptap/extension-image
 ### Step 4: Add to Toolbar
 
 **Buttons**:
+
 - Link button → Opens LinkModal
 - Image button → Opens ImagePicker
 
@@ -71,37 +75,39 @@ npm install @tiptap/extension-link @tiptap/extension-image
 
 ```typescript
 Link.configure({
-  openOnClick: false,
-  HTMLAttributes: {
-    class: 'text-primary-600 hover:underline',
-  },
-})
+    openOnClick: false,
+    HTMLAttributes: {
+        class: 'text-primary-600 hover:underline',
+    },
+});
 ```
 
 ### Step 6: Image Extension Configuration
 
 ```typescript
 Image.configure({
-  HTMLAttributes: {
-    class: 'max-w-full h-auto',
-  },
-})
+    HTMLAttributes: {
+        class: 'max-w-full h-auto',
+    },
+});
 ```
 
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/vitest/components/LinkModal.spec.ts`
-  - Test URL validation
-  - Test insert link
-  - Test edit link
-  - Test remove link
+    - Test URL validation
+    - Test insert link
+    - Test edit link
+    - Test remove link
 
 **Feature Tests**:
+
 - `tests/Feature/Editor/MediaIntegrationTest.php`
-  - Test image inserted from media library
-  - Test image URL correct
-  - Test alt text saved
+    - Test image inserted from media library
+    - Test image URL correct
+    - Test alt text saved
 
 ## 📚 Related Documentation
 
@@ -109,6 +115,7 @@ Image.configure({
 **Timeline**: Week 6 (v1.0.0)
 
 **Related Tasks**:
+
 - **Previous**: 028-formatting-toolbar
 - **Next**: 030-code-block
 - **Depends On**: Epic 005 (Media Library)
@@ -116,14 +123,17 @@ Image.configure({
 ## ✅ Quality Gates
 
 ### Code Quality
+
 - [ ] ESLint passes
 - [ ] TypeScript types defined
 
 ### Testing
+
 - [ ] Unit tests passing (6+ cases)
 - [ ] Feature tests passing (3+ cases)
 
 ### UX
+
 - [ ] Link modal intuitive
 - [ ] Image picker responsive
 - [ ] Validation clear

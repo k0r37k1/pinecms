@@ -483,23 +483,19 @@ const submit = () => {
 </script>
 
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl w-full space-y-8">
+    <div class="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 dark:bg-gray-900">
+        <div class="w-full max-w-2xl space-y-8">
             <!-- Header -->
             <div class="text-center">
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-                    Create Admin Account
-                </h1>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Step {{ currentStep }} of {{ totalSteps }}
-                </p>
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Create Admin Account</h1>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Step {{ currentStep }} of {{ totalSteps }}</p>
             </div>
 
             <!-- Progress Bar -->
             <ProgressBar :value="progress" :showValue="false" class="h-2" />
 
             <!-- Step 1: User Information -->
-            <div v-if="currentStep === 1" class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8 space-y-6">
+            <div v-if="currentStep === 1" class="space-y-6 rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Full Name
@@ -542,7 +538,7 @@ const submit = () => {
             </div>
 
             <!-- Step 2: Password -->
-            <div v-if="currentStep === 2" class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8 space-y-6">
+            <div v-if="currentStep === 2" class="space-y-6 rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Password
@@ -578,7 +574,7 @@ const submit = () => {
                         <ProgressBar
                             :value="(passwordStrength.score / 5) * 100"
                             :showValue="false"
-                            class="h-2 mt-1"
+                            class="mt-1 h-2"
                             :class="{
                                 'bg-red-200': passwordStrength.color === 'red',
                                 'bg-orange-200': passwordStrength.color === 'orange',
@@ -589,7 +585,7 @@ const submit = () => {
                         />
                     </div>
 
-                    <ul class="mt-2 text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                    <ul class="mt-2 space-y-1 text-xs text-gray-600 dark:text-gray-400">
                         <li>• At least 12 characters</li>
                         <li>• Uppercase and lowercase letters</li>
                         <li>• At least one number</li>
@@ -646,9 +642,9 @@ const submit = () => {
             </div>
 
             <!-- Step 3: Confirmation -->
-            <div v-if="currentStep === 3" class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8 space-y-6">
+            <div v-if="currentStep === 3" class="space-y-6 rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Review Your Information</h3>
+                    <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Review Your Information</h3>
 
                     <dl class="space-y-4">
                         <div>
@@ -778,31 +774,34 @@ return new class extends Migration
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/AdminUserCreatorTest.php`
-  - Test `validatePasswordStrength()` with various passwords
-  - Test password strength scoring (0-5)
-  - Test `getPasswordStrengthLabel()` returns correct labels
-  - Test bcrypt hashing with cost 12
-  - Test admin role assignment
-  - Test automatic email verification
-  - Test duplicate user prevention
+    - Test `validatePasswordStrength()` with various passwords
+    - Test password strength scoring (0-5)
+    - Test `getPasswordStrengthLabel()` returns correct labels
+    - Test bcrypt hashing with cost 12
+    - Test admin role assignment
+    - Test automatic email verification
+    - Test duplicate user prevention
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/AdminUserCreationTest.php`
-  - Test POST `/installer/admin-user` creates user
-  - Test validation errors for weak passwords
-  - Test unique email validation
-  - Test password confirmation mismatch
-  - Test 422 status for validation errors
-  - Test user cannot be created if users already exist
+    - Test POST `/installer/admin-user` creates user
+    - Test validation errors for weak passwords
+    - Test unique email validation
+    - Test password confirmation mismatch
+    - Test 422 status for validation errors
+    - Test user cannot be created if users already exist
 
 **Browser Tests (Playwright):**
+
 - `tests/Browser/Installer/AdminUserWizardTest.php`
-  - Test multi-step wizard navigation
-  - Test real-time password strength indicator
-  - Test password match validation
-  - Test form submission creates user
-  - Test redirect to admin login
+    - Test multi-step wizard navigation
+    - Test real-time password strength indicator
+    - Test password match validation
+    - Test form submission creates user
+    - Test redirect to admin login
 
 **Example Unit Test:**
 
@@ -897,22 +896,26 @@ class AdminUserCreatorTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Admin User Setup)
 - **Security**: `docs/prd/07-TECHNICAL-SPECIFICATIONS.md` Section 6.2 (Password Hashing)
 - **Timeline**: Week 2 (v1.0.0)
 - **Success Criteria**: Secure password validation, bcrypt cost 12
 
 **Architecture:**
+
 - **Authentication**: Laravel Fortify (`docs/prd/04-ARCHITECTURE.md`)
 - **Password Hashing**: Bcrypt with cost 12
 - **RBAC**: Administrator role auto-assigned
 
 **Quality Requirements:**
+
 - **Security**: Strong password validation, bcrypt hashing, OWASP compliance
 - **UX**: Multi-step wizard, real-time validation, clear error messages
 - **Testing**: Unit, Feature, and Browser tests
 
 **Related Tasks:**
+
 - **Next**: 005-web-server-config
 - **Blocks**: Installation completion
 - **Depends On**: 003-database-initialization (needs users table)
@@ -920,6 +923,7 @@ class AdminUserCreatorTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all PHP files
@@ -928,6 +932,7 @@ class AdminUserCreatorTest extends TestCase
 - [ ] Prettier formatted (Vue)
 
 ### Testing
+
 - [ ] Unit tests written and passing (10+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Browser tests for wizard flow
@@ -935,6 +940,7 @@ class AdminUserCreatorTest extends TestCase
 - [ ] Edge cases covered (weak passwords, duplicate emails)
 
 ### Security
+
 - [ ] Bcrypt hashing with cost 12
 - [ ] Password strength validation (12 chars, mixed case, numbers, symbols)
 - [ ] Email uniqueness validated
@@ -942,6 +948,7 @@ class AdminUserCreatorTest extends TestCase
 - [ ] No plaintext passwords in logs
 
 ### UX
+
 - [ ] Real-time password strength indicator
 - [ ] Clear validation error messages
 - [ ] Multi-step wizard navigation works

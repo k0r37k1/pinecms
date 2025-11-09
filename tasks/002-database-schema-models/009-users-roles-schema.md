@@ -36,6 +36,7 @@ Design and implement complete user authentication and role-based access control 
 **File**: `database/migrations/2025_01_01_000001_create_users_table.php`
 
 **Key Fields**:
+
 - id (bigint primary key)
 - uuid (string, unique, indexed)
 - name (string)
@@ -54,6 +55,7 @@ Design and implement complete user authentication and role-based access control 
 **File**: `database/migrations/2025_01_01_000002_create_roles_and_permissions.php`
 
 **Tables**:
+
 - `roles` (id, name, slug, description)
 - `permissions` (id, name, slug, description)
 - `permission_role` (role_id, permission_id)
@@ -65,6 +67,7 @@ Design and implement complete user authentication and role-based access control 
 **File**: `app/Models/User.php`
 
 **Features**:
+
 - Laravel Authenticatable
 - Soft deletes
 - HasFactory trait
@@ -76,47 +79,55 @@ Design and implement complete user authentication and role-based access control 
 ### Step 4: Create Role and Permission Models
 
 **Files**:
+
 - `app/Models/Role.php`
 - `app/Models/Permission.php`
 
 **Relationships**:
+
 - Role belongsToMany Permission
 - Role hasMany User
 
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Models/UserTest.php`
-  - Test user creation
-  - Test relationships (role, posts)
-  - Test email encryption/decryption
-  - Test soft delete behavior
-  - Test avatar accessor
+    - Test user creation
+    - Test relationships (role, posts)
+    - Test email encryption/decryption
+    - Test soft delete behavior
+    - Test avatar accessor
 
 **Feature Tests**:
+
 - `tests/Feature/Database/UsersSchemaTest.php`
-  - Test users table exists
-  - Test foreign key constraints
-  - Test unique constraints (email)
-  - Test default values
+    - Test users table exists
+    - Test foreign key constraints
+    - Test unique constraints (email)
+    - Test default values
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.4 (User Management)
 - **Timeline**: Week 3 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Repository Pattern (`docs/prd/04-ARCHITECTURE.md`)
 - **Security**: Field-level encryption for PII
 - **Storage**: SQLite primary, MySQL optional
 
 **Quality Requirements:**
+
 - **Security**: Encrypted email, hashed passwords, RBAC
 - **Performance**: Indexed email and timestamps
 - **Testing**: > 80% model coverage
 
 **Related Tasks:**
+
 - **Next**: 010-content-schema
 - **Blocks**: 045-user-crud (Epic 006)
 - **Depends On**: 001-system-requirements
@@ -124,24 +135,28 @@ Design and implement complete user authentication and role-based access control 
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all PHP files
 - [ ] PHPDoc blocks with array shapes
 
 ### Testing
+
 - [ ] Unit tests passing (8+ test cases)
 - [ ] Migration rollback works
 - [ ] Factory generates valid users
 - [ ] Relationship tests passing
 
 ### Security
+
 - [ ] Email field encrypted (CipherSweet)
 - [ ] Passwords hashed (bcrypt)
 - [ ] Foreign keys enforced
 - [ ] Soft deletes working
 
 ### Documentation
+
 - [ ] Migration comments added
 - [ ] Model relationships documented
 - [ ] PHPDoc for encrypted fields

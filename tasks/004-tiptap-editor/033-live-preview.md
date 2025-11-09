@@ -31,11 +31,13 @@ Create split view with editor on left and live HTML preview on right. Add device
 **Component**: `resources/js/Components/Editor/LivePreview.vue`
 
 **Layout**:
+
 - Editor: 50% width (split mode)
 - Preview: 50% width (split mode)
 - Resizable divider
 
 **Device Widths**:
+
 - Mobile: 375px
 - Tablet: 768px
 - Desktop: 1200px
