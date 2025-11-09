@@ -16,12 +16,14 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     public function register(): void
     {
-        // Disable Telescope in testing environment
-        if ($this->app->environment('testing')) {
-            Telescope::stopRecording();
-
+        // Don't register Telescope in testing environment or when disabled
+        // NOTE: This is a defensive check. The primary prevention is in bootstrap/providers.php
+        // which should prevent this provider from being registered during tests.
+        if ($this->app->environment('testing') || ! (bool) config('telescope.enabled', true)) {
             return;
         }
+
+        parent::register();
 
         // Telescope::night();
 
