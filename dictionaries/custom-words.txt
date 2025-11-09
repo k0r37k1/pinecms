@@ -86,6 +86,10 @@ unregisters
 exposé
 devs
 Devs
+parallelizable
+Parallelizable
+dfs
+elif
 
 # SOLID Principles
 Liskov
