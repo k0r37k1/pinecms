@@ -33,6 +33,7 @@ Build toggle switch to convert between WYSIWYG and Markdown editing modes withou
 **Component**: `resources/js/Components/Editor/ModeToggle.vue`
 
 **Conversion**:
+
 - WYSIWYG → Markdown: `editor.storage.markdown.getMarkdown()`
 - Markdown → WYSIWYG: `editor.commands.setContent(markdown)`
 

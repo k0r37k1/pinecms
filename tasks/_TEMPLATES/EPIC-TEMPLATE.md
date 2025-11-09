@@ -1,8 +1,8 @@
 ---
 epic_id: XXX
 title: Epic Title
-status: pending              # pending | in_progress | completed
-priority: critical           # critical | high | medium | low
+status: pending # pending | in_progress | completed
+priority: critical # critical | high | medium | low
 estimated_duration: X weeks
 actual_duration: null
 week: Week X-Y
@@ -34,9 +34,11 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Blocks:**
+
 - Epic XXX (Title)
 
 **Requires:**
+
 - Epic XXX (Title)
 
 ## ✅ Epic Success Criteria
@@ -50,14 +52,17 @@ tasks_completed: 0
 ## 📚 References
 
 **PRD Specifications:**
+
 - Feature: `docs/prd/XX-XXXXX.md` Section X.X
 - Timeline: Week X-Y (vX.X.X)
 
 **Architecture:**
+
 - Pattern: [Pattern Name]
 - Events: [Event Names]
 
 **Quality Requirements:**
+
 - Security: [OWASP Requirements]
 - Performance: [Performance Targets]
 - Testing: [Coverage Requirements]

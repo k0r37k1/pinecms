@@ -11,7 +11,7 @@ dependencies: [012, 014]
 tags: [, week-7]
 ---
 
-# Task 37: 
+# Task 37:
 
 ## 📋 Overview
 
@@ -34,6 +34,7 @@ Implementation blueprint for . See BULK-GENERATION-COMPLETE.md for detailed requ
 ### Step 1: Service/Component Creation
 
 **Files**:
+
 - Backend: `app/Services/Media/` or `app/Http/Controllers/Admin/`
 - Frontend: `resources/js/Components/Media/` or `resources/js/Pages/Admin/Media/`
 

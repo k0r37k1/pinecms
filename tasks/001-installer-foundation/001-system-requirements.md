@@ -496,21 +496,23 @@ Route::prefix('installer')->middleware('web')->group(function () {
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/RequirementsCheckerTest.php`
-  - Test `checkPhpVersion()` with various PHP versions
-  - Test `checkExtensions()` with mocked extension_loaded()
-  - Test `checkPermissions()` with mocked file system
-  - Test `checkEnvironment()` with various php.ini settings
-  - Test `convertToBytes()` with G/M/K units
-  - Test `determineOverallStatus()` logic
-  - Test `getResolutionInstructions()` message generation
+    - Test `checkPhpVersion()` with various PHP versions
+    - Test `checkExtensions()` with mocked extension_loaded()
+    - Test `checkPermissions()` with mocked file system
+    - Test `checkEnvironment()` with various php.ini settings
+    - Test `convertToBytes()` with G/M/K units
+    - Test `determineOverallStatus()` logic
+    - Test `getResolutionInstructions()` message generation
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/RequirementsCheckTest.php`
-  - Test `/installer/requirements` endpoint returns correct JSON structure
-  - Test `can_proceed` is false when requirements not met
-  - Test `resolution_instructions` provided when failed
-  - Test endpoint returns 200 status
+    - Test `/installer/requirements` endpoint returns correct JSON structure
+    - Test `can_proceed` is false when requirements not met
+    - Test `resolution_instructions` provided when failed
+    - Test endpoint returns 200 status
 
 **Example Unit Test:**
 
@@ -572,22 +574,26 @@ class RequirementsCheckerTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (System Requirements Check)
 - **Timeline**: Week 1-2 (v1.0.0)
 - **Success Criteria**: Installation completion rate > 95%, clear error messages
 
 **Architecture:**
+
 - **Pattern**: Service Layer (`docs/prd/04-ARCHITECTURE.md` Section 9)
 - **Events**: None (validation only)
 - **Storage**: File system validation only
 
 **Quality Requirements:**
+
 - **Security**: File permission validation (`docs/prd/09-QUALITY-REQUIREMENTS.md` Section 2.5)
 - **Performance**: Validation < 1 second
 - **Testing**: Unit tests for all validation logic, Feature tests for API endpoint
 - **Accessibility**: N/A (Backend only)
 
 **Related Tasks:**
+
 - **Next**: 002-environment-generator
 - **Blocks**: 003-database-setup (can't proceed without validation)
 - **Depends On**: None (first task)
@@ -595,6 +601,7 @@ class RequirementsCheckerTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes (`composer analyse`)
 - [ ] Laravel Pint formatted (`vendor/bin/pint`)
 - [ ] No console.log statements (N/A for backend)
@@ -602,18 +609,21 @@ class RequirementsCheckerTest extends TestCase
 - [ ] PHPDoc blocks for all public methods with array shapes
 
 ### Testing
+
 - [ ] Unit tests written and passing (8+ test cases)
 - [ ] Feature tests written and passing (API endpoint test)
 - [ ] Test coverage > 80% for RequirementsChecker service
 - [ ] Edge cases covered (unlimited memory, missing directories)
 
 ### Security
+
 - [ ] No shell_exec or system() calls
 - [ ] File paths validated (no directory traversal)
 - [ ] Error messages don't expose sensitive paths
 - [ ] JSON response sanitized
 
 ### Documentation
+
 - [ ] PHPDoc comments added with array shape types
 - [ ] Complex validation logic explained
 - [ ] Resolution instructions clear and actionable

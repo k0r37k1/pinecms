@@ -58,9 +58,11 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Blocks:**
+
 - Epic 009 (Admin Panel) - Editor used in admin UI
 
 **Requires:**
+
 - Epic 003 (Content Management Backend) - Content CRUD and auto-save service
 
 ## ✅ Epic Success Criteria
@@ -83,16 +85,19 @@ tasks_completed: 0
 ## 📚 References
 
 **PRD Specifications:**
+
 - Feature: `docs/prd/05-CORE-FEATURES.md` Section 3.1 (TipTap Editor)
 - Timeline: Week 6-7 (v1.0.0)
 
 **Architecture:**
+
 - Component: Vue 3.5 Composition API
 - Library: TipTap Editor (v2.x)
 - Syntax: Prism.js for code highlighting
 - Markdown: TipTap Markdown extension
 
 **Quality Requirements:**
+
 - Performance: Editor load < 500ms
 - Responsiveness: Works on mobile/tablet/desktop
 - Accessibility: Keyboard shortcuts, ARIA labels
@@ -100,6 +105,7 @@ tasks_completed: 0
 - UX: Intuitive toolbar, clear icons, helpful tooltips
 
 **Acceptance Criteria:**
+
 - No content loss on mode switching
 - Paste from Word/Google Docs sanitized
 - Image upload integrated with media library

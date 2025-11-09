@@ -36,12 +36,14 @@ Build comprehensive search and filtering system for posts and pages with support
 **File**: `app/Services/Content/SearchService.php`
 
 **Methods**:
+
 - search(string $query, array $filters, string $contentType): LengthAwarePaginator
 - buildQuery(string $query, array $filters): Builder
 - applyFilters(Builder $query, array $filters): Builder
 - applySorting(Builder $query, string $sort): Builder
 
 **Business Logic**:
+
 - Use Laravel Scout with TNTSearch driver for full-text search
 - Combine search with filters using Eloquent query builder
 - Support pagination (configurable per page)
@@ -50,6 +52,7 @@ Build comprehensive search and filtering system for posts and pages with support
 ### Step 2: Full-Text Search
 
 **Implementation**:
+
 ```php
 public function search(string $query, array $filters, string $contentType): LengthAwarePaginator
 {
@@ -71,6 +74,7 @@ public function search(string $query, array $filters, string $contentType): Leng
 ### Step 3: Filter Implementation
 
 **Supported Filters**:
+
 ```php
 public function applyFilters(Builder $query, array $filters): Builder
 {
@@ -105,6 +109,7 @@ public function applyFilters(Builder $query, array $filters): Builder
 ### Step 4: Sorting
 
 **Supported Sorts**:
+
 - `newest` - created_at DESC
 - `oldest` - created_at ASC
 - `title` - title ASC
@@ -117,6 +122,7 @@ public function applyFilters(Builder $query, array $filters): Builder
 **Controller**: `app/Http/Controllers/Admin/SearchController.php`
 
 **Query Parameters**:
+
 ```
 ?q=search+query
 &type=post
@@ -132,6 +138,7 @@ public function applyFilters(Builder $query, array $filters): Builder
 ```
 
 **Response**:
+
 ```json
 {
   "data": [...],
@@ -154,6 +161,7 @@ public function applyFilters(Builder $query, array $filters): Builder
 **Component**: `resources/js/Components/ContentSearch.vue`
 
 **Features**:
+
 - Search input with debounce
 - Filter sidebar (collapsible)
 - Sort dropdown
@@ -163,47 +171,54 @@ public function applyFilters(Builder $query, array $filters): Builder
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/SearchServiceTest.php`
-  - Test search with query
-  - Test applyFilters for each filter
-  - Test applySorting for each sort
-  - Test empty query returns all
-  - Test combined filters and search
+    - Test search with query
+    - Test applyFilters for each filter
+    - Test applySorting for each sort
+    - Test empty query returns all
+    - Test combined filters and search
 
 **Feature Tests**:
+
 - `tests/Feature/Content/SearchTest.php`
-  - Test search API endpoint
-  - Test filter by status
-  - Test filter by author
-  - Test filter by category
-  - Test filter by tags
-  - Test filter by date range
-  - Test sorting
-  - Test pagination
+    - Test search API endpoint
+    - Test filter by status
+    - Test filter by author
+    - Test filter by category
+    - Test filter by tags
+    - Test filter by date range
+    - Test sorting
+    - Test pagination
 
 **Frontend Tests**:
+
 - `tests/vitest/components/ContentSearch.spec.ts`
-  - Test search input debounce
-  - Test filters update results
-  - Test clear filters
+    - Test search input debounce
+    - Test filters update results
+    - Test clear filters
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.10 (Search & Filtering)
 - **Timeline**: Week 5 (v1.0.0)
 
 **Architecture:**
+
 - **Search Engine**: Laravel Scout with TNTSearch
 - **Filters**: Eloquent query builder
 - **Performance**: Indexed columns (status, author_id, category_id)
 
 **Quality Requirements:**
+
 - **Performance**: Search < 200ms for 10,000 posts
 - **Relevance**: Full-text search prioritizes exact matches
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-post-crud-service, 016-page-crud-service
 - **Next**: 025-post-page-controllers
 - **Depends On**: 010-content-schema
@@ -211,22 +226,26 @@ public function applyFilters(Builder $query, array $filters): Builder
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (10+ test cases)
 - [ ] Feature tests passing (8+ scenarios)
 - [ ] Frontend tests passing (3+ scenarios)
 
 ### Performance
+
 - [ ] Search < 200ms
 - [ ] Filters efficient (indexed columns)
 - [ ] Pagination working
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] API endpoint documented
 - [ ] Supported filters documented

@@ -55,11 +55,13 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Blocks:**
+
 - Epic 004 (TipTap Editor Integration)
 - Epic 007 (Theme System & Frontend)
 - Epic 009 (Admin Panel & Settings)
 
 **Requires:**
+
 - Epic 002 (Database Schema & Models) - Must have Post/Page models
 
 ## ✅ Epic Success Criteria
@@ -81,21 +83,25 @@ tasks_completed: 0
 ## 📚 References
 
 **PRD Specifications:**
+
 - Feature: `docs/prd/05-CORE-FEATURES.md` Section 2.2 (Content Management)
 - Timeline: Week 4-6 (v1.0.0)
 
 **Architecture:**
+
 - Pattern: Layered (Controllers → Services → Repositories → Models)
 - Storage: Hybrid (SQLite metadata + flat-file content)
 - Events: PostCreated, PostUpdated, PostDeleted, PostPublished
 
 **Quality Requirements:**
+
 - Security: Input validation, authorization checks, XSS prevention
 - Performance: Queries < 100ms, auto-save debounced
 - Testing: > 80% coverage, feature tests for all CRUD operations
 - Data Integrity: Transaction-wrapped saves, atomic file writes
 
 **Acceptance Criteria:**
+
 - No data loss during auto-save or concurrent editing
 - Revisions stored efficiently (content snapshots)
 - Scheduled posts trigger reliably (95%+ accuracy)

@@ -31,18 +31,19 @@ Integrate TipTap editor with auto-save service from Task 019. Debounce content c
 **Composable**: `resources/js/composables/useAutoSave.ts` (from Task 019)
 
 **Integration**:
+
 ```vue
 <script setup>
 import { useAutoSave } from '@/composables/useAutoSave';
 
-const { isSaving, lastSaved, error } = useAutoSave(
-  props.post?.id,
-  'post'
-);
+const { isSaving, lastSaved, error } = useAutoSave(props.post?.id, 'post');
 
-watch(() => editor.value?.getHTML(), (content) => {
-  form.content = content;
-});
+watch(
+    () => editor.value?.getHTML(),
+    (content) => {
+        form.content = content;
+    },
+);
 </script>
 ```
 

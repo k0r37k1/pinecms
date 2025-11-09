@@ -44,11 +44,13 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Blocks:**
+
 - Epic 003 (Content Management Backend)
 - Epic 005 (Media Library System)
 - Epic 006 (User Management & Auth)
 
 **Requires:**
+
 - Epic 001 (Installer & Foundation) - Database must be initialized
 
 ## ✅ Epic Success Criteria
@@ -68,22 +70,26 @@ tasks_completed: 0
 ## 📚 References
 
 **PRD Specifications:**
+
 - Feature: `docs/prd/05-CORE-FEATURES.md` Section 2 (Content Management)
 - Architecture: `docs/prd/04-ARCHITECTURE.md` Section 3 (Hybrid Storage Model)
 - Timeline: Week 3 (v1.0.0)
 
 **Architecture:**
+
 - Pattern: Repository Pattern (data access layer)
 - Storage: Hybrid (SQLite relational + flat-file content)
 - Events: Model events (creating, created, updating, updated, deleting, deleted)
 
 **Quality Requirements:**
+
 - Security: Encrypted sensitive fields, foreign key constraints (`docs/prd/09-QUALITY-REQUIREMENTS.md`)
 - Performance: Indexed columns, query optimization (< 100ms)
 - Testing: Model unit tests, relationship tests, factory tests
 - Data Integrity: Cascading deletes, referential integrity
 
 **Acceptance Criteria:**
+
 - Database migrations reversible (rollback supported)
 - All relationships bidirectional and tested
 - Factories generate valid data consistently

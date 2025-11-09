@@ -109,7 +109,10 @@
       "Bash(vendor/bin/phpunit:*)",
       "Bash(kill:*)",
       "Bash(php -d variables_order=EGPCS artisan test:*)",
-      "Bash(./vendor/bin/phpstan analyse:*)"
+      "Bash(./vendor/bin/phpstan analyse:*)",
+      "Skill(superpowers:using-superpowers)",
+      "Skill(superpowers:test-driven-development)",
+      "Bash(npm run format:check:*)"
     ],
     "deny": [],
     "ask": []

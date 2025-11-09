@@ -211,6 +211,7 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           touch database/database.sqlite
+          php artisan migrate --force
 
       - name: Build Frontend Assets
         run: npm run build

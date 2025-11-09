@@ -36,6 +36,7 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 **File**: `database/migrations/2025_01_01_000020_create_categories_table.php`
 
 **Key Fields**:
+
 - id
 - name (string, 100)
 - slug (string, unique, indexed)
@@ -55,6 +56,7 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 **File**: `database/migrations/2025_01_01_000021_create_tags_table.php`
 
 **Key Fields**:
+
 - id
 - name (string, 50)
 - slug (string, unique, indexed)
@@ -66,6 +68,7 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 ### Step 3: Create Pivot Tables
 
 **Files**:
+
 - `database/migrations/2025_01_01_000022_create_category_post_table.php`
 - `database/migrations/2025_01_01_000023_create_post_tag_table.php`
 
@@ -74,18 +77,22 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 ### Step 4: Create Category and Tag Models
 
 **Files**:
+
 - `app/Models/Category.php`
 - `app/Models/Tag.php`
 
 **Category Relationships**:
+
 - parent: belongsTo(Category, 'parent_id')
 - children: hasMany(Category, 'parent_id')
 - posts: hasMany(Post)
 
 **Tag Relationships**:
+
 - posts: belongsToMany(Post)
 
 **Scopes**:
+
 - Category: root (parent_id null), withChildren
 - Tag: popular (post_count > threshold)
 
@@ -94,6 +101,7 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 **Service**: `app/Services/Taxonomy/TaxonomyCountService.php`
 
 **Methods**:
+
 - updateCategoryCount(Category $category): void
 - updateTagCount(Tag $tag): void
 - recalculateAllCounts(): void
@@ -101,41 +109,47 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Models/CategoryTest.php`
-  - Test parent-child relationship
-  - Test max depth validation
-  - Test slug generation
-  - Test post count calculation
+    - Test parent-child relationship
+    - Test max depth validation
+    - Test slug generation
+    - Test post count calculation
 
 - `tests/Unit/Models/TagTest.php`
-  - Test posts relationship
-  - Test popular scope
-  - Test slug generation
+    - Test posts relationship
+    - Test popular scope
+    - Test slug generation
 
 **Feature Tests**:
+
 - `tests/Feature/Database/TaxonomySchemaTest.php`
-  - Test categories table structure
-  - Test hierarchical queries
-  - Test pivot tables
-  - Test cascading deletes
+    - Test categories table structure
+    - Test hierarchical queries
+    - Test pivot tables
+    - Test cascading deletes
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.7 (Categories & Tags)
 - **Timeline**: Week 3 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Repository Pattern
 - **Storage**: SQLite relational
 - **Events**: CategoryCreated, TagCreated
 
 **Quality Requirements:**
+
 - **Security**: Slug sanitization
 - **Performance**: Indexed slugs, cached counts
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Next**: 012-media-schema
 - **Blocks**: 062-category-management (Epic 008)
 - **Depends On**: 010-content-schema
@@ -143,20 +157,24 @@ Implement hierarchical categories (parent-child, max 2 levels) and flat tag syst
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 
 ### Testing
+
 - [ ] Unit tests passing (10+ test cases)
 - [ ] Hierarchical queries tested
 - [ ] Migration rollback works
 
 ### Security
+
 - [ ] Slug sanitization
 - [ ] Max depth validation
 
 ### Documentation
+
 - [ ] Hierarchical structure explained
 - [ ] Usage count caching documented
 

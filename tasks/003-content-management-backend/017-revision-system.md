@@ -35,6 +35,7 @@ Build comprehensive revision system for posts and pages that automatically creat
 **File**: `app/Services/Content/RevisionService.php`
 
 **Methods**:
+
 - createRevision(Model $content, string $changesSummary): Revision
 - restoreRevision(Revision $revision): Model
 - compareRevisions(Revision $from, Revision $to): array
@@ -42,6 +43,7 @@ Build comprehensive revision system for posts and pages that automatically creat
 - pruneRevisions(Model $content, int $keep = 10): int
 
 **Business Logic**:
+
 - Store complete content snapshot as JSON
 - Track fields changed (title, content, status, etc.)
 - Generate changes summary automatically
@@ -51,9 +53,11 @@ Build comprehensive revision system for posts and pages that automatically creat
 ### Step 2: Implement Polymorphic Relationship
 
 **Files**:
+
 - `app/Models/Revision.php`
 
 **Relationships**:
+
 ```php
 public function revisionable(): MorphTo
 {
@@ -62,6 +66,7 @@ public function revisionable(): MorphTo
 ```
 
 **Columns**:
+
 - revisionable_type, revisionable_id
 - snapshot (JSON - complete content state)
 - changes_summary (string - "Updated title and content")
@@ -71,6 +76,7 @@ public function revisionable(): MorphTo
 ### Step 3: Auto-Create Revisions
 
 **Integration Points**:
+
 - PostService::updatePost() → createRevision()
 - PageService::updatePage() → createRevision()
 - Trigger on status change (draft → published)
@@ -80,6 +86,7 @@ public function revisionable(): MorphTo
 ### Step 4: Restore Functionality
 
 **Restore Logic**:
+
 - Load revision snapshot
 - Apply to current content
 - Create new revision (marking as "Restored from revision #X")
@@ -91,10 +98,12 @@ public function revisionable(): MorphTo
 **File**: `app/Services/Content/DiffService.php`
 
 **Methods**:
+
 - diff(string $oldContent, string $newContent): array
 - highlightChanges(array $diff): string (HTML output)
 
 **Implementation**:
+
 - Use sebastian/diff package
 - Generate unified diff format
 - Highlight additions (green) and deletions (red)
@@ -103,38 +112,44 @@ public function revisionable(): MorphTo
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/RevisionServiceTest.php`
-  - Test createRevision with snapshot
-  - Test restoreRevision updates content
-  - Test pruneRevisions keeps max 10
-  - Test compareRevisions generates diff
-  - Test getRevisions returns sorted list
+    - Test createRevision with snapshot
+    - Test restoreRevision updates content
+    - Test pruneRevisions keeps max 10
+    - Test compareRevisions generates diff
+    - Test getRevisions returns sorted list
 
 **Feature Tests**:
+
 - `tests/Feature/Content/RevisionTest.php`
-  - Test revision created on post update
-  - Test restore to previous version
-  - Test revision list pagination
-  - Test automatic pruning
-  - Test changes summary generation
+    - Test revision created on post update
+    - Test restore to previous version
+    - Test revision list pagination
+    - Test automatic pruning
+    - Test changes summary generation
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.3 (Revision System)
 - **Timeline**: Week 4 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Polymorphic Relationships
 - **Storage**: SQLite (revision metadata + JSON snapshot)
 - **Events**: RevisionCreated, ContentRestored
 
 **Quality Requirements:**
+
 - **Performance**: Revision creation < 50ms
 - **Storage**: Prune old revisions automatically
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-post-crud-service, 016-page-crud-service
 - **Next**: 018-content-scheduler
 - **Depends On**: 010-content-schema
@@ -142,22 +157,26 @@ public function revisionable(): MorphTo
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (12+ test cases)
 - [ ] Feature tests passing (5+ scenarios)
 - [ ] Edge cases covered (max revisions, restore conflicts)
 
 ### Performance
+
 - [ ] Revision creation < 50ms
 - [ ] Pruning efficient (batch deletes)
 - [ ] Snapshot JSON indexed for search
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] Revision workflow documented
 - [ ] Restore process explained

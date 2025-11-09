@@ -20,24 +20,28 @@
 ## 📊 System Overview
 
 ### Statistics
+
 - **18 Epics** - Complete organizational structure
 - **140 Tasks** - Fully scaffolded (2 removed: WordPress/Ghost import)
 - **Templates** - Epic and task templates in `_TEMPLATES/`
 - **Documentation** - Comprehensive reference guides
 
 **Removed Tasks:**
+
 - 078: WordPress Importer → Moved to future version
 - 079: Ghost Importer → Moved to future version
 
 ### Task Detail Levels
 
 **Fully Detailed (Tasks 001-034)**:
+
 - Epics 001-004 have complete implementation guides
 - Step-by-step instructions with exact code patterns
 - Comprehensive test specifications
 - ~3,000-5,000 tokens per task
 
 **Streamlined Scaffolds (Tasks 035-142)**:
+
 - Clear acceptance criteria and file paths
 - Implementation blueprints with key components
 - References to master roadmap for full details
@@ -49,40 +53,40 @@
 
 ### v1.0.0 MVP (Weeks 1-11) - Core Blogging CMS
 
-| Epic | Tasks | Folder | Status |
-|------|-------|--------|--------|
-| **001** - Installer & Foundation | 001-008 | `001-installer-foundation/` | ✅ Complete |
-| **002** - Database Schema & Models | 009-014 | `002-database-schema-models/` | ✅ Complete |
-| **003** - Content Management Backend | 015-026 | `003-content-management-backend/` | 🚧 In Progress |
-| **004** - TipTap Editor Integration | 027-034 | `004-tiptap-editor/` | 📋 Ready |
-| **005** - Media Library System | 035-044 | `005-media-library/` | 📋 Ready |
-| **006** - User Management & Auth | 045-053 | `006-user-management-auth/` | 📋 Ready |
-| **007** - Theme System & Frontend | 054-061 | `007-theme-system-frontend/` | 📋 Ready |
-| **008** - Categories & Tags | 062-067 | `008-categories-tags/` | 📋 Ready |
-| **009** - Admin Panel & Settings | 068-077 | `009-admin-panel-settings/` | 📋 Ready |
-| **010** - Import/Export & SEO | 080-090 | `010-import-export-seo/` | 📋 Ready (078-079 removed) |
+| Epic                                 | Tasks   | Folder                            | Status                     |
+| ------------------------------------ | ------- | --------------------------------- | -------------------------- |
+| **001** - Installer & Foundation     | 001-008 | `001-installer-foundation/`       | ✅ Complete                |
+| **002** - Database Schema & Models   | 009-014 | `002-database-schema-models/`     | ✅ Complete                |
+| **003** - Content Management Backend | 015-026 | `003-content-management-backend/` | 🚧 In Progress             |
+| **004** - TipTap Editor Integration  | 027-034 | `004-tiptap-editor/`              | 📋 Ready                   |
+| **005** - Media Library System       | 035-044 | `005-media-library/`              | 📋 Ready                   |
+| **006** - User Management & Auth     | 045-053 | `006-user-management-auth/`       | 📋 Ready                   |
+| **007** - Theme System & Frontend    | 054-061 | `007-theme-system-frontend/`      | 📋 Ready                   |
+| **008** - Categories & Tags          | 062-067 | `008-categories-tags/`            | 📋 Ready                   |
+| **009** - Admin Panel & Settings     | 068-077 | `009-admin-panel-settings/`       | 📋 Ready                   |
+| **010** - Import/Export & SEO        | 080-090 | `010-import-export-seo/`          | 📋 Ready (078-079 removed) |
 
 ### v1.1.0 Features (Weeks 12-14) - Plugin System
 
-| Epic | Tasks | Folder | Status |
-|------|-------|--------|--------|
-| **011** - Comments & Search | 091-098 | `011-comments-search/` | 📋 Ready |
+| Epic                              | Tasks   | Folder                       | Status   |
+| --------------------------------- | ------- | ---------------------------- | -------- |
+| **011** - Comments & Search       | 091-098 | `011-comments-search/`       | 📋 Ready |
 | **012** - Advanced Media & Editor | 099-104 | `012-advanced-media-editor/` | 📋 Ready |
-| **013** - Plugin System | 105-114 | `013-plugin-system/` | 📋 Ready |
-| **014** - Workflow System | 115-120 | `014-workflow-system/` | 📋 Ready |
+| **013** - Plugin System           | 105-114 | `013-plugin-system/`         | 📋 Ready |
+| **014** - Workflow System         | 115-120 | `014-workflow-system/`       | 📋 Ready |
 
 ### v1.2.0 Features (Weeks 15-16) - Advanced CMS
 
-| Epic | Tasks | Folder | Status |
-|------|-------|--------|--------|
+| Epic                             | Tasks   | Folder                        | Status   |
+| -------------------------------- | ------- | ----------------------------- | -------- |
 | **015** - Import/Export Enhanced | 121-125 | `015-import-export-enhanced/` | 📋 Ready |
-| **016** - Advanced Features | 126-130 | `016-advanced-features/` | 📋 Ready |
+| **016** - Advanced Features      | 126-130 | `016-advanced-features/`      | 📋 Ready |
 
 ### Plugin Ecosystem (Parallel Weeks 10-13)
 
-| Epic | Tasks | Folder | Status |
-|------|-------|--------|--------|
-| **017** - Newsletter Plugin | 131-136 | `017-newsletter-plugin/` | 📋 Ready |
+| Epic                            | Tasks   | Folder                       | Status   |
+| ------------------------------- | ------- | ---------------------------- | -------- |
+| **017** - Newsletter Plugin     | 131-136 | `017-newsletter-plugin/`     | 📋 Ready |
 | **018** - Multi-Language & SEO+ | 137-142 | `018-multilang-seo-plugins/` | 📋 Ready |
 
 ---
@@ -90,15 +94,18 @@
 ## 📚 Key Documents
 
 ### Navigation
+
 - **[000-OVERVIEW.md](./000-OVERVIEW.md)** - Master dashboard, progress tracking, quick start
 - **[BULK-GENERATION-COMPLETE.md](./BULK-GENERATION-COMPLETE.md)** - Complete task breakdown and specifications
 
 ### Design & Planning
+
 - **[Design Document](../docs/plans/2025-11-09-pinecms-task-system-design.md)** - System architecture and decisions
 
 ### Templates
-- **[_TEMPLATES/EPIC-TEMPLATE.md](./_TEMPLATES/EPIC-TEMPLATE.md)** - Template for creating new epics
-- **[_TEMPLATES/TASK-TEMPLATE.md](./_TEMPLATES/TASK-TEMPLATE.md)** - Template for creating new tasks
+
+- **[\_TEMPLATES/EPIC-TEMPLATE.md](./_TEMPLATES/EPIC-TEMPLATE.md)** - Template for creating new epics
+- **[\_TEMPLATES/TASK-TEMPLATE.md](./_TEMPLATES/TASK-TEMPLATE.md)** - Template for creating new tasks
 
 ---
 
@@ -107,34 +114,37 @@
 ### Starting a Task
 
 1. **Read the task file completely**
-   ```bash
-   # Example: Starting task 001
-   cat tasks/001-installer-foundation/001-system-requirements.md
-   ```
+
+    ```bash
+    # Example: Starting task 001
+    cat tasks/001-installer-foundation/001-system-requirements.md
+    ```
 
 2. **Create feature branch**
-   ```bash
-   git checkout -b task-001-system-requirements
-   ```
+
+    ```bash
+    git checkout -b task-001-system-requirements
+    ```
 
 3. **Generate TodoWrite checklist** (Claude does this automatically)
 
 4. **Implement following the steps**
-   - Follow file paths exactly
-   - Use provided code patterns
-   - Implement test specifications
-   - Follow quality gates
+    - Follow file paths exactly
+    - Use provided code patterns
+    - Implement test specifications
+    - Follow quality gates
 
 5. **Run quality checks**
-   ```bash
-   composer quality  # PHP: Pint, PHPStan, PHPUnit
-   npm run quality   # JS: Prettier, ESLint, TypeCheck, Vitest
-   ```
+
+    ```bash
+    composer quality  # PHP: Pint, PHPStan, PHPUnit
+    npm run quality   # JS: Prettier, ESLint, TypeCheck, Vitest
+    ```
 
 6. **Complete and commit**
-   ```bash
-   git commit -m "feat(scope): complete task 001 - system requirements check"
-   ```
+    ```bash
+    git commit -m "feat(scope): complete task 001 - system requirements check"
+    ```
 
 ### Tracking Progress
 
@@ -147,12 +157,14 @@ Update `000-OVERVIEW.md` progress tables after completing each epic.
 Every task includes:
 
 **Code Quality**:
+
 - PHPStan Level 8 compliance
 - Laravel Pint formatting
 - ESLint + Prettier
 - `declare(strict_types=1);` in all PHP files
 
 **Testing**:
+
 - Unit tests (60% coverage)
 - Feature tests (30% coverage)
 - Browser tests (10% coverage - critical flows)
@@ -160,6 +172,7 @@ Every task includes:
 - Target: >80% overall coverage
 
 **Security**:
+
 - OWASP Top 10 2024 compliance
 - Input validation
 - Output escaping (Blade/Vue)
@@ -167,6 +180,7 @@ Every task includes:
 - CSRF protection
 
 **Documentation**:
+
 - PHPDoc comments
 - Complex logic explained
 - README updates when needed
@@ -176,6 +190,7 @@ Every task includes:
 ## 🔧 Commands Reference
 
 ### Quality Checks
+
 ```bash
 # Run all quality checks
 composer quality && npm run quality
@@ -190,6 +205,7 @@ npm run test          # Vitest
 ```
 
 ### Task Management
+
 ```bash
 # List all tasks
 find tasks -name "[0-9]*.md" | sort
@@ -212,8 +228,8 @@ Each task file contains:
 task_id: XXX
 epic: XXX-epic-name
 title: Task Title
-status: pending              # pending | in_progress | completed | blocked
-priority: critical           # critical | high | medium | low
+status: pending # pending | in_progress | completed | blocked
+priority: critical # critical | high | medium | low
 estimated_effort: X hours
 actual_effort: null
 assignee: developer
@@ -223,6 +239,7 @@ tags: [tag1, tag2, week-X]
 ```
 
 **Content Sections**:
+
 1. **Overview** - Task purpose and context
 2. **Acceptance Criteria** - Testable requirements (checkboxes)
 3. **Implementation Steps** - Detailed guide with file paths
@@ -237,6 +254,7 @@ tags: [tag1, tag2, week-X]
 ## 🎯 Success Criteria
 
 ### v1.0.0 MVP Release
+
 - [ ] All 88 tasks (001-090, excluding 078-079) completed
 - [ ] Web installer functional (< 5 min setup)
 - [ ] Markdown import working (migration path exists)
@@ -251,6 +269,7 @@ tags: [tag1, tag2, week-X]
 **Note:** WordPress/Ghost import moved to future version (focus on core CMS)
 
 ### v1.1.0 Release
+
 - [ ] All 30 tasks (091-120) completed
 - [ ] Plugin system functional
 - [ ] All 3 official plugins installable
@@ -258,12 +277,14 @@ tags: [tag1, tag2, week-X]
 - [ ] Performance maintained
 
 ### v1.2.0 Release
+
 - [ ] All 10 tasks (121-130) completed
 - [ ] Advanced features implemented
 - [ ] Zero critical bugs
 - [ ] Documentation complete
 
 ### Plugin Ecosystem
+
 - [ ] All 12 tasks (131-142) completed
 - [ ] Newsletter plugin functional
 - [ ] Multi-Language plugin functional
@@ -274,6 +295,7 @@ tags: [tag1, tag2, week-X]
 ## 🚨 Troubleshooting
 
 ### Task Blocked?
+
 1. Mark task status: `blocked` in YAML
 2. Document blocker in task file
 3. Check if dependency can be resolved
@@ -281,6 +303,7 @@ tags: [tag1, tag2, week-X]
 5. Return when unblocked
 
 ### Quality Gates Failing?
+
 ```bash
 # PHP issues
 composer analyse        # Check PHPStan errors
@@ -294,6 +317,7 @@ npm run test           # Run Vitest
 ```
 
 ### Need to Add a Task?
+
 1. Create from `_TEMPLATES/TASK-TEMPLATE.md`
 2. Insert in sequence (may need renumbering)
 3. Update epic `_EPIC.md` task count
@@ -304,13 +328,16 @@ npm run test           # Run Vitest
 ## 📝 Maintenance
 
 ### Weekly Reviews
+
 - Validate effort estimates vs actuals
 - Identify recurring blockers
 - Update timeline if needed
 - Document lessons learned
 
 ### Updating Progress
+
 Update `000-OVERVIEW.md` after:
+
 - Completing each task
 - Completing each epic
 - Hitting major milestones
@@ -321,6 +348,7 @@ Update `000-OVERVIEW.md` after:
 ## 🎉 Project Completion
 
 When all 140 tasks are complete:
+
 - v1.0.0, v1.1.0, v1.2.0 successfully deployed
 - All 3 official plugins released
 - Documentation complete

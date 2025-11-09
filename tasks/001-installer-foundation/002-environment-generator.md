@@ -438,22 +438,24 @@ PINECMS_INSTALLER_DISABLED=false
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/EnvironmentGeneratorTest.php`
-  - Test `generateAppKey()` returns valid base64:32-byte format
-  - Test `buildEnvironmentContent()` with various configurations
-  - Test `getDatabasePath()` sanitizes filenames
-  - Test `extractDomain()` handles various URL formats
-  - Test `validateConfig()` catches invalid inputs
-  - Test `.env` exists check prevents overwrite
-  - Test atomic write creates temp file then renames
-  - Test file permissions set to 0600
+    - Test `generateAppKey()` returns valid base64:32-byte format
+    - Test `buildEnvironmentContent()` with various configurations
+    - Test `getDatabasePath()` sanitizes filenames
+    - Test `extractDomain()` handles various URL formats
+    - Test `validateConfig()` catches invalid inputs
+    - Test `.env` exists check prevents overwrite
+    - Test atomic write creates temp file then renames
+    - Test file permissions set to 0600
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/EnvironmentGenerationTest.php`
-  - Test POST `/installer/environment` creates .env file
-  - Test validation errors for invalid inputs
-  - Test 409 status when .env already exists
-  - Test generated .env has correct structure
+    - Test POST `/installer/environment` creates .env file
+    - Test validation errors for invalid inputs
+    - Test 409 status when .env already exists
+    - Test generated .env has correct structure
 
 **Example Unit Test:**
 
@@ -536,21 +538,25 @@ class EnvironmentGeneratorTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Environment Setup)
 - **Timeline**: Week 1-2 (v1.0.0)
 - **Success Criteria**: Secure APP_KEY generation, production-ready defaults
 
 **Architecture:**
+
 - **Pattern**: Service Layer (`docs/prd/04-ARCHITECTURE.md` Section 9)
 - **Security**: Secure key generation, file permissions
 - **Storage**: File system (`.env` file)
 
 **Quality Requirements:**
+
 - **Security**: Cryptographically secure random keys, .env permissions 0600 (`docs/prd/09-QUALITY-REQUIREMENTS.md`)
 - **Performance**: Generation < 1 second
 - **Testing**: Unit tests for all methods, Feature test for API endpoint
 
 **Related Tasks:**
+
 - **Next**: 003-database-setup
 - **Blocks**: 003-database-setup (needs .env for DB path)
 - **Depends On**: 001-system-requirements
@@ -558,6 +564,7 @@ class EnvironmentGeneratorTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes (`composer analyse`)
 - [ ] Laravel Pint formatted (`vendor/bin/pint`)
 - [ ] `declare(strict_types=1);` in all PHP files
@@ -565,12 +572,14 @@ class EnvironmentGeneratorTest extends TestCase
 - [ ] No hardcoded secrets in code
 
 ### Testing
+
 - [ ] Unit tests written and passing (8+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Test coverage > 80%
 - [ ] Edge cases covered (existing .env, invalid URLs)
 
 ### Security
+
 - [ ] Cryptographically secure random key generation
 - [ ] File permissions set to 0600 (owner read/write only)
 - [ ] No sensitive data in error messages
@@ -578,6 +587,7 @@ class EnvironmentGeneratorTest extends TestCase
 - [ ] Input validation prevents path traversal
 
 ### Documentation
+
 - [ ] PHPDoc comments added
 - [ ] .env.example template updated
 - [ ] Security considerations documented

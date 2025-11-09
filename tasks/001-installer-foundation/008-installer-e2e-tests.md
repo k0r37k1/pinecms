@@ -159,11 +159,7 @@ export class InstallerHelper {
     /**
      * Complete environment configuration step
      */
-    async completeEnvironmentConfig(config: {
-        appName: string;
-        appUrl: string;
-        timezone?: string;
-    }) {
+    async completeEnvironmentConfig(config: { appName: string; appUrl: string; timezone?: string }) {
         await this.page.fill('[name="app_name"]', config.appName);
         await this.page.fill('[name="app_url"]', config.appUrl);
 
@@ -197,11 +193,7 @@ export class InstallerHelper {
     /**
      * Complete admin user creation wizard
      */
-    async completeAdminUserCreation(userData: {
-        name: string;
-        email: string;
-        password: string;
-    }) {
+    async completeAdminUserCreation(userData: { name: string; email: string; password: string }) {
         // Step 1: User Info
         await this.page.fill('[name="name"]', userData.name);
         await this.page.fill('[name="email"]', userData.email);
@@ -538,13 +530,13 @@ test.describe('Error Handling', () => {
 
 ```json
 {
-  "scripts": {
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:debug": "playwright test --debug",
-    "test:e2e:report": "playwright show-report tests/Browser/reports",
-    "quality": "npm run format && npm run lint && npm run test && npm run test:e2e"
-  }
+    "scripts": {
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui",
+        "test:e2e:debug": "playwright test --debug",
+        "test:e2e:report": "playwright show-report tests/Browser/reports",
+        "quality": "npm run format && npm run lint && npm run test && npm run test:e2e"
+    }
 }
 ```
 
@@ -560,53 +552,54 @@ test.describe('Error Handling', () => {
 name: E2E Tests
 
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
+    push:
+        branches: [main, develop]
+    pull_request:
+        branches: [main, develop]
 
 jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
+    test:
+        timeout-minutes: 60
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: pdo, pdo_sqlite, mbstring, xml, curl, zip, fileinfo, openssl
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.3'
+                  extensions: pdo, pdo_sqlite, mbstring, xml, curl, zip, fileinfo, openssl
 
-      - name: Install PHP Dependencies
-        run: composer install --prefer-dist --no-interaction
+            - name: Install PHP Dependencies
+              run: composer install --prefer-dist --no-interaction
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
 
-      - name: Install Node Dependencies
-        run: npm ci
+            - name: Install Node Dependencies
+              run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+            - name: Install Playwright Browsers
+              run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests
-        run: npm run test:e2e
+            - name: Run Playwright Tests
+              run: npm run test:e2e
 
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: tests/Browser/reports/
-          retention-days: 30
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: playwright-report
+                  path: tests/Browser/reports/
+                  retention-days: 30
 ```
 
 ## 🧪 Testing Requirements
 
 **E2E Test Coverage:**
+
 - Complete happy path installation
 - Requirements validation failures
 - Environment configuration validation
@@ -621,6 +614,7 @@ jobs:
 - Mobile viewport testing
 
 **Test Quality Standards:**
+
 - All tests must be idempotent (can run multiple times)
 - Tests must clean up after themselves
 - Screenshots captured on failures
@@ -631,19 +625,23 @@ jobs:
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Installer)
 - **Timeline**: Week 2 (v1.0.0)
 - **Success Criteria**: Installation completion rate > 95%, E2E tests passing
 
 **Architecture:**
+
 - **Testing**: Playwright for E2E tests
 - **Cross-Browser**: Chrome, Firefox, Safari support
 
 **Quality Requirements:**
+
 - **Testing**: E2E tests for all critical user journeys
 - **Success Criteria**: 100% E2E test pass rate before release
 
 **Related Tasks:**
+
 - **Depends On**: All previous installer tasks (001-007)
 - **Blocks**: Epic 001 completion
 - **Final Task**: This is the last task in Epic 001
@@ -651,6 +649,7 @@ jobs:
 ## ✅ Quality Gates Checklist
 
 ### Test Quality
+
 - [ ] All E2E tests passing
 - [ ] Cross-browser tests passing (Chrome, Firefox, Safari)
 - [ ] Mobile viewport tests passing
@@ -659,12 +658,14 @@ jobs:
 - [ ] HTML test report generated
 
 ### Code Quality
+
 - [ ] TypeScript types defined for test helpers
 - [ ] ESLint passes
 - [ ] Prettier formatted
 - [ ] Test helpers are reusable
 
 ### Coverage
+
 - [ ] Happy path installation tested
 - [ ] Error scenarios tested
 - [ ] Edge cases tested (re-installation prevention)

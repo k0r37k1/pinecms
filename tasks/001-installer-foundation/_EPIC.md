@@ -46,11 +46,13 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Blocks:**
+
 - Epic 002 (Database Schema & Models)
 - Epic 003 (Content Management Backend)
 - All subsequent epics
 
 **Requires:**
+
 - None (Foundation epic)
 
 ## ✅ Epic Success Criteria
@@ -70,21 +72,25 @@ tasks_completed: 0
 ## 📚 References
 
 **PRD Specifications:**
+
 - Feature: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Phase 0: Installer & Setup)
 - Timeline: Week 1-2 (v1.0.0)
 
 **Architecture:**
+
 - Pattern: Layered Architecture (Controllers → Services → Repositories)
 - Storage: Hybrid (SQLite + Flat-File preparation)
 - Events: None (foundation tasks)
 
 **Quality Requirements:**
+
 - Security: File permission validation, secure key generation (`docs/prd/09-QUALITY-REQUIREMENTS.md`)
 - Performance: Installation < 5 minutes
 - Testing: Feature tests for installation flow, Unit tests for validation logic
 - Accessibility: Installation wizard WCAG 2.1 AA compliant
 
 **Acceptance Criteria:**
+
 - Installation completion rate > 95%
 - Time to install < 10 minutes
 - Clear error messages for missing requirements

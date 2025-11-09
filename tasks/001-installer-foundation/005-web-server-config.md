@@ -545,23 +545,25 @@ Route::prefix('installer')->middleware('web')->group(function () {
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Services/Installer/WebServerConfigGeneratorTest.php`
-  - Test `buildApacheHtaccess()` with various options
-  - Test HTTPS redirect enabled/disabled
-  - Test compression enabled/disabled
-  - Test caching enabled/disabled
-  - Test security headers present
-  - Test file protection rules
-  - Test `buildNginxConfig()` generates valid config
-  - Test `detectWebServer()` with Apache/nginx/unknown
+    - Test `buildApacheHtaccess()` with various options
+    - Test HTTPS redirect enabled/disabled
+    - Test compression enabled/disabled
+    - Test caching enabled/disabled
+    - Test security headers present
+    - Test file protection rules
+    - Test `buildNginxConfig()` generates valid config
+    - Test `detectWebServer()` with Apache/nginx/unknown
 
 **Feature Tests:**
+
 - `tests/Feature/Installer/WebServerConfigTest.php`
-  - Test POST `/installer/webserver/apache` creates .htaccess
-  - Test GET `/installer/webserver/detect` detects server type
-  - Test POST `/installer/webserver/nginx` creates nginx.conf.example
-  - Test 409 status when .htaccess already exists
-  - Test generated .htaccess is valid Apache syntax
+    - Test POST `/installer/webserver/apache` creates .htaccess
+    - Test GET `/installer/webserver/detect` detects server type
+    - Test POST `/installer/webserver/nginx` creates nginx.conf.example
+    - Test 409 status when .htaccess already exists
+    - Test generated .htaccess is valid Apache syntax
 
 **Example Unit Test:**
 
@@ -704,22 +706,26 @@ class WebServerConfigGeneratorTest extends TestCase
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.1 (Apache .htaccess Generator)
 - **Architecture**: `docs/prd/04-ARCHITECTURE.md` Section 6 (Infrastructure Requirements)
 - **Timeline**: Week 2 (v1.0.0)
 - **Success Criteria**: Auto-generated .htaccess for shared hosting
 
 **Architecture:**
+
 - **Web Servers**: Apache (default), nginx (optional)
 - **Security Headers**: OWASP best practices
 - **Performance**: Compression, caching, browser cache headers
 
 **Quality Requirements:**
+
 - **Security**: Security headers, file protection, HTTPS redirect
 - **Performance**: GZIP compression, browser caching, expires headers
 - **Testing**: Unit tests for all configuration generation logic
 
 **Related Tasks:**
+
 - **Next**: 006-post-install-cleanup
 - **Blocks**: Pretty URLs won't work without .htaccess
 - **Depends On**: 004-admin-user-wizard (web server config generated after user creation)
@@ -727,6 +733,7 @@ class WebServerConfigGeneratorTest extends TestCase
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all PHP files
@@ -734,23 +741,27 @@ class WebServerConfigGeneratorTest extends TestCase
 - [ ] No hardcoded file paths
 
 ### Testing
+
 - [ ] Unit tests written and passing (8+ test cases)
 - [ ] Feature tests written and passing
 - [ ] Test coverage > 80%
 - [ ] Edge cases covered (existing .htaccess, read-only directories)
 
 ### Security
+
 - [ ] Security headers included (X-Frame-Options, X-Content-Type-Options, etc.)
 - [ ] File protection rules (.env, database/, .git)
 - [ ] Directory listing disabled
 - [ ] HTTPS redirect optional (configurable)
 
 ### Performance
+
 - [ ] GZIP compression enabled
 - [ ] Browser caching configured (1 year for images, 1 month for CSS/JS)
 - [ ] Expires headers set
 
 ### Documentation
+
 - [ ] PHPDoc comments added
 - [ ] nginx.conf.example commented
 - [ ] Security headers explained

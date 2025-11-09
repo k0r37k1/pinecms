@@ -35,6 +35,7 @@ Implement bulk operations for posts and pages including delete, status change, c
 **File**: `app/Services/Content/BulkActionService.php`
 
 **Methods**:
+
 - bulkDelete(array $ids, string $contentType): int
 - bulkUpdateStatus(array $ids, string $status, string $contentType): int
 - bulkAssignCategory(array $ids, int $categoryId, string $contentType): int
@@ -42,6 +43,7 @@ Implement bulk operations for posts and pages including delete, status change, c
 - bulkDuplicate(array $ids, string $contentType): int
 
 **Business Logic**:
+
 - Validate IDs exist and user has permission
 - Execute in database transaction
 - Rollback on any failure
@@ -51,6 +53,7 @@ Implement bulk operations for posts and pages including delete, status change, c
 ### Step 2: Bulk Delete
 
 **Implementation**:
+
 ```php
 public function bulkDelete(array $ids, string $contentType): int
 {
@@ -75,6 +78,7 @@ public function bulkDelete(array $ids, string $contentType): int
 ### Step 3: Bulk Status Change
 
 **Implementation**:
+
 ```php
 public function bulkUpdateStatus(array $ids, string $status, string $contentType): int
 {
@@ -100,6 +104,7 @@ public function bulkUpdateStatus(array $ids, string $status, string $contentType
 ### Step 4: Bulk Category/Tag Assignment
 
 **Implementation**:
+
 ```php
 public function bulkAssignCategory(array $ids, int $categoryId, string $contentType): int
 {
@@ -123,25 +128,27 @@ public function bulkAssignCategory(array $ids, int $categoryId, string $contentT
 **Controller**: `app/Http/Controllers/Admin/BulkActionController.php`
 
 **Request**:
+
 ```json
 {
-  "action": "delete|update_status|assign_category|assign_tags",
-  "content_type": "post|page",
-  "ids": [1, 2, 3, 4, 5],
-  "params": {
-    "status": "published",
-    "category_id": 10,
-    "tag_ids": [5, 6, 7]
-  }
+    "action": "delete|update_status|assign_category|assign_tags",
+    "content_type": "post|page",
+    "ids": [1, 2, 3, 4, 5],
+    "params": {
+        "status": "published",
+        "category_id": 10,
+        "tag_ids": [5, 6, 7]
+    }
 }
 ```
 
 **Response**:
+
 ```json
 {
-  "success": true,
-  "count": 5,
-  "message": "5 posts deleted successfully"
+    "success": true,
+    "count": 5,
+    "message": "5 posts deleted successfully"
 }
 ```
 
@@ -150,6 +157,7 @@ public function bulkAssignCategory(array $ids, int $categoryId, string $contentT
 **Component**: `resources/js/Components/BulkActionToolbar.vue`
 
 **Features**:
+
 - Select all checkbox
 - Individual checkboxes
 - Bulk action dropdown
@@ -159,45 +167,52 @@ public function bulkAssignCategory(array $ids, int $categoryId, string $contentT
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/BulkActionServiceTest.php`
-  - Test bulkDelete soft deletes items
-  - Test bulkUpdateStatus changes status
-  - Test bulkAssignCategory assigns category
-  - Test bulkAssignTags assigns tags
-  - Test transaction rollback on error
-  - Test authorization checked for each item
+    - Test bulkDelete soft deletes items
+    - Test bulkUpdateStatus changes status
+    - Test bulkAssignCategory assigns category
+    - Test bulkAssignTags assigns tags
+    - Test transaction rollback on error
+    - Test authorization checked for each item
 
 **Feature Tests**:
+
 - `tests/Feature/Content/BulkActionsTest.php`
-  - Test bulk delete via API
-  - Test bulk status change
-  - Test bulk category assignment
-  - Test unauthorized user rejected
-  - Test partial selection works
+    - Test bulk delete via API
+    - Test bulk status change
+    - Test bulk category assignment
+    - Test unauthorized user rejected
+    - Test partial selection works
 
 **Frontend Tests**:
+
 - `tests/vitest/components/BulkActionToolbar.spec.ts`
-  - Test select all functionality
-  - Test action dropdown
-  - Test confirmation modal
+    - Test select all functionality
+    - Test action dropdown
+    - Test confirmation modal
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.9 (Bulk Actions)
 - **Timeline**: Week 5 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Service Layer + Transactions
 - **Authorization**: Gate checks per item
 - **Events**: BulkActionCompleted
 
 **Quality Requirements:**
+
 - **Performance**: < 1 second for 100 items
 - **Safety**: Transaction rollback on failure
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-post-crud-service, 016-page-crud-service
 - **Next**: 024-content-search
 - **Depends On**: 010-content-schema
@@ -205,22 +220,26 @@ public function bulkAssignCategory(array $ids, int $categoryId, string $contentT
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (10+ test cases)
 - [ ] Feature tests passing (5+ scenarios)
 - [ ] Frontend tests passing (3+ scenarios)
 
 ### Security
+
 - [ ] Authorization checked per item
 - [ ] Transaction rollback prevents partial updates
 - [ ] Input validation on IDs
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] API endpoint documented
 - [ ] Supported actions documented

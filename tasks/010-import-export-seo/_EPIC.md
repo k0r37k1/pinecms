@@ -25,16 +25,19 @@ tasks_completed: 0
 ## 📦 Features Delivered
 
 **Import:**
+
 - Markdown bulk import (ZIP with front matter)
 - Content mapping UI
 - Import progress tracking
 
 **Export:**
+
 - JSON full site export (backup/migration)
 - Markdown ZIP export (portable format)
 - Selective export (filter by content type, date)
 
 **SEO:**
+
 - XML sitemap (auto-updated)
 - RSS feeds (posts, categories, tags)
 - Meta tags management (OpenGraph, Twitter Cards)
@@ -60,6 +63,7 @@ tasks_completed: 0
 ## 🔗 Dependencies
 
 **Requires:**
+
 - Epic 003 (Content Management - posts/pages to export)
 - Epic 002 (Database Schema - content structure)
 

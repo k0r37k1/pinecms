@@ -2,8 +2,8 @@
 task_id: XXX
 epic: XXX-epic-name
 title: Task Title
-status: pending              # pending | in_progress | completed | blocked
-priority: critical           # critical | high | medium | low
+status: pending # pending | in_progress | completed | blocked
+priority: critical # critical | high | medium | low
 estimated_effort: X hours
 actual_effort: null
 assignee: developer
@@ -38,6 +38,7 @@ Brief description of what this task accomplishes and why it's needed.
 ```
 
 **TodoWrite checklist** (auto-generated when task starts):
+
 - Create file
 - Implement logic
 - Add tests
@@ -57,42 +58,50 @@ Brief description of what this task accomplishes and why it's needed.
 ## 🧪 Testing Requirements
 
 **Unit Tests:**
+
 - `tests/Unit/Path/FileTest.php`
-  - Test scenario 1
-  - Test scenario 2
+    - Test scenario 1
+    - Test scenario 2
 
 **Feature Tests:**
+
 - `tests/Feature/Path/FeatureTest.php`
-  - Test scenario 1
-  - Test scenario 2
+    - Test scenario 1
+    - Test scenario 2
 
 **Browser Tests** (if applicable):
+
 - `tests/Browser/FlowTest.php`
-  - Critical user flow
+    - Critical user flow
 
 **Frontend Tests** (if applicable):
+
 - `resources/js/**/__tests__/Component.test.ts`
-  - Component behavior test
+    - Component behavior test
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/XX-XXXXX.md` Section X.X
 - **Timeline**: Week X-Y (vX.X.X)
 - **Success Criteria**: [Criteria from PRD]
 
 **Architecture:**
+
 - **Pattern**: [Pattern Name] (`docs/prd/04-ARCHITECTURE.md`)
 - **Events**: [Event Names] (`docs/prd/06-PLUGIN-ECOSYSTEM.md`)
 - **Storage**: [Storage Approach]
 
 **Quality Requirements:**
+
 - **Security**: [OWASP Requirements] (`docs/prd/09-QUALITY-REQUIREMENTS.md`)
 - **Performance**: [Performance Targets]
 - **Testing**: [Coverage Requirements]
 - **Accessibility**: [WCAG Requirements if applicable]
 
 **Related Tasks:**
+
 - **Next**: XXX-next-task
 - **Blocks**: XXX-blocked-task
 - **Depends On**: XXX-prerequisite-task
@@ -100,6 +109,7 @@ Brief description of what this task accomplishes and why it's needed.
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes (`composer analyse`)
 - [ ] Laravel Pint formatted (`vendor/bin/pint`)
 - [ ] ESLint passes (`npm run lint`)
@@ -107,12 +117,14 @@ Brief description of what this task accomplishes and why it's needed.
 - [ ] `declare(strict_types=1);` in all PHP files
 
 ### Testing
+
 - [ ] Unit tests written and passing
 - [ ] Feature tests written and passing
 - [ ] Test coverage > 80% for new code
 - [ ] Browser tests for critical flows (if applicable)
 
 ### Security
+
 - [ ] OWASP Top 10 compliance verified
 - [ ] Input validation implemented
 - [ ] Output escaping verified (Blade/Vue)
@@ -120,6 +132,7 @@ Brief description of what this task accomplishes and why it's needed.
 - [ ] CSRF protection enabled
 
 ### Documentation
+
 - [ ] PHPDoc comments added
 - [ ] Complex logic explained
 - [ ] README updated if needed

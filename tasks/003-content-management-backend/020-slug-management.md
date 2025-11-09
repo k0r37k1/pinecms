@@ -34,6 +34,7 @@ Build comprehensive slug management system with auto-generation from titles, cus
 **File**: `app/Services/Content/SlugService.php`
 
 **Methods**:
+
 - generate(string $title, ?string $customSlug = null): string
 - validate(string $slug, string $contentType, ?int $excludeId = null): bool
 - makeUnique(string $slug, string $contentType, ?int $excludeId = null): string
@@ -41,6 +42,7 @@ Build comprehensive slug management system with auto-generation from titles, cus
 - trackChange(Model $content, string $oldSlug, string $newSlug): void
 
 **Business Logic**:
+
 - Generate from title: `Str::slug($title)`
 - Sanitize: lowercase, replace spaces with hyphens, remove special chars
 - Check uniqueness: query database for existing slug
@@ -50,6 +52,7 @@ Build comprehensive slug management system with auto-generation from titles, cus
 ### Step 2: Slug Validation Rules
 
 **Validation**:
+
 - Minimum length: 3 characters
 - Maximum length: 200 characters
 - Allowed: lowercase letters, numbers, hyphens
@@ -57,6 +60,7 @@ Build comprehensive slug management system with auto-generation from titles, cus
 - Not allowed: reserved words (admin, api, login, etc.)
 
 **Reserved Slugs**:
+
 ```php
 private const RESERVED = [
     'admin', 'api', 'login', 'logout', 'register',
@@ -67,6 +71,7 @@ private const RESERVED = [
 ### Step 3: Uniqueness Checking
 
 **Implementation**:
+
 ```php
 public function makeUnique(string $slug, string $contentType, ?int $excludeId = null): string
 {
@@ -87,6 +92,7 @@ public function makeUnique(string $slug, string $contentType, ?int $excludeId = 
 **Model**: `app/Models/SlugHistory.php`
 
 **Columns**:
+
 - sluggable_type, sluggable_id (polymorphic)
 - old_slug, new_slug
 - created_at
@@ -96,6 +102,7 @@ public function makeUnique(string $slug, string $contentType, ?int $excludeId = 
 ### Step 5: Integration with PostService/PageService
 
 **PostService::createPost()**:
+
 ```php
 $slug = $this->slugService->generate(
     $data['title'],
@@ -105,6 +112,7 @@ $data['slug'] = $this->slugService->makeUnique($slug, 'post');
 ```
 
 **PostService::updatePost()**:
+
 ```php
 if ($data['slug'] !== $post->slug) {
     $this->slugService->trackChange($post, $post->slug, $data['slug']);
@@ -114,39 +122,45 @@ if ($data['slug'] !== $post->slug) {
 ## 🧪 Testing Requirements
 
 **Unit Tests**:
+
 - `tests/Unit/Services/SlugServiceTest.php`
-  - Test generate from title
-  - Test sanitize removes special chars
-  - Test makeUnique appends counter
-  - Test validate rejects reserved words
-  - Test custom slug override
-  - Test trackChange creates history
+    - Test generate from title
+    - Test sanitize removes special chars
+    - Test makeUnique appends counter
+    - Test validate rejects reserved words
+    - Test custom slug override
+    - Test trackChange creates history
 
 **Feature Tests**:
+
 - `tests/Feature/Content/SlugTest.php`
-  - Test slug auto-generated on post create
-  - Test duplicate slug gets -2 appended
-  - Test custom slug accepted
-  - Test slug change creates redirect
-  - Test reserved words rejected
+    - Test slug auto-generated on post create
+    - Test duplicate slug gets -2 appended
+    - Test custom slug accepted
+    - Test slug change creates redirect
+    - Test reserved words rejected
 
 ## 📚 Related Documentation
 
 **PRD Specifications:**
+
 - **Feature**: `docs/prd/05-CORE-FEATURES.md` Section 2.6 (Slug Management)
 - **Timeline**: Week 4 (v1.0.0)
 
 **Architecture:**
+
 - **Pattern**: Service Layer
 - **Storage**: SQLite (slug_history table)
 - **Validation**: Laravel Form Requests
 
 **Quality Requirements:**
+
 - **Performance**: Slug generation < 50ms
 - **Uniqueness**: 100% conflict resolution
 - **Testing**: > 80% coverage
 
 **Related Tasks:**
+
 - **Previous**: 015-post-crud-service, 016-page-crud-service
 - **Next**: 021-concurrent-editing
 - **Depends On**: 010-content-schema
@@ -154,22 +168,26 @@ if ($data['slug'] !== $post->slug) {
 ## ✅ Quality Gates Checklist
 
 ### Code Quality
+
 - [ ] PHPStan Level 8 passes
 - [ ] Laravel Pint formatted
 - [ ] `declare(strict_types=1);` in all files
 - [ ] PHPDoc with return types
 
 ### Testing
+
 - [ ] Unit tests passing (10+ test cases)
 - [ ] Feature tests passing (5+ scenarios)
 - [ ] Edge cases covered (reserved words, max counter)
 
 ### Security
+
 - [ ] Slug sanitization prevents injection
 - [ ] Reserved words blocked
 - [ ] URL-safe characters only
 
 ### Documentation
+
 - [ ] Service methods documented
 - [ ] Reserved words list maintained
 - [ ] Slug format explained

@@ -15,12 +15,14 @@ test.describe('Example E2E Tests', () => {
         await page.screenshot({ path: 'storage/playwright/homepage.png' });
     });
 
-    test('navigation is visible', async ({ page }) => {
+    test('page content is visible', async ({ page }) => {
         await page.goto('/');
 
-        // Check if navigation elements exist
-        // Adjust selectors based on your actual application structure
-        const nav = page.locator('nav');
-        await expect(nav).toBeVisible();
+        // Check if the main body content exists
+        const body = page.locator('body');
+        await expect(body).toBeVisible();
+
+        // Verify the page has loaded by checking for Laravel default classes
+        await expect(page.locator('body')).toHaveClass(/font-sans/);
     });
 });

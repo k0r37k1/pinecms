@@ -19,7 +19,7 @@ Implement markdown shortcuts (typing `#` for heading, `*` for list) and slash co
 
 ## 🎯 Acceptance Criteria
 
-- [ ] Markdown shortcuts (# for heading, * for list, ` for code)
+- [ ] Markdown shortcuts (# for heading, \* for list, ` for code)
 - [ ] Slash command menu on typing /
 - [ ] Keyboard navigation in menu
 - [ ] Fuzzy search in slash menu
@@ -31,12 +31,15 @@ Implement markdown shortcuts (typing `#` for heading, `*` for list) and slash co
 **Install**: `npm install @tiptap/extension-typography @tiptap/suggestion`
 
 **Markdown Shortcuts**:
+
 - `#` + space = H1
 - `##` + space = H2
 - `*` + space = Bullet list
 - `1.` + space = Ordered list
 - `>` + space = Blockquote
-- ``` + language = Code block
+- ```+ language = Code block
+
+  ```
 
 **Slash Commands**: `/heading`, `/list`, `/code`, `/quote`, `/image`, `/link`
 
