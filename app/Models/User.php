@@ -32,6 +32,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
+        'avatar',
+        'bio',
     ];
 
     /**
@@ -54,13 +57,14 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'status' => 'string',
         ];
     }
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email'])
+            ->logOnly(['name', 'email', 'status', 'bio'])
             ->logOnlyDirty();
     }
 }
