@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Installer\AdminUserController;
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
@@ -23,4 +24,8 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('/database/initialize', [DatabaseController::class, 'initialize'])->name('database.initialize');
     Route::post('/database/migrate', [DatabaseController::class, 'migrate'])->name('database.migrate');
     Route::get('/database/info', [DatabaseController::class, 'info'])->name('database.info');
+
+    // Admin user creation
+    Route::post('/admin-user', [AdminUserController::class, 'create'])->name('admin-user.create');
+    Route::post('/admin-user/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('admin-user.check-password');
 });
