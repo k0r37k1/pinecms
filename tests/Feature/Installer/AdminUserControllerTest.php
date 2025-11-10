@@ -26,9 +26,9 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(201);
@@ -42,7 +42,7 @@ class AdminUserControllerTest extends TestCase
             'message' => 'Admin user created successfully.',
             'user' => [
                 'name' => 'Admin User',
-                'email' => 'admin@example.com',
+                'email' => 'admin@localhost',
                 'role' => 'Administrator',
             ],
         ]);
@@ -52,14 +52,14 @@ class AdminUserControllerTest extends TestCase
     {
         $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $this->assertDatabaseHas('users', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'status' => 'active',
         ]);
     }
@@ -68,12 +68,12 @@ class AdminUserControllerTest extends TestCase
     {
         $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
-        $user = User::where('email', 'admin@example.com')->first();
+        $user = User::where('email', 'admin@localhost')->first();
         $this->assertNotNull($user);
         $this->assertTrue($user->hasRole('Administrator'));
     }
@@ -82,12 +82,12 @@ class AdminUserControllerTest extends TestCase
     {
         $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
-        $user = User::where('email', 'admin@example.com')->first();
+        $user = User::where('email', 'admin@localhost')->first();
         $this->assertNotNull($user);
         $this->assertNotNull($user->email_verified_at);
     }
@@ -96,12 +96,12 @@ class AdminUserControllerTest extends TestCase
     {
         $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
-        $user = User::where('email', 'admin@example.com')->first();
+        $user = User::where('email', 'admin@localhost')->first();
         $this->assertNotNull($user);
         $this->assertStringStartsWith('$2y$12$', $user->password);
     }
@@ -113,9 +113,9 @@ class AdminUserControllerTest extends TestCase
     public function testValidationRequiresName(): void
     {
         $response = $this->postJson('/installer/admin-user', [
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -126,8 +126,8 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -138,7 +138,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
         ]);
 
         $response->assertStatus(422);
@@ -149,8 +149,8 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -161,9 +161,9 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin123',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -174,9 +174,9 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin@User#',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -187,9 +187,9 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => "John O'Brien-Smith",
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(201);
@@ -200,8 +200,8 @@ class AdminUserControllerTest extends TestCase
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
             'email' => 'invalid-email',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -210,13 +210,13 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsDuplicateEmail(): void
     {
-        User::factory()->create(['email' => 'admin@example.com']);
+        User::factory()->create(['email' => 'admin@localhost']);
 
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(422);
@@ -227,7 +227,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'password' => 'Short1!',
             'password_confirmation' => 'Short1!',
         ]);
@@ -240,7 +240,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'password' => 'lowercase123!@#',
             'password_confirmation' => 'lowercase123!@#',
         ]);
@@ -253,7 +253,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'password' => 'UPPERCASE123!@#',
             'password_confirmation' => 'UPPERCASE123!@#',
         ]);
@@ -266,7 +266,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'password' => 'NoNumbersHere!@#',
             'password_confirmation' => 'NoNumbersHere!@#',
         ]);
@@ -279,7 +279,7 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@localhost',
             'password' => 'NoSpecialChar123',
             'password_confirmation' => 'NoSpecialChar123',
         ]);
@@ -292,8 +292,8 @@ class AdminUserControllerTest extends TestCase
     {
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
             'password_confirmation' => 'DifferentPassword123!',
         ]);
 
@@ -311,9 +311,9 @@ class AdminUserControllerTest extends TestCase
 
         $response = $this->postJson('/installer/admin-user', [
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => 'SecureP@ssw0rd123',
-            'password_confirmation' => 'SecureP@ssw0rd123',
+            'email' => 'admin@localhost',
+            'password' => 'UniqueTestP@ss2024XyZ!',
+            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(403);
@@ -326,7 +326,7 @@ class AdminUserControllerTest extends TestCase
     public function testCheckPasswordEndpointReturnsStrongPassword(): void
     {
         $response = $this->postJson('/installer/admin-user/check-password', [
-            'password' => 'SecureP@ssw0rd123!',
+            'password' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
         $response->assertStatus(200);
