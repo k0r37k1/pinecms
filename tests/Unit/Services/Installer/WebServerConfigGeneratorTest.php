@@ -135,6 +135,24 @@ class WebServerConfigGeneratorTest extends TestCase
         $this->assertStringContainsString('location ~ /\.', $content);
     }
 
+    public function testDetectWebServerReturnsApache(): void
+    {
+        $_SERVER['SERVER_SOFTWARE'] = 'Apache/2.4.41 (Ubuntu)';
+
+        $result = $this->generator->detectWebServer();
+
+        $this->assertEquals('apache', $result);
+    }
+
+    public function testDetectWebServerReturnsNginx(): void
+    {
+        $_SERVER['SERVER_SOFTWARE'] = 'nginx/1.18.0';
+
+        $result = $this->generator->detectWebServer();
+
+        $this->assertEquals('nginx', $result);
+    }
+
     /**
      * Invoke a private or protected method
      */
