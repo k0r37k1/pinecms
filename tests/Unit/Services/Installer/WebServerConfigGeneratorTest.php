@@ -115,6 +115,26 @@ class WebServerConfigGeneratorTest extends TestCase
         $this->assertStringContainsString('ExpiresByType', $content);
     }
 
+    public function testBuildNginxConfigIncludesSecurityHeaders(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildNginxConfig');
+
+        $this->assertStringContainsString('add_header X-Frame-Options', $content);
+        $this->assertStringContainsString('add_header X-Content-Type-Options', $content);
+        $this->assertStringContainsString('add_header X-XSS-Protection', $content);
+        $this->assertStringContainsString('add_header Referrer-Policy', $content);
+    }
+
+    public function testBuildNginxConfigIncludesFileProtection(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildNginxConfig');
+
+        $this->assertStringContainsString('location ~ /\.env', $content);
+        $this->assertStringContainsString('deny all', $content);
+        $this->assertStringContainsString('location ~ ^/database/', $content);
+        $this->assertStringContainsString('location ~ /\.', $content);
+    }
+
     /**
      * Invoke a private or protected method
      */
