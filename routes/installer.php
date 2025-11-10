@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
+use App\Http\Controllers\Installer\WebServerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,9 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('/database/initialize', [DatabaseController::class, 'initialize'])->name('database.initialize');
     Route::post('/database/migrate', [DatabaseController::class, 'migrate'])->name('database.migrate');
     Route::get('/database/info', [DatabaseController::class, 'info'])->name('database.info');
+
+    // Web server configuration
+    Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');
+    Route::post('/webserver/nginx', [WebServerController::class, 'generateNginxExample'])->name('webserver.nginx');
+    Route::get('/webserver/detect', [WebServerController::class, 'detectServer'])->name('webserver.detect');
 });

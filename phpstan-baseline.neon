@@ -205,6 +205,30 @@ parameters:
 			path: tests/Feature/Installer/DatabaseInitializationTest.php
 
 		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertContains\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Feature/Installer/WebServerControllerTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertFileExists\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 2
+			path: tests/Feature/Installer/WebServerControllerTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringContainsString\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 8
+			path: tests/Feature/Installer/WebServerControllerTest.php
+
+		-
+			message: '#^Dynamic call to static method PHPUnit\\Framework\\Assert\:\:assertStringNotContainsString\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: tests/Feature/Installer/WebServerControllerTest.php
+
+		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
 			identifier: method.alreadyNarrowedType
 			count: 1
