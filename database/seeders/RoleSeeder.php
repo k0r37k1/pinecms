@@ -13,8 +13,8 @@ class RoleSeeder extends Seeder
     {
         // Create roles for PineCMS
         Role::firstOrCreate(['name' => 'Administrator', 'guard_name' => 'web']);
-        Role::firstOrCreate(['name' => 'Editor', 'guard_name' => 'web']);
         Role::firstOrCreate(['name' => 'Author', 'guard_name' => 'web']);
-        Role::firstOrCreate(['name' => 'Contributor', 'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'User', 'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'Guest', 'guard_name' => 'web']);
     }
 }
