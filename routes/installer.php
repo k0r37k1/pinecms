@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Installer API Routes
+| Installer Routes
 |--------------------------------------------------------------------------
 |
 | Routes for the PineCMS installation wizard. These routes are accessible
@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Web routes (for Inertia pages)
+Route::middleware(['web'])->group(function (): void {
+    Route::get('/admin-user', [AdminUserController::class, 'show'])->name('admin-user.show');
+});
+
+// API routes (for form submissions and AJAX requests)
 Route::middleware(['api'])->group(function (): void {
     Route::get('/requirements', [RequirementsController::class, 'check'])->name('requirements.check');
     Route::post('/environment', [EnvironmentController::class, 'generate'])->name('environment.generate');

@@ -10,12 +10,22 @@ use App\Services\Installer\AdminUserCreator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class AdminUserController extends Controller
 {
     public function __construct(
         private readonly AdminUserCreator $creator
     ) {}
+
+    /**
+     * Show admin user creation wizard
+     */
+    public function show(): Response
+    {
+        return Inertia::render('Installer/AdminUserWizard');
+    }
 
     /**
      * Create admin user

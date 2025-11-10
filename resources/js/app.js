@@ -3,6 +3,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import i18n from './i18n';
+import PrimeVue from 'primevue/config';
 
 const appName = import.meta.env.VITE_APP_NAME || 'PineCMS';
 
@@ -14,6 +15,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18n)
+            .use(PrimeVue)
             .mount(el);
     },
     progress: {
