@@ -51,6 +51,70 @@ class WebServerConfigGeneratorTest extends TestCase
         $this->assertStringContainsString('https://%{HTTP_HOST}', $content);
     }
 
+    public function testBuildApacheHtaccessIncludesSecurityHeaders(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [[]]);
+
+        $this->assertStringContainsString('X-Frame-Options', $content);
+        $this->assertStringContainsString('X-Content-Type-Options', $content);
+        $this->assertStringContainsString('X-XSS-Protection', $content);
+        $this->assertStringContainsString('Referrer-Policy', $content);
+        $this->assertStringContainsString('Permissions-Policy', $content);
+    }
+
+    public function testBuildApacheHtaccessIncludesFileProtection(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [[]]);
+
+        $this->assertStringContainsString('<Files .env>', $content);
+        $this->assertStringContainsString('RedirectMatch 403 ^/database/', $content);
+        $this->assertStringContainsString('Options -Indexes', $content);
+        $this->assertStringContainsString('<FilesMatch "^\\.">', $content);
+    }
+
+    public function testBuildApacheHtaccessIncludesHttpsRedirectWhenSslDetected(): void
+    {
+        $request = Request::create('https://example.com', 'GET');
+        $this->app->instance('request', $request);
+
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [[]]);
+
+        $this->assertStringContainsString('RewriteCond %{HTTPS} !=on', $content);
+        $this->assertStringContainsString('https://%{HTTP_HOST}', $content);
+    }
+
+    public function testBuildApacheHtaccessExcludesHttpsRedirectWhenNoSsl(): void
+    {
+        $request = Request::create('http://example.com', 'GET');
+        $this->app->instance('request', $request);
+
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [[]]);
+
+        $this->assertStringNotContainsString('Force HTTPS', $content);
+        $this->assertStringNotContainsString('RewriteCond %{HTTPS} !=on', $content);
+    }
+
+    public function testBuildApacheHtaccessIncludesCompressionWhenEnabled(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [
+            ['enable_compression' => true],
+        ]);
+
+        $this->assertStringContainsString('mod_deflate', $content);
+        $this->assertStringContainsString('AddOutputFilterByType DEFLATE', $content);
+    }
+
+    public function testBuildApacheHtaccessIncludesCachingWhenEnabled(): void
+    {
+        $content = $this->invokeMethod($this->generator, 'buildApacheHtaccess', [
+            ['enable_caching' => true],
+        ]);
+
+        $this->assertStringContainsString('mod_expires', $content);
+        $this->assertStringContainsString('ExpiresActive On', $content);
+        $this->assertStringContainsString('ExpiresByType', $content);
+    }
+
     /**
      * Invoke a private or protected method
      */
