@@ -21,18 +21,7 @@ class CreateAdminUserRequestTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test Form Request class does not exist (RED phase)
-     */
-    public function testFormRequestClassDoesNotExist(): void
-    {
-        $this->assertFalse(
-            class_exists(\App\Http\Requests\Installer\CreateAdminUserRequest::class),
-            'CreateAdminUserRequest should not exist yet (RED phase)'
-        );
-    }
-
-    /**
-     * Test validation rules structure (will be tested when class is created)
+     * Test validation rules structure
      * This test documents the expected validation rules
      */
     public function testExpectedValidationRulesDocumented(): void
