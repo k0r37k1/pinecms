@@ -57,18 +57,13 @@ class AdminUserCreator
             // Auto-verify first admin email
             $user->markEmailAsVerified();
 
-            $freshUser = $user->fresh();
-            if ($freshUser === null) {
-                return [
-                    'success' => false,
-                    'message' => 'Failed to reload user after creation.',
-                    'errors' => ['database' => 'User was created but could not be reloaded'],
-                ];
-            }
+            // Refresh the model and eager load roles to prevent N+1
+            $user->fresh();
+            $user->load('roles');
 
             return [
                 'success' => true,
-                'user' => $freshUser,
+                'user' => $user,
                 'message' => 'Admin user created successfully.',
             ];
         } catch (\Exception $e) {
@@ -101,28 +96,28 @@ class AdminUserCreator
         }
 
         // Uppercase check
-        if (preg_match('/[A-Z]/', $password) === 0) {
+        if (preg_match('/[A-Z]/', $password) !== 1) {
             $errors['password_uppercase'] = 'Password must contain at least one uppercase letter';
         } else {
             $score++;
         }
 
         // Lowercase check
-        if (preg_match('/[a-z]/', $password) === 0) {
+        if (preg_match('/[a-z]/', $password) !== 1) {
             $errors['password_lowercase'] = 'Password must contain at least one lowercase letter';
         } else {
             $score++;
         }
 
         // Number check
-        if (preg_match('/[0-9]/', $password) === 0) {
+        if (preg_match('/[0-9]/', $password) !== 1) {
             $errors['password_number'] = 'Password must contain at least one number';
         } else {
             $score++;
         }
 
         // Special character check
-        if (preg_match('/[^A-Za-z0-9]/', $password) === 0) {
+        if (preg_match('/[^A-Za-z0-9]/', $password) !== 1) {
             $errors['password_special'] = 'Password must contain at least one special character (!@#$%^&*)';
         } else {
             $score++;

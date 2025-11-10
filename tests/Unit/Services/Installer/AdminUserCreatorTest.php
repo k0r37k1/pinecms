@@ -13,6 +13,7 @@ class AdminUserCreatorTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** @phpstan-ignore-next-line property.uninitialized (initialized in setUp) */
     private AdminUserCreator $creator;
 
     protected function setUp(): void
@@ -137,10 +138,16 @@ class AdminUserCreatorTest extends TestCase
 
         $this->assertTrue($result['success']);
         $this->assertArrayHasKey('user', $result);
-        $this->assertEquals('Admin User', $result['user']->name);
-        $this->assertEquals('admin@example.com', $result['user']->email);
-        $this->assertTrue($result['user']->hasRole('Administrator'));
-        $this->assertNotNull($result['user']->email_verified_at);
+
+        // PHPStan Level 8: Assert type and key existence
+        $this->assertInstanceOf(User::class, $result['user'] ?? null);
+        /** @var User $user */
+        $user = $result['user'];
+
+        $this->assertEquals('Admin User', $user->name);
+        $this->assertEquals('admin@example.com', $user->email);
+        $this->assertTrue($user->hasRole('Administrator'));
+        $this->assertNotNull($user->email_verified_at);
     }
 
     public function testCreateHashesPasswordWithBcrypt(): void
@@ -154,6 +161,13 @@ class AdminUserCreatorTest extends TestCase
         ]);
 
         $this->assertTrue($result['success']);
-        $this->assertStringStartsWith('$2y$12$', $result['user']->password);
+        $this->assertArrayHasKey('user', $result);
+
+        // PHPStan Level 8: Assert type and key existence
+        $this->assertInstanceOf(User::class, $result['user'] ?? null);
+        /** @var User $user */
+        $user = $result['user'];
+
+        $this->assertStringStartsWith('$2y$12$', $user->password);
     }
 }
