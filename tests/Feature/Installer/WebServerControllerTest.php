@@ -139,4 +139,74 @@ class WebServerControllerTest extends TestCase
 
         $this->assertFileExists($this->nginxPath);
     }
+
+    public function testGeneratedHtaccessContainsValidApacheSyntax(): void
+    {
+        $response = $this->postJson('/installer/webserver/apache', [
+            'force_https' => true,
+            'enable_compression' => true,
+            'enable_caching' => true,
+        ]);
+
+        $response->assertStatus(201);
+
+        $content = File::get($this->htaccessPath);
+
+        // Check for essential Apache directives
+        $this->assertStringContainsString('<IfModule mod_rewrite.c>', $content);
+        $this->assertStringContainsString('RewriteEngine On', $content);
+        $this->assertStringContainsString('</IfModule>', $content);
+
+        // Check for OWASP security headers
+        $this->assertStringContainsString('X-Content-Type-Options', $content);
+        $this->assertStringContainsString('X-Frame-Options', $content);
+
+        // Check for file protection
+        $this->assertStringContainsString('Deny from all', $content);
+    }
+
+    public function testSslAutoDetectionEnablesHttpsRedirect(): void
+    {
+        // Mock SSL detection by setting HTTPS server variable
+        $_SERVER['HTTPS'] = 'on';
+
+        $response = $this->postJson('/installer/webserver/apache', [
+            // No force_https parameter - rely on auto-detection
+            'enable_compression' => true,
+            'enable_caching' => true,
+        ]);
+
+        $response->assertStatus(201);
+
+        $content = File::get($this->htaccessPath);
+
+        // Check for HTTPS redirect
+        $this->assertStringContainsString('RewriteCond %{HTTPS} !=on', $content);
+        $this->assertStringContainsString('https://%{HTTP_HOST}', $content);
+
+        // Clean up
+        unset($_SERVER['HTTPS']);
+    }
+
+    public function testManualOverrideDisablesHttpsDespiteSslPresent(): void
+    {
+        // Mock SSL detection
+        $_SERVER['HTTPS'] = 'on';
+
+        $response = $this->postJson('/installer/webserver/apache', [
+            'force_https' => false, // Explicit override
+            'enable_compression' => true,
+            'enable_caching' => true,
+        ]);
+
+        $response->assertStatus(201);
+
+        $content = File::get($this->htaccessPath);
+
+        // Check that HTTPS redirect is NOT present
+        $this->assertStringNotContainsString('Force HTTPS', $content);
+
+        // Clean up
+        unset($_SERVER['HTTPS']);
+    }
 }
