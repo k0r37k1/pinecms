@@ -167,10 +167,8 @@ class WebServerControllerTest extends TestCase
 
     public function testSslAutoDetectionEnablesHttpsRedirect(): void
     {
-        // Mock SSL detection by setting HTTPS server variable
-        $_SERVER['HTTPS'] = 'on';
-
-        $response = $this->postJson('/installer/webserver/apache', [
+        // Make an HTTPS request to trigger SSL detection
+        $response = $this->postJson('https://localhost/installer/webserver/apache', [
             // No force_https parameter - rely on auto-detection
             'enable_compression' => true,
             'enable_caching' => true,
@@ -183,17 +181,12 @@ class WebServerControllerTest extends TestCase
         // Check for HTTPS redirect
         $this->assertStringContainsString('RewriteCond %{HTTPS} !=on', $content);
         $this->assertStringContainsString('https://%{HTTP_HOST}', $content);
-
-        // Clean up
-        unset($_SERVER['HTTPS']);
     }
 
     public function testManualOverrideDisablesHttpsDespiteSslPresent(): void
     {
-        // Mock SSL detection
-        $_SERVER['HTTPS'] = 'on';
-
-        $response = $this->postJson('/installer/webserver/apache', [
+        // Make an HTTPS request but explicitly disable force_https
+        $response = $this->postJson('https://localhost/installer/webserver/apache', [
             'force_https' => false, // Explicit override
             'enable_compression' => true,
             'enable_caching' => true,
@@ -205,8 +198,5 @@ class WebServerControllerTest extends TestCase
 
         // Check that HTTPS redirect is NOT present
         $this->assertStringNotContainsString('Force HTTPS', $content);
-
-        // Clean up
-        unset($_SERVER['HTTPS']);
     }
 }
