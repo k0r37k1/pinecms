@@ -11,6 +11,11 @@ use Illuminate\Validation\Rules\Password;
 class CreateAdminUserRequest extends FormRequest
 {
     /**
+     * Skip DNS validation in tests (for localhost emails)
+     */
+    public static bool $skipDnsValidation = false;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * Only allow if no users exist (first installation)
@@ -34,12 +39,11 @@ class CreateAdminUserRequest extends FormRequest
                 'max:255',
                 'regex:/^[a-zA-Z\s\'-]+$/', // Letters, spaces, hyphens, apostrophes only
             ],
-            'email' => [
-                'required',
-                'email:rfc,dns', // Validate email format and DNS
-                'max:255',
-                'unique:users,email',
-            ],
+            'email' => array_merge(
+                ['required'],
+                [$this->getEmailValidation()],
+                ['max:255', 'unique:users,email']
+            ),
             'password' => [
                 'required',
                 'string',
@@ -52,6 +56,15 @@ class CreateAdminUserRequest extends FormRequest
                     ->uncompromised(), // Check against pwned passwords database
             ],
         ];
+    }
+
+    /**
+     * Get email validation rule based on environment
+     */
+    private function getEmailValidation(): string
+    {
+        // Skip DNS check in tests (localhost doesn't have valid DNS records)
+        return self::$skipDnsValidation ? 'email:rfc' : 'email:rfc,dns';
     }
 
     /**

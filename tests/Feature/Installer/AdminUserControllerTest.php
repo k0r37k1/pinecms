@@ -16,6 +16,9 @@ class AdminUserControllerTest extends TestCase
     {
         parent::setUp();
         $this->seed(\Database\Seeders\RoleSeeder::class);
+
+        // Skip DNS validation in tests (localhost doesn't have valid DNS records)
+        \App\Http\Requests\Installer\CreateAdminUserRequest::$skipDnsValidation = true;
     }
 
     // ========================================
@@ -208,20 +211,9 @@ class AdminUserControllerTest extends TestCase
         $response->assertJsonValidationErrors(['email']);
     }
 
-    public function testValidationRejectsDuplicateEmail(): void
-    {
-        User::factory()->create(['email' => 'admin@localhost']);
-
-        $response = $this->postJson('/installer/admin-user', [
-            'name' => 'Admin User',
-            'email' => 'admin@localhost',
-            'password' => 'UniqueTestP@ss2024XyZ!',
-            'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
-        ]);
-
-        $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['email']);
-    }
+    // Note: Duplicate email validation cannot be tested here because authorization
+    // runs before validation. Once a user exists, authorize() returns false (403).
+    // The authorization test "testAuthorizationPreventsDuplicateAdminCreation" covers this scenario.
 
     public function testValidationRejectsShortPassword(): void
     {
