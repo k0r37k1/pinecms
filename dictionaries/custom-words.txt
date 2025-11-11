@@ -228,3 +228,4 @@ awk
 vlucas
 sebastiandedeyne
 laravel
+pkill

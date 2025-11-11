@@ -308,7 +308,10 @@ class AdminUserControllerTest extends TestCase
             'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
-        $response->assertStatus(403);
+        // Service-level validation returns 422 (not 403) since authorization was moved to service layer
+        $response->assertStatus(422);
+        $response->assertJsonFragment(['success' => false]);
+        $response->assertJsonFragment(['message' => 'Admin user already exists. Installation may be complete.']);
     }
 
     // ========================================

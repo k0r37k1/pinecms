@@ -39,8 +39,8 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-            'busy_timeout' => null,
-            'journal_mode' => 'WAL',      // Write-Ahead Logging for concurrency
+            'busy_timeout' => env('DB_BUSY_TIMEOUT', 5000), // 5 seconds for tests
+            'journal_mode' => env('APP_ENV') === 'testing' ? null : 'WAL',  // Disable WAL in tests
             'synchronous' => 'NORMAL',    // Balance between safety and performance
             'transaction_mode' => 'DEFERRED',
         ],

@@ -112,7 +112,32 @@
       "Bash(./vendor/bin/phpstan analyse:*)",
       "Skill(superpowers:using-superpowers)",
       "Skill(superpowers:test-driven-development)",
-      "Bash(npm run format:check:*)"
+      "Bash(npm run format:check:*)",
+      "Bash(git merge:*)",
+      "Bash(wait:*)",
+      "Bash(pkill:*)",
+      "Bash(php --version:*)",
+      "Bash(timeout 15 php artisan:*)",
+      "Skill(superpowers:using-git-worktrees)",
+      "Skill(superpowers:brainstorming)",
+      "Skill(superpowers:verification-before-completion)",
+      "Skill(superpowers:systematic-debugging)",
+      "Skill(superpowers:executing-plans)",
+      "Skill(superpowers:requesting-code-review)",
+      "Skill(superpowers:receiving-code-review)",
+      "Skill(superpowers:writing-skills)",
+      "Skill(superpowers:testing-skills-with-subagents)",
+      "Skill(superpowers:subagent-driven-development)",
+      "Skill(superpowers:dispatching-parallel-agents)",
+      "Skill(superpowers:finishing-a-development-branch)",
+      "Skill(superpowers:root-cause-tracing)",
+      "Skill(superpowers:condition-based-waiting)",
+      "Skill(superpowers:testing-anti-patterns)",
+      "Skill(superpowers:defense-in-depth)",
+      "Skill(superpowers:sharing-skills)",
+      "mcp__vibe-check-mcp-server__vibe_check",
+      "Bash(jobs)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
@@ -120,7 +145,8 @@
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "eslint",
-    "chrome-devtools"
+    "chrome-devtools",
+    "laravel-boost"
   ],
   "hooks": {
     "UserPromptSubmit": [
