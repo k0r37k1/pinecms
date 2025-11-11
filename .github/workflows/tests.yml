@@ -212,6 +212,8 @@ jobs:
           php artisan key:generate
           touch database/database.sqlite
           php artisan migrate --force
+          # Ensure installer is accessible for E2E tests
+          rm -f .installed
 
       - name: Build Frontend Assets
         run: npm run build
