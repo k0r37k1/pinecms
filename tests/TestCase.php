@@ -10,10 +10,21 @@ abstract class TestCase extends BaseTestCase
 {
     /**
      * Boot the testing helper traits.
+     *
+     * Forces in-memory SQLite database to prevent file-based database
+     * locking issues with parallel test execution.
      */
     protected function setUp(): void
     {
-        // Force SQLite in-memory database for all tests
+        // Ensure database file exists (required for putenv() override to work)
+        // Use hardcoded path since database_path() helper isn't available yet
+        $dbPath = __DIR__ . '/../database/pinecms.sqlite';
+        if (! file_exists($dbPath)) {
+            touch($dbPath);
+            chmod($dbPath, 0664);
+        }
+
+        // Set environment variables BEFORE parent::setUp() boots Laravel
         putenv('DB_CONNECTION=sqlite');
         putenv('DB_DATABASE=:memory:');
 
