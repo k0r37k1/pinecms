@@ -31,9 +31,9 @@ class UnlockControllerTest extends TestCase
         File::put(database_path('pinecms.sqlite'), '');
 
         // Ensure files exist
-        $this->assertTrue(File::exists(base_path('.installed')));
-        $this->assertTrue(File::exists(base_path('.env')));
-        $this->assertTrue(File::exists(database_path('pinecms.sqlite')));
+        self::assertTrue(File::exists(base_path('.installed')));
+        self::assertTrue(File::exists(base_path('.env')));
+        self::assertTrue(File::exists(database_path('pinecms.sqlite')));
 
         // Call unlock endpoint
         $response = $this->postJson('/installer/unlock');
@@ -46,9 +46,9 @@ class UnlockControllerTest extends TestCase
         ]);
 
         // Verify files deleted
-        $this->assertFalse(File::exists(base_path('.installed')));
-        $this->assertFalse(File::exists(base_path('.env')));
-        $this->assertFalse(File::exists(database_path('pinecms.sqlite')));
+        self::assertFalse(File::exists(base_path('.installed')));
+        self::assertFalse(File::exists(base_path('.env')));
+        self::assertFalse(File::exists(database_path('pinecms.sqlite')));
     }
 
     /**
