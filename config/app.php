@@ -138,4 +138,18 @@ return [
     'installed' => env('PINECMS_INSTALLED', false),
     'installer_disabled' => env('PINECMS_INSTALLER_DISABLED', false),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Scheduler Mode
+    |--------------------------------------------------------------------------
+    |
+    | Determines how scheduled tasks are executed:
+    | - "cron": Traditional system cron job (requires server configuration)
+    | - "visit-triggered": Runs on web requests (zero-config, works on shared hosting)
+    | - null: Scheduler disabled
+    |
+    */
+
+    'scheduler_mode' => env('SCHEDULER_MODE', null),
+
 ];

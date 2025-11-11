@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Installer\AdminUserController;
 use App\Http\Controllers\Installer\CleanupController;
+use App\Http\Controllers\Installer\CronController;
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
@@ -42,6 +43,11 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');
     Route::post('/webserver/nginx', [WebServerController::class, 'generateNginxExample'])->name('webserver.nginx');
     Route::get('/webserver/detect', [WebServerController::class, 'detectServer'])->name('webserver.detect');
+
+    // Cron detection and configuration
+    Route::get('/cron/detect', [CronController::class, 'detect'])->name('cron.detect');
+    Route::post('/cron/set-mode', [CronController::class, 'setMode'])->name('cron.set-mode');
+    Route::get('/cron/test', [CronController::class, 'test'])->name('cron.test');
 
     // Post-install cleanup (final step)
     Route::post('/cleanup', [CleanupController::class, 'cleanup'])->name('cleanup');
