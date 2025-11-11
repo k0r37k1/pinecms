@@ -144,7 +144,9 @@
       "Bash(npm run type-check:*)",
       "Bash(tree:*)",
       "Bash(npm run format:*)",
-      "mcp__laravel-boost__last-error"
+      "mcp__laravel-boost__last-error",
+      "Bash(dictionaries/custom-words.txt)",
+      "Bash(sort:*)"
     ],
     "deny": [],
     "ask": []
