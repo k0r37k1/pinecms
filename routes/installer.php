@@ -3,10 +3,12 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Installer\AdminUserController;
+use App\Http\Controllers\Installer\CleanupController;
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
 use App\Http\Controllers\Installer\WebServerController;
+use App\Http\Middleware\PreventInstalledAccess;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,7 @@ Route::middleware(['web'])->group(function (): void {
 });
 
 // API routes (for form submissions and AJAX requests)
-Route::middleware(['api'])->group(function (): void {
+Route::middleware(['api', PreventInstalledAccess::class])->group(function (): void {
     Route::get('/requirements', [RequirementsController::class, 'check'])->name('requirements.check');
     Route::post('/environment', [EnvironmentController::class, 'generate'])->name('environment.generate');
     Route::post('/database/initialize', [DatabaseController::class, 'initialize'])->name('database.initialize');
@@ -40,4 +42,13 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');
     Route::post('/webserver/nginx', [WebServerController::class, 'generateNginxExample'])->name('webserver.nginx');
     Route::get('/webserver/detect', [WebServerController::class, 'detectServer'])->name('webserver.detect');
+
+    // Post-install cleanup (final step)
+    Route::post('/cleanup', [CleanupController::class, 'cleanup'])->name('cleanup');
+    Route::get('/status', [CleanupController::class, 'status'])->name('status');
 });
+
+// Development-only unlock endpoint (no PreventInstalledAccess middleware)
+Route::post('/installer/unlock', [CleanupController::class, 'unlock'])
+    ->middleware('api')
+    ->name('unlock');

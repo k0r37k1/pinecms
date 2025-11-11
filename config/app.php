@@ -125,4 +125,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Installation Status
+    |--------------------------------------------------------------------------
+    |
+    | This value determines whether the application has been installed.
+    | It is read from the PINECMS_INSTALLED environment variable.
+    |
+    */
+
+    'installed' => env('PINECMS_INSTALLED', false),
+    'installer_disabled' => env('PINECMS_INSTALLER_DISABLED', false),
+
 ];
