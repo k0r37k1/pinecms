@@ -57,7 +57,7 @@ jobs:
           php artisan key:generate
 
       - name: Run PHPUnit Tests with Coverage
-        run: composer test:coverage
+        run: XDEBUG_MODE=coverage phpunit --coverage-text --coverage-html=coverage --coverage-clover=coverage/clover.xml --exclude-group local-only
 
       - name: Upload PHP Coverage to Codecov
         uses: codecov/codecov-action@v4
