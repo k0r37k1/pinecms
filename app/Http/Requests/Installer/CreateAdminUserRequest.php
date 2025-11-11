@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Installer;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
@@ -18,11 +17,12 @@ class CreateAdminUserRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * Only allow if no users exist (first installation)
+     * Authorization is handled at the controller level by checking
+     * if users exist via the AdminUserCreator service.
      */
     public function authorize(): bool
     {
-        return User::count() === 0;
+        return true;
     }
 
     /**
