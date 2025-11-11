@@ -52,7 +52,7 @@ class AdminUserCreator
                 'name' => $userData['name'],
                 'email' => $userData['email'],
                 'password' => Hash::make($userData['password'], [
-                    'rounds' => 12, // Bcrypt cost factor
+                    'rounds' => (int) config('hashing.bcrypt.rounds', 12), // Bcrypt cost factor (respects BCRYPT_ROUNDS)
                 ]),
                 'status' => 'active',
             ]);
