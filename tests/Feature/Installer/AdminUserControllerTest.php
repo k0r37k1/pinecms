@@ -106,7 +106,8 @@ class AdminUserControllerTest extends TestCase
 
         $user = User::where('email', 'admin@localhost')->first();
         $this->assertNotNull($user);
-        $this->assertStringStartsWith('$2y$12$', $user->password);
+        $expectedCost = str_pad((string) config('hashing.bcrypt.rounds', 12), 2, '0', STR_PAD_LEFT);
+        $this->assertStringStartsWith('$2y$' . $expectedCost . '$', $user->password);
     }
 
     // ========================================
