@@ -137,7 +137,14 @@
       "Skill(superpowers:sharing-skills)",
       "mcp__vibe-check-mcp-server__vibe_check",
       "Bash(jobs)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(lsof:*)",
+      "Bash(xattr:*)",
+      "Bash(sqlite3:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(tree:*)",
+      "Bash(npm run format:*)",
+      "mcp__laravel-boost__last-error"
     ],
     "deny": [],
     "ask": []
