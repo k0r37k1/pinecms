@@ -8,6 +8,7 @@ use App\Http\Controllers\Installer\CronController;
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
+use App\Http\Controllers\Installer\UnlockController;
 use App\Http\Controllers\Installer\WebServerController;
 use App\Http\Middleware\PreventInstalledAccess;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +55,7 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::get('/status', [CleanupController::class, 'status'])->name('status');
 });
 
-// Development-only unlock endpoint (no PreventInstalledAccess middleware)
-Route::post('/installer/unlock', [CleanupController::class, 'unlock'])
+// Testing-only unlock endpoint for E2E test isolation (no PreventInstalledAccess middleware)
+Route::post('/unlock', [UnlockController::class, 'unlock'])
     ->middleware('api')
     ->name('unlock');
