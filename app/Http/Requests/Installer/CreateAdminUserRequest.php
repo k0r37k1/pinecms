@@ -7,6 +7,12 @@ namespace App\Http\Requests\Installer;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
+/**
+ * Create Admin User Request
+ *
+ * Validates admin user creation data during PineCMS installation.
+ * Enforces strong password requirements and email uniqueness.
+ */
 class CreateAdminUserRequest extends FormRequest
 {
     /**
@@ -15,10 +21,12 @@ class CreateAdminUserRequest extends FormRequest
     public static bool $skipDnsValidation = false;
 
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the user is authorized to make this request
      *
      * Authorization is handled at the controller level by checking
      * if users exist via the AdminUserCreator service.
+     *
+     * @return bool Always returns true (authorization handled elsewhere)
      */
     public function authorize(): bool
     {
@@ -60,6 +68,11 @@ class CreateAdminUserRequest extends FormRequest
 
     /**
      * Get email validation rule based on environment
+     *
+     * Returns 'email:rfc,dns' for production (validates DNS records)
+     * or 'email:rfc' for tests (skips DNS validation for localhost).
+     *
+     * @return string Email validation rule
      */
     private function getEmailValidation(): string
     {

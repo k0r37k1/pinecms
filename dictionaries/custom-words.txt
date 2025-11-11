@@ -125,6 +125,8 @@ Akismet
 Yoast
 Canva
 Dribbble
+Sentry
+CodeRabbit
 
 # Business terms
 sku

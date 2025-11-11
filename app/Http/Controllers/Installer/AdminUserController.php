@@ -13,14 +13,30 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
 
+/**
+ * Admin User Controller
+ *
+ * Handles admin user creation during PineCMS installation wizard.
+ * Provides endpoints for rendering the wizard UI and processing admin user creation.
+ */
 class AdminUserController extends Controller
 {
+    /**
+     * Create a new controller instance
+     *
+     * @param  AdminUserCreator  $creator  Service for creating admin users
+     */
     public function __construct(
         private readonly AdminUserCreator $creator
     ) {}
 
     /**
      * Show admin user creation wizard
+     *
+     * Renders the Inertia-powered admin user creation wizard step
+     * of the PineCMS installation process.
+     *
+     * @return Response Inertia response rendering the wizard
      */
     public function show(): Response
     {
@@ -29,6 +45,12 @@ class AdminUserController extends Controller
 
     /**
      * Create admin user
+     *
+     * Processes the validated admin user creation request.
+     * Returns 201 on success with user data, or 422 on validation/creation failure.
+     *
+     * @param  CreateAdminUserRequest  $request  Validated admin user creation data
+     * @return JsonResponse JSON response with success status and user data
      */
     public function create(CreateAdminUserRequest $request): JsonResponse
     {
@@ -61,6 +83,12 @@ class AdminUserController extends Controller
 
     /**
      * Check password strength (for real-time validation)
+     *
+     * Validates password strength in real-time during user input.
+     * Returns validation status, errors, and strength score with visual indicators.
+     *
+     * @param  Request  $request  Request containing password to validate
+     * @return JsonResponse JSON response with validation result and strength metrics
      */
     public function checkPasswordStrength(Request $request): JsonResponse
     {

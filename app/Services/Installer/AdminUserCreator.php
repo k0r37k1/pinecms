@@ -7,6 +7,12 @@ namespace App\Services\Installer;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Admin User Creator Service
+ *
+ * Handles the creation of the initial administrator user during PineCMS installation.
+ * Enforces strong password requirements and assigns the Administrator role via Spatie Permission.
+ */
 class AdminUserCreator
 {
     /**
@@ -86,41 +92,46 @@ class AdminUserCreator
         $score = 0;
 
         // Length check
+        if (strlen($password) >= self::MIN_PASSWORD_LENGTH) {
+            $score++;
+        }
         if (strlen($password) < self::MIN_PASSWORD_LENGTH) {
             $errors['password_length'] = sprintf(
                 'Password must be at least %d characters long',
                 self::MIN_PASSWORD_LENGTH
             );
-        } else {
-            $score++;
         }
 
         // Uppercase check
+        if (preg_match('/[A-Z]/', $password) === 1) {
+            $score++;
+        }
         if (preg_match('/[A-Z]/', $password) !== 1) {
             $errors['password_uppercase'] = 'Password must contain at least one uppercase letter';
-        } else {
-            $score++;
         }
 
         // Lowercase check
+        if (preg_match('/[a-z]/', $password) === 1) {
+            $score++;
+        }
         if (preg_match('/[a-z]/', $password) !== 1) {
             $errors['password_lowercase'] = 'Password must contain at least one lowercase letter';
-        } else {
-            $score++;
         }
 
         // Number check
+        if (preg_match('/[0-9]/', $password) === 1) {
+            $score++;
+        }
         if (preg_match('/[0-9]/', $password) !== 1) {
             $errors['password_number'] = 'Password must contain at least one number';
-        } else {
-            $score++;
         }
 
         // Special character check
+        if (preg_match('/[^A-Za-z0-9]/', $password) === 1) {
+            $score++;
+        }
         if (preg_match('/[^A-Za-z0-9]/', $password) !== 1) {
             $errors['password_special'] = 'Password must contain at least one special character (!@#$%^&*)';
-        } else {
-            $score++;
         }
 
         // Common password check
