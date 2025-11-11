@@ -23,9 +23,10 @@ class UnlockController extends Controller
      */
     public function unlock(): JsonResponse
     {
-        // Security: Only allow when TESTING environment variable is truthy
-        // This is set in phpunit.xml for automated tests (value: '1', 1, 'true', or true)
-        if (! env('TESTING')) {
+        // Security: Only allow when application is in testing mode
+        // This is set via TESTING environment variable in phpunit.xml
+        // and cached in config/app.php 'testing' key for config:cache compatibility
+        if (! (bool) config('app.testing')) {
             abort(403, 'Unlock endpoint only available in testing environment');
         }
 

@@ -56,6 +56,11 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
 });
 
 // Testing-only unlock endpoint for E2E test isolation (no PreventInstalledAccess middleware)
+// Rate limited for defense-in-depth security (max 5 requests per minute, except during tests)
+$unlockMiddleware = ['api'];
+if (! (bool) config('app.testing')) {
+    $unlockMiddleware[] = 'throttle:5,1';
+}
 Route::post('/unlock', [UnlockController::class, 'unlock'])
-    ->middleware('api')
+    ->middleware($unlockMiddleware)
     ->name('unlock');
