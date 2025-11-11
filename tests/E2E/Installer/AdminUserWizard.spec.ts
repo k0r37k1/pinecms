@@ -112,10 +112,15 @@ class AdminUserWizardPage {
     async goToPasswordStep() {
         await this.fillUserInfo(VALID_ADMIN.name, VALID_ADMIN.email);
         await this.nextButton.click();
+
+        // Wait for network to be idle after navigation (Inertia page transition)
+        await this.page.waitForLoadState('networkidle');
+
+        // Verify we're on Step 2
         await expect(this.currentStepIndicator).toContainText('Step 2');
 
-        // Wait for step 2 form to be fully loaded (best practice for wizard navigation)
-        await this.passwordInput.waitFor({ state: 'visible', timeout: 5000 });
+        // Wait for step 2 form to be fully loaded
+        await this.passwordInput.waitFor({ state: 'attached', timeout: 10000 });
     }
 
     async goToReviewStep(password: string = VALID_ADMIN.password) {
@@ -171,10 +176,15 @@ test.describe('AdminUserWizard - Complete Flow', () => {
 
         // Go to Step 2
         await wizardPage.nextButton.click();
+
+        // Wait for network to be idle after navigation (Inertia page transition)
+        await page.waitForLoadState('networkidle');
+
+        // Verify we're on Step 2
         await expect(wizardPage.currentStepIndicator).toContainText('Step 2 of 3');
 
-        // Wait for step 2 form to be fully loaded (best practice for wizard navigation)
-        await wizardPage.passwordInput.waitFor({ state: 'visible', timeout: 5000 });
+        // Wait for step 2 form to be fully loaded
+        await wizardPage.passwordInput.waitFor({ state: 'attached', timeout: 10000 });
 
         // STEP 2: Fill password
         await wizardPage.passwordInput.fill(VALID_ADMIN.password);
