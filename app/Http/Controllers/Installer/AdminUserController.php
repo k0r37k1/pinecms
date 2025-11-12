@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Installer\CreateAdminUserRequest;
 use App\Services\Installer\AdminUserCreator;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
-use Inertia\Response;
+use Inertia\Response as InertiaResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Admin User Controller
@@ -37,9 +37,9 @@ class AdminUserController extends Controller
      * Renders the Inertia-powered admin user creation wizard step
      * of the PineCMS installation process.
      *
-     * @return Response Inertia response rendering the wizard
+     * @return InertiaResponse Inertia response rendering the wizard
      */
-    public function show(): Response
+    public function show(): InertiaResponse
     {
         return Inertia::render('Installer/InstallerWizard');
     }
@@ -48,12 +48,12 @@ class AdminUserController extends Controller
      * Create admin user
      *
      * Processes the validated admin user creation request.
-     * Returns redirect for web/Inertia requests or JSON for API requests.
+     * Returns external location redirect for web/Inertia requests or JSON for API requests.
      *
      * @param  CreateAdminUserRequest  $request  Validated admin user creation data
-     * @return JsonResponse|RedirectResponse Redirect to admin login or JSON response
+     * @return Response JSON response or Inertia location redirect
      */
-    public function create(CreateAdminUserRequest $request): JsonResponse|RedirectResponse
+    public function create(CreateAdminUserRequest $request): Response
     {
         /** @var array{name: string, email: string, password: string} $validated */
         $validated = $request->validated();
@@ -89,8 +89,9 @@ class AdminUserController extends Controller
             ], 201);
         }
 
-        // For web/Inertia requests, redirect to admin login
-        return redirect('/admin/login')->with('success', 'Admin user created successfully.');
+        // For web/Inertia requests, use Inertia::location() for external redirect
+        // This triggers a window.location visit to the non-Inertia admin login page
+        return Inertia::location('/admin/login');
     }
 
     /**
