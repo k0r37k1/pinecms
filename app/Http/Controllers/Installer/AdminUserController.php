@@ -61,51 +61,41 @@ class AdminUserController extends Controller
 
         // Handle failure case
         if (! $result['success']) {
-            // Return JSON only for pure API requests (no X-Inertia header)
-            if ($request->wantsJson() && ! $request->hasHeader('X-Inertia')) {
-                return response()->json([
-                    'success' => false,
-                    'message' => $result['message'],
-                    'errors' => $result['errors'] ?? [],
-                ], 422);
+            // For Inertia requests, redirect back with errors
+            if ($request->hasHeader('X-Inertia')) {
+                return back()->withErrors($result['errors'] ?? [])->with('message', $result['message']);
             }
 
-            return back()->withErrors($result['errors'] ?? [])->with('message', $result['message']);
+            // For pure JSON API requests, return JSON error response
+            return response()->json([
+                'success' => false,
+                'message' => $result['message'],
+                'errors' => $result['errors'] ?? [],
+            ], 422);
         }
 
         // PHPStan: At this point, success is true, so user must exist
         assert(isset($result['user']));
 
-        // DEBUG: Log request headers to understand what's being sent
-        \Log::debug('AdminUserController: Request headers', [
-            'wantsJson' => $request->wantsJson(),
-            'hasXInertia' => $request->hasHeader('X-Inertia'),
-            'xInertiaValue' => $request->header('X-Inertia'),
-            'accept' => $request->header('Accept'),
-            'allHeaders' => $request->headers->all(),
-        ]);
-
-        // Handle success case - return JSON only for pure API requests (no X-Inertia header)
-        if ($request->wantsJson() && ! $request->hasHeader('X-Inertia')) {
-            \Log::debug('AdminUserController: Returning JSON response');
-
-            return response()->json([
-                'success' => true,
-                'message' => $result['message'],
-                'user' => [
-                    'id' => $result['user']->id,
-                    'name' => $result['user']->name,
-                    'email' => $result['user']->email,
-                    'role' => 'Administrator',
-                ],
-            ], 201);
+        // Check if this is an Inertia request (form submission with X-Inertia header)
+        // Inertia requests need external redirect via Inertia::location()
+        if ($request->hasHeader('X-Inertia')) {
+            // Inertia::location() returns 409 response with X-Inertia-Location header
+            // The Inertia client will automatically do window.location redirect
+            return Inertia::location('/admin/login');
         }
 
-        // For web/Inertia requests, use Inertia::location() for external redirect
-        // This triggers a window.location visit to the non-Inertia admin login page
-        \Log::debug('AdminUserController: Returning Inertia::location redirect');
-
-        return Inertia::location('/admin/login');
+        // For pure JSON API requests (no X-Inertia header), return JSON response
+        return response()->json([
+            'success' => true,
+            'message' => $result['message'],
+            'user' => [
+                'id' => $result['user']->id,
+                'name' => $result['user']->name,
+                'email' => $result['user']->email,
+                'role' => 'Administrator',
+            ],
+        ], 201);
     }
 
     /**
