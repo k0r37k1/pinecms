@@ -27,6 +27,7 @@ class UnlockController extends Controller
         // Security: Multi-layer validation to prevent accidental production exposure
         // Layer 1: Direct environment variable check (bypasses config cache)
         // Layer 2: Application environment check (testing/local only)
+        // @phpstan-ignore larastan.noEnvCallsOutsideOfConfig (Intentional: Security check must bypass config cache)
         if (! (bool) env('TESTING', false) || ! app()->environment('testing', 'local')) {
             abort(403, 'Unlock endpoint only available in testing environment');
         }
