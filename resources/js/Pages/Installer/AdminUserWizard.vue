@@ -239,6 +239,7 @@ const getStrengthColorClass = (color) => {
                     <Password
                         id="password"
                         v-model="form.password"
+                        input-id="password"
                         class="w-full"
                         toggle-mask
                         :feedback="false"
@@ -290,6 +291,7 @@ const getStrengthColorClass = (color) => {
                     <Password
                         id="password_confirmation"
                         v-model="form.password_confirmation"
+                        input-id="password_confirmation"
                         class="w-full"
                         toggle-mask
                         :feedback="false"

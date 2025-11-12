@@ -1,44 +1,56 @@
 {
-  "_inertia-CePCq7aQ.js": {
-    "file": "assets/inertia-CePCq7aQ.js",
+  "_inertia-B2L-qlpJ.js": {
+    "file": "assets/inertia-B2L-qlpJ.js",
     "name": "inertia",
     "imports": [
-      "_vue-vendor-DpPUlqAD.js"
+      "_vue-vendor-DOQMAEQg.js"
     ]
   },
-  "_vue-vendor-DpPUlqAD.js": {
-    "file": "assets/vue-vendor-DpPUlqAD.js",
+  "_vue-vendor-DOQMAEQg.js": {
+    "file": "assets/vue-vendor-DOQMAEQg.js",
     "name": "vue-vendor"
   },
   "_vueuse-l0sNRNKZ.js": {
     "file": "assets/vueuse-l0sNRNKZ.js",
     "name": "vueuse"
   },
+  "resources/js/Pages/Installer/AdminUserWizard.vue": {
+    "file": "assets/AdminUserWizard-CeR4pP6i.js",
+    "name": "AdminUserWizard",
+    "src": "resources/js/Pages/Installer/AdminUserWizard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_inertia-B2L-qlpJ.js",
+      "resources/js/app.js",
+      "_vue-vendor-DOQMAEQg.js"
+    ]
+  },
   "resources/js/Pages/Welcome.vue": {
-    "file": "assets/Welcome-CZVOFTDP.js",
+    "file": "assets/Welcome-CSYxme84.js",
     "name": "Welcome",
     "src": "resources/js/Pages/Welcome.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_inertia-CePCq7aQ.js",
-      "_vue-vendor-DpPUlqAD.js"
+      "_inertia-B2L-qlpJ.js",
+      "_vue-vendor-DOQMAEQg.js"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-D5QzjInT.js",
+    "file": "assets/app-D3VmtTFB.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_vue-vendor-DpPUlqAD.js",
-      "_inertia-CePCq7aQ.js"
+      "_vue-vendor-DOQMAEQg.js",
+      "_inertia-B2L-qlpJ.js"
     ],
     "dynamicImports": [
+      "resources/js/Pages/Installer/AdminUserWizard.vue",
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
-      "assets/app-DYgdrtf0.css"
+      "assets/app-Brm1IA7v.css"
     ]
   }
 }
