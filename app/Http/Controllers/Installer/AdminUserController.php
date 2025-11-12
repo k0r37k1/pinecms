@@ -76,8 +76,19 @@ class AdminUserController extends Controller
         // PHPStan: At this point, success is true, so user must exist
         assert(isset($result['user']));
 
+        // DEBUG: Log request headers to understand what's being sent
+        \Log::debug('AdminUserController: Request headers', [
+            'wantsJson' => $request->wantsJson(),
+            'hasXInertia' => $request->hasHeader('X-Inertia'),
+            'xInertiaValue' => $request->header('X-Inertia'),
+            'accept' => $request->header('Accept'),
+            'allHeaders' => $request->headers->all(),
+        ]);
+
         // Handle success case - return JSON only for pure API requests (no X-Inertia header)
         if ($request->wantsJson() && ! $request->hasHeader('X-Inertia')) {
+            \Log::debug('AdminUserController: Returning JSON response');
+
             return response()->json([
                 'success' => true,
                 'message' => $result['message'],
@@ -92,6 +103,8 @@ class AdminUserController extends Controller
 
         // For web/Inertia requests, use Inertia::location() for external redirect
         // This triggers a window.location visit to the non-Inertia admin login page
+        \Log::debug('AdminUserController: Returning Inertia::location redirect');
+
         return Inertia::location('/admin/login');
     }
 
