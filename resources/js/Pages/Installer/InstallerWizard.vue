@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { useForm, router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
@@ -124,10 +124,6 @@ watch(
 const submit = () => {
     form.post('/installer/wizard', {
         preserveScroll: true,
-        onSuccess: () => {
-            // Redirect to admin login on success
-            router.visit('/admin/login');
-        },
         onError: (errors) => {
             console.error('Admin user creation failed:', errors);
             // Stay on step 3 to show errors

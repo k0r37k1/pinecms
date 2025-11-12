@@ -28,6 +28,13 @@ Route::middleware(['web'])->group(function (): void {
     Route::get('/wizard', [AdminUserController::class, 'show'])->name('wizard.show');
 });
 
+// API/Web hybrid routes (handle both JSON API and Inertia form submissions)
+// Uses 'web' middleware for CSRF + session but controller detects request type
+Route::middleware(['web', PreventInstalledAccess::class])->group(function (): void {
+    Route::post('/wizard', [AdminUserController::class, 'create'])->name('wizard.create');
+    Route::post('/wizard/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('wizard.check-password');
+});
+
 // API routes (for form submissions and AJAX requests)
 Route::middleware(['api', PreventInstalledAccess::class])->group(function (): void {
     Route::get('/requirements', [RequirementsController::class, 'check'])->name('requirements.check');
@@ -35,10 +42,6 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::post('/database/initialize', [DatabaseController::class, 'initialize'])->name('database.initialize');
     Route::post('/database/migrate', [DatabaseController::class, 'migrate'])->name('database.migrate');
     Route::get('/database/info', [DatabaseController::class, 'info'])->name('database.info');
-
-    // Admin user creation
-    Route::post('/wizard', [AdminUserController::class, 'create'])->name('wizard.create');
-    Route::post('/wizard/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('wizard.check-password');
 
     // Web server configuration
     Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');

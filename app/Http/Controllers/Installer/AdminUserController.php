@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Installer\CreateAdminUserRequest;
 use App\Services\Installer\AdminUserCreator;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -47,38 +48,49 @@ class AdminUserController extends Controller
      * Create admin user
      *
      * Processes the validated admin user creation request.
-     * Returns 201 on success with user data, or 422 on validation/creation failure.
+     * Returns redirect for web/Inertia requests or JSON for API requests.
      *
      * @param  CreateAdminUserRequest  $request  Validated admin user creation data
-     * @return JsonResponse JSON response with success status and user data
+     * @return JsonResponse|RedirectResponse Redirect to admin login or JSON response
      */
-    public function create(CreateAdminUserRequest $request): JsonResponse
+    public function create(CreateAdminUserRequest $request): JsonResponse|RedirectResponse
     {
         /** @var array{name: string, email: string, password: string} $validated */
         $validated = $request->validated();
         $result = $this->creator->create($validated);
 
+        // Handle failure case
         if (! $result['success']) {
-            return response()->json([
-                'success' => false,
-                'message' => $result['message'],
-                'errors' => $result['errors'] ?? [],
-            ], 422);
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $result['message'],
+                    'errors' => $result['errors'] ?? [],
+                ], 422);
+            }
+
+            return back()->withErrors($result['errors'] ?? [])->with('message', $result['message']);
         }
 
         // PHPStan: At this point, success is true, so user must exist
         assert(isset($result['user']));
 
-        return response()->json([
-            'success' => true,
-            'message' => $result['message'],
-            'user' => [
-                'id' => $result['user']->id,
-                'name' => $result['user']->name,
-                'email' => $result['user']->email,
-                'role' => 'Administrator',
-            ],
-        ], 201);
+        // Handle success case - return JSON for API requests
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => $result['message'],
+                'user' => [
+                    'id' => $result['user']->id,
+                    'name' => $result['user']->name,
+                    'email' => $result['user']->email,
+                    'role' => 'Administrator',
+                ],
+            ], 201);
+        }
+
+        // For web/Inertia requests, redirect to admin login
+        return redirect('/admin/login')->with('success', 'Admin user created successfully.');
     }
 
     /**

@@ -15,7 +15,7 @@
     "name": "vueuse"
   },
   "resources/js/Pages/Installer/InstallerWizard.vue": {
-    "file": "assets/InstallerWizard-DtMqH3NW.js",
+    "file": "assets/InstallerWizard-BSYtgHE6.js",
     "name": "InstallerWizard",
     "src": "resources/js/Pages/Installer/InstallerWizard.vue",
     "isDynamicEntry": true,
@@ -26,7 +26,7 @@
     ]
   },
   "resources/js/Pages/Welcome.vue": {
-    "file": "assets/Welcome-C6VTIUWV.js",
+    "file": "assets/Welcome-DRejI9xK.js",
     "name": "Welcome",
     "src": "resources/js/Pages/Welcome.vue",
     "isDynamicEntry": true,
@@ -37,7 +37,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-BsBMzg3M.js",
+    "file": "assets/app-BK1si36u.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

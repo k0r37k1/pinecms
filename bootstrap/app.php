@@ -26,6 +26,13 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SetLocale::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
         ]);
+
+        // Exclude installer wizard routes from CSRF verification
+        // These routes handle both JSON API requests (feature tests) and Inertia form submissions (E2E tests)
+        $middleware->validateCsrfTokens(except: [
+            'installer/wizard',
+            'installer/wizard/check-password',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         Integration::handles($exceptions);
