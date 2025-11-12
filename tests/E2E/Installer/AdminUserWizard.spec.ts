@@ -113,14 +113,18 @@ class AdminUserWizardPage {
         await this.fillUserInfo(VALID_ADMIN.name, VALID_ADMIN.email);
         await this.nextButton.click();
 
-        // Wait for network to be idle after navigation (Inertia page transition)
-        await this.page.waitForLoadState('networkidle');
-
         // Verify we're on Step 2
         await expect(this.currentStepIndicator).toContainText('Step 2');
 
-        // Wait for step 2 form to be fully loaded
-        await this.passwordInput.waitFor({ state: 'attached', timeout: 10000 });
+        // Wait for Step 2 container div to render (v-if="currentStep === 2")
+        // PrimeVue Password component renders input asynchronously
+        const step2Container = this.page
+            .locator('div.space-y-6.rounded-lg')
+            .filter({ hasText: 'Password' });
+        await step2Container.waitFor({ state: 'attached', timeout: 15000 });
+
+        // Wait for password input inside PrimeVue Password component
+        await this.passwordInput.waitFor({ state: 'attached', timeout: 15000 });
     }
 
     async goToReviewStep(password: string = VALID_ADMIN.password) {
@@ -177,14 +181,18 @@ test.describe('AdminUserWizard - Complete Flow', () => {
         // Go to Step 2
         await wizardPage.nextButton.click();
 
-        // Wait for network to be idle after navigation (Inertia page transition)
-        await page.waitForLoadState('networkidle');
-
         // Verify we're on Step 2
         await expect(wizardPage.currentStepIndicator).toContainText('Step 2 of 3');
 
-        // Wait for step 2 form to be fully loaded
-        await wizardPage.passwordInput.waitFor({ state: 'attached', timeout: 10000 });
+        // Wait for Step 2 container div to render (v-if="currentStep === 2")
+        // PrimeVue Password component renders input asynchronously
+        const step2Container = page
+            .locator('div.space-y-6.rounded-lg')
+            .filter({ hasText: 'Password' });
+        await step2Container.waitFor({ state: 'attached', timeout: 15000 });
+
+        // Wait for password input inside PrimeVue Password component
+        await wizardPage.passwordInput.waitFor({ state: 'attached', timeout: 15000 });
 
         // STEP 2: Fill password
         await wizardPage.passwordInput.fill(VALID_ADMIN.password);
