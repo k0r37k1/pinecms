@@ -372,7 +372,7 @@ const getStrengthColorClass = (color) => {
                     </dl>
 
                     <Message severity="info" :closable="false" class="mt-4">
-                        You will be redirected to the login page after creating your account.
+                        You will be redirected to the admin login page after creating your account.
                     </Message>
                 </div>
 

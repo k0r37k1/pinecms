@@ -81,7 +81,7 @@ class AdminUserController extends Controller
         // For internal redirects, use regular Laravel redirect
         // Inertia will automatically handle this as a client-side navigation
         if ($request->hasHeader('X-Inertia')) {
-            return redirect('/login');
+            return redirect('/admin/login');
         }
 
         // For pure JSON API requests (no X-Inertia header), return JSON response

@@ -86,7 +86,7 @@ class InstallerWizardPage {
     }
 
     get redirectInfoMessage() {
-        return this.page.getByText('You will be redirected to the login page');
+        return this.page.getByText('You will be redirected to the admin login page');
     }
 
     // Common selectors
@@ -232,11 +232,11 @@ test.describe('InstallerWizard - Complete Flow', () => {
         // Submit form
         await wizardPage.submitButton.click();
 
-        // Wait for Inertia navigation to login
-        await page.waitForURL('/login', { timeout: 10000 });
+        // Wait for Inertia navigation to admin login
+        await page.waitForURL('/admin/login', { timeout: 10000 });
 
         // Verify redirect was successful
-        expect(page.url()).toContain('/login');
+        expect(page.url()).toContain('/admin/login');
     });
 
     test('should navigate between steps using Back button', async ({ page }) => {
@@ -554,15 +554,15 @@ test.describe('InstallerWizard - Step 3 Review and Submit', () => {
         await expect(wizardPage.submitButton).toBeVisible();
     });
 
-    test('should submit form and redirect to login', async ({ page }) => {
+    test('should submit form and redirect to admin login', async ({ page }) => {
         // Submit the form
         await wizardPage.submitButton.click();
 
         // Wait for Inertia redirect
-        await page.waitForURL('/login', { timeout: 10000 });
+        await page.waitForURL('/admin/login', { timeout: 10000 });
 
         // Verify successful redirect
-        expect(page.url()).toContain('/login');
+        expect(page.url()).toContain('/admin/login');
     });
 
     test('should show loading state during submission', async ({ page: _page }) => {
@@ -601,7 +601,7 @@ test.describe('InstallerWizard - Step 3 Review and Submit', () => {
             await page.waitForTimeout(1000);
 
             // Check if we're still on the installer page (not redirected = validation failed)
-            if (!page.url().includes('/login')) {
+            if (!page.url().includes('/admin/login')) {
                 // Should still be on Step 3 with potential error messages
                 await expect(wizardPage.currentStepIndicator).toContainText('Step 3');
             }
