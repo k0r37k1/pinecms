@@ -15,11 +15,17 @@
 .env
 .env.*
 !.env.example
+.env.backup
+.env.production
 /auth.json
 
 # MCP Server Configuration (per developer)
 .mcp.json
 .mcp.json.example
+
+# FTP/SFTP Credentials (SECURITY: Never commit these!)
+sftp-config.json
+.ftpconfig
 
 ###############################################################################
 # Laravel Storage & Cache
@@ -53,6 +59,7 @@
 .vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+bundle-stats.html
 
 ###############################################################################
 # Testing & Coverage
@@ -100,6 +107,7 @@ pnpm-debug.log*
 .parcel-cache
 *.tsbuildinfo
 .temp
+.php-cs-fixer.cache
 
 ###############################################################################
 # IDE & Editors
@@ -130,7 +138,9 @@ database/*.sqlite-journal
 ###############################################################################
 Homestead.json
 Homestead.yaml
+/.vagrant
 /bootstrap/ssr
+selenium.php
 
 ###############################################################################
 # Laravel Vendor Published Assets
