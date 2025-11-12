@@ -167,8 +167,8 @@ temp/
 ###############################################################################
 # Planning & Documentation (Working Drafts)
 ###############################################################################
-# Task planning and drafts (docs/ contains final documentation)
-/docs/plans/
+# Task planning and drafts - all documentation is now external
+/docs/
 /tasks/
 
 ###############################################################################
