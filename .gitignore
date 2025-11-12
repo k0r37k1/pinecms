@@ -182,16 +182,18 @@ temp/
 /tasks/
 
 ###############################################################################
-# Claude Code - AI Development Assistant
+# AI Development Tools (Personal Configuration)
 ###############################################################################
-# Personal Settings & Logs (DO NOT COMMIT)
-.claude/settings.local.json
-.claude/.edit-log.json
-.claude/.hook-error.log
-.claude/*.log
+# Claude Code, Cursor, and other AI tool configurations are personal
+# Each developer uses their own AI workflow and tools
+.claude/
+.cursor/
+CLAUDE.md
+.claude.md
 
-# Personal Instructions (Team instructions go in CLAUDE.md, which IS committed)
+# Personal AI Instructions
 CLAUDE.local.md
+.cursorrules
 
 ###############################################################################
 # IMPORTANT: Lock Files MUST BE COMMITTED
