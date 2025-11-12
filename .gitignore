@@ -88,13 +88,8 @@ bundle-stats.html
 /.rector_cache
 
 ###############################################################################
-# Node.js Logs & Debug
+# Logs
 ###############################################################################
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-pnpm-debug.log*
 *.log
 
 ###############################################################################
@@ -130,8 +125,6 @@ pnpm-debug.log*
 *.sqlite-shm
 *.sqlite-wal
 *.db
-database/*.sqlite
-database/*.sqlite-journal
 
 ###############################################################################
 # Laravel Specific
