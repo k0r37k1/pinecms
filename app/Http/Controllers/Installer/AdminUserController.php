@@ -78,12 +78,10 @@ class AdminUserController extends Controller
         assert(isset($result['user']));
 
         // Check if this is an Inertia request (form submission with X-Inertia header)
-        // Inertia requests need external redirect via Inertia::location()
+        // For internal redirects, use regular Laravel redirect
+        // Inertia will automatically handle this as a client-side navigation
         if ($request->hasHeader('X-Inertia')) {
-            // Inertia::location() returns 409 response with X-Inertia-Location header
-            // The Inertia client will automatically do window.location redirect
-            // Use absolute URL to ensure proper redirect handling
-            return Inertia::location(url('/admin/login'));
+            return redirect('/admin/login');
         }
 
         // For pure JSON API requests (no X-Inertia header), return JSON response
