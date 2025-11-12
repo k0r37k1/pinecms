@@ -87,7 +87,7 @@ const checkPasswordStrength = () => {
         isCheckingPassword.value = true;
 
         try {
-            const response = await fetch('/installer/admin-user/check-password', {
+            const response = await fetch('/installer/wizard/check-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ watch(
 
 // Submit handler
 const submit = () => {
-    form.post('/installer/admin-user', {
+    form.post('/installer/wizard', {
         preserveScroll: true,
         onSuccess: () => {
             // Redirect to admin login on success

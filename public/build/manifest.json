@@ -14,10 +14,10 @@
     "file": "assets/vueuse-l0sNRNKZ.js",
     "name": "vueuse"
   },
-  "resources/js/Pages/Installer/AdminUserWizard.vue": {
-    "file": "assets/AdminUserWizard-CeR4pP6i.js",
-    "name": "AdminUserWizard",
-    "src": "resources/js/Pages/Installer/AdminUserWizard.vue",
+  "resources/js/Pages/Installer/InstallerWizard.vue": {
+    "file": "assets/InstallerWizard-DtMqH3NW.js",
+    "name": "InstallerWizard",
+    "src": "resources/js/Pages/Installer/InstallerWizard.vue",
     "isDynamicEntry": true,
     "imports": [
       "_inertia-B2L-qlpJ.js",
@@ -26,7 +26,7 @@
     ]
   },
   "resources/js/Pages/Welcome.vue": {
-    "file": "assets/Welcome-CSYxme84.js",
+    "file": "assets/Welcome-C6VTIUWV.js",
     "name": "Welcome",
     "src": "resources/js/Pages/Welcome.vue",
     "isDynamicEntry": true,
@@ -37,7 +37,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-D3VmtTFB.js",
+    "file": "assets/app-BsBMzg3M.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -46,7 +46,7 @@
       "_inertia-B2L-qlpJ.js"
     ],
     "dynamicImports": [
-      "resources/js/Pages/Installer/AdminUserWizard.vue",
+      "resources/js/Pages/Installer/InstallerWizard.vue",
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [

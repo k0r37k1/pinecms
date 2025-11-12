@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 
 /**
- * E2E Tests for AdminUserWizard Component
+ * E2E Tests for InstallerWizard Component
  *
  * Tests the 3-step admin user creation wizard flow during installation:
  * 1. User Information (Name, Email)
@@ -24,10 +24,10 @@ const SHORT_PASSWORD = 'Short1!';
 const INVALID_EMAIL = 'invalid-email';
 
 /**
- * Helper class for AdminUserWizard page interactions
+ * Helper class for InstallerWizard page interactions
  * Provides semantic selectors and common actions
  */
-class AdminUserWizardPage {
+class InstallerWizardPage {
     constructor(private page: Page) {}
 
     // Step 1 - User Information selectors
@@ -134,7 +134,7 @@ class AdminUserWizardPage {
         // Wait for password strength API response (500ms debounce)
         await this.page.waitForResponse(
             (response) =>
-                response.url().includes('/installer/admin-user/check-password') &&
+                response.url().includes('/installer/wizard/check-password') &&
                 response.status() === 200,
         );
 
@@ -145,19 +145,19 @@ class AdminUserWizardPage {
     }
 }
 
-test.describe('AdminUserWizard - Complete Flow', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Complete Flow', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         // Reset installation state
         await page.request.post('/installer/unlock');
 
         // Navigate to wizard
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
 
         // Initialize page object
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
     });
 
     test('should display wizard header and progress bar', async ({ page }) => {
@@ -200,7 +200,7 @@ test.describe('AdminUserWizard - Complete Flow', () => {
         // Wait for password strength API call (500ms debounce)
         const passwordStrengthResponse = page.waitForResponse(
             (response) =>
-                response.url().includes('/installer/admin-user/check-password') &&
+                response.url().includes('/installer/wizard/check-password') &&
                 response.status() === 200,
         );
 
@@ -262,7 +262,7 @@ test.describe('AdminUserWizard - Complete Flow', () => {
         // Navigate to Step 3
         await wizardPage.fillPasswords(VALID_ADMIN.password, VALID_ADMIN.password);
         await page.waitForResponse((response) =>
-            response.url().includes('/installer/admin-user/check-password'),
+            response.url().includes('/installer/wizard/check-password'),
         );
         await expect(wizardPage.nextButton).toBeEnabled({ timeout: 2000 });
         await wizardPage.nextButton.click();
@@ -280,14 +280,14 @@ test.describe('AdminUserWizard - Complete Flow', () => {
     });
 });
 
-test.describe('AdminUserWizard - Step 1 Validation', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Step 1 Validation', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         await page.request.post('/installer/unlock');
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
     });
 
     test('should disable Next button when fields are empty', async () => {
@@ -359,14 +359,14 @@ test.describe('AdminUserWizard - Step 1 Validation', () => {
     });
 });
 
-test.describe('AdminUserWizard - Step 2 Password Validation', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Step 2 Password Validation', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         await page.request.post('/installer/unlock');
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
 
         // Navigate to Step 2
         await wizardPage.goToPasswordStep();
@@ -378,7 +378,7 @@ test.describe('AdminUserWizard - Step 2 Password Validation', () => {
         // Wait for password strength check (500ms debounce + API call)
         await page.waitForResponse(
             (response) =>
-                response.url().includes('/installer/admin-user/check-password') &&
+                response.url().includes('/installer/wizard/check-password') &&
                 response.status() === 200,
             { timeout: 2000 },
         );
@@ -437,7 +437,7 @@ test.describe('AdminUserWizard - Step 2 Password Validation', () => {
         // Wait for debounced API call (500ms debounce)
         const strengthResponse = await page.waitForResponse(
             (response) =>
-                response.url().includes('/installer/admin-user/check-password') &&
+                response.url().includes('/installer/wizard/check-password') &&
                 response.status() === 200,
             { timeout: 2000 },
         );
@@ -454,7 +454,7 @@ test.describe('AdminUserWizard - Step 2 Password Validation', () => {
 
         // Wait for strength check
         await page.waitForResponse((response) =>
-            response.url().includes('/installer/admin-user/check-password'),
+            response.url().includes('/installer/wizard/check-password'),
         );
 
         // Verify strength label exists and has content
@@ -476,7 +476,7 @@ test.describe('AdminUserWizard - Step 2 Password Validation', () => {
         // Wait for password strength API
         const response = await page.waitForResponse(
             (response) =>
-                response.url().includes('/installer/admin-user/check-password') &&
+                response.url().includes('/installer/wizard/check-password') &&
                 response.status() === 200,
         );
 
@@ -524,14 +524,14 @@ test.describe('AdminUserWizard - Step 2 Password Validation', () => {
     });
 });
 
-test.describe('AdminUserWizard - Step 3 Review and Submit', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Step 3 Review and Submit', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         await page.request.post('/installer/unlock');
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
 
         // Navigate to Step 3
         await wizardPage.goToReviewStep();
@@ -609,14 +609,14 @@ test.describe('AdminUserWizard - Step 3 Review and Submit', () => {
     });
 });
 
-test.describe('AdminUserWizard - Progress Bar', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Progress Bar', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         await page.request.post('/installer/unlock');
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
     });
 
     test('should update progress bar as user navigates through steps', async ({ page }) => {
@@ -630,7 +630,7 @@ test.describe('AdminUserWizard - Progress Bar', () => {
         // Navigate to Step 3
         await wizardPage.fillPasswords(VALID_ADMIN.password, VALID_ADMIN.password);
         await page.waitForResponse((response) =>
-            response.url().includes('/installer/admin-user/check-password'),
+            response.url().includes('/installer/wizard/check-password'),
         );
         await expect(wizardPage.nextButton).toBeEnabled({ timeout: 2000 });
         await wizardPage.nextButton.click();
@@ -641,14 +641,14 @@ test.describe('AdminUserWizard - Progress Bar', () => {
     });
 });
 
-test.describe('AdminUserWizard - Accessibility', () => {
-    let wizardPage: AdminUserWizardPage;
+test.describe('InstallerWizard - Accessibility', () => {
+    let wizardPage: InstallerWizardPage;
 
     test.beforeEach(async ({ page }) => {
         await page.request.post('/installer/unlock');
-        await page.goto('/installer/admin-user');
+        await page.goto('/installer/wizard');
         await page.waitForLoadState('networkidle');
-        wizardPage = new AdminUserWizardPage(page);
+        wizardPage = new InstallerWizardPage(page);
     });
 
     test('should have proper form labels', async ({ page }) => {

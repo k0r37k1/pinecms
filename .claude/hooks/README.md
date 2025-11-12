@@ -17,6 +17,7 @@ This hooks system combines **PHP hooks** (for tracking) and **Bash hooks** (for 
 ├── common-helpers.sh              # Shared utilities (colors, logging, detection)
 ├── pinecms-lint.sh                # Main quality check hook (runs after edits)
 ├── .claude-hooks-ignore           # Files to ignore in hooks
+├── pre-commit-check.php           # PHP hook (test enforcement) ⭐ NEW!
 ├── post-tool-use.php              # PHP hook (tracks edited files)
 ├── stop.php                       # PHP hook (runs at session end)
 └── user-prompt-submit.php         # PHP hook (skills auto-activation)
@@ -46,11 +47,17 @@ export CLAUDE_HOOKS_CHECK_RAW_SQL=true
 
 ### Hook Configuration (settings.local.json)
 
-PostToolUse hooks run automatically after Edit/Write:
+Hooks run automatically at different lifecycle points:
 
 ```json
 {
     "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Bash",
+                "hooks": [{ "type": "command", "command": "php .claude/hooks/pre-commit-check.php" }]
+            }
+        ],
         "PostToolUse": [
             {
                 "matcher": "Edit|Write",
@@ -69,18 +76,81 @@ PostToolUse hooks run automatically after Edit/Write:
 ### Workflow
 
 ```
-1. Claude edits/writes file
+1. User submits prompt
    ↓
-2. PostToolUse hook triggers
+2. UserPromptSubmit → Skills auto-activation
    ↓
-3. PHP hook tracks file
+3. Claude edits/writes files
    ↓
-4. Bash hook runs quality checks
+4. PostToolUse → Track files + Run quality checks
    ↓
-5. If errors → Block and show fixes needed
+5. Claude attempts commit
    ↓
-6. If success → Continue
+6. PreToolUse → Check if tests passed ⭐ NEW!
+   ↓
+7. If tests failed → BLOCK commit
+   ↓
+8. If tests passed → Allow commit
+   ↓
+9. Stop → Final build check report
 ```
+
+### ⭐ NEW: Test Enforcement (PreToolUse Hook)
+
+**Purpose:** Prevents committing code without passing tests
+
+**How it works:**
+
+1. Intercepts ALL `git commit` commands
+2. Checks for test marker file: `/tmp/pinecms-tests-passed`
+3. **Blocks commit** if marker doesn't exist (tests not run/passed)
+4. **Allows commit** if marker exists (tests passed)
+
+**Create test marker:**
+
+```bash
+# Option 1: Quick test + marker
+composer test && npm test && touch /tmp/pinecms-tests-passed
+
+# Option 2: Use /build-and-fix (auto-creates marker)
+/build-and-fix
+
+# Option 3: Full quality check
+composer quality && npm run quality && touch /tmp/pinecms-tests-passed
+```
+
+**Example Output (Blocked):**
+
+```
+❌ COMMIT BLOCKED: Tests must pass before committing!
+
+Please run one of the following:
+
+  Option 1 (Recommended):
+  /build-and-fix           # Fix all errors systematically
+
+  Option 2 (Quick):
+  composer test && npm test && touch /tmp/pinecms-tests-passed
+```
+
+**Example Output (Allowed):**
+
+```
+✅ Tests passed - proceeding with commit
+```
+
+**Bypass (if needed):**
+
+```bash
+touch /tmp/pinecms-tests-passed
+```
+
+**Benefits:**
+
+- ✅ Prevents broken code from being committed
+- ✅ Enforces test-driven development workflow
+- ✅ Catches errors before they enter git history
+- ✅ Encourages quality gates compliance
 
 ### What Gets Checked
 

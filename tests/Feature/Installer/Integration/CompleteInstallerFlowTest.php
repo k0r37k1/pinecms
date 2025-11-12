@@ -132,7 +132,7 @@ class CompleteInstallerFlowTest extends TestCase
         Artisan::call('db:seed', ['--class' => 'Database\\Seeders\\RoleSeeder']);
 
         // Step 5: Create Admin User
-        $adminUserResponse = $this->postJson('/installer/admin-user', [
+        $adminUserResponse = $this->postJson('/installer/wizard', [
             'name' => 'Test Administrator',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -190,7 +190,7 @@ class CompleteInstallerFlowTest extends TestCase
 
         $this->postJson('/installer/database/initialize')->assertRedirect();
         $this->postJson('/installer/database/migrate')->assertRedirect();
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Should Fail',
             'email' => 'fail@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -310,7 +310,7 @@ class CompleteInstallerFlowTest extends TestCase
         Artisan::call('db:seed', ['--class' => 'Database\\Seeders\\RoleSeeder']);
 
         // Step 5: Admin User
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Test Admin',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',

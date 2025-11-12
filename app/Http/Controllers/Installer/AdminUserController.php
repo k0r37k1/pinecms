@@ -40,7 +40,7 @@ class AdminUserController extends Controller
      */
     public function show(): Response
     {
-        return Inertia::render('Installer/AdminUserWizard');
+        return Inertia::render('Installer/InstallerWizard');
     }
 
     /**

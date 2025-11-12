@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 // Web routes (for Inertia pages)
 Route::middleware(['web'])->group(function (): void {
-    Route::get('/admin-user', [AdminUserController::class, 'show'])->name('admin-user.show');
+    Route::get('/wizard', [AdminUserController::class, 'show'])->name('wizard.show');
 });
 
 // API routes (for form submissions and AJAX requests)
@@ -37,8 +37,8 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::get('/database/info', [DatabaseController::class, 'info'])->name('database.info');
 
     // Admin user creation
-    Route::post('/admin-user', [AdminUserController::class, 'create'])->name('admin-user.create');
-    Route::post('/admin-user/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('admin-user.check-password');
+    Route::post('/wizard', [AdminUserController::class, 'create'])->name('wizard.create');
+    Route::post('/wizard/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('wizard.check-password');
 
     // Web server configuration
     Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');

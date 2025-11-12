@@ -146,7 +146,10 @@
       "Bash(npm run format:*)",
       "mcp__laravel-boost__last-error",
       "Bash(dictionaries/custom-words.txt)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "Bash(CI=true php artisan test:*)",
+      "Bash(.env)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []
@@ -164,6 +167,17 @@
           {
             "type": "command",
             "command": "php .claude/hooks/user-prompt-submit.php"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "php .claude/hooks/pre-commit-check.php"
           }
         ]
       }
