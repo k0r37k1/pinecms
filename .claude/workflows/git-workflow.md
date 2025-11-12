@@ -59,8 +59,6 @@ the above settings" to enforce this workflow even for solo development.
 
 ## GitHub Branch Protection Setup
 
-**📋 Full documentation:** See `.github/BRANCH_PROTECTION.md` for complete setup guide
-
 **Quick Setup for `main` branch:**
 
 1. Go to: <https://github.com/k0r37k1/pinecms/settings/branches>
