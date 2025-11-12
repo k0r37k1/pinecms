@@ -1,233 +1,214 @@
-# PineCMS Project Custom Dictionary
-# One word per line, case-sensitive
-# Comments start with #
-
-# Project name
-pinecms
-PineCMS
-
-# Testing
-playwright
-jsdom
-pytest
-lcov
-
-# Build tools
-esbuild
-postcss
-autoprefixer
-cssnano
-terser
-tailwindcss
-stylelint
-eslint
-prettier
-Shiki
-shiki
-nord
-
-# Web servers
-nginx
-apache
-
-# Database systems
-sqlite
-SQLite
-postgresql
-postgres
-Postgre
-mysql
-mariadb
-mongodb
-MongoDB
-redis
-Redis
-elasticsearch
-Elasticsearch
-influxdb
-InfluxDB
-
-# Database connection classes
-MongoDBConnection
-RedisConnection
-ElasticsearchConnection
-InfluxDBConnection
-PostgreSQLConnection
-DatabaseConnection
-
-# Common technical terms
-composables
-usecase
-composable
-frontmatter
-middleware
-seeder
-seeders
-tinker
-nullable
-fillable
-guarded
-timestamps
-softdeletes
-casts
-theming
-asyncio
-ite
-earch
-ath
-Uncategorized
-Upvote
-upvote
-Anonymization
-RESTful
-journaling
-uncompromised
-unregisters
-exposé
-devs
-Devs
-parallelizable
-Parallelizable
-dfs
-elif
-
-# SOLID Principles
-Liskov
-
-# PHP Extensions
-Mbstring
-mbstring
-Ctype
-openssl
-fileinfo
-Exif
-pdo
-opcache
-
-# Third-party services & CMS
-Statamic
-statamic
-Grav
-getgrav
-octobercms
-wintercms
-getkirby
-Joomla
-Symfony
-Authy
-Enlightn
-Deptrac
-Soketi
-soketi
-otplib
-Matomo
-Akismet
-Yoast
-Canva
-Dribbble
-Sentry
-CodeRabbit
-
-# Business terms
-sku
-
-# File extensions
-cjs
-mjs
-tsx
-jsx
-env
-idx
-wal
-
-# Common abbreviations
-CRUD
-API
-HTTP
-HTTPS
-URL
-JSON
-HTML
-CSS
-SQL
-PHP
-ORM
-XSS
-CSRF
-JWT
-OAuth
-UUID
-YAML
-REST
-RESTful
-cms
-seo
-rtl
-rgba
-ttp
-
-# Command/shell related
-blks
-isready
-gitmcp
-claude
-tsc
-gpg
-wip
-mfs
-testid
-signup
-tdd
-sed
-
-# German technical terms
-Benutzer
-Benutzerverwaltung
-Verwaltung
-Einstellungen
-Datenbank
-Authentifizierung
-Autorisierung
-Sicherheit
-dateitypspezifische
-Integrationen
-Reviewern
-Entpackung
-gehooked
-gehookt
-produktionsbereit
-Spezifikations
-
-# User/contributor names
-k0r37k1
-romeovs
-Njengah
-
-# Proper names (algorithms, people, etc.)
-Flesch
-Kincaid
 
 # British English variants
-organisation
-
-# Typography & Fonts
-Segoe
-Merriweather
-Fira
-Consolas
-
+# Build tools
+# Business terms
+# Command/shell related
+# Comments start with #
+# Common abbreviations
+# Common technical terms
+# Database connection classes
+# Database systems
+# File extensions
+# German technical terms
 # Lorem Ipsum
-amet
-adipiscing
-elit
-
+# One word per line, case-sensitive
+# PHP Extensions
+# PineCMS Project Custom Dictionary
+# Project name
+# Proper names (algorithms, people, etc.)
+# SOLID Principles
+# Testing
+# Third-party services & CMS
+# Typography & Fonts
 # Typos/Fragments (to be reviewed)
-ditor
-urifier
+# User/contributor names
+# Web servers
+API
+Akismet
+Anonymization
+Authentifizierung
+Authy
+Autorisierung
+Benutzer
+Benutzerverwaltung
+CRUD
+CSRF
+CSS
+Canva
+CodeRabbit
+Consolas
+Ctype
+DatabaseConnection
+Datenbank
 Deactivatable
-mcp
+Deptrac
+Devs
+Dribbble
+Einstellungen
+Elasticsearch
+ElasticsearchConnection
+Enlightn
+Entpackung
+Exif
+Fira
+Flesch
+Grav
+HTML
+HTTP
+HTTPS
+InfluxDB
+InfluxDBConnection
+Integrationen
+JSON
+JWT
+Joomla
+Kincaid
+Liskov
+Matomo
+Mbstring
+Merriweather
+MongoDB
+MongoDBConnection
+Njengah
+OAuth
+ORM
+PHP
+Parallelizable
+PineCMS
+Postgre
+PostgreSQLConnection
+REST
+RESTful
+Redis
+RedisConnection
+Reviewern
+SQL
+SQLite
+Segoe
+Sentry
+Shiki
+Sicherheit
+Soketi
+Spezifikations
+Statamic
+Symfony
+URL
+UUID
+Uncategorized
+Upvote
+Verwaltung
+XSS
+YAML
+Yoast
+adipiscing
+amet
+apache
+asyncio
+ath
+autoprefixer
 awk
-vlucas
-sebastiandedeyne
+blks
+casts
+cjs
+claude
+cms
+composable
+composables
+cssnano
+dateitypspezifische
+devs
+dfs
+ditor
+earch
+elasticsearch
+elif
+elit
+env
+esbuild
+eslint
+exposé
+fastcgi
+fileinfo
+fillable
+frontmatter
+gehooked
+gehookt
+getgrav
+getkirby
+gitmcp
+gpg
+guarded
+idx
+influxdb
+isready
+ite
+journaling
+jsdom
+jsx
+k0r37k1
 laravel
+lcov
+mariadb
+mbstring
+mcp
+mfs
+middleware
+mjs
+mongodb
+mysql
+nginx
+nord
+nullable
+octobercms
+opcache
+openssl
+organisation
+otplib
+parallelizable
+pdo
+pinecms
 pkill
+playwright
+postcss
+postgres
+postgresql
+prettier
+produktionsbereit
+pytest
+redis
+rgba
+romeovs
+rtl
+sebastiandedeyne
+sed
+seeder
+seeders
+seo
+shiki
+signup
+sku
+softdeletes
+soketi
+sqlite
+statamic
+stylelint
+tailwindcss
+tdd
+terser
+testid
+theming
+timestamps
+tinker
+tsc
+tsx
+ttp
+uncompromised
+unregisters
+upvote
+urifier
+usecase
+vlucas
+wal
+wintercms
+wip
+xattr

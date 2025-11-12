@@ -57,7 +57,7 @@ jobs:
           php artisan key:generate
 
       - name: Run PHPUnit Tests with Coverage
-        run: composer test:coverage
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --coverage-html=coverage --coverage-clover=coverage/clover.xml
 
       - name: Upload PHP Coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -210,8 +210,10 @@ jobs:
         run: |
           cp .env.example .env
           php artisan key:generate
-          touch database/database.sqlite
+          touch database/pinecms.sqlite
           php artisan migrate --force
+          # Ensure installer is accessible for E2E tests
+          rm -f .installed
 
       - name: Build Frontend Assets
         run: npm run build

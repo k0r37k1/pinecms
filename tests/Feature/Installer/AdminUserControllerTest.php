@@ -27,7 +27,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCreateAdminUserWithValidDataReturns201(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -53,7 +53,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCreatedUserExistsInDatabase(): void
     {
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -69,7 +69,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCreatedUserHasAdministratorRole(): void
     {
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -83,7 +83,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCreatedUserEmailIsVerified(): void
     {
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -97,7 +97,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testPasswordHashedWithBcryptCost12(): void
     {
-        $this->postJson('/installer/admin-user', [
+        $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -106,7 +106,8 @@ class AdminUserControllerTest extends TestCase
 
         $user = User::where('email', 'admin@localhost')->first();
         $this->assertNotNull($user);
-        $this->assertStringStartsWith('$2y$12$', $user->password);
+        $expectedCost = str_pad((string) config('hashing.bcrypt.rounds', 12), 2, '0', STR_PAD_LEFT);
+        $this->assertStringStartsWith('$2y$' . $expectedCost . '$', $user->password);
     }
 
     // ========================================
@@ -115,7 +116,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRequiresName(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
             'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
@@ -127,7 +128,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRequiresEmail(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'password' => 'UniqueTestP@ss2024XyZ!',
             'password_confirmation' => 'UniqueTestP@ss2024XyZ!',
@@ -139,7 +140,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRequiresPassword(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
         ]);
@@ -150,7 +151,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRequiresPasswordConfirmation(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -162,7 +163,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsInvalidNameWithNumbers(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin123',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -175,7 +176,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsInvalidNameWithSpecialChars(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin@User#',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -188,7 +189,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationAcceptsValidNameWithSpacesAndHyphens(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => "John O'Brien-Smith",
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -200,7 +201,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsInvalidEmailFormat(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'invalid-email',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -217,7 +218,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsShortPassword(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'Short1!',
@@ -230,7 +231,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsPasswordWithoutUppercase(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'lowercase123!@#',
@@ -243,7 +244,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsPasswordWithoutLowercase(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UPPERCASE123!@#',
@@ -256,7 +257,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsPasswordWithoutNumbers(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'NoNumbersHere!@#',
@@ -269,7 +270,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsPasswordWithoutSymbols(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'NoSpecialChar123',
@@ -282,7 +283,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidationRejectsPasswordConfirmationMismatch(): void
     {
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -301,7 +302,7 @@ class AdminUserControllerTest extends TestCase
     {
         User::factory()->create();
 
-        $response = $this->postJson('/installer/admin-user', [
+        $response = $this->postJson('/installer/wizard', [
             'name' => 'Admin User',
             'email' => 'admin@localhost',
             'password' => 'UniqueTestP@ss2024XyZ!',
@@ -320,7 +321,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCheckPasswordEndpointReturnsStrongPassword(): void
     {
-        $response = $this->postJson('/installer/admin-user/check-password', [
+        $response = $this->postJson('/installer/wizard/check-password', [
             'password' => 'UniqueTestP@ss2024XyZ!',
         ]);
 
@@ -338,7 +339,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCheckPasswordEndpointReturnsWeakPassword(): void
     {
-        $response = $this->postJson('/installer/admin-user/check-password', [
+        $response = $this->postJson('/installer/wizard/check-password', [
             'password' => 'weak',
         ]);
 
@@ -354,7 +355,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCheckPasswordEndpointRequiresPasswordField(): void
     {
-        $response = $this->postJson('/installer/admin-user/check-password', []);
+        $response = $this->postJson('/installer/wizard/check-password', []);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['password']);
@@ -362,7 +363,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testCheckPasswordEndpointReturnsMediumStrength(): void
     {
-        $response = $this->postJson('/installer/admin-user/check-password', [
+        $response = $this->postJson('/installer/wizard/check-password', [
             'password' => 'Medium@Pass1',
         ]);
 

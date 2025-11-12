@@ -11,7 +11,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
-use Inertia\Response;
+use Inertia\Response as InertiaResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Admin User Controller
@@ -36,29 +37,36 @@ class AdminUserController extends Controller
      * Renders the Inertia-powered admin user creation wizard step
      * of the PineCMS installation process.
      *
-     * @return Response Inertia response rendering the wizard
+     * @return InertiaResponse Inertia response rendering the wizard
      */
-    public function show(): Response
+    public function show(): InertiaResponse
     {
-        return Inertia::render('Installer/AdminUserWizard');
+        return Inertia::render('Installer/InstallerWizard');
     }
 
     /**
      * Create admin user
      *
      * Processes the validated admin user creation request.
-     * Returns 201 on success with user data, or 422 on validation/creation failure.
+     * Returns external location redirect for web/Inertia requests or JSON for API requests.
      *
      * @param  CreateAdminUserRequest  $request  Validated admin user creation data
-     * @return JsonResponse JSON response with success status and user data
+     * @return Response JSON response or Inertia location redirect
      */
-    public function create(CreateAdminUserRequest $request): JsonResponse
+    public function create(CreateAdminUserRequest $request): Response
     {
         /** @var array{name: string, email: string, password: string} $validated */
         $validated = $request->validated();
         $result = $this->creator->create($validated);
 
+        // Handle failure case
         if (! $result['success']) {
+            // For Inertia requests, redirect back with errors
+            if ($request->hasHeader('X-Inertia')) {
+                return back()->withErrors($result['errors'] ?? [])->with('message', $result['message']);
+            }
+
+            // For pure JSON API requests, return JSON error response
             return response()->json([
                 'success' => false,
                 'message' => $result['message'],
@@ -69,6 +77,14 @@ class AdminUserController extends Controller
         // PHPStan: At this point, success is true, so user must exist
         assert(isset($result['user']));
 
+        // Check if this is an Inertia request (form submission with X-Inertia header)
+        // For internal redirects, use regular Laravel redirect
+        // Inertia will automatically handle this as a client-side navigation
+        if ($request->hasHeader('X-Inertia')) {
+            return redirect('/admin/login');
+        }
+
+        // For pure JSON API requests (no X-Inertia header), return JSON response
         return response()->json([
             'success' => true,
             'message' => $result['message'],

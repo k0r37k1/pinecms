@@ -16,6 +16,9 @@ class RunScheduledTasksTest extends TestCase
     {
         parent::setUp();
 
+        // Use array cache driver to avoid database dependency in unit tests
+        Config::set('cache.default', 'array');
+
         // Clear cache lock between tests
         Cache::forget('schedule:run:lock');
     }

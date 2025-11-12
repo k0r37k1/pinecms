@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { useForm, router } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
@@ -87,7 +87,7 @@ const checkPasswordStrength = () => {
         isCheckingPassword.value = true;
 
         try {
-            const response = await fetch('/installer/admin-user/check-password', {
+            const response = await fetch('/installer/wizard/check-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,12 +122,8 @@ watch(
 
 // Submit handler
 const submit = () => {
-    form.post('/installer/admin-user', {
+    form.post('/installer/wizard', {
         preserveScroll: true,
-        onSuccess: () => {
-            // Redirect to admin login on success
-            router.visit('/admin/login');
-        },
         onError: (errors) => {
             console.error('Admin user creation failed:', errors);
             // Stay on step 3 to show errors
@@ -239,6 +235,7 @@ const getStrengthColorClass = (color) => {
                     <Password
                         id="password"
                         v-model="form.password"
+                        input-id="password"
                         class="w-full"
                         toggle-mask
                         :feedback="false"
@@ -290,6 +287,7 @@ const getStrengthColorClass = (color) => {
                     <Password
                         id="password_confirmation"
                         v-model="form.password_confirmation"
+                        input-id="password_confirmation"
                         class="w-full"
                         toggle-mask
                         :feedback="false"

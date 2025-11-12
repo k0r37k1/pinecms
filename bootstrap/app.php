@@ -26,6 +26,10 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SetLocale::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
         ]);
+
+        // CSRF Protection: Inertia.js handles CSRF tokens automatically via X-XSRF-TOKEN header
+        // No exemptions needed - Laravel's default CSRF protection applies to all routes
+        // For testing: PHPUnit tests use WithoutMiddleware or proper CSRF token handling
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         Integration::handles($exceptions);

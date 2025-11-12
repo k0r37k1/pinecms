@@ -45,6 +45,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Testing Mode
+    |--------------------------------------------------------------------------
+    |
+    | This value determines whether the application is running in testing mode.
+    | This is set via the TESTING environment variable in phpunit.xml and is
+    | used to enable testing-only endpoints like the installer unlock endpoint.
+    |
+    */
+
+    'testing' => (bool) env('TESTING', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |

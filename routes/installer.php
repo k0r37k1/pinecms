@@ -8,6 +8,7 @@ use App\Http\Controllers\Installer\CronController;
 use App\Http\Controllers\Installer\DatabaseController;
 use App\Http\Controllers\Installer\EnvironmentController;
 use App\Http\Controllers\Installer\RequirementsController;
+use App\Http\Controllers\Installer\UnlockController;
 use App\Http\Controllers\Installer\WebServerController;
 use App\Http\Middleware\PreventInstalledAccess;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,14 @@ use Illuminate\Support\Facades\Route;
 
 // Web routes (for Inertia pages)
 Route::middleware(['web'])->group(function (): void {
-    Route::get('/admin-user', [AdminUserController::class, 'show'])->name('admin-user.show');
+    Route::get('/wizard', [AdminUserController::class, 'show'])->name('wizard.show');
+});
+
+// API/Web hybrid routes (handle both JSON API and Inertia form submissions)
+// Uses 'web' middleware for CSRF + session but controller detects request type
+Route::middleware(['web', PreventInstalledAccess::class])->group(function (): void {
+    Route::post('/wizard', [AdminUserController::class, 'create'])->name('wizard.create');
+    Route::post('/wizard/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('wizard.check-password');
 });
 
 // API routes (for form submissions and AJAX requests)
@@ -34,10 +42,6 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::post('/database/initialize', [DatabaseController::class, 'initialize'])->name('database.initialize');
     Route::post('/database/migrate', [DatabaseController::class, 'migrate'])->name('database.migrate');
     Route::get('/database/info', [DatabaseController::class, 'info'])->name('database.info');
-
-    // Admin user creation
-    Route::post('/admin-user', [AdminUserController::class, 'create'])->name('admin-user.create');
-    Route::post('/admin-user/check-password', [AdminUserController::class, 'checkPasswordStrength'])->name('admin-user.check-password');
 
     // Web server configuration
     Route::post('/webserver/apache', [WebServerController::class, 'generateApacheConfig'])->name('webserver.apache');
@@ -54,7 +58,12 @@ Route::middleware(['api', PreventInstalledAccess::class])->group(function (): vo
     Route::get('/status', [CleanupController::class, 'status'])->name('status');
 });
 
-// Development-only unlock endpoint (no PreventInstalledAccess middleware)
-Route::post('/installer/unlock', [CleanupController::class, 'unlock'])
-    ->middleware('api')
+// Testing-only unlock endpoint for E2E test isolation (no PreventInstalledAccess middleware)
+// Rate limited for defense-in-depth security (max 5 requests per minute, except during tests)
+$unlockMiddleware = ['api'];
+if (! (bool) config('app.testing')) {
+    $unlockMiddleware[] = 'throttle:5,1';
+}
+Route::post('/unlock', [UnlockController::class, 'unlock'])
+    ->middleware($unlockMiddleware)
     ->name('unlock');
