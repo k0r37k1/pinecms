@@ -30,7 +30,7 @@ jobs:
       matrix:
         # CodeQL supported languages: https://aka.ms/codeql-docs/language-support
         # Note: PHP is NOT supported by CodeQL
-        # PHP security is handled by PHPStan + Enlightn in tests.yml
+        # PHP security is handled by PHPStan + Enlightn in ci.yml
         language: ['javascript']
 
     steps:
@@ -81,6 +81,6 @@ jobs:
 #
 # Language Coverage:
 # ✓ JavaScript/TypeScript (CodeQL) - Frontend security
-# ✓ PHP (PHPStan + Enlightn) - Backend security (in tests.yml)
+# ✓ PHP (PHPStan + Enlightn) - Backend security (in ci.yml)
 #
 # Free for Public Repos: Yes (GitHub Advanced Security included)
