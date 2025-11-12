@@ -20,13 +20,14 @@ class UnlockController extends Controller
      * Unlock installer by removing installation artifacts.
      *
      * Security: Only works in testing environment.
+     * Uses env() directly to bypass config cache for critical security check.
      */
     public function unlock(): JsonResponse
     {
-        // Security: Only allow when application is in testing mode
-        // This is set via TESTING environment variable in phpunit.xml
-        // and cached in config/app.php 'testing' key for config:cache compatibility
-        if (! (bool) config('app.testing')) {
+        // Security: Multi-layer validation to prevent accidental production exposure
+        // Layer 1: Direct environment variable check (bypasses config cache)
+        // Layer 2: Application environment check (testing/local only)
+        if (! (bool) env('TESTING', false) || ! app()->environment('testing', 'local')) {
             abort(403, 'Unlock endpoint only available in testing environment');
         }
 

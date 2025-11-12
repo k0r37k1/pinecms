@@ -27,12 +27,9 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
         ]);
 
-        // Exclude installer wizard routes from CSRF verification
-        // These routes handle both JSON API requests (feature tests) and Inertia form submissions (E2E tests)
-        $middleware->validateCsrfTokens(except: [
-            'installer/wizard',
-            'installer/wizard/check-password',
-        ]);
+        // CSRF Protection: Inertia.js handles CSRF tokens automatically via X-XSRF-TOKEN header
+        // No exemptions needed - Laravel's default CSRF protection applies to all routes
+        // For testing: PHPUnit tests use WithoutMiddleware or proper CSRF token handling
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         Integration::handles($exceptions);

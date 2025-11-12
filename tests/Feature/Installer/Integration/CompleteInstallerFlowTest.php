@@ -73,6 +73,10 @@ class CompleteInstallerFlowTest extends TestCase
             self::markTestSkipped('Test skipped in CI environment due to SQLite file creation differences');
         }
 
+        // Override :memory: database with physical file for this test
+        // This test specifically validates physical file creation
+        config(['database.connections.sqlite.database' => $this->dbPath]);
+
         // Step 1: Check Requirements
         $requirementsResponse = $this->getJson('/installer/requirements');
         $requirementsResponse->assertStatus(200)

@@ -63,9 +63,24 @@ if ($hook instanceof PreToolUse) {
             return;
         }
 
-        // Tests passed - allow commit
+        // Check marker file age (must be < 10 minutes old)
+        $markerAge = time() - filemtime($testMarkerFile);
+        if ($markerAge > 600) { // 10 minutes
+            echo "\n";
+            echo "⚠️  COMMIT BLOCKED: Test marker is stale ({$markerAge} seconds old)\n";
+            echo "\n";
+            echo "Code may have changed since tests ran. Please re-run tests:\n";
+            echo "  composer test && npm test && touch {$testMarkerFile}\n";
+            echo "\n";
+
+            $hook->response()->block();
+
+            return;
+        }
+
+        // Tests passed and marker is fresh - allow commit
         echo "\n";
-        echo "✅ Tests passed - proceeding with commit\n";
+        echo "✅ Tests passed ({$markerAge}s ago) - proceeding with commit\n";
         echo "\n";
 
         // Optional: Remove marker file after successful commit

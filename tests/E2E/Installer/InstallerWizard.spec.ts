@@ -121,10 +121,11 @@ class InstallerWizardPage {
         const step2Container = this.page
             .locator('div.space-y-6.rounded-lg')
             .filter({ hasText: 'Password' });
-        await step2Container.waitFor({ state: 'attached', timeout: 15000 });
+        await step2Container.waitFor({ state: 'visible', timeout: 5000 });
 
-        // Wait for password input inside PrimeVue Password component
-        await this.passwordInput.waitFor({ state: 'attached', timeout: 15000 });
+        // Condition-based waiting: Wait for password input to be visible and enabled
+        await expect(this.passwordInput).toBeVisible({ timeout: 5000 });
+        await expect(this.passwordInput).toBeEnabled({ timeout: 2000 });
     }
 
     async goToReviewStep(password: string = VALID_ADMIN.password) {
