@@ -61,7 +61,8 @@ class AdminUserController extends Controller
 
         // Handle failure case
         if (! $result['success']) {
-            if ($request->wantsJson()) {
+            // Return JSON only for pure API requests (no X-Inertia header)
+            if ($request->wantsJson() && ! $request->hasHeader('X-Inertia')) {
                 return response()->json([
                     'success' => false,
                     'message' => $result['message'],
@@ -75,8 +76,8 @@ class AdminUserController extends Controller
         // PHPStan: At this point, success is true, so user must exist
         assert(isset($result['user']));
 
-        // Handle success case - return JSON for API requests
-        if ($request->wantsJson()) {
+        // Handle success case - return JSON only for pure API requests (no X-Inertia header)
+        if ($request->wantsJson() && ! $request->hasHeader('X-Inertia')) {
             return response()->json([
                 'success' => true,
                 'message' => $result['message'],
