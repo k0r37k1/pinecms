@@ -82,7 +82,8 @@ class AdminUserController extends Controller
         if ($request->hasHeader('X-Inertia')) {
             // Inertia::location() returns 409 response with X-Inertia-Location header
             // The Inertia client will automatically do window.location redirect
-            return Inertia::location('/admin/login');
+            // Use absolute URL to ensure proper redirect handling
+            return Inertia::location(url('/admin/login'));
         }
 
         // For pure JSON API requests (no X-Inertia header), return JSON response
